@@ -3,9 +3,6 @@ package br.com.xkinfo.slc.modelo;
 
 import java.io.Serializable;
 
-import java.lang.Boolean;
-import java.lang.Integer;
-import java.lang.String;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -46,8 +43,8 @@ public  class Itens implements Serializable {
     private Integer faixa;
 
 
-    @OneToMany(targetEntity=IntensValor.class,mappedBy="item")
-    private Collection<IntensValor> intensValorCollection;
+    @OneToMany(targetEntity=ItensValor.class,mappedBy="item")
+    private Collection<ItensValor> intensValorCollection;
 
 
     @Column(name="DESCRICAO",table="ITENS",unique=false,updatable=true,insertable=true,nullable=false,length=200,scale=0,precision=0)
@@ -114,12 +111,12 @@ public  class Itens implements Serializable {
 
 
 
-   public Collection<IntensValor> getIntensValorCollection() {
+   public Collection<ItensValor> getIntensValorCollection() {
         return this.intensValorCollection;
     }
 
 
-  public void setIntensValorCollection (Collection<IntensValor> intensValorCollection) {
+  public void setIntensValorCollection (Collection<ItensValor> intensValorCollection) {
         this.intensValorCollection = intensValorCollection;
     }
 

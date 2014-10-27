@@ -39,8 +39,8 @@
     <class>br.com.xkinfo.slc.modelo.UnidadeConsumidora</class>
     <class>br.com.xkinfo.slc.modelo.ItensFatura</class>
     <class>br.com.xkinfo.slc.modelo.HidrometroUC</class>
-    <class>br.com.xkinfo.slc.modelo.IntensValor</class>
     <class>br.com.xkinfo.slc.modelo.Usuario</class>
+    <class>br.com.xkinfo.slc.modelo.ItensValor</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
       <property name="javax.persistence.jdbc.password" value="app"/>

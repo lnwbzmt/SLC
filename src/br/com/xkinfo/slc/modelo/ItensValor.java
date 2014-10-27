@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="INTENSVALOR")
-public  class IntensValor implements Serializable {
+public  class ItensValor implements Serializable {
 
 
     @Column(name="DATAINICIO",table="INTENSVALOR",unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
@@ -60,7 +60,7 @@ public  class IntensValor implements Serializable {
     @Basic
     private Integer qtdeinicio;
 
-    public IntensValor(){
+    public ItensValor(){
 
     }
 
