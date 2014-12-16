@@ -1,23 +1,23 @@
 package br.com.xkinfo.slc.dao.impl;
 
-import br.com.xkinfo.slc.dao.ISituacaoDAO;
-import br.com.xkinfo.slc.modelo.Situacao;
+import br.com.xkinfo.slc.dao.IHidrometroUCDAO;
+import br.com.xkinfo.slc.modelo.HidrometroUC;
 import br.com.xkinfo.slc.util.EntityManagerUtil;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-public class SituacaoDAO implements ISituacaoDAO {
+public class HidrometroUCDAO implements IHidrometroUCDAO {
 
     private final EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
     @Override
-    public void incluirSituacao(Situacao situacao) throws Exception {
+    public void incluirHidrometroUC(HidrometroUC hidrometroUC) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
-            entityManager.persist(situacao);
+            entityManager.persist(hidrometroUC);
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();
@@ -27,11 +27,11 @@ public class SituacaoDAO implements ISituacaoDAO {
     }
 
     @Override
-    public void alterarSituacao(Situacao situacao) throws Exception {
+    public void alterarHidrometroUC(HidrometroUC hidrometroUC) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
-            entityManager.merge(situacao);
+            entityManager.merge(hidrometroUC);
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();
@@ -41,11 +41,11 @@ public class SituacaoDAO implements ISituacaoDAO {
     }
 
     @Override
-    public void excluirSituacao(Situacao situacao) throws Exception {
+    public void excluirHidrometroUC(HidrometroUC hidrometroUC) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
-            entityManager.remove(situacao);
+            entityManager.remove(hidrometroUC);
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();
@@ -55,44 +55,44 @@ public class SituacaoDAO implements ISituacaoDAO {
     }
 
     @Override
-    public ArrayList<Situacao> getSituacoes() throws Exception {
-        ArrayList<Situacao> lista = new ArrayList<Situacao>();
-        Query query = entityManager.createQuery("select x from Situacao x");
-        lista = (ArrayList<Situacao>) query.getResultList();
+    public ArrayList<HidrometroUC> getHidrometroUCs() throws Exception {
+        ArrayList<HidrometroUC> lista = new ArrayList<HidrometroUC>();
+        Query query = entityManager.createQuery("select x from HidrometroUC x");
+        lista = (ArrayList<HidrometroUC>) query.getResultList();
         return lista;
     }
 
     @Override
-    public ArrayList<Situacao> getSituacoes(String filtro) throws Exception {
-        ArrayList<Situacao> lista = new ArrayList<Situacao>();
-        Query query = entityManager.createQuery("select x from Situacao x WHERE x.nome like :nome");
+    public ArrayList<HidrometroUC> getHidrometroUCs(String filtro) throws Exception {
+        ArrayList<HidrometroUC> lista = new ArrayList<HidrometroUC>();
+        Query query = entityManager.createQuery("select x from HidrometroUC x WHERE x.nome like :nome");
         query.setParameter("nome", "%" + filtro + "%");
-        lista = (ArrayList<Situacao>) query.getResultList();
+        lista = (ArrayList<HidrometroUC>) query.getResultList();
         return lista;
     }
 
     @Override
-    public Situacao getSituacao(int id) throws Exception {
-        Situacao situacao = null;
+    public HidrometroUC getHidrometroUC(int id) throws Exception {
+        HidrometroUC hidrometroUC = null;
         try {
-            situacao = entityManager.find(Situacao.class, id);
+            hidrometroUC = entityManager.find(HidrometroUC.class, id);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }
-        return situacao;
+        return hidrometroUC;
     }
 
     @Override
-    public Situacao getSituacao(String nome) throws Exception {
-        Situacao situacao = null;
+    public HidrometroUC getHidrometroUC(String nome) throws Exception {
+        HidrometroUC hidrometroUC = null;
         try {
-            situacao = entityManager.find(Situacao.class, nome);
+            hidrometroUC = entityManager.find(HidrometroUC.class, nome);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }
-        return situacao;
+        return hidrometroUC;
     }
 
 }

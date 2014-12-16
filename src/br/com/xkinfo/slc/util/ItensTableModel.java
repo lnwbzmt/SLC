@@ -1,22 +1,22 @@
 package br.com.xkinfo.slc.util;
 
-import br.com.xkinfo.slc.modelo.Condominio;
+import br.com.xkinfo.slc.modelo.Itens;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
-public class CondominioTableModel extends AbstractTableModel {
+public class ItensTableModel extends AbstractTableModel {
 
-    private List<Condominio> condominios;
+    private List<Itens> condominios;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
-    public CondominioTableModel() {
+    public ItensTableModel() {
         try {
-            condominios = ServiceFactory.getCondominioService().getCondominios();
+            condominios = ServiceFactory.getItensService().getItens();
         } catch (Exception ex) {
-            Logger.getLogger(CondominioTableModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ItensTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -37,7 +37,7 @@ public class CondominioTableModel extends AbstractTableModel {
             case 0:
                 return condominios.get(numLinha).getId();
             case 1:
-                return condominios.get(numLinha).getNome();
+                return condominios.get(numLinha).getDescricao();
         }
         return null;
     }
@@ -47,7 +47,7 @@ public class CondominioTableModel extends AbstractTableModel {
         return cabecalhoColunas[numColuna];
     }
 
-    public List<Condominio> getCondominios() {
+    public List<Itens> getItenss() {
         return condominios;
     }
 

@@ -7,22 +7,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
-public class CondominioTableModel extends AbstractTableModel {
+public class FaturaTableModel extends AbstractTableModel {
 
-    private List<Condominio> condominios;
+    private List<Condominio> faturas;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
-    public CondominioTableModel() {
+    public FaturaTableModel() {
         try {
-            condominios = ServiceFactory.getCondominioService().getCondominios();
+            faturas = ServiceFactory.getCondominioService().getCondominios();
         } catch (Exception ex) {
-            Logger.getLogger(CondominioTableModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FaturaTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public int getRowCount() {
-        return condominios.size();
+        return faturas.size();
     }
 
     @Override
@@ -35,9 +35,9 @@ public class CondominioTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return condominios.get(numLinha).getId();
+                return faturas.get(numLinha).getId();
             case 1:
-                return condominios.get(numLinha).getNome();
+                return faturas.get(numLinha).getNome();
         }
         return null;
     }
@@ -48,7 +48,7 @@ public class CondominioTableModel extends AbstractTableModel {
     }
 
     public List<Condominio> getCondominios() {
-        return condominios;
+        return faturas;
     }
 
 }

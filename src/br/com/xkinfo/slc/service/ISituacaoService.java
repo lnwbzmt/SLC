@@ -1,9 +1,9 @@
-package br.com.xkinfo.slc.dao;
+package br.com.xkinfo.slc.service;
 
 import br.com.xkinfo.slc.modelo.Situacao;
 import java.util.ArrayList;
 
-public interface ISituacaoDAO {
+public interface ISituacaoService {
 
     public void incluirSituacao(Situacao situacao) throws Exception;
 

@@ -1,28 +1,28 @@
 package br.com.xkinfo.slc.util;
 
-import br.com.xkinfo.slc.modelo.Condominio;
+import br.com.xkinfo.slc.modelo.Pessoa;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
-public class CondominioTableModel extends AbstractTableModel {
+public class PessoaTableModel extends AbstractTableModel {
 
-    private List<Condominio> condominios;
+    private List<Pessoa> pessoas;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
-    public CondominioTableModel() {
+    public PessoaTableModel() {
         try {
-            condominios = ServiceFactory.getCondominioService().getCondominios();
+            pessoas = ServiceFactory.getPessoaService().getPessoas();
         } catch (Exception ex) {
-            Logger.getLogger(CondominioTableModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PessoaTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public int getRowCount() {
-        return condominios.size();
+        return pessoas.size();
     }
 
     @Override
@@ -35,9 +35,9 @@ public class CondominioTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return condominios.get(numLinha).getId();
+                return pessoas.get(numLinha).getId();
             case 1:
-                return condominios.get(numLinha).getNome();
+                return pessoas.get(numLinha).getNome();
         }
         return null;
     }
@@ -47,8 +47,8 @@ public class CondominioTableModel extends AbstractTableModel {
         return cabecalhoColunas[numColuna];
     }
 
-    public List<Condominio> getCondominios() {
-        return condominios;
+    public List<Pessoa> getPessoas() {
+        return pessoas;
     }
 
 }

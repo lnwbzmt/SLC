@@ -7,22 +7,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
-public class CondominioTableModel extends AbstractTableModel {
+public class HidrometroTableModel extends AbstractTableModel {
 
-    private List<Condominio> condominios;
+    private List<Condominio> hidrometros;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
-    public CondominioTableModel() {
+    public HidrometroTableModel() {
         try {
-            condominios = ServiceFactory.getCondominioService().getCondominios();
+            hidrometros = ServiceFactory.getCondominioService().getCondominios();
         } catch (Exception ex) {
-            Logger.getLogger(CondominioTableModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HidrometroTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public int getRowCount() {
-        return condominios.size();
+        return hidrometros.size();
     }
 
     @Override
@@ -35,9 +35,9 @@ public class CondominioTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return condominios.get(numLinha).getId();
+                return hidrometros.get(numLinha).getId();
             case 1:
-                return condominios.get(numLinha).getNome();
+                return hidrometros.get(numLinha).getNome();
         }
         return null;
     }
@@ -48,7 +48,7 @@ public class CondominioTableModel extends AbstractTableModel {
     }
 
     public List<Condominio> getCondominios() {
-        return condominios;
+        return hidrometros;
     }
 
 }

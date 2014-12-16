@@ -10,27 +10,27 @@ import javax.swing.ComboBoxModel;
 
 
 public class CondominioComboModel extends AbstractListModel implements ComboBoxModel {
-    private List<Condominio> concessionarias;
+    private List<Condominio> condominios;
     private Object selectedItem;
     public CondominioComboModel(){  
         try {
-            concessionarias = ServiceFactory.getCondominioService().getCondominios();
+            condominios = ServiceFactory.getCondominioService().getCondominios();
         } catch (Exception ex) {
             Logger.getLogger(CondominioComboModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }  
-    public CondominioComboModel(List<Condominio> concessionarias){
+    public CondominioComboModel(List<Condominio> condominios){
         this();
-        this.concessionarias.addAll(concessionarias);
+        this.condominios.addAll(condominios);
     }
     @Override
     public int getSize() {
-        return concessionarias.size();
+        return condominios.size();
     }
 
     @Override
     public Object getElementAt(int index) {
-        return concessionarias.get(index);
+        return condominios.get(index);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class CondominioComboModel extends AbstractListModel implements ComboBoxM
 
 
     public void changeList(List<Condominio> newList){
-        this.concessionarias = newList;
+        this.condominios = newList;
         fireContentsChanged(this, 0, 0);
     }
 }
