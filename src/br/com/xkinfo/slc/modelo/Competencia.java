@@ -52,6 +52,10 @@ public  class Competencia implements Serializable {
 
     }
 
+    public Competencia(Object object, Object object0, Object object1, Object object2, Object object3, int i, Object object4, String text, int i0, Object object5, Object object6) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
    public Situacao getSituacao() {
         return this.situacao;

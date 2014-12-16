@@ -2,6 +2,7 @@ package br.com.xkinfo.slc.view;
 
 import br.com.xkinfo.slc.modelo.Competencia;
 import br.com.xkinfo.slc.service.ServiceFactory;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -146,7 +147,7 @@ public class CadastroCompetencia extends javax.swing.JDialog {
 
     private void bSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalvarActionPerformed
         if (competenciaSelecionado != null) {
-            competenciaSelecionado.setNome(tfNome.getText());
+            competenciaSelecionado.setCompetencia(Date.valueOf(tfNome.getText()));
             try {
                 ServiceFactory.getCompetenciaService().alterarCompetencia(competenciaSelecionado);
                 JOptionPane.showMessageDialog(this, "Competencia Alterado com Sucesso!");
