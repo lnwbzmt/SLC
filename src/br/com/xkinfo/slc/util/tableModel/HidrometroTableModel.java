@@ -1,28 +1,28 @@
-package br.com.xkinfo.slc.util;
+package br.com.xkinfo.slc.util.tableModel;
 
-import br.com.xkinfo.slc.modelo.ItensValor;
+import br.com.xkinfo.slc.modelo.Condominio;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
-public class ItensValorTableModel extends AbstractTableModel {
+public class HidrometroTableModel extends AbstractTableModel {
 
-    private List<ItensValor> itensValores;
+    private List<Condominio> hidrometros;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
-    public ItensValorTableModel() {
+    public HidrometroTableModel() {
         try {
-            itensValores = ServiceFactory.getItensValorService().getItensValores();
+            hidrometros = ServiceFactory.getCondominioService().getCondominios();
         } catch (Exception ex) {
-            Logger.getLogger(ItensValorTableModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HidrometroTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public int getRowCount() {
-        return itensValores.size();
+        return hidrometros.size();
     }
 
     @Override
@@ -35,9 +35,9 @@ public class ItensValorTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return itensValores.get(numLinha).getId();
+                return hidrometros.get(numLinha).getId();
             case 1:
-                return itensValores.get(numLinha).getItem();
+                return hidrometros.get(numLinha).getNome();
         }
         return null;
     }
@@ -47,8 +47,8 @@ public class ItensValorTableModel extends AbstractTableModel {
         return cabecalhoColunas[numColuna];
     }
 
-    public List<ItensValor> getItensValors() {
-        return itensValores;
+    public List<Condominio> getCondominios() {
+        return hidrometros;
     }
 
 }

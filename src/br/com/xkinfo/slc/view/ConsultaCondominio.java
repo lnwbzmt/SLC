@@ -1,7 +1,7 @@
 package br.com.xkinfo.slc.view;
 
 import br.com.xkinfo.slc.modelo.Condominio;
-import br.com.xkinfo.slc.util.CondominioTableModel;
+import br.com.xkinfo.slc.util.tableModel.CondominioTableModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.event.ListSelectionEvent;

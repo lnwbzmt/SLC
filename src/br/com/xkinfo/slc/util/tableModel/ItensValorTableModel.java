@@ -1,28 +1,28 @@
-package br.com.xkinfo.slc.util;
+package br.com.xkinfo.slc.util.tableModel;
 
-import br.com.xkinfo.slc.modelo.HidrometroUC;
+import br.com.xkinfo.slc.modelo.ItensValor;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
-public class HidrometroUCTableModel extends AbstractTableModel {
+public class ItensValorTableModel extends AbstractTableModel {
 
-    private List<HidrometroUC> hidrometroUCs;
+    private List<ItensValor> itensValores;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
-    public HidrometroUCTableModel() {
+    public ItensValorTableModel() {
         try {
-            hidrometroUCs = ServiceFactory.getHidrometroUCService().getHidrometroUCs();
+            itensValores = ServiceFactory.getItensValorService().getItensValores();
         } catch (Exception ex) {
-            Logger.getLogger(HidrometroUCTableModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ItensValorTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public int getRowCount() {
-        return hidrometroUCs.size();
+        return itensValores.size();
     }
 
     @Override
@@ -35,9 +35,9 @@ public class HidrometroUCTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return hidrometroUCs.get(numLinha).getId();
+                return itensValores.get(numLinha).getId();
             case 1:
-                return hidrometroUCs.get(numLinha).getUnidadeconsumidora();
+                return itensValores.get(numLinha).getItem();
         }
         return null;
     }
@@ -47,8 +47,8 @@ public class HidrometroUCTableModel extends AbstractTableModel {
         return cabecalhoColunas[numColuna];
     }
 
-    public List<HidrometroUC> getHidrometroUCs() {
-        return hidrometroUCs;
+    public List<ItensValor> getItensValors() {
+        return itensValores;
     }
 
 }

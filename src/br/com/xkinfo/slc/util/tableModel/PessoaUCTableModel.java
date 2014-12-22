@@ -1,28 +1,28 @@
-package br.com.xkinfo.slc.util;
+package br.com.xkinfo.slc.util.tableModel;
 
-import br.com.xkinfo.slc.modelo.Itens;
+import br.com.xkinfo.slc.modelo.PessoaUC;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
-public class ItensTableModel extends AbstractTableModel {
+public class PessoaUCTableModel extends AbstractTableModel {
 
-    private List<Itens> condominios;
+    private List<PessoaUC> pessoaUCs;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
-    public ItensTableModel() {
+    public PessoaUCTableModel() {
         try {
-            condominios = ServiceFactory.getItensService().getItens();
+            pessoaUCs = ServiceFactory.getPessoaUCService().getPessoaUCs();
         } catch (Exception ex) {
-            Logger.getLogger(ItensTableModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PessoaUCTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public int getRowCount() {
-        return condominios.size();
+        return pessoaUCs.size();
     }
 
     @Override
@@ -35,9 +35,9 @@ public class ItensTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return condominios.get(numLinha).getId();
+                return pessoaUCs.get(numLinha).getId();
             case 1:
-                return condominios.get(numLinha).getDescricao();
+                return pessoaUCs.get(numLinha).getProprietario();
         }
         return null;
     }
@@ -47,8 +47,8 @@ public class ItensTableModel extends AbstractTableModel {
         return cabecalhoColunas[numColuna];
     }
 
-    public List<Itens> getItenss() {
-        return condominios;
+    public List<PessoaUC> getPessoaUCs() {
+        return pessoaUCs;
     }
 
 }

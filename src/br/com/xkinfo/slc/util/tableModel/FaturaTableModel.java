@@ -1,28 +1,28 @@
-package br.com.xkinfo.slc.util;
+package br.com.xkinfo.slc.util.tableModel;
 
-import br.com.xkinfo.slc.modelo.PessoaUC;
+import br.com.xkinfo.slc.modelo.Condominio;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
-public class PessoaUCTableModel extends AbstractTableModel {
+public class FaturaTableModel extends AbstractTableModel {
 
-    private List<PessoaUC> pessoaUCs;
+    private List<Condominio> faturas;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
-    public PessoaUCTableModel() {
+    public FaturaTableModel() {
         try {
-            pessoaUCs = ServiceFactory.getPessoaUCService().getPessoaUCs();
+            faturas = ServiceFactory.getCondominioService().getCondominios();
         } catch (Exception ex) {
-            Logger.getLogger(PessoaUCTableModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FaturaTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public int getRowCount() {
-        return pessoaUCs.size();
+        return faturas.size();
     }
 
     @Override
@@ -35,9 +35,9 @@ public class PessoaUCTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return pessoaUCs.get(numLinha).getId();
+                return faturas.get(numLinha).getId();
             case 1:
-                return pessoaUCs.get(numLinha).getProprietario();
+                return faturas.get(numLinha).getNome();
         }
         return null;
     }
@@ -47,8 +47,8 @@ public class PessoaUCTableModel extends AbstractTableModel {
         return cabecalhoColunas[numColuna];
     }
 
-    public List<PessoaUC> getPessoaUCs() {
-        return pessoaUCs;
+    public List<Condominio> getCondominios() {
+        return faturas;
     }
 
 }

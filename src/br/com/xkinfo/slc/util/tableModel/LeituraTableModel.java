@@ -1,28 +1,28 @@
-package br.com.xkinfo.slc.util;
+package br.com.xkinfo.slc.util.tableModel;
 
-import br.com.xkinfo.slc.modelo.Situacao;
+import br.com.xkinfo.slc.modelo.Leitura;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
-public class SituacaoTableModel extends AbstractTableModel {
+public class LeituraTableModel extends AbstractTableModel {
 
-    private List<Situacao> situacoes;
+    private List<Leitura> leituras;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
-    public SituacaoTableModel() {
+    public LeituraTableModel() {
         try {
-            situacoes = ServiceFactory.getSituacaoService().getSituacoes();
+            leituras = ServiceFactory.getLeituraService().getLeituras();
         } catch (Exception ex) {
-            Logger.getLogger(SituacaoTableModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LeituraTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public int getRowCount() {
-        return situacoes.size();
+        return leituras.size();
     }
 
     @Override
@@ -35,9 +35,9 @@ public class SituacaoTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return situacoes.get(numLinha).getId();
+                return leituras.get(numLinha).getId();
             case 1:
-                return situacoes.get(numLinha).getDescricao();
+                return leituras.get(numLinha).getOcorrencia();
         }
         return null;
     }
@@ -47,8 +47,8 @@ public class SituacaoTableModel extends AbstractTableModel {
         return cabecalhoColunas[numColuna];
     }
 
-    public List<Situacao> getSituacoes() {
-        return situacoes;
+    public List<Leitura> getLeituras() {
+        return leituras;
     }
 
 }

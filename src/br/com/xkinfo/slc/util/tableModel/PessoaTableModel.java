@@ -1,28 +1,28 @@
-package br.com.xkinfo.slc.util;
+package br.com.xkinfo.slc.util.tableModel;
 
-import br.com.xkinfo.slc.modelo.Condominio;
+import br.com.xkinfo.slc.modelo.Pessoa;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
-public class FaturaTableModel extends AbstractTableModel {
+public class PessoaTableModel extends AbstractTableModel {
 
-    private List<Condominio> faturas;
+    private List<Pessoa> pessoas;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
-    public FaturaTableModel() {
+    public PessoaTableModel() {
         try {
-            faturas = ServiceFactory.getCondominioService().getCondominios();
+            pessoas = ServiceFactory.getPessoaService().getPessoas();
         } catch (Exception ex) {
-            Logger.getLogger(FaturaTableModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PessoaTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public int getRowCount() {
-        return faturas.size();
+        return pessoas.size();
     }
 
     @Override
@@ -35,9 +35,9 @@ public class FaturaTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return faturas.get(numLinha).getId();
+                return pessoas.get(numLinha).getId();
             case 1:
-                return faturas.get(numLinha).getNome();
+                return pessoas.get(numLinha).getNome();
         }
         return null;
     }
@@ -47,8 +47,8 @@ public class FaturaTableModel extends AbstractTableModel {
         return cabecalhoColunas[numColuna];
     }
 
-    public List<Condominio> getCondominios() {
-        return faturas;
+    public List<Pessoa> getPessoas() {
+        return pessoas;
     }
 
 }

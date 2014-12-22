@@ -1,28 +1,28 @@
-package br.com.xkinfo.slc.util;
+package br.com.xkinfo.slc.util.tableModel;
 
-import br.com.xkinfo.slc.modelo.Competencia;
+import br.com.xkinfo.slc.modelo.Ocorrencia;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
-public class CompetenciaTableModel extends AbstractTableModel {
+public class OcorrenciaTableModel extends AbstractTableModel {
 
-    private List<Competencia> competencias;
+    private List<Ocorrencia> ocorrencias;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
-    public CompetenciaTableModel() {
+    public OcorrenciaTableModel() {
         try {
-            competencias = ServiceFactory.getCompetenciaService().getCompetencias();
+            ocorrencias = ServiceFactory.getOcorrenciaService().getOcorrencias();
         } catch (Exception ex) {
-            Logger.getLogger(CompetenciaTableModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OcorrenciaTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public int getRowCount() {
-        return competencias.size();
+        return ocorrencias.size();
     }
 
     @Override
@@ -35,9 +35,9 @@ public class CompetenciaTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return competencias.get(numLinha).getId();
+                return ocorrencias.get(numLinha).getId();
             case 1:
-                return competencias.get(numLinha).getCompetencia();
+                return ocorrencias.get(numLinha).getDescricao();
         }
         return null;
     }
@@ -47,8 +47,8 @@ public class CompetenciaTableModel extends AbstractTableModel {
         return cabecalhoColunas[numColuna];
     }
 
-    public List<Competencia> getCompetencias() {
-        return competencias;
+    public List<Ocorrencia> getOcorrencias() {
+        return ocorrencias;
     }
 
 }

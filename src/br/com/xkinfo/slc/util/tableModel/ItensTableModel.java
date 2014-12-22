@@ -1,28 +1,28 @@
-package br.com.xkinfo.slc.util;
+package br.com.xkinfo.slc.util.tableModel;
 
-import br.com.xkinfo.slc.modelo.Leitura;
+import br.com.xkinfo.slc.modelo.Itens;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
-public class LeituraTableModel extends AbstractTableModel {
+public class ItensTableModel extends AbstractTableModel {
 
-    private List<Leitura> leituras;
+    private List<Itens> condominios;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
-    public LeituraTableModel() {
+    public ItensTableModel() {
         try {
-            leituras = ServiceFactory.getLeituraService().getLeituras();
+            condominios = ServiceFactory.getItensService().getItens();
         } catch (Exception ex) {
-            Logger.getLogger(LeituraTableModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ItensTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public int getRowCount() {
-        return leituras.size();
+        return condominios.size();
     }
 
     @Override
@@ -35,9 +35,9 @@ public class LeituraTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return leituras.get(numLinha).getId();
+                return condominios.get(numLinha).getId();
             case 1:
-                return leituras.get(numLinha).getOcorrencia();
+                return condominios.get(numLinha).getDescricao();
         }
         return null;
     }
@@ -47,8 +47,8 @@ public class LeituraTableModel extends AbstractTableModel {
         return cabecalhoColunas[numColuna];
     }
 
-    public List<Leitura> getLeituras() {
-        return leituras;
+    public List<Itens> getItenss() {
+        return condominios;
     }
 
 }

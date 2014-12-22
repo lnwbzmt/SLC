@@ -1,4 +1,4 @@
-package br.com.xkinfo.slc.util;
+package br.com.xkinfo.slc.util.tableModel;
 
 import br.com.xkinfo.slc.modelo.Condominio;
 import br.com.xkinfo.slc.service.ServiceFactory;

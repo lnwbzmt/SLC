@@ -1,28 +1,28 @@
-package br.com.xkinfo.slc.util;
+package br.com.xkinfo.slc.util.tableModel;
 
-import br.com.xkinfo.slc.modelo.UnidadeConsumidora;
+import br.com.xkinfo.slc.modelo.ItensFatura;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
-public class UnidadeConsumidoraTableModel extends AbstractTableModel {
+public class ItensFaturaTableModel extends AbstractTableModel {
 
-    private List<UnidadeConsumidora> unidadeConsumidoras;
+    private List<ItensFatura> itensFaturas;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
-    public UnidadeConsumidoraTableModel() {
+    public ItensFaturaTableModel() {
         try {
-            unidadeConsumidoras = ServiceFactory.getUnidadeConsumidoraService().getUnidadeConsumidoras();
+            itensFaturas = ServiceFactory.getItensFaturaService().getItensFaturas();
         } catch (Exception ex) {
-            Logger.getLogger(UnidadeConsumidoraTableModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ItensFaturaTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public int getRowCount() {
-        return unidadeConsumidoras.size();
+        return itensFaturas.size();
     }
 
     @Override
@@ -35,9 +35,9 @@ public class UnidadeConsumidoraTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return unidadeConsumidoras.get(numLinha).getId();
+                return itensFaturas.get(numLinha).getId();
             case 1:
-                return unidadeConsumidoras.get(numLinha).getCondominio();
+                return itensFaturas.get(numLinha).getItem();
         }
         return null;
     }
@@ -47,8 +47,8 @@ public class UnidadeConsumidoraTableModel extends AbstractTableModel {
         return cabecalhoColunas[numColuna];
     }
 
-    public List<UnidadeConsumidora> getUnidadeConsumidoras() {
-        return unidadeConsumidoras;
+    public List<ItensFatura> getItensFaturas() {
+        return itensFaturas;
     }
 
 }

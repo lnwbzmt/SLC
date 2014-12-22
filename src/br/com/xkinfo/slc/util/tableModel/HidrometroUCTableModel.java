@@ -1,28 +1,28 @@
-package br.com.xkinfo.slc.util;
+package br.com.xkinfo.slc.util.tableModel;
 
-import br.com.xkinfo.slc.modelo.Condominio;
+import br.com.xkinfo.slc.modelo.HidrometroUC;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
-public class HidrometroTableModel extends AbstractTableModel {
+public class HidrometroUCTableModel extends AbstractTableModel {
 
-    private List<Condominio> hidrometros;
+    private List<HidrometroUC> hidrometroUCs;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
-    public HidrometroTableModel() {
+    public HidrometroUCTableModel() {
         try {
-            hidrometros = ServiceFactory.getCondominioService().getCondominios();
+            hidrometroUCs = ServiceFactory.getHidrometroUCService().getHidrometroUCs();
         } catch (Exception ex) {
-            Logger.getLogger(HidrometroTableModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HidrometroUCTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public int getRowCount() {
-        return hidrometros.size();
+        return hidrometroUCs.size();
     }
 
     @Override
@@ -35,9 +35,9 @@ public class HidrometroTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return hidrometros.get(numLinha).getId();
+                return hidrometroUCs.get(numLinha).getId();
             case 1:
-                return hidrometros.get(numLinha).getNome();
+                return hidrometroUCs.get(numLinha).getUnidadeconsumidora();
         }
         return null;
     }
@@ -47,8 +47,8 @@ public class HidrometroTableModel extends AbstractTableModel {
         return cabecalhoColunas[numColuna];
     }
 
-    public List<Condominio> getCondominios() {
-        return hidrometros;
+    public List<HidrometroUC> getHidrometroUCs() {
+        return hidrometroUCs;
     }
 
 }
