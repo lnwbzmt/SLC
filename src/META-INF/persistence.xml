@@ -51,9 +51,8 @@
     <class>Situacao</class>
     <class>Pessoa</class>
     <class>Usuario</class>
-    <class>HidrometroUc</class>
-    <class>Hidrometro</class>
     <class>Competencia</class>
+    <class>br.com.xkinfo.slc.modelo.HidrometroUc</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
       <property name="javax.persistence.jdbc.password" value="app"/>
