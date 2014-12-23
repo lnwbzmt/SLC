@@ -1,10 +1,6 @@
 package br.com.xkinfo.slc.modelo;
 
-
 import java.io.Serializable;
-
-import java.lang.Integer;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -14,101 +10,104 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="COMPETENCIAS")
-public  class Competencia implements Serializable {
+@Table(name = "COMPETENCIAS")
+public class Competencia implements Serializable {
 
-
-    @ManyToOne(optional=false,targetEntity=Situacao.class)
-    @JoinColumn(name="SITUACAO",referencedColumnName="ID",insertable=true,nullable=true,unique=false,updatable=true)
+    @ManyToOne(optional = false, targetEntity = Situacao.class)
+    @JoinColumn(name = "SITUACAO", referencedColumnName = "ID")
     private Situacao situacao;
 
+    @ManyToOne(targetEntity = Usuario.class)
+    @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
+    private Usuario usuarioalteracao;
 
-    @OneToMany(targetEntity=Fatura.class,mappedBy="competencia")
-    private Collection<Fatura> faturaCollection;
+    @Column(name = "DATAINCLUSAO", table = "COMPETENCIAS", nullable = false)
+    @Temporal(TemporalType.DATE)
+    @Basic
+    private Date datainclusao;
 
+    @ManyToOne(optional = false, targetEntity = Usuario.class)
+    @JoinColumn(name = "USUARIOINCLUSAO", referencedColumnName = "ID")
+    private Usuario usuarioinclusao;
 
-    @Column(name="ID",table="COMPETENCIAS",unique=false,updatable=true,insertable=true,nullable=false,length=255,scale=0,precision=0)
+    @Column(name = "ID", table = "COMPETENCIAS", nullable = false)
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column(name = "DATAALTERACAO", table = "COMPETENCIAS")
+    @Temporal(TemporalType.DATE)
+    @Basic
+    private Date dataalteracao;
 
-    @Column(name="COMPETENCIA",table="COMPETENCIAS",unique=false,updatable=true,insertable=true,nullable=false,length=255,scale=0,precision=0)
+    @Column(name = "COMPETENCIA", table = "COMPETENCIAS", nullable = false)
     @Temporal(TemporalType.DATE)
     @Basic
     private Date competencia;
 
-
-    @OneToMany(targetEntity=Leitura.class,mappedBy="competencia")
-    private Collection<Leitura> leituraCollection;
-
-    public Competencia(){
+    public Competencia() {
 
     }
 
-    public Competencia(Object object, Object object0, Object object1, Object object2, Object object3, int i, Object object4, String text, int i0, Object object5, Object object6) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
-   public Situacao getSituacao() {
+    public Situacao getSituacao() {
         return this.situacao;
     }
 
-
-  public void setSituacao (Situacao situacao) {
+    public void setSituacao(Situacao situacao) {
         this.situacao = situacao;
     }
 
-
-
-   public Collection<Fatura> getFaturaCollection() {
-        return this.faturaCollection;
+    public Usuario getUsuarioalteracao() {
+        return this.usuarioalteracao;
     }
 
-
-  public void setFaturaCollection (Collection<Fatura> faturaCollection) {
-        this.faturaCollection = faturaCollection;
+    public void setUsuarioalteracao(Usuario usuarioalteracao) {
+        this.usuarioalteracao = usuarioalteracao;
     }
 
+    public Date getDatainclusao() {
+        return this.datainclusao;
+    }
 
+    public void setDatainclusao(Date datainclusao) {
+        this.datainclusao = datainclusao;
+    }
 
-   public Integer getId() {
+    public Usuario getUsuarioinclusao() {
+        return this.usuarioinclusao;
+    }
+
+    public void setUsuarioinclusao(Usuario usuarioinclusao) {
+        this.usuarioinclusao = usuarioinclusao;
+    }
+
+    public Integer getId() {
         return this.id;
     }
 
-
-  public void setId (Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
+    public Date getDataalteracao() {
+        return this.dataalteracao;
+    }
 
+    public void setDataalteracao(Date dataalteracao) {
+        this.dataalteracao = dataalteracao;
+    }
 
-   public Date getCompetencia() {
+    public Date getCompetencia() {
         return this.competencia;
     }
 
-
-  public void setCompetencia (Date competencia) {
+    public void setCompetencia(Date competencia) {
         this.competencia = competencia;
     }
 
-
-
-   public Collection<Leitura> getLeituraCollection() {
-        return this.leituraCollection;
-    }
-
-
-  public void setLeituraCollection (Collection<Leitura> leituraCollection) {
-        this.leituraCollection = leituraCollection;
-    }
-
 }
-
