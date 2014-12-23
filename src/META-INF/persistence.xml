@@ -46,7 +46,6 @@
     <class>br.com.xkinfo.slc.modelo.HidrometroUC</class>
     <class>br.com.xkinfo.slc.modelo.Usuario</class>
     <class>br.com.xkinfo.slc.modelo.ItensValor</class>
-    <class>Condominio</class>
     <class>PessoaUc</class>
     <class>UnidadeConsumidora</class>
     <class>Situacao</class>

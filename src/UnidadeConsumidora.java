@@ -1,4 +1,5 @@
 
+import br.com.xkinfo.slc.modelo.Condominio;
 import java.io.Serializable;
 
 import java.lang.Integer;
