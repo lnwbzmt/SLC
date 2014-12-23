@@ -20,6 +20,25 @@ import javax.persistence.TemporalType;
 @Table(name = "CONDOMINIOS")
 public class Condominio implements Serializable {
 
+    /*
+     CAMPOS DA TABELA:
+     * ID;
+     * NOME;
+     * CNPJ;
+     * ENDERECO;
+     * NUMERO;
+     * COMPLEMENTO;
+     * BAIRRO;
+     * CIDADE;
+     * ESTADO;
+     * SIGLA;
+     * EMAIL;
+     ** AUDITORIA **
+     * USUARIO INCLUSAO;
+     * DATA INCLUSAO;
+     * USUARIO ALTERACAO;
+     * DATA ALTERACAO;
+     */
     @Column(name = "CIDADE", table = "CONDOMINIOS", nullable = false, length = 250)
     @Basic
     private String cidade;

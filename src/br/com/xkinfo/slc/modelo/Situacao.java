@@ -20,6 +20,17 @@ import javax.persistence.TemporalType;
 @Table(name = "SITUACOES")
 public class Situacao implements Serializable {
 
+    /*
+     CAMPOS DA TABELA:
+     * ID;
+     * CODIGO;
+     * DESCRICAO;
+     ** AUDITORIA **
+     * USUARIO INCLUSAO;
+     * DATA INCLUSAO;
+     * USUARIO ALTERACAO;
+     * DATA ALTERACAO;
+     */
     @OneToMany(targetEntity = Competencia.class, mappedBy = "situacao")
     private Collection<Competencia> competenciaCollection;
 

@@ -20,6 +20,17 @@ import javax.persistence.TemporalType;
 @Table(name = "HIDROMETROS")
 public class Hidrometro implements Serializable {
 
+    /*
+     CAMPOS DA TABELA:
+     * ID;
+     * NR SERIE;
+     * DATA AQUISIÇÃO;
+     ** AUDITORIA **
+     * USUARIO INCLUSAO;
+     * DATA INCLUSAO;
+     * USUARIO ALTERACAO;
+     * DATA ALTERACAO;
+     */
     @Column(name = "NRSERIE", table = "HIDROMETROS", nullable = false, length = 20)
     @Basic
     private String nrserie;

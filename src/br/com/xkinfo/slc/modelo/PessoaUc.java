@@ -18,6 +18,20 @@ import javax.persistence.TemporalType;
 @Table(name = "PESSOAUC")
 public class PessoaUc implements Serializable {
 
+    /*
+     CAMPOS DA TABELA:
+     * ID;
+     * PROPRIETARIO;
+     * INQUILINO;
+     * UNIDADECONSUMIDORA;
+     * DATA ENTRADA;
+     * DATA SAIDA;
+     ** AUDITORIA **
+     * USUARIO INCLUSAO;
+     * DATA INCLUSAO;
+     * USUARIO ALTERACAO;
+     * DATA ALTERACAO;
+     */
     @ManyToOne(targetEntity = Usuario.class)
     @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
     private Usuario usuarioalteracao;

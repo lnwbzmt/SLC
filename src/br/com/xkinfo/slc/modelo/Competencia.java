@@ -18,6 +18,17 @@ import javax.persistence.TemporalType;
 @Table(name = "COMPETENCIAS")
 public class Competencia implements Serializable {
 
+    /*
+     CAMPOS DA TABELA:
+     * ID;
+     * COMPETENCIA;
+     * SITUAÇÃO;
+     ** AUDITORIA **
+     * USUARIO INCLUSAO;
+     * DATA INCLUSAO;
+     * USUARIO ALTERACAO;
+     * DATA ALTERACAO;
+     */
     @ManyToOne(optional = false, targetEntity = Situacao.class)
     @JoinColumn(name = "SITUACAO", referencedColumnName = "ID")
     private Situacao situacao;

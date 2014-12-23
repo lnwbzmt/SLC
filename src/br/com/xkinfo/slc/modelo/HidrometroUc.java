@@ -18,6 +18,21 @@ import javax.persistence.TemporalType;
 @Table(name = "HIDROMETROUC")
 public class HidrometroUc implements Serializable {
 
+    /*
+     CAMPOS DA TABELA:
+     * ID;
+     * UNIDADE CONSUMIDORA;
+     * HIDROMETRO;
+     * DATAINSTALAÇÃO;
+     * DATA RETIRADA;
+     * ULTIMA LEITURA;
+     * DATA ULTIMA LEITURA;
+     ** AUDITORIA **
+     * USUARIO INCLUSAO;
+     * DATA INCLUSAO;
+     * USUARIO ALTERACAO;
+     * DATA ALTERACAO;
+     */
     @Column(name = "DATAULTIMALEITURA", table = "HIDROMETROUC")
     @Temporal(TemporalType.DATE)
     @Basic
