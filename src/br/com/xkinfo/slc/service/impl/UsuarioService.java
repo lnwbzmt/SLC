@@ -48,7 +48,7 @@ public class UsuarioService implements IUsuarioService {
     public Usuario isUsuarioValido(String login, String senha) throws Exception {
         ArrayList<Usuario> usuarios = usuarioDAO.getUsuarios();
         for (Usuario usuario : usuarios) {
-            if (usuario.getUsuario().equals(login) && usuario.getSenha().equals(senha)) {
+            if (usuario.getUsuario().equals(login.toUpperCase()) && usuario.getSenha().equals(senha)) {
                 return usuario;
             }
         }

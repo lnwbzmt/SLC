@@ -1,6 +1,7 @@
 package br.com.xkinfo.slc.view;
 
 import br.com.xkinfo.slc.modelo.Usuario;
+import br.com.xkinfo.slc.service.ServiceFactory;
 import br.com.xkinfo.slc.service.impl.UsuarioService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -113,13 +114,12 @@ public class TelaLogin extends javax.swing.JFrame {
         UsuarioService usuarioService = new UsuarioService();
         Usuario usuario;
         try {
-            usuario = usuarioService.isUsuarioValido(login, senha);
+            usuario = ServiceFactory.getUsuarioService().isUsuarioValido(login, senha);
             if (usuario != null) {
                 TelaPrincipal tp = new TelaPrincipal(usuario);
                 tp.setLocationRelativeTo(null);
                 tp.setVisible(true);
                 tp.setExtendedState(MAXIMIZED_BOTH);
-
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Usuário ou senha inválido!");
