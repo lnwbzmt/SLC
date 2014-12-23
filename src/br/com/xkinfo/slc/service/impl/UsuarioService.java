@@ -1,6 +1,5 @@
 package br.com.xkinfo.slc.service.impl;
 
-
 import br.com.xkinfo.slc.dao.impl.UsuarioDAO;
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.IUsuarioService;
@@ -49,7 +48,7 @@ public class UsuarioService implements IUsuarioService {
     public Usuario isUsuarioValido(String login, String senha) throws Exception {
         ArrayList<Usuario> usuarios = usuarioDAO.getUsuarios();
         for (Usuario usuario : usuarios) {
-            if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
+            if (usuario.getUsuario().equals(login) && usuario.getSenha().equals(senha)) {
                 return usuario;
             }
         }
