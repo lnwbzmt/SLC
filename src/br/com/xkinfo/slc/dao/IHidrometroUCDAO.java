@@ -1,21 +1,21 @@
 package br.com.xkinfo.slc.dao;
 
-import br.com.xkinfo.slc.modelo.HidrometroUC;
+import br.com.xkinfo.slc.modelo.HidrometroUc;
 import java.util.ArrayList;
 
 public interface IHidrometroUCDAO {
 
-    public void incluirHidrometroUC(HidrometroUC hidrometroUC) throws Exception;
+    public void incluirHidrometroUC(HidrometroUc hidrometroUC) throws Exception;
 
-    public void alterarHidrometroUC(HidrometroUC hidrometroUC) throws Exception;
+    public void alterarHidrometroUC(HidrometroUc hidrometroUC) throws Exception;
 
-    public void excluirHidrometroUC(HidrometroUC hidrometroUC) throws Exception;
+    public void excluirHidrometroUC(HidrometroUc hidrometroUC) throws Exception;
 
-    public ArrayList<HidrometroUC> getHidrometroUCs() throws Exception;
+    public ArrayList<HidrometroUc> getHidrometroUCs() throws Exception;
 
-    public ArrayList<HidrometroUC> getHidrometroUCs(String filtro) throws Exception;
+    public ArrayList<HidrometroUc> getHidrometroUCs(String filtro) throws Exception;
 
-    public HidrometroUC getHidrometroUC(int id) throws Exception;
+    public HidrometroUc getHidrometroUC(int id) throws Exception;
 
-    public HidrometroUC getHidrometroUC(String nome) throws Exception;
+    public HidrometroUc getHidrometroUC(String nome) throws Exception;
 }

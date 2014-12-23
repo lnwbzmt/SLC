@@ -1,10 +1,8 @@
 package br.com.xkinfo.slc.modelo;
 
-
 import java.io.Serializable;
-
-import java.lang.Integer;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,92 +13,124 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="UNIDADESCONSUMIDORAS")
-public  class UnidadeConsumidora implements Serializable {
+@Table(name = "UNIDADESCONSUMIDORAS")
+public class UnidadeConsumidora implements Serializable {
 
+    @OneToMany(targetEntity = PessoaUc.class, mappedBy = "unidadeconsumidora")
+    private Collection<PessoaUc> pessoaUcCollection;
 
-    @OneToMany(targetEntity=HidrometroUC.class,mappedBy="unidadeconsumidora")
-    private Collection<HidrometroUC> hidrometroUCCollection;
-
-
-    @Column(name="NUMERO",table="UNIDADESCONSUMIDORAS",unique=false,updatable=true,insertable=true,nullable=false,length=255,scale=0,precision=0)
+    @Column(name = "NUMERO", table = "UNIDADESCONSUMIDORAS", nullable = false)
     @Basic
     private int numero;
 
+    @ManyToOne(targetEntity = Usuario.class)
+    @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
+    private Usuario usuarioalteracao;
 
-    @ManyToOne(optional=false,targetEntity=Condominio.class)
-    @JoinColumn(name="CONDOMINIO",referencedColumnName="ID",insertable=true,nullable=true,unique=false,updatable=true)
+    @ManyToOne(optional = false, targetEntity = Condominio.class)
+    @JoinColumn(name = "CONDOMINIO", referencedColumnName = "ID")
     private Condominio condominio;
 
+    @Column(name = "DATAINCLUSAO", table = "UNIDADESCONSUMIDORAS", nullable = false)
+    @Temporal(TemporalType.DATE)
+    @Basic
+    private Date datainclusao;
 
-    @Column(name="ID",table="UNIDADESCONSUMIDORAS",unique=false,updatable=true,insertable=true,nullable=false,length=255,scale=0,precision=0)
+    @ManyToOne(optional = false, targetEntity = Usuario.class)
+    @JoinColumn(name = "USUARIOINCLUSAO", referencedColumnName = "ID")
+    private Usuario usuarioinclusao;
+
+    @OneToMany(targetEntity = HidrometroUc.class, mappedBy = "unidadeconsumidora")
+    private Collection<HidrometroUc> hidrometroUcCollection;
+
+    @Column(name = "ID", table = "UNIDADESCONSUMIDORAS", nullable = false)
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column(name = "DATAALTERACAO", table = "UNIDADESCONSUMIDORAS")
+    @Temporal(TemporalType.DATE)
+    @Basic
+    private Date dataalteracao;
 
-    @OneToMany(targetEntity=PessoaUC.class,mappedBy="unidadeconsumidora")
-    private Collection<PessoaUC> pessoaUCCollection;
-
-    public UnidadeConsumidora(){
+    public UnidadeConsumidora() {
 
     }
 
-
-   public Collection<HidrometroUC> getHidrometroUCCollection() {
-        return this.hidrometroUCCollection;
+    public Collection<PessoaUc> getPessoaUcCollection() {
+        return this.pessoaUcCollection;
     }
 
-
-  public void setHidrometroUCCollection (Collection<HidrometroUC> hidrometroUCCollection) {
-        this.hidrometroUCCollection = hidrometroUCCollection;
+    public void setPessoaUcCollection(Collection<PessoaUc> pessoaUcCollection) {
+        this.pessoaUcCollection = pessoaUcCollection;
     }
 
-
-
-   public int getNumero() {
+    public int getNumero() {
         return this.numero;
     }
 
-
-  public void setNumero (int numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
+    public Usuario getUsuarioalteracao() {
+        return this.usuarioalteracao;
+    }
 
+    public void setUsuarioalteracao(Usuario usuarioalteracao) {
+        this.usuarioalteracao = usuarioalteracao;
+    }
 
-   public Condominio getCondominio() {
+    public Condominio getCondominio() {
         return this.condominio;
     }
 
-
-  public void setCondominio (Condominio condominio) {
+    public void setCondominio(Condominio condominio) {
         this.condominio = condominio;
     }
 
+    public Date getDatainclusao() {
+        return this.datainclusao;
+    }
 
+    public void setDatainclusao(Date datainclusao) {
+        this.datainclusao = datainclusao;
+    }
 
-   public Integer getId() {
+    public Usuario getUsuarioinclusao() {
+        return this.usuarioinclusao;
+    }
+
+    public void setUsuarioinclusao(Usuario usuarioinclusao) {
+        this.usuarioinclusao = usuarioinclusao;
+    }
+
+    public Collection<HidrometroUc> getHidrometroUcCollection() {
+        return this.hidrometroUcCollection;
+    }
+
+    public void setHidrometroUcCollection(Collection<HidrometroUc> hidrometroUcCollection) {
+        this.hidrometroUcCollection = hidrometroUcCollection;
+    }
+
+    public Integer getId() {
         return this.id;
     }
 
-
-  public void setId (Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-
-
-   public Collection<PessoaUC> getPessoaUCCollection() {
-        return this.pessoaUCCollection;
+    public Date getDataalteracao() {
+        return this.dataalteracao;
     }
 
-
-  public void setPessoaUCCollection (Collection<PessoaUC> pessoaUCCollection) {
-        this.pessoaUCCollection = pessoaUCCollection;
+    public void setDataalteracao(Date dataalteracao) {
+        this.dataalteracao = dataalteracao;
     }
 
 }
-

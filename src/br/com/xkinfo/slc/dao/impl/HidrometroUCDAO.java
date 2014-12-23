@@ -1,7 +1,7 @@
 package br.com.xkinfo.slc.dao.impl;
 
 import br.com.xkinfo.slc.dao.IHidrometroUCDAO;
-import br.com.xkinfo.slc.modelo.HidrometroUC;
+import br.com.xkinfo.slc.modelo.HidrometroUc;
 import br.com.xkinfo.slc.util.EntityManagerUtil;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
@@ -13,7 +13,7 @@ public class HidrometroUCDAO implements IHidrometroUCDAO {
     private final EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
     @Override
-    public void incluirHidrometroUC(HidrometroUC hidrometroUC) throws Exception {
+    public void incluirHidrometroUC(HidrometroUc hidrometroUC) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
@@ -27,7 +27,7 @@ public class HidrometroUCDAO implements IHidrometroUCDAO {
     }
 
     @Override
-    public void alterarHidrometroUC(HidrometroUC hidrometroUC) throws Exception {
+    public void alterarHidrometroUC(HidrometroUc hidrometroUC) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
@@ -41,7 +41,7 @@ public class HidrometroUCDAO implements IHidrometroUCDAO {
     }
 
     @Override
-    public void excluirHidrometroUC(HidrometroUC hidrometroUC) throws Exception {
+    public void excluirHidrometroUC(HidrometroUc hidrometroUC) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
@@ -55,27 +55,27 @@ public class HidrometroUCDAO implements IHidrometroUCDAO {
     }
 
     @Override
-    public ArrayList<HidrometroUC> getHidrometroUCs() throws Exception {
-        ArrayList<HidrometroUC> lista = new ArrayList<HidrometroUC>();
+    public ArrayList<HidrometroUc> getHidrometroUCs() throws Exception {
+        ArrayList<HidrometroUc> lista = new ArrayList<HidrometroUc>();
         Query query = entityManager.createQuery("select x from HidrometroUC x");
-        lista = (ArrayList<HidrometroUC>) query.getResultList();
+        lista = (ArrayList<HidrometroUc>) query.getResultList();
         return lista;
     }
 
     @Override
-    public ArrayList<HidrometroUC> getHidrometroUCs(String filtro) throws Exception {
-        ArrayList<HidrometroUC> lista = new ArrayList<HidrometroUC>();
+    public ArrayList<HidrometroUc> getHidrometroUCs(String filtro) throws Exception {
+        ArrayList<HidrometroUc> lista = new ArrayList<HidrometroUc>();
         Query query = entityManager.createQuery("select x from HidrometroUC x WHERE x.nome like :nome");
         query.setParameter("nome", "%" + filtro + "%");
-        lista = (ArrayList<HidrometroUC>) query.getResultList();
+        lista = (ArrayList<HidrometroUc>) query.getResultList();
         return lista;
     }
 
     @Override
-    public HidrometroUC getHidrometroUC(int id) throws Exception {
-        HidrometroUC hidrometroUC = null;
+    public HidrometroUc getHidrometroUC(int id) throws Exception {
+        HidrometroUc hidrometroUC = null;
         try {
-            hidrometroUC = entityManager.find(HidrometroUC.class, id);
+            hidrometroUC = entityManager.find(HidrometroUc.class, id);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
@@ -84,10 +84,10 @@ public class HidrometroUCDAO implements IHidrometroUCDAO {
     }
 
     @Override
-    public HidrometroUC getHidrometroUC(String nome) throws Exception {
-        HidrometroUC hidrometroUC = null;
+    public HidrometroUc getHidrometroUC(String nome) throws Exception {
+        HidrometroUc hidrometroUC = null;
         try {
-            hidrometroUC = entityManager.find(HidrometroUC.class, nome);
+            hidrometroUC = entityManager.find(HidrometroUc.class, nome);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();

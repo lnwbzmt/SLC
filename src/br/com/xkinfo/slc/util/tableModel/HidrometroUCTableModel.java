@@ -1,6 +1,6 @@
 package br.com.xkinfo.slc.util.tableModel;
 
-import br.com.xkinfo.slc.modelo.HidrometroUC;
+import br.com.xkinfo.slc.modelo.HidrometroUc;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.List;
 import java.util.logging.Level;
@@ -9,7 +9,7 @@ import javax.swing.table.AbstractTableModel;
 
 public class HidrometroUCTableModel extends AbstractTableModel {
 
-    private List<HidrometroUC> hidrometroUCs;
+    private List<HidrometroUc> hidrometroUCs;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
     public HidrometroUCTableModel() {
@@ -47,7 +47,7 @@ public class HidrometroUCTableModel extends AbstractTableModel {
         return cabecalhoColunas[numColuna];
     }
 
-    public List<HidrometroUC> getHidrometroUCs() {
+    public List<HidrometroUc> getHidrometroUCs() {
         return hidrometroUCs;
     }
 

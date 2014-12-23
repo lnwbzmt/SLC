@@ -1,7 +1,7 @@
 package br.com.xkinfo.slc.dao.impl;
 
 import br.com.xkinfo.slc.dao.IPessoaUCDAO;
-import br.com.xkinfo.slc.modelo.PessoaUC;
+import br.com.xkinfo.slc.modelo.PessoaUc;
 import br.com.xkinfo.slc.util.EntityManagerUtil;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
@@ -13,7 +13,7 @@ public class PessoaUCDAO implements IPessoaUCDAO {
     private final EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
     @Override
-    public void incluirPessoaUC(PessoaUC pessoaUC) throws Exception {
+    public void incluirPessoaUC(PessoaUc pessoaUC) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
@@ -27,7 +27,7 @@ public class PessoaUCDAO implements IPessoaUCDAO {
     }
 
     @Override
-    public void alterarPessoaUC(PessoaUC pessoaUC) throws Exception {
+    public void alterarPessoaUC(PessoaUc pessoaUC) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
@@ -41,7 +41,7 @@ public class PessoaUCDAO implements IPessoaUCDAO {
     }
 
     @Override
-    public void excluirPessoaUC(PessoaUC pessoaUC) throws Exception {
+    public void excluirPessoaUC(PessoaUc pessoaUC) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
@@ -55,27 +55,27 @@ public class PessoaUCDAO implements IPessoaUCDAO {
     }
 
     @Override
-    public ArrayList<PessoaUC> getPessoaUCs() throws Exception {
-        ArrayList<PessoaUC> lista = new ArrayList<PessoaUC>();
+    public ArrayList<PessoaUc> getPessoaUCs() throws Exception {
+        ArrayList<PessoaUc> lista = new ArrayList<PessoaUc>();
         Query query = entityManager.createQuery("select x from PessoaUC x");
-        lista = (ArrayList<PessoaUC>) query.getResultList();
+        lista = (ArrayList<PessoaUc>) query.getResultList();
         return lista;
     }
 
     @Override
-    public ArrayList<PessoaUC> getPessoaUCs(String filtro) throws Exception {
-        ArrayList<PessoaUC> lista = new ArrayList<PessoaUC>();
+    public ArrayList<PessoaUc> getPessoaUCs(String filtro) throws Exception {
+        ArrayList<PessoaUc> lista = new ArrayList<PessoaUc>();
         Query query = entityManager.createQuery("select x from PessoaUC x WHERE x.nome like :nome");
         query.setParameter("nome", "%" + filtro + "%");
-        lista = (ArrayList<PessoaUC>) query.getResultList();
+        lista = (ArrayList<PessoaUc>) query.getResultList();
         return lista;
     }
 
     @Override
-    public PessoaUC getPessoaUC(int id) throws Exception {
-        PessoaUC pessoaUC = null;
+    public PessoaUc getPessoaUC(int id) throws Exception {
+        PessoaUc pessoaUC = null;
         try {
-            pessoaUC = entityManager.find(PessoaUC.class, id);
+            pessoaUC = entityManager.find(PessoaUc.class, id);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
@@ -84,10 +84,10 @@ public class PessoaUCDAO implements IPessoaUCDAO {
     }
 
     @Override
-    public PessoaUC getPessoaUC(String nome) throws Exception {
-        PessoaUC pessoaUC = null;
+    public PessoaUc getPessoaUC(String nome) throws Exception {
+        PessoaUc pessoaUC = null;
         try {
-            pessoaUC = entityManager.find(PessoaUC.class, nome);
+            pessoaUC = entityManager.find(PessoaUc.class, nome);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();

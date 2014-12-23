@@ -46,13 +46,9 @@
     <class>br.com.xkinfo.slc.modelo.HidrometroUC</class>
     <class>br.com.xkinfo.slc.modelo.Usuario</class>
     <class>br.com.xkinfo.slc.modelo.ItensValor</class>
-    <class>PessoaUc</class>
-    <class>UnidadeConsumidora</class>
-    <class>Situacao</class>
-    <class>Pessoa</class>
-    <class>Usuario</class>
     <class>Competencia</class>
     <class>br.com.xkinfo.slc.modelo.HidrometroUc</class>
+    <class>br.com.xkinfo.slc.modelo.PessoaUc</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
       <property name="javax.persistence.jdbc.password" value="app"/>

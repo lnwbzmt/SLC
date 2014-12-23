@@ -1,6 +1,6 @@
 package br.com.xkinfo.slc.util.tableModel;
 
-import br.com.xkinfo.slc.modelo.PessoaUC;
+import br.com.xkinfo.slc.modelo.PessoaUc;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.List;
 import java.util.logging.Level;
@@ -9,7 +9,7 @@ import javax.swing.table.AbstractTableModel;
 
 public class PessoaUCTableModel extends AbstractTableModel {
 
-    private List<PessoaUC> pessoaUCs;
+    private List<PessoaUc> pessoaUCs;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
     public PessoaUCTableModel() {
@@ -47,7 +47,7 @@ public class PessoaUCTableModel extends AbstractTableModel {
         return cabecalhoColunas[numColuna];
     }
 
-    public List<PessoaUC> getPessoaUCs() {
+    public List<PessoaUc> getPessoaUCs() {
         return pessoaUCs;
     }
 
