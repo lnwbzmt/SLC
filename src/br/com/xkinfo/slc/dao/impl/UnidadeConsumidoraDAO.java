@@ -45,7 +45,7 @@ public class UnidadeConsumidoraDAO implements IUnidadeConsumidoraDAO {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
-            entityManager.remove(unidadeConsumidora);
+            entityManager.remove(entityManager.getReference(UnidadeConsumidora.class, unidadeConsumidora.getId()));
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();
@@ -56,17 +56,8 @@ public class UnidadeConsumidoraDAO implements IUnidadeConsumidoraDAO {
 
     @Override
     public ArrayList<UnidadeConsumidora> getUnidadeConsumidoras() throws Exception {
-        ArrayList<UnidadeConsumidora> lista = new ArrayList<UnidadeConsumidora>();
+        ArrayList<UnidadeConsumidora> lista;
         Query query = entityManager.createQuery("select x from UnidadeConsumidora x");
-        lista = (ArrayList<UnidadeConsumidora>) query.getResultList();
-        return lista;
-    }
-
-    @Override
-    public ArrayList<UnidadeConsumidora> getUnidadeConsumidoras(String filtro) throws Exception {
-        ArrayList<UnidadeConsumidora> lista = new ArrayList<UnidadeConsumidora>();
-        Query query = entityManager.createQuery("select x from UnidadeConsumidora x WHERE x.nome like :nome");
-        query.setParameter("nome", "%" + filtro + "%");
         lista = (ArrayList<UnidadeConsumidora>) query.getResultList();
         return lista;
     }
@@ -76,18 +67,6 @@ public class UnidadeConsumidoraDAO implements IUnidadeConsumidoraDAO {
         UnidadeConsumidora unidadeConsumidora = null;
         try {
             unidadeConsumidora = entityManager.find(UnidadeConsumidora.class, id);
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
-        return unidadeConsumidora;
-    }
-
-    @Override
-    public UnidadeConsumidora getUnidadeConsumidora(String nome) throws Exception {
-        UnidadeConsumidora unidadeConsumidora = null;
-        try {
-            unidadeConsumidora = entityManager.find(UnidadeConsumidora.class, nome);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
