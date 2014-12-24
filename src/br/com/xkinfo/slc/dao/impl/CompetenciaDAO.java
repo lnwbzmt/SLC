@@ -4,6 +4,7 @@ import br.com.xkinfo.slc.dao.ICompetenciaDAO;
 import br.com.xkinfo.slc.modelo.Competencia;
 import br.com.xkinfo.slc.util.EntityManagerUtil;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -45,7 +46,7 @@ public class CompetenciaDAO implements ICompetenciaDAO {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
-            entityManager.remove(competencia);
+            entityManager.remove(entityManager.getReference(Competencia.class, competencia.getId()));
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();
@@ -63,10 +64,10 @@ public class CompetenciaDAO implements ICompetenciaDAO {
     }
 
     @Override
-    public ArrayList<Competencia> getCompetencias(String filtro) throws Exception {
-        ArrayList<Competencia> lista = new ArrayList<Competencia>();
-        Query query = entityManager.createQuery("select x from Competencia x WHERE x.nome like :nome");
-        query.setParameter("nome", "%" + filtro + "%");
+    public ArrayList<Competencia> getCompetencias(Date competencia) throws Exception {
+        ArrayList<Competencia> lista;
+        Query query = entityManager.createQuery("select x from Competencia x where x.competencia like :nome");
+        query.setParameter("nome", "%" + competencia + "%");
         lista = (ArrayList<Competencia>) query.getResultList();
         return lista;
     }
@@ -76,18 +77,6 @@ public class CompetenciaDAO implements ICompetenciaDAO {
         Competencia competencia = null;
         try {
             competencia = entityManager.find(Competencia.class, id);
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
-        return competencia;
-    }
-
-    @Override
-    public Competencia getCompetencia(String nome) throws Exception {
-        Competencia competencia = null;
-        try {
-            competencia = entityManager.find(Competencia.class, nome);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
