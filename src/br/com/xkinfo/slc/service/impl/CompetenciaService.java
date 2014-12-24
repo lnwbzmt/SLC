@@ -47,11 +47,6 @@ public class CompetenciaService implements ICompetenciaService {
     }
 
     @Override
-    public ArrayList<Competencia> getCompetencias(Date competencia) throws Exception {
-        return DAOFactory.getCompetenciaDAO().getCompetencias(competencia);
-    }
-
-    @Override
     public Competencia getCompetencia(Integer id) throws Exception {
         return DAOFactory.getCompetenciaDAO().getCompetencia(id);
     }

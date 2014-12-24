@@ -16,8 +16,6 @@ public interface ICompetenciaService {
 
     public ArrayList<Competencia> getCompetencias() throws Exception;
 
-    public ArrayList<Competencia> getCompetencias(Date competencia) throws Exception;
-
     public Competencia getCompetencia(Integer id) throws Exception;
 
 }
