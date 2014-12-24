@@ -36,6 +36,7 @@ public class HidrometroUCService implements IHidrometroUCService {
             Date dataUltimaLeitura, Usuario usuario) throws Exception {
         dataAlteracao = new Date();
         HidrometroUc hidroUc = new HidrometroUc();
+        hidroUc.setId(id);
         hidroUc.setUnidadeconsumidora(uc);
         hidroUc.setHidrometro(hidro);
         hidroUc.setDatainstalacao(dataInstalacao);
