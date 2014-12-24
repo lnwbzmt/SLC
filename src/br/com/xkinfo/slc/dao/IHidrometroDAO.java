@@ -2,6 +2,7 @@ package br.com.xkinfo.slc.dao;
 
 import br.com.xkinfo.slc.modelo.Hidrometro;
 import java.util.ArrayList;
+import java.util.Date;
 
 public interface IHidrometroDAO {
 
@@ -13,9 +14,10 @@ public interface IHidrometroDAO {
 
     public ArrayList<Hidrometro> getHidrometros() throws Exception;
 
-    public ArrayList<Hidrometro> getHidrometros(String filtro) throws Exception;
+    public ArrayList<Hidrometro> getHidrometros(String serie) throws Exception;
+    
+    public ArrayList<Hidrometro> getHidrometros(Date dataAquisicao) throws Exception;
 
     public Hidrometro getHidrometro(int id) throws Exception;
 
-    public Hidrometro getHidrometro(String nome) throws Exception;
 }

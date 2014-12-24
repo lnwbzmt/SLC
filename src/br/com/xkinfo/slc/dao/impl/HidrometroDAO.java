@@ -4,6 +4,7 @@ import br.com.xkinfo.slc.dao.IHidrometroDAO;
 import br.com.xkinfo.slc.modelo.Hidrometro;
 import br.com.xkinfo.slc.util.EntityManagerUtil;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -45,7 +46,7 @@ public class HidrometroDAO implements IHidrometroDAO {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
-            entityManager.remove(hidrometro);
+            entityManager.remove(entityManager.getReference(Hidrometro.class, hidrometro.getId()));
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();
@@ -56,17 +57,17 @@ public class HidrometroDAO implements IHidrometroDAO {
 
     @Override
     public ArrayList<Hidrometro> getHidrometros() throws Exception {
-        ArrayList<Hidrometro> lista = new ArrayList<Hidrometro>();
+        ArrayList<Hidrometro> lista;
         Query query = entityManager.createQuery("select x from Hidrometro x");
         lista = (ArrayList<Hidrometro>) query.getResultList();
         return lista;
     }
 
     @Override
-    public ArrayList<Hidrometro> getHidrometros(String filtro) throws Exception {
-        ArrayList<Hidrometro> lista = new ArrayList<Hidrometro>();
-        Query query = entityManager.createQuery("select x from Hidrometro x WHERE x.nome like :nome");
-        query.setParameter("nome", "%" + filtro + "%");
+    public ArrayList<Hidrometro> getHidrometros(String serie) throws Exception {
+        ArrayList<Hidrometro> lista;
+        Query query = entityManager.createQuery("select x from Hidrometro x where x.nrserie like :nome ");
+        query.setParameter("nome", "%" + serie + "%");
         lista = (ArrayList<Hidrometro>) query.getResultList();
         return lista;
     }
@@ -84,15 +85,12 @@ public class HidrometroDAO implements IHidrometroDAO {
     }
 
     @Override
-    public Hidrometro getHidrometro(String nome) throws Exception {
-        Hidrometro hidrometro = null;
-        try {
-            hidrometro = entityManager.find(Hidrometro.class, nome);
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
-        return hidrometro;
+    public ArrayList<Hidrometro> getHidrometros(Date dataAquisicao) throws Exception {
+        ArrayList<Hidrometro> lista;
+        Query query = entityManager.createQuery("select x from Hidrometro x where x.dataaquisicao = :nome");
+        query.setParameter("nome", "%" + dataAquisicao + "%");
+        lista = (ArrayList<Hidrometro>) query.getResultList();
+        return lista;
     }
 
 }

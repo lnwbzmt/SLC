@@ -46,7 +46,7 @@ public class CondominioDAO implements ICondominioDAO {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
-            entityManager.remove(condominio);
+            entityManager.remove(entityManager.getReference(Condominio.class, condominio.getId()));
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();
