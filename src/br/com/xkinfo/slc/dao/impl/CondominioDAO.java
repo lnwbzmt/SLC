@@ -11,6 +11,7 @@ import javax.persistence.Query;
 public class CondominioDAO implements ICondominioDAO {
 
     private final EntityManager entityManager = EntityManagerUtil.getEntityManager();
+    private Condominio condominio;
 
     @Override
     public void incluirCondominio(Condominio condominio) throws Exception {
@@ -56,7 +57,7 @@ public class CondominioDAO implements ICondominioDAO {
 
     @Override
     public ArrayList<Condominio> getCondominios() throws Exception {
-        ArrayList<Condominio> lista = new ArrayList<Condominio>();
+        ArrayList<Condominio> lista;
         Query query = entityManager.createQuery("select x from Condominio x");
         lista = (ArrayList<Condominio>) query.getResultList();
         return lista;
@@ -64,7 +65,7 @@ public class CondominioDAO implements ICondominioDAO {
 
     @Override
     public ArrayList<Condominio> getCondominios(String filtro) throws Exception {
-        ArrayList<Condominio> lista = new ArrayList<Condominio>();
+        ArrayList<Condominio> lista;
         Query query = entityManager.createQuery("select x from Condominio x WHERE x.nome like :nome");
         query.setParameter("nome", "%" + filtro + "%");
         lista = (ArrayList<Condominio>) query.getResultList();
@@ -72,26 +73,16 @@ public class CondominioDAO implements ICondominioDAO {
     }
 
     @Override
-    public Condominio getCondominio(int id) throws Exception {
-        Condominio condominio = null;
-        try {
-            condominio = entityManager.find(Condominio.class, id);
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
+    public Condominio getCondominio(Integer id) throws Exception {
+        condominio = null;
+        condominio = entityManager.find(Condominio.class, id);
         return condominio;
     }
 
     @Override
-    public Condominio getCondominio(String nome) throws Exception {
-        Condominio condominio = null;
-        try {
-            condominio = entityManager.find(Condominio.class, nome);
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
+    public Condominio getCondominioCnpj(Integer cnpj) throws Exception {
+        condominio = null;
+        condominio = entityManager.find(Condominio.class, cnpj);
         return condominio;
     }
 

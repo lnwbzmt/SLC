@@ -1,7 +1,6 @@
 package br.com.xkinfo.slc.service.impl;
 
 import br.com.xkinfo.slc.dao.DAOFactory;
-import br.com.xkinfo.slc.dao.impl.CompetenciaDAO;
 import br.com.xkinfo.slc.modelo.Competencia;
 import br.com.xkinfo.slc.modelo.Situacao;
 import br.com.xkinfo.slc.modelo.Usuario;
@@ -10,9 +9,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class CompetenciaService implements ICompetenciaService {
-    
-    Date dataInclusao;
-    Date dataAlterecao;
+
+    private Date dataInclusao;
+    private Date dataAlterecao;
 
     @Override
     public void incluirCompetencia(Date competencia, Situacao situacao, Usuario usuario) throws Exception {
