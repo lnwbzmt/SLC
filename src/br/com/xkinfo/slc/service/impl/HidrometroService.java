@@ -48,18 +48,8 @@ public class HidrometroService implements IHidrometroService {
     }
 
     @Override
-    public ArrayList<Hidrometro> getHidrometros(String serie) throws Exception {
-        return DAOFactory.getHidrometroDAO().getHidrometros(serie);
-    }
-
-    @Override
     public Hidrometro getHidrometro(int id) throws Exception {
         return DAOFactory.getHidrometroDAO().getHidrometro(id);
-    }
-
-    @Override
-    public ArrayList<Hidrometro> getHidrometros(Date dataAquisicao) throws Exception {
-        return DAOFactory.getHidrometroDAO().getHidrometros(dataAquisicao);
     }
 
 }

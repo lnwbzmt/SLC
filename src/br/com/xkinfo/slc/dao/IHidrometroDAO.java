@@ -14,10 +14,6 @@ public interface IHidrometroDAO {
 
     public ArrayList<Hidrometro> getHidrometros() throws Exception;
 
-    public ArrayList<Hidrometro> getHidrometros(String serie) throws Exception;
-    
-    public ArrayList<Hidrometro> getHidrometros(Date dataAquisicao) throws Exception;
-
     public Hidrometro getHidrometro(int id) throws Exception;
 
 }
