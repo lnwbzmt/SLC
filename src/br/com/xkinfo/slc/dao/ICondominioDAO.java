@@ -13,9 +13,6 @@ public interface ICondominioDAO {
 
     public ArrayList<Condominio> getCondominios() throws Exception;
 
-    public ArrayList<Condominio> getCondominios(String nome) throws Exception;
-
     public Condominio getCondominio(Integer id) throws Exception;
 
-    public Condominio getCondominioCnpj(Integer cnpj) throws Exception;
 }

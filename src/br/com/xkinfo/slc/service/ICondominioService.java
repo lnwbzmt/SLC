@@ -16,10 +16,6 @@ public interface ICondominioService {
 
     public ArrayList<Condominio> getCondominios() throws Exception;
 
-    public ArrayList<Condominio> getCondominios(String nome) throws Exception;
-    
-    public Condominio getCondominioCnpj(Integer cnpj) throws Exception;
-
     public Condominio getCondominio(int id) throws Exception;
 
 }
