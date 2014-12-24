@@ -15,7 +15,7 @@ public abstract class Leitura_ {
 	public static volatile SingularAttribute<Leitura, Ocorrencia> ocorrencia;
 	public static volatile CollectionAttribute<Leitura, Fatura> faturaCollection;
 	public static volatile SingularAttribute<Leitura, Integer> leitura;
-	public static volatile SingularAttribute<Leitura, HidrometroUC> hidrometrouc;
+	public static volatile SingularAttribute<Leitura, HidrometroUc> hidrometrouc;
 	public static volatile SingularAttribute<Leitura, Integer> id;
 	public static volatile SingularAttribute<Leitura, Boolean> media;
 	public static volatile SingularAttribute<Leitura, Integer> diasconsumo;

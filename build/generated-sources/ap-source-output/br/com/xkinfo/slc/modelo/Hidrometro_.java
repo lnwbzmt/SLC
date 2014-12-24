@@ -11,9 +11,13 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Hidrometro_ {
 
 	public static volatile SingularAttribute<Hidrometro, String> nrserie;
-	public static volatile CollectionAttribute<Hidrometro, HidrometroUC> hidrometroUCCollection;
+	public static volatile SingularAttribute<Hidrometro, Usuario> usuarioalteracao;
+	public static volatile SingularAttribute<Hidrometro, Date> datainclusao;
+	public static volatile SingularAttribute<Hidrometro, Usuario> usuarioinclusao;
+	public static volatile CollectionAttribute<Hidrometro, HidrometroUc> hidrometroUcCollection;
 	public static volatile SingularAttribute<Hidrometro, Integer> id;
 	public static volatile SingularAttribute<Hidrometro, Date> dataaquisicao;
+	public static volatile SingularAttribute<Hidrometro, Date> dataalteracao;
 
 }
 
