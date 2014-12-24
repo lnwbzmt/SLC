@@ -13,9 +13,6 @@ public interface ISituacaoDAO {
 
     public ArrayList<Situacao> getSituacoes() throws Exception;
 
-    public ArrayList<Situacao> getSituacoes(String filtro) throws Exception;
-
     public Situacao getSituacao(int id) throws Exception;
 
-    public Situacao getSituacao(String nome) throws Exception;
 }
