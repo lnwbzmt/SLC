@@ -13,9 +13,6 @@ public interface IHidrometroUCDAO {
 
     public ArrayList<HidrometroUc> getHidrometroUCs() throws Exception;
 
-    public ArrayList<HidrometroUc> getHidrometroUCs(String filtro) throws Exception;
-
     public HidrometroUc getHidrometroUC(int id) throws Exception;
 
-    public HidrometroUc getHidrometroUC(String nome) throws Exception;
 }

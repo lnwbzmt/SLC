@@ -45,7 +45,7 @@ public class HidrometroUCDAO implements IHidrometroUCDAO {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
-            entityManager.remove(hidrometroUC);
+            entityManager.remove(entityManager.getReference(HidrometroUc.class, hidrometroUC.getId()));
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();
@@ -56,17 +56,8 @@ public class HidrometroUCDAO implements IHidrometroUCDAO {
 
     @Override
     public ArrayList<HidrometroUc> getHidrometroUCs() throws Exception {
-        ArrayList<HidrometroUc> lista = new ArrayList<HidrometroUc>();
-        Query query = entityManager.createQuery("select x from HidrometroUC x");
-        lista = (ArrayList<HidrometroUc>) query.getResultList();
-        return lista;
-    }
-
-    @Override
-    public ArrayList<HidrometroUc> getHidrometroUCs(String filtro) throws Exception {
-        ArrayList<HidrometroUc> lista = new ArrayList<HidrometroUc>();
-        Query query = entityManager.createQuery("select x from HidrometroUC x WHERE x.nome like :nome");
-        query.setParameter("nome", "%" + filtro + "%");
+        ArrayList<HidrometroUc> lista;
+        Query query = entityManager.createQuery("select x from HidrometroUc x");
         lista = (ArrayList<HidrometroUc>) query.getResultList();
         return lista;
     }
@@ -76,18 +67,6 @@ public class HidrometroUCDAO implements IHidrometroUCDAO {
         HidrometroUc hidrometroUC = null;
         try {
             hidrometroUC = entityManager.find(HidrometroUc.class, id);
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
-        return hidrometroUC;
-    }
-
-    @Override
-    public HidrometroUc getHidrometroUC(String nome) throws Exception {
-        HidrometroUc hidrometroUC = null;
-        try {
-            hidrometroUC = entityManager.find(HidrometroUc.class, nome);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
