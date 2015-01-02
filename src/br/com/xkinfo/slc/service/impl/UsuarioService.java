@@ -65,8 +65,8 @@ public class UsuarioService implements IUsuarioService {
                     return usuario;
                 }
             }
+            JOptionPane.showMessageDialog(null, "Usuário ou senha inválido!");
         }
-        JOptionPane.showMessageDialog(null, "Usuário ou senha inválido!");
         return null;
     }
 }
