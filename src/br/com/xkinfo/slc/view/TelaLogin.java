@@ -122,6 +122,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Usuário ou senha inválido!");
+                pfSenha.setText(" ");
             }
         } catch (Exception ex) {
             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
