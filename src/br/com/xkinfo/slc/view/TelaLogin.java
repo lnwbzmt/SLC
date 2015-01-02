@@ -134,6 +134,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private void bSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSairActionPerformed
         this.dispose(); // Destrói a janela e encerra o programa.
     }//GEN-LAST:event_bSairActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
