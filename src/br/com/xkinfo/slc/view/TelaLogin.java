@@ -111,7 +111,6 @@ public class TelaLogin extends javax.swing.JFrame {
     private void bConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConfirmarActionPerformed
         String login = tfUsuario.getText();
         String senha = new String(pfSenha.getPassword());
-        UsuarioService usuarioService = new UsuarioService();
         Usuario usuario;
         try {
             usuario = ServiceFactory.getUsuarioService().isUsuarioValido(login, senha);

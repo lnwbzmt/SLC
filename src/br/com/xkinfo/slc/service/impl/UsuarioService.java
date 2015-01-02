@@ -5,12 +5,12 @@ import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.IUsuarioService;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 public class UsuarioService implements IUsuarioService {
-    
+
     private Date dataInclusao;
     private Date dataAlteracao;
-
 
     @Override
     public void incluirUsuario(String nome, String usuario, String senha, Usuario usu) throws Exception {
@@ -21,7 +21,7 @@ public class UsuarioService implements IUsuarioService {
         u.setSenha(senha);
         u.setUsuarioinclusao(usu);
         u.setDatainclusao(dataInclusao);
-        
+
         DAOFactory.getUsuarioDAO().incluirUsuario(u);
     }
 
@@ -35,7 +35,7 @@ public class UsuarioService implements IUsuarioService {
         u.setSenha(senha);
         u.setUsuarioalteracao(usu);
         u.setDataalteracao(dataAlteracao);
-        
+
         DAOFactory.getUsuarioDAO().alterarUsuario(u);
     }
 
@@ -56,10 +56,14 @@ public class UsuarioService implements IUsuarioService {
 
     @Override
     public Usuario isUsuarioValido(String login, String senha) throws Exception {
-        ArrayList<Usuario> usuarios = getUsuarios();
-        for (Usuario usuario : usuarios) {
-            if (usuario.getUsuario().equals(login.toUpperCase()) && usuario.getSenha().equals(senha)) {
-                return usuario;
+        if (login == null || senha == null) {
+            JOptionPane.showMessageDialog(null, "Favor preencher Login ou Senha!!");
+        } else {
+            ArrayList<Usuario> usuarios = getUsuarios();
+            for (Usuario usuario : usuarios) {
+                if (usuario.getUsuario().equals(login.toUpperCase()) && usuario.getSenha().equals(senha)) {
+                    return usuario;
+                }
             }
         }
         return null;
