@@ -56,7 +56,7 @@ public class UsuarioService implements IUsuarioService {
 
     @Override
     public Usuario isUsuarioValido(String login, String senha) throws Exception {
-        if (login == null || senha == null || login == "" || login.equalsIgnoreCase("")) {
+        if (login == null || senha == null || login.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(null, "Favor preencher Login ou Senha!!");
         } else {
             ArrayList<Usuario> usuarios = getUsuarios();
@@ -66,6 +66,7 @@ public class UsuarioService implements IUsuarioService {
                 }
             }
         }
+        JOptionPane.showMessageDialog(null, "Usuário ou senha inválido!");
         return null;
     }
 }
