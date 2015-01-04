@@ -1,5 +1,7 @@
 package br.com.xkinfo.slc.view;
 
+import br.com.xkinfo.slc.view.consulta.ConsultaCondominio;
+import br.com.xkinfo.slc.view.cadastro.CadastroCondominio;
 import br.com.xkinfo.slc.modelo.Usuario;
 
 public class TelaPrincipal extends javax.swing.JFrame {
