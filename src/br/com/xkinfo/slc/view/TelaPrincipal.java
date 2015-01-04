@@ -2,14 +2,10 @@ package br.com.xkinfo.slc.view;
 
 import br.com.xkinfo.slc.modelo.Usuario;
 
-
 public class TelaPrincipal extends javax.swing.JFrame {
 
     private Usuario usuarioLogado;
 
-    /**
-     * Creates new form TelaPrincipal
-     */
     public TelaPrincipal(Usuario usuario) {
         usuarioLogado = usuario;
         initComponents();
@@ -23,8 +19,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lUsuarioLogado = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
-        mn_concessionaria = new javax.swing.JMenuItem();
+        mn_condominio = new javax.swing.JMenuItem();
         mn_usuario = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        mn_consCondominio = new javax.swing.JMenuItem();
         mn_sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -34,14 +32,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu4.setText("Cadastros");
 
-        mn_concessionaria.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
-        mn_concessionaria.setText("Concessionária");
-        mn_concessionaria.addActionListener(new java.awt.event.ActionListener() {
+        mn_condominio.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        mn_condominio.setText("Condominio");
+        mn_condominio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mn_concessionariaActionPerformed(evt);
+                mn_condominioActionPerformed(evt);
             }
         });
-        jMenu4.add(mn_concessionaria);
+        jMenu4.add(mn_condominio);
 
         mn_usuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         mn_usuario.setText("Usuários");
@@ -53,6 +51,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu4.add(mn_usuario);
 
         jMenuBar2.add(jMenu4);
+
+        jMenu1.setText("Consulta");
+
+        mn_consCondominio.setText("Condominio");
+        mn_consCondominio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_consCondominioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mn_consCondominio);
+
+        jMenuBar2.add(jMenu1);
 
         mn_sair.setText("Sair");
         mn_sair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,18 +106,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //        consultaUsuario.setVisible(true);
     }//GEN-LAST:event_mn_usuarioActionPerformed
 
-    private void mn_concessionariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_concessionariaActionPerformed
+    private void mn_condominioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_condominioActionPerformed
         ConsultaCondominio consultaCondominio = new ConsultaCondominio(this, true);
         consultaCondominio.setLocationRelativeTo(this);
         consultaCondominio.setVisible(true);
-    }//GEN-LAST:event_mn_concessionariaActionPerformed
+    }//GEN-LAST:event_mn_condominioActionPerformed
+
+    private void mn_consCondominioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_consCondominioActionPerformed
+        CadastroCondominio cadastroCondominio = new CadastroCondominio(this, true, usuarioLogado);
+        cadastroCondominio.setLocationRelativeTo(this);
+        cadastroCondominio.setVisible(true);
+    }//GEN-LAST:event_mn_consCondominioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JLabel lUsuarioLogado;
-    private javax.swing.JMenuItem mn_concessionaria;
+    private javax.swing.JMenuItem mn_condominio;
+    private javax.swing.JMenuItem mn_consCondominio;
     private javax.swing.JMenu mn_sair;
     private javax.swing.JMenuItem mn_usuario;
     // End of variables declaration//GEN-END:variables

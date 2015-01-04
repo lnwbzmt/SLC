@@ -1,6 +1,7 @@
 package br.com.xkinfo.slc.view;
 
 import br.com.xkinfo.slc.modelo.Condominio;
+import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,23 +10,26 @@ import javax.swing.JOptionPane;
 public class CadastroCondominio extends javax.swing.JDialog {
 
     private Condominio condominioSelecionado;
+    private Usuario usuarioLogado;
 
-    public CadastroCondominio(java.awt.Frame parent, boolean modal) {
+    public CadastroCondominio(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
         initComponents();
         bExcluir.setVisible(false);
         this.tfCodigo.setEnabled(false);
         getRootPane().setDefaultButton(bSalvar);
+        usuarioLogado = usuario;
     }
 
-    public CadastroCondominio(Condominio condominio, java.awt.Frame parent, boolean modal) {
-        this(parent, modal);
+    public CadastroCondominio(Condominio condominio, java.awt.Frame parent, boolean modal, Usuario usuario) {
+        this(parent, modal, usuario);
         this.condominioSelecionado = condominio;
         if (condominioSelecionado != null) {
             tfCodigo.setText(condominio.getId().toString());
             tfNome.setText(condominio.getNome());
             // Mostra o botão Excluir     
             bExcluir.setVisible(true);
+            usuarioLogado = usuario;
         }
     }
 
@@ -249,7 +253,7 @@ public class CadastroCondominio extends javax.swing.JDialog {
         if (condominioSelecionado != null) {
             condominioSelecionado.setNome(tfNome.getText());
             try {
-                ServiceFactory.getCondominioService().alterarCondominio(id, nome, cnpj, endereco,nr, comp, bairro, cidade, estado, sigla, email, usuario);
+                ServiceFactory.getCondominioService().alterarCondominio(id, nome, cnpj, endereco,nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado);
                 JOptionPane.showMessageDialog(this, "Condominio Alterado com Sucesso!");
 
             } catch (Exception ex) {
@@ -257,7 +261,7 @@ public class CadastroCondominio extends javax.swing.JDialog {
             }
         } else {
             try {
-                ServiceFactory.getCondominioService().incluirCondominio(nome, cnpj, endereco,nr, comp, bairro, cidade, estado, sigla, email, usuario);
+                ServiceFactory.getCondominioService().incluirCondominio(nome, cnpj, endereco,nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado);
                 JOptionPane.showMessageDialog(this, "Condominio Inlcuído com Sucesso!");
             } catch (Exception ex) {
                 Logger.getLogger(CadastroCondominio.class.getName()).log(Level.SEVERE, null, ex);
@@ -268,9 +272,10 @@ public class CadastroCondominio extends javax.swing.JDialog {
     }//GEN-LAST:event_bSalvarActionPerformed
 
     private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed
+        Integer id = Integer.parseInt(tfCodigo.getText());
         if (condominioSelecionado != null) {
             try {
-                ServiceFactory.getCondominioService().excluirCondominio(condominioSelecionado);
+                ServiceFactory.getCondominioService().excluirCondominio(id);
                 JOptionPane.showMessageDialog(this, "Condominio Excluído com Sucesso!");
             } catch (Exception ex) {
                 Logger.getLogger(CadastroCondominio.class.getName()).log(Level.SEVERE, null, ex);
