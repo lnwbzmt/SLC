@@ -109,7 +109,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mn_usuarioActionPerformed
 
     private void mn_condominioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_condominioActionPerformed
-        ConsultaCondominio consultaCondominio = new ConsultaCondominio(this, true);
+        ConsultaCondominio consultaCondominio = new ConsultaCondominio(this, true, usuarioLogado);
         consultaCondominio.setLocationRelativeTo(this);
         consultaCondominio.setVisible(true);
     }//GEN-LAST:event_mn_condominioActionPerformed
