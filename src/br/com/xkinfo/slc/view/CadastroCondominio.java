@@ -15,6 +15,7 @@ public class CadastroCondominio extends javax.swing.JDialog {
         initComponents();
         bExcluir.setVisible(false);
         this.tfCodigo.setEnabled(false);
+        getRootPane().setDefaultButton(bConfirmar);
     }
 
     public CadastroCondominio(Condominio condominio, java.awt.Frame parent, boolean modal) {

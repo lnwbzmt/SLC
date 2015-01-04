@@ -2,10 +2,8 @@ package br.com.xkinfo.slc.view;
 
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.ServiceFactory;
-import br.com.xkinfo.slc.service.impl.UsuarioService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class TelaLogin extends javax.swing.JFrame {
 
