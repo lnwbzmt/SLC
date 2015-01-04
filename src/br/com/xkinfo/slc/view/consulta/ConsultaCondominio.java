@@ -15,9 +15,11 @@ public class ConsultaCondominio extends javax.swing.JDialog {
 
     private Usuario usuarioLogado;
 
-    public ConsultaCondominio(java.awt.Frame parent, boolean modal) {
+    public ConsultaCondominio(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
 
+        usuarioLogado = usuario;
+        
         initComponents();
         // Lógica para manipular uma linha do JTable quando esta é selecionada    
         ListSelectionModel linhaModeloSelecao = jtCondominios.getSelectionModel();
