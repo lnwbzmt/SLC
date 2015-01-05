@@ -13,9 +13,6 @@ public interface IUnidadeConsumidoraDAO {
 
     public ArrayList<UnidadeConsumidora> getUnidadeConsumidoras() throws Exception;
 
-    public ArrayList<UnidadeConsumidora> getUnidadeConsumidoras(String filtro) throws Exception;
-
     public UnidadeConsumidora getUnidadeConsumidora(int id) throws Exception;
 
-    public UnidadeConsumidora getUnidadeConsumidora(String nome) throws Exception;
 }

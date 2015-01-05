@@ -1,7 +1,8 @@
-package br.com.xkinfo.slc.view;
+package br.com.xkinfo.slc.view.consulta;
 
-import br.com.xkinfo.slc.modelo.Condominio;
-import br.com.xkinfo.slc.util.tableModel.CondominioTableModel;
+import br.com.xkinfo.slc.view.cadastro.CadastroCompetencia;
+import br.com.xkinfo.slc.modelo.Competencia;
+import br.com.xkinfo.slc.util.tableModel.CompetenciaTableModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.event.ListSelectionEvent;
@@ -9,14 +10,14 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-public class ConsultaCondominio extends javax.swing.JDialog {
+public class ConsultaCompetencia extends javax.swing.JDialog {
 
-    public ConsultaCondominio(java.awt.Frame parent, boolean modal) {
+    public ConsultaCompetencia(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
 
         initComponents();
         // Lógica para manipular uma linha do JTable quando esta é selecionada    
-        ListSelectionModel linhaModeloSelecao = jtCondominios.getSelectionModel();
+        ListSelectionModel linhaModeloSelecao = jtCompetencias.getSelectionModel();
         linhaModeloSelecao.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -28,16 +29,16 @@ public class ConsultaCondominio extends javax.swing.JDialog {
 
                 // Verifica se existe uma linha selecionada. O
                 // valor deve ser maior ou igual a 0, que é o número da linha
-                if (jtCondominios.getSelectedRow() >= 0) {
+                if (jtCompetencias.getSelectedRow() >= 0) {
                     
-                    Integer linhaSelecionada = jtCondominios.getSelectedRow();
+                    Integer linhaSelecionada = jtCompetencias.getSelectedRow();
                     
-                    Condominio condominioSelecionado = ((CondominioTableModel) jtCondominios.getModel()).getCondominios().get(linhaSelecionada);
-                    if (condominioSelecionado != null) {
-                        CadastroCondominio cadastroCondominio = new CadastroCondominio(condominioSelecionado, null, true);
-                        cadastroCondominio.setLocationRelativeTo(jScrollPane1.getParent());
-                        cadastroCondominio.setVisible(true);
-                        jtCondominios.setModel(new CondominioTableModel());
+                    Competencia competenciaSelecionado = ((CompetenciaTableModel) jtCompetencias.getModel()).getCompetencias().get(linhaSelecionada);
+                    if (competenciaSelecionado != null) {
+                        CadastroCompetencia cadastroCompetencia = new CadastroCompetencia(competenciaSelecionado, null, true);
+                        cadastroCompetencia.setLocationRelativeTo(jScrollPane1.getParent());
+                        cadastroCompetencia.setVisible(true);
+                        jtCompetencias.setModel(new CompetenciaTableModel());
                     }
                 }
             }
@@ -56,7 +57,7 @@ public class ConsultaCondominio extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtCondominios = new javax.swing.JTable();
+        jtCompetencias = new javax.swing.JTable();
         bNovo = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -72,9 +73,9 @@ public class ConsultaCondominio extends javax.swing.JDialog {
             }
         });
 
-        jtCondominios.setModel(new CondominioTableModel());
-        jtCondominios.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jtCondominios);
+        jtCompetencias.setModel(new CompetenciaTableModel());
+        jtCompetencias.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(jtCompetencias);
 
         bNovo.setText("Novo");
         bNovo.setMaximumSize(null);
@@ -154,9 +155,9 @@ public class ConsultaCondominio extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNovoActionPerformed
-        CadastroCondominio cadastroCondominio = new CadastroCondominio(null, true);
-        cadastroCondominio.setLocationRelativeTo(this);
-        cadastroCondominio.setVisible(true);
+        CadastroCompetencia cadastroCompetencia = new CadastroCompetencia(null, true);
+        cadastroCompetencia.setLocationRelativeTo(this);
+        cadastroCompetencia.setVisible(true);
     }//GEN-LAST:event_bNovoActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
@@ -165,9 +166,9 @@ public class ConsultaCondominio extends javax.swing.JDialog {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        jtCondominios.updateUI();
-        jtCondominios.getRowHeight(0);
-        jtCondominios.setModel(new CondominioTableModel());
+        jtCompetencias.updateUI();
+        jtCompetencias.getRowHeight(0);
+        jtCompetencias.setModel(new CompetenciaTableModel());
 
     }//GEN-LAST:event_formWindowActivated
 
@@ -179,9 +180,9 @@ public class ConsultaCondominio extends javax.swing.JDialog {
         // TODO add your handling code here:
 
         TableRowSorter sorter = null;
-        CondominioTableModel model = (CondominioTableModel) jtCondominios.getModel();
+        CompetenciaTableModel model = (CompetenciaTableModel) jtCompetencias.getModel();
         sorter = new TableRowSorter<TableModel>(model);
-        jtCondominios.setRowSorter(sorter);
+        jtCompetencias.setRowSorter(sorter);
 
         String text = txtFiltro.getText();
         if (text.length() == 0) {
@@ -197,7 +198,7 @@ public class ConsultaCondominio extends javax.swing.JDialog {
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jtCondominios;
+    private javax.swing.JTable jtCompetencias;
     private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
 }

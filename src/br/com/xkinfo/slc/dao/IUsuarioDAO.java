@@ -13,9 +13,6 @@ public interface IUsuarioDAO {
 
     public ArrayList<Usuario> getUsuarios() throws Exception;
 
-    public ArrayList<Usuario> getUsuarios(String filtro) throws Exception;
-
     public Usuario getUsuario(int id) throws Exception;
 
-    public Usuario getUsuario(String nome) throws Exception;
 }

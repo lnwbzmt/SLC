@@ -14,8 +14,6 @@ public interface ICompetenciaDAO {
 
     public ArrayList<Competencia> getCompetencias() throws Exception;
 
-    public ArrayList<Competencia> getCompetencias(Date competencia) throws Exception;
-
     public Competencia getCompetencia(int id) throws Exception;
 
 }

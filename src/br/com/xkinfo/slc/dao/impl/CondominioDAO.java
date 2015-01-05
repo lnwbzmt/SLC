@@ -64,26 +64,9 @@ public class CondominioDAO implements ICondominioDAO {
     }
 
     @Override
-    public ArrayList<Condominio> getCondominios(String filtro) throws Exception {
-        ArrayList<Condominio> lista;
-        Query query = entityManager.createQuery("select x from Condominio x WHERE x.nome like :nome");
-        query.setParameter("nome", "%" + filtro + "%");
-        lista = (ArrayList<Condominio>) query.getResultList();
-        return lista;
-    }
-
-    @Override
     public Condominio getCondominio(Integer id) throws Exception {
         condominio = null;
         condominio = entityManager.find(Condominio.class, id);
         return condominio;
     }
-
-    @Override
-    public Condominio getCondominioCnpj(Integer cnpj) throws Exception {
-        condominio = null;
-        condominio = entityManager.find(Condominio.class, cnpj);
-        return condominio;
-    }
-
 }

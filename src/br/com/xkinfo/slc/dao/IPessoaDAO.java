@@ -13,9 +13,6 @@ public interface IPessoaDAO {
 
     public ArrayList<Pessoa> getPessoas() throws Exception;
 
-    public ArrayList<Pessoa> getPessoas(String filtro) throws Exception;
-
     public Pessoa getPessoa(int id) throws Exception;
 
-    public Pessoa getPessoa(String nome) throws Exception;
 }

@@ -45,7 +45,7 @@ public class PessoaDAO implements IPessoaDAO {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
-            entityManager.remove(pessoa);
+            entityManager.remove(entityManager.getReference(Pessoa.class, pessoa.getId()));
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();
@@ -56,17 +56,8 @@ public class PessoaDAO implements IPessoaDAO {
 
     @Override
     public ArrayList<Pessoa> getPessoas() throws Exception {
-        ArrayList<Pessoa> lista = new ArrayList<Pessoa>();
+        ArrayList<Pessoa> lista;
         Query query = entityManager.createQuery("select x from Pessoa x");
-        lista = (ArrayList<Pessoa>) query.getResultList();
-        return lista;
-    }
-
-    @Override
-    public ArrayList<Pessoa> getPessoas(String filtro) throws Exception {
-        ArrayList<Pessoa> lista = new ArrayList<Pessoa>();
-        Query query = entityManager.createQuery("select x from Pessoa x WHERE x.nome like :nome");
-        query.setParameter("nome", "%" + filtro + "%");
         lista = (ArrayList<Pessoa>) query.getResultList();
         return lista;
     }
@@ -76,18 +67,6 @@ public class PessoaDAO implements IPessoaDAO {
         Pessoa pessoa = null;
         try {
             pessoa = entityManager.find(Pessoa.class, id);
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
-        return pessoa;
-    }
-
-    @Override
-    public Pessoa getPessoa(String nome) throws Exception {
-        Pessoa pessoa = null;
-        try {
-            pessoa = entityManager.find(Pessoa.class, nome);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();

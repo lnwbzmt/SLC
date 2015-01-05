@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class CondominioService implements ICondominioService {
-    
+
     private Date dataInclusao;
     private Date dataAlteracao;
 
@@ -29,7 +29,7 @@ public class CondominioService implements ICondominioService {
         cond.setEmail(email);
         cond.setUsuarioinclusao(usuario);
         cond.setDatainclusao(dataInclusao);
-        
+
         DAOFactory.getCondominioDAO().incluirCondominio(cond);
     }
 
@@ -51,7 +51,7 @@ public class CondominioService implements ICondominioService {
         cond.setEmail(email);
         cond.setUsuarioalteracao(usuario);
         cond.setDataalteracao(dataAlteracao);
-                
+
         DAOFactory.getCondominioDAO().alterarCondominio(cond);
     }
 
@@ -66,18 +66,8 @@ public class CondominioService implements ICondominioService {
     }
 
     @Override
-    public ArrayList<Condominio> getCondominios(String nome) throws Exception {
-        return DAOFactory.getCondominioDAO().getCondominios(nome);
-    }
-
-    @Override
     public Condominio getCondominio(int id) throws Exception {
         return DAOFactory.getCondominioDAO().getCondominio(id);
-    }
-
-    @Override
-    public Condominio getCondominioCnpj(Integer cnpj) throws Exception {
-        return DAOFactory.getCondominioDAO().getCondominioCnpj(cnpj);
     }
 
 }

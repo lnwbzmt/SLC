@@ -5,19 +5,15 @@ import java.util.ArrayList;
 
 public interface IUsuarioService {
 
-    public void incluirUsuario(Usuario usuario) throws Exception;
+    public void incluirUsuario(String nome, String usuario, String senha, Usuario usu) throws Exception;
 
-    public void alterarUsuario(Usuario usuario) throws Exception;
+    public void alterarUsuario(Integer id, String nome, String usuario, String senha, Usuario usu) throws Exception;
 
-    public void excluirUsuario(Usuario usuario) throws Exception;
+    public void excluirUsuario(Integer id) throws Exception;
 
     public ArrayList<Usuario> getUsuarios() throws Exception;
 
-    public ArrayList<Usuario> getUsuarios(String filtro) throws Exception;
-
     public Usuario getUsuario(int id) throws Exception;
-
-    public Usuario getUsuario(String nome) throws Exception;
 
     public Usuario isUsuarioValido(String login, String senha) throws Exception;
 }

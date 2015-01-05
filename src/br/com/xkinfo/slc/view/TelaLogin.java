@@ -2,15 +2,14 @@ package br.com.xkinfo.slc.view;
 
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.ServiceFactory;
-import br.com.xkinfo.slc.service.impl.UsuarioService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class TelaLogin extends javax.swing.JFrame {
 
     public TelaLogin() {
         initComponents();
+        getRootPane().setDefaultButton(bConfirmar);
     }
 
     @SuppressWarnings("unchecked")
@@ -111,7 +110,6 @@ public class TelaLogin extends javax.swing.JFrame {
     private void bConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConfirmarActionPerformed
         String login = tfUsuario.getText();
         String senha = new String(pfSenha.getPassword());
-        UsuarioService usuarioService = new UsuarioService();
         Usuario usuario;
         try {
             usuario = ServiceFactory.getUsuarioService().isUsuarioValido(login, senha);
@@ -122,7 +120,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 tp.setExtendedState(MAXIMIZED_BOTH);
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "Usuário ou senha inválido!");
+                pfSenha.setText("");
             }
         } catch (Exception ex) {
             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -133,6 +131,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private void bSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSairActionPerformed
         this.dispose(); // Destrói a janela e encerra o programa.
     }//GEN-LAST:event_bSairActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

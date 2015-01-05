@@ -64,15 +64,6 @@ public class HidrometroDAO implements IHidrometroDAO {
     }
 
     @Override
-    public ArrayList<Hidrometro> getHidrometros(String serie) throws Exception {
-        ArrayList<Hidrometro> lista;
-        Query query = entityManager.createQuery("select x from Hidrometro x where x.nrserie like :nome ");
-        query.setParameter("nome", "%" + serie + "%");
-        lista = (ArrayList<Hidrometro>) query.getResultList();
-        return lista;
-    }
-
-    @Override
     public Hidrometro getHidrometro(int id) throws Exception {
         Hidrometro hidrometro = null;
         try {
@@ -83,14 +74,4 @@ public class HidrometroDAO implements IHidrometroDAO {
         }
         return hidrometro;
     }
-
-    @Override
-    public ArrayList<Hidrometro> getHidrometros(Date dataAquisicao) throws Exception {
-        ArrayList<Hidrometro> lista;
-        Query query = entityManager.createQuery("select x from Hidrometro x where x.dataaquisicao = :nome");
-        query.setParameter("nome", "%" + dataAquisicao + "%");
-        lista = (ArrayList<Hidrometro>) query.getResultList();
-        return lista;
-    }
-
 }

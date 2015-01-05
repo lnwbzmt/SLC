@@ -45,7 +45,7 @@ public class PessoaUCDAO implements IPessoaUCDAO {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
-            entityManager.remove(pessoaUC);
+            entityManager.remove(entityManager.getReference(PessoaUc.class, pessoaUC.getId()));
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();
@@ -56,17 +56,8 @@ public class PessoaUCDAO implements IPessoaUCDAO {
 
     @Override
     public ArrayList<PessoaUc> getPessoaUCs() throws Exception {
-        ArrayList<PessoaUc> lista = new ArrayList<PessoaUc>();
-        Query query = entityManager.createQuery("select x from PessoaUC x");
-        lista = (ArrayList<PessoaUc>) query.getResultList();
-        return lista;
-    }
-
-    @Override
-    public ArrayList<PessoaUc> getPessoaUCs(String filtro) throws Exception {
-        ArrayList<PessoaUc> lista = new ArrayList<PessoaUc>();
-        Query query = entityManager.createQuery("select x from PessoaUC x WHERE x.nome like :nome");
-        query.setParameter("nome", "%" + filtro + "%");
+        ArrayList<PessoaUc> lista;
+        Query query = entityManager.createQuery("select x from PessoaUc x");
         lista = (ArrayList<PessoaUc>) query.getResultList();
         return lista;
     }
@@ -76,18 +67,6 @@ public class PessoaUCDAO implements IPessoaUCDAO {
         PessoaUc pessoaUC = null;
         try {
             pessoaUC = entityManager.find(PessoaUc.class, id);
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
-        return pessoaUC;
-    }
-
-    @Override
-    public PessoaUc getPessoaUC(String nome) throws Exception {
-        PessoaUc pessoaUC = null;
-        try {
-            pessoaUC = entityManager.find(PessoaUc.class, nome);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();

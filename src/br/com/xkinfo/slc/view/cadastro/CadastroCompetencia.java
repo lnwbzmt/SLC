@@ -1,4 +1,4 @@
-package br.com.xkinfo.slc.view;
+package br.com.xkinfo.slc.view.cadastro;
 
 import br.com.xkinfo.slc.modelo.Competencia;
 import br.com.xkinfo.slc.service.ServiceFactory;
