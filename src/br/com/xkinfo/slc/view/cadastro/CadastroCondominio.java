@@ -27,6 +27,7 @@ public class CadastroCondominio extends javax.swing.JDialog {
         if (condominioSelecionado != null) {
             tfCodigo.setText(condominio.getId().toString());
             tfNome.setText(condominio.getNome());
+            tfCnpj.setText(String.valueOf(condominio.getCnpj()));
             // Mostra o botão Excluir     
             bExcluir.setVisible(true);
             usuarioLogado = usuario;
@@ -262,7 +263,7 @@ public class CadastroCondominio extends javax.swing.JDialog {
         } else {
             try {
                 ServiceFactory.getCondominioService().incluirCondominio(nome, cnpj, endereco,nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado);
-                JOptionPane.showMessageDialog(this, "Condominio Inlcuído com Sucesso!");
+                JOptionPane.showMessageDialog(this, "Condominio inlcuído com sucesso!");
             } catch (Exception ex) {
                 Logger.getLogger(CadastroCondominio.class.getName()).log(Level.SEVERE, null, ex);
             }
