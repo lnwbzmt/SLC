@@ -67,9 +67,9 @@ public class CondominioService implements ICondominioService {
             JOptionPane.showMessageDialog(null, "Condominio inlcuído com sucesso!");
         } else {
             for (int i = 0; i < lista.size(); i++) {
-                ret = ret + lista.get(i) + ", ";
+                ret = ret + lista.get(i) + "\n";
             }
-            JOptionPane.showMessageDialog(null, ret);
+            JOptionPane.showMessageDialog(null,"Favor preencher os campos: \n" + ret);
         }
     }
 
