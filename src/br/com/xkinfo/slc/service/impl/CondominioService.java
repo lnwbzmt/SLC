@@ -32,30 +32,39 @@ public class CondominioService implements ICondominioService {
         cond.setDatainclusao(dataInclusao);
 
         ArrayList<String> lista = new ArrayList(9);
-        String ret = null;
+        String ret = new String();
 
         if (nome == null || nome.equalsIgnoreCase("")) {
             lista.add("Nome");
-        } else if (cnpj == null || cnpj.equals("")) {
+        }
+        if (cnpj == null) {
             lista.add("Cnpj");
-        } else if (endereco == null || endereco.equalsIgnoreCase("")) {
+        }
+        if (endereco == null || endereco.equalsIgnoreCase("")) {
             lista.add("Endereço");
-        } else if (numero == null || numero.equals("")) {
+        }
+        if (numero == null) {
             lista.add("Numero");
-        } else if (complemento == null || complemento.equalsIgnoreCase("")) {
+        }
+        if (complemento == null || complemento.equalsIgnoreCase("")) {
             lista.add("Complemento");
-        } else if (bairro == null || bairro.equalsIgnoreCase("")) {
+        }
+        if (bairro == null || bairro.equalsIgnoreCase("")) {
             lista.add("Bairro");
-        } else if (cidade == null || cidade.equalsIgnoreCase("")) {
+        }
+        if (cidade == null || cidade.equalsIgnoreCase("")) {
             lista.add("Cidade");
-        } else if (estado == null || estado.equalsIgnoreCase("")) {
+        }
+        if (estado == null || estado.equalsIgnoreCase("")) {
             lista.add("Estado");
-        } else if (sigla == null || sigla.equalsIgnoreCase("")) {
+        }
+        if (sigla == null || sigla.equalsIgnoreCase("")) {
             lista.add("Sigla");
         }
 
         if (lista.isEmpty()) {
             DAOFactory.getCondominioDAO().incluirCondominio(cond);
+            JOptionPane.showMessageDialog(null, "Condominio inlcuído com sucesso!");
         } else {
             for (int i = 0; i < lista.size(); i++) {
                 ret = ret + lista.get(i) + ", ";

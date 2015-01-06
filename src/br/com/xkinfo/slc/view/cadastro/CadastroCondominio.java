@@ -263,7 +263,6 @@ public class CadastroCondominio extends javax.swing.JDialog {
         } else {
             try {
                 ServiceFactory.getCondominioService().incluirCondominio(nome, cnpj, endereco, nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado);
-                JOptionPane.showMessageDialog(this, "Condominio inlcuído com sucesso!");
             } catch (Exception ex) {
                 Logger.getLogger(CadastroCondominio.class.getName()).log(Level.SEVERE, null, ex);
             }
