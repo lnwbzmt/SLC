@@ -57,7 +57,7 @@ public class Condominio implements Serializable {
 
     @Column(name = "NUMERO", table = "CONDOMINIOS", nullable = false)
     @Basic
-    private int numero;
+    private Float numero;
 
     @Column(name = "BAIRRO", table = "CONDOMINIOS", nullable = false, length = 250)
     @Basic
@@ -74,7 +74,7 @@ public class Condominio implements Serializable {
 
     @Column(name = "CNPJ", table = "CONDOMINIOS", nullable = false)
     @Basic
-    private int cnpj;
+    private Float cnpj;
 
     @OneToMany(targetEntity = UnidadeConsumidora.class, mappedBy = "condominio")
     private Collection<UnidadeConsumidora> unidadeConsumidoraCollection;
@@ -141,11 +141,11 @@ public class Condominio implements Serializable {
         this.endereco = endereco;
     }
 
-    public int getNumero() {
+    public Float getNumero() {
         return this.numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Float numero) {
         this.numero = numero;
     }
 
@@ -173,11 +173,11 @@ public class Condominio implements Serializable {
         this.nome = nome;
     }
 
-    public int getCnpj() {
+    public Float getCnpj() {
         return this.cnpj;
     }
 
-    public void setCnpj(int cnpj) {
+    public void setCnpj(Float cnpj) {
         this.cnpj = cnpj;
     }
 

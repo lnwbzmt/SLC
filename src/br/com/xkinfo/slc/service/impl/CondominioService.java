@@ -14,7 +14,7 @@ public class CondominioService implements ICondominioService {
     private Date dataAlteracao;
 
     @Override
-    public void incluirCondominio(String nome, Integer cnpj, String endereco, Integer numero, String complemento, String bairro,
+    public void incluirCondominio(String nome, Float cnpj, String endereco, Float numero, String complemento, String bairro,
             String cidade, String estado, String sigla, String email, Usuario usuario) throws Exception {
         dataInclusao = new Date();
         Condominio cond = new Condominio();
@@ -74,7 +74,7 @@ public class CondominioService implements ICondominioService {
     }
 
     @Override
-    public void alterarCondominio(Integer id, String nome, Integer cnpj, String endereco, Integer numero, String complemento, String bairro,
+    public void alterarCondominio(Integer id, String nome, Float cnpj, String endereco, Float numero, String complemento, String bairro,
             String cidade, String estado, String sigla, String email, Usuario usuario) throws Exception {
         dataAlteracao = new Date();
         Condominio cond = new Condominio();
@@ -106,7 +106,7 @@ public class CondominioService implements ICondominioService {
     }
 
     @Override
-    public Condominio getCondominio(int id) throws Exception {
+    public Condominio getCondominio(Integer id) throws Exception {
         return DAOFactory.getCondominioDAO().getCondominio(id);
     }
 

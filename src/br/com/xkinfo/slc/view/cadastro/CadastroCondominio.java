@@ -241,9 +241,9 @@ public class CadastroCondominio extends javax.swing.JDialog {
 
     private void bSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalvarActionPerformed
         String nome = tfNome.getText();
-        Integer cnpj = Integer.parseInt(tfCnpj.getText());
+        Float cnpj = Float.valueOf(tfCnpj.getText());
         String endereco = tfEndereco.getText();
-        Integer nr = Integer.parseInt(tfNumero.getText());
+        Float nr = Float.valueOf(tfNumero.getText());
         String comp = tfComplemento.getText();
         String bairro = tfBairro.getText();
         String cidade = tfCidade.getText();
