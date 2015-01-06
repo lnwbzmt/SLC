@@ -149,17 +149,17 @@ public class CadastroCompetencia extends javax.swing.JDialog {
         if (competenciaSelecionado != null) {
             competenciaSelecionado.setCompetencia(Date.valueOf(tfNome.getText()));
             try {
-                ServiceFactory.getCompetenciaService().alterarCompetencia(competenciaSelecionado);
+                //ServiceFactory.getCompetenciaService().alterarCompetencia(competenciaSelecionado);
                 JOptionPane.showMessageDialog(this, "Competencia Alterado com Sucesso!");
 
             } catch (Exception ex) {
                 Logger.getLogger(CadastroCompetencia.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            Competencia competencia = new Competencia(null,null,null,null,null,0,null,tfNome.getText(),0,null,null);
+            //Competencia competencia = new Competencia(null,null,null,null,null,0,null,tfNome.getText(),0,null,null);
             try {
                 
-                ServiceFactory.getCompetenciaService().incluirCompetencia(competencia);
+                //ServiceFactory.getCompetenciaService().incluirCompetencia(competencia);
                 JOptionPane.showMessageDialog(this, "Competencia Inlcuído com Sucesso!");
             } catch (Exception ex) {
                 Logger.getLogger(CadastroCompetencia.class.getName()).log(Level.SEVERE, null, ex);
@@ -172,7 +172,7 @@ public class CadastroCompetencia extends javax.swing.JDialog {
     private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed
         if (competenciaSelecionado != null) {
             try {
-                ServiceFactory.getCompetenciaService().excluirCompetencia(competenciaSelecionado);
+                //ServiceFactory.getCompetenciaService().excluirCompetencia(competenciaSelecionado);
                 JOptionPane.showMessageDialog(this, "Competencia Excluído com Sucesso!");
             } catch (Exception ex) {
                 Logger.getLogger(CadastroCompetencia.class.getName()).log(Level.SEVERE, null, ex);
