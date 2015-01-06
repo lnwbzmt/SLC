@@ -14,22 +14,10 @@ public class CondominioService implements ICondominioService {
     private Date dataAlteracao;
 
     @Override
-    public void incluirCondominio(String nome, Float cnpj, String endereco, Float numero, String complemento, String bairro,
+    public void incluirCondominio(String nome, String cnpj, String endereco, String numero, String complemento, String bairro,
             String cidade, String estado, String sigla, String email, Usuario usuario) throws Exception {
         dataInclusao = new Date();
         Condominio cond = new Condominio();
-        cond.setNome(nome);
-        cond.setCnpj(cnpj);
-        cond.setEndereco(endereco);
-        cond.setNumero(numero);
-        cond.setComplemento(complemento);
-        cond.setBairro(bairro);
-        cond.setCidade(cidade);
-        cond.setEstado(estado);
-        cond.setSigla(sigla);
-        cond.setEmail(email);
-        cond.setUsuarioinclusao(usuario);
-        cond.setDatainclusao(dataInclusao);
 
         ArrayList<String> lista = new ArrayList(9);
         String ret = new String();
@@ -37,13 +25,13 @@ public class CondominioService implements ICondominioService {
         if (nome == null || nome.equalsIgnoreCase("")) {
             lista.add("Nome");
         }
-        if (cnpj == null) {
+        if (cnpj == null || cnpj.equalsIgnoreCase("")) {
             lista.add("Cnpj");
         }
         if (endereco == null || endereco.equalsIgnoreCase("")) {
             lista.add("Endereço");
         }
-        if (numero == null) {
+        if (numero == null || numero.equalsIgnoreCase("")) {
             lista.add("Numero");
         }
         if (complemento == null || complemento.equalsIgnoreCase("")) {
@@ -63,26 +51,41 @@ public class CondominioService implements ICondominioService {
         }
 
         if (lista.isEmpty()) {
+            Float fCnpj = Float.valueOf(cnpj);
+            Float fNumero = Float.valueOf(numero);
+            
+            cond.setNome(nome);
+            cond.setCnpj(fCnpj);
+            cond.setEndereco(endereco);
+            cond.setNumero(fNumero);
+            cond.setComplemento(complemento);
+            cond.setBairro(bairro);
+            cond.setCidade(cidade);
+            cond.setEstado(estado);
+            cond.setSigla(sigla);
+            cond.setEmail(email);
+            cond.setUsuarioinclusao(usuario);
+            cond.setDatainclusao(dataInclusao);
             DAOFactory.getCondominioDAO().incluirCondominio(cond);
             JOptionPane.showMessageDialog(null, "Condominio inlcuído com sucesso!");
         } else {
             for (int i = 0; i < lista.size(); i++) {
                 ret = ret + lista.get(i) + "\n";
             }
-            JOptionPane.showMessageDialog(null,"Favor preencher os campos: \n" + ret);
+            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
         }
     }
 
     @Override
-    public void alterarCondominio(Integer id, String nome, Float cnpj, String endereco, Float numero, String complemento, String bairro,
+    public void alterarCondominio(Integer id, String nome, String cnpj, String endereco, String numero, String complemento, String bairro,
             String cidade, String estado, String sigla, String email, Usuario usuario) throws Exception {
         dataAlteracao = new Date();
         Condominio cond = new Condominio();
         cond.setId(id);
         cond.setNome(nome);
-        cond.setCnpj(cnpj);
+        //cond.setCnpj(cnpj);
         cond.setEndereco(endereco);
-        cond.setNumero(numero);
+        //cond.setNumero(numero);
         cond.setComplemento(complemento);
         cond.setBairro(bairro);
         cond.setCidade(cidade);

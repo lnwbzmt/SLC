@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public interface ICondominioService {
 
-    public void incluirCondominio(String nome, Float cnpj,String endereco, Float numero, String complemento, String bairro,
+    public void incluirCondominio(String nome, String cnpj,String endereco, String numero, String complemento, String bairro,
             String cidade, String estado, String sigla, String email, Usuario usuario) throws Exception;
 
-    public void alterarCondominio(Integer id, String nome, Float cnpj,String endereco, Float numero, String complemento, String bairro,
+    public void alterarCondominio(Integer id, String nome, String cnpj,String endereco, String numero, String complemento, String bairro,
             String cidade, String estado, String sigla, String email, Usuario usuario) throws Exception;
 
     public void excluirCondominio(Integer id) throws Exception;
