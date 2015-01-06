@@ -96,7 +96,7 @@ public class Condominio implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "DATAALTERACAO", table = "CONDOMINIOS", nullable = false)
+    @Column(name = "DATAALTERACAO", table = "CONDOMINIOS", nullable = true)
     @Temporal(TemporalType.DATE)
     @Basic
     private Date dataalteracao;

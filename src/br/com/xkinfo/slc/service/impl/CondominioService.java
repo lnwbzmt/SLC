@@ -26,16 +26,13 @@ public class CondominioService implements ICondominioService {
             lista.add("Nome");
         }
         if (cnpj == null || cnpj.equalsIgnoreCase("")) {
-            lista.add("Cnpj");
+            lista.add("CNPJ");
         }
         if (endereco == null || endereco.equalsIgnoreCase("")) {
             lista.add("Endereço");
         }
         if (numero == null || numero.equalsIgnoreCase("")) {
-            lista.add("Numero");
-        }
-        if (complemento == null || complemento.equalsIgnoreCase("")) {
-            lista.add("Complemento");
+            lista.add("Número");
         }
         if (bairro == null || bairro.equalsIgnoreCase("")) {
             lista.add("Bairro");
