@@ -240,7 +240,6 @@ public class CadastroCondominio extends javax.swing.JDialog {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalvarActionPerformed
-        Integer id = Integer.parseInt(tfCodigo.getText());
         String nome = tfNome.getText();
         Integer cnpj = Integer.parseInt(tfCnpj.getText());
         String endereco = tfEndereco.getText();
@@ -253,8 +252,9 @@ public class CadastroCondominio extends javax.swing.JDialog {
         String email = tfEmail.getText();
         if (condominioSelecionado != null) {
             condominioSelecionado.setNome(tfNome.getText());
+            Integer id = Integer.parseInt(tfCodigo.getText());
             try {
-                ServiceFactory.getCondominioService().alterarCondominio(id, nome, cnpj, endereco,nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado);
+                ServiceFactory.getCondominioService().alterarCondominio(id, nome, cnpj, endereco, nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado);
                 JOptionPane.showMessageDialog(this, "Condominio Alterado com Sucesso!");
 
             } catch (Exception ex) {
@@ -262,7 +262,7 @@ public class CadastroCondominio extends javax.swing.JDialog {
             }
         } else {
             try {
-                ServiceFactory.getCondominioService().incluirCondominio(nome, cnpj, endereco,nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado);
+                ServiceFactory.getCondominioService().incluirCondominio(nome, cnpj, endereco, nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado);
                 JOptionPane.showMessageDialog(this, "Condominio inlcuído com sucesso!");
             } catch (Exception ex) {
                 Logger.getLogger(CadastroCondominio.class.getName()).log(Level.SEVERE, null, ex);
