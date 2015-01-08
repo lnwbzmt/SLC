@@ -14,7 +14,7 @@ public class CondominioService implements ICondominioService {
     private Date dataAlteracao;
 
     @Override
-    public void incluirCondominio(String nome, String cnpj, String endereco, String numero, String complemento, String bairro,
+    public Boolean incluirCondominio(String nome, String cnpj, String endereco, String numero, String complemento, String bairro,
             String cidade, String estado, String sigla, String email, Usuario usuario) throws Exception {
         dataInclusao = new Date();
         Condominio cond = new Condominio();
@@ -65,11 +65,13 @@ public class CondominioService implements ICondominioService {
             cond.setDatainclusao(dataInclusao);
             DAOFactory.getCondominioDAO().incluirCondominio(cond);
             JOptionPane.showMessageDialog(null, "Condominio inlcuído com sucesso!");
+            return true;
         } else {
             for (int i = 0; i < lista.size(); i++) {
                 ret = ret + lista.get(i) + "\n";
             }
             JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
+            return false;
         }
     }
 

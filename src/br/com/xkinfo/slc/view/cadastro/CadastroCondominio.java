@@ -256,19 +256,20 @@ public class CadastroCondominio extends javax.swing.JDialog {
             try {
                 ServiceFactory.getCondominioService().alterarCondominio(id, nome, cnpj, endereco, nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado);
                 JOptionPane.showMessageDialog(this, "Condominio Alterado com Sucesso!");
-
+                condominioSelecionado = null;
             } catch (Exception ex) {
                 Logger.getLogger(CadastroCondominio.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             try {
-                ServiceFactory.getCondominioService().incluirCondominio(nome, cnpj, endereco, nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado);
+                Boolean incluir = ServiceFactory.getCondominioService().incluirCondominio(nome, cnpj, endereco, nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado);
+                if (incluir == true) {
+                    dispose();
+                }
             } catch (Exception ex) {
                 Logger.getLogger(CadastroCondominio.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        condominioSelecionado = null;
-        this.dispose();
     }//GEN-LAST:event_bSalvarActionPerformed
 
     private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface ICondominioService {
 
-    public void incluirCondominio(String nome, String cnpj,String endereco, String numero, String complemento, String bairro,
+    public Boolean incluirCondominio(String nome, String cnpj,String endereco, String numero, String complemento, String bairro,
             String cidade, String estado, String sigla, String email, Usuario usuario) throws Exception;
 
     public void alterarCondominio(Integer id, String nome, String cnpj,String endereco, String numero, String complemento, String bairro,
