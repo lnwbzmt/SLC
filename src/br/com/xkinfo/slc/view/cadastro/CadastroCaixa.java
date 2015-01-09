@@ -1,29 +1,30 @@
 package br.com.xkinfo.slc.view.cadastro;
 
-import br.com.xkinfo.slc.modelo.Competencia;
-import br.com.xkinfo.slc.service.ServiceFactory;
-import java.sql.Date;
+import br.com.xkinfo.slc.modelo.Caixa;
+import br.com.xkinfo.slc.modelo.Usuario;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class CadastroCompetencia extends javax.swing.JDialog {
+public class CadastroCaixa extends javax.swing.JDialog {
 
-    private Competencia competenciaSelecionado;
+    private Caixa caixaSelecionado;
+    private Usuario usuarioLogado;
 
-    public CadastroCompetencia(java.awt.Frame parent, boolean modal) {
+    public CadastroCaixa(java.awt.Frame parent, boolean modal,Usuario usuario) {
         super(parent, modal);
         initComponents();
         bExcluir.setVisible(false);
         this.tfCodigo.setEnabled(false);
+        usuarioLogado = usuario;
     }
 
-    public CadastroCompetencia(Competencia competencia, java.awt.Frame parent, boolean modal) {
-        this(parent, modal);
-        this.competenciaSelecionado = competencia;
-        if (competenciaSelecionado != null) {
-            tfCodigo.setText(competencia.getId().toString());
-            tfNome.setText(competencia.getCompetencia().toString());
+    public CadastroCaixa(Caixa caixa, java.awt.Frame parent, boolean modal,Usuario usuario) {
+        this(parent, modal,usuario);
+        this.caixaSelecionado = caixa;
+        if (caixaSelecionado != null) {
+            tfCodigo.setText(caixa.getId().toString());
+            //tfNome.setText(caixa.getFatura().toString());
             // Mostra o botão Excluir     
             bExcluir.setVisible(true);
         }
@@ -51,7 +52,7 @@ public class CadastroCompetencia extends javax.swing.JDialog {
         setTitle("Cadastro de Projetos");
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do Competencias"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do Caixa"));
 
         lNome.setText("Código:");
 
@@ -83,7 +84,7 @@ public class CadastroCompetencia extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lNome1)
                     .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bSalvar.setText("Salvar");
@@ -144,38 +145,38 @@ public class CadastroCompetencia extends javax.swing.JDialog {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalvarActionPerformed
-        if (competenciaSelecionado != null) {
-            competenciaSelecionado.setCompetencia(Date.valueOf(tfNome.getText()));
+        if (caixaSelecionado != null) {
+            //caixaSelecionado.setCaixa(Date.valueOf(tfNome.getText()));
             try {
-                //ServiceFactory.getCompetenciaService().alterarCompetencia(competenciaSelecionado);
-                JOptionPane.showMessageDialog(this, "Competencia Alterado com Sucesso!");
+                //ServiceFactory.getCaixaService().alterarCaixa(caixaSelecionado);
+                JOptionPane.showMessageDialog(this, "Caixa Alterado com Sucesso!");
 
             } catch (Exception ex) {
-                Logger.getLogger(CadastroCompetencia.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CadastroCaixa.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            //Competencia competencia = new Competencia(null,null,null,null,null,0,null,tfNome.getText(),0,null,null);
+            //Caixa caixa = new Caixa(null,null,null,null,null,0,null,tfNome.getText(),0,null,null);
             try {
                 
-                //ServiceFactory.getCompetenciaService().incluirCompetencia(competencia);
-                JOptionPane.showMessageDialog(this, "Competencia Inlcuído com Sucesso!");
+                //ServiceFactory.getCaixaService().incluirCaixa(caixa);
+                JOptionPane.showMessageDialog(this, "Caixa Inlcuído com Sucesso!");
             } catch (Exception ex) {
-                Logger.getLogger(CadastroCompetencia.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CadastroCaixa.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        competenciaSelecionado = null;
+        caixaSelecionado = null;
         this.dispose();
     }//GEN-LAST:event_bSalvarActionPerformed
 
     private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed
-        if (competenciaSelecionado != null) {
+        if (caixaSelecionado != null) {
             try {
-                //ServiceFactory.getCompetenciaService().excluirCompetencia(competenciaSelecionado);
-                JOptionPane.showMessageDialog(this, "Competencia Excluído com Sucesso!");
+                //ServiceFactory.getCaixaService().excluirCaixa(caixaSelecionado);
+                JOptionPane.showMessageDialog(this, "Caixa Excluído com Sucesso!");
             } catch (Exception ex) {
-                Logger.getLogger(CadastroCompetencia.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CadastroCaixa.class.getName()).log(Level.SEVERE, null, ex);
             }
-            competenciaSelecionado = null;
+            caixaSelecionado = null;
             this.dispose();
         }
     }//GEN-LAST:event_bExcluirActionPerformed
