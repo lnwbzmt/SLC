@@ -18,7 +18,7 @@ public class CondominioService implements ICondominioService {
             String cidade, String estado, String sigla, String email, Usuario usuario) throws Exception {
         dataInclusao = new Date();
         Condominio cond = new Condominio();
-
+        
         ArrayList<String> lista = new ArrayList(9);
         String ret = new String();
 
@@ -50,7 +50,7 @@ public class CondominioService implements ICondominioService {
         if (lista.isEmpty()) {
             Long fCnpj = Long.valueOf(cnpj);
             Float fNumero = Float.valueOf(numero);
-            
+
             cond.setNome(nome);
             cond.setCnpj(fCnpj);
             cond.setEndereco(endereco);
@@ -67,8 +67,8 @@ public class CondominioService implements ICondominioService {
             JOptionPane.showMessageDialog(null, "Condominio inlcuído com sucesso!");
             return true;
         } else {
-            for (int i = 0; i < lista.size(); i++) {
-                ret = ret + lista.get(i) + "\n";
+            for (String lista1 : lista) {
+                ret = ret + lista1 + "\n";
             }
             JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
             return false;
@@ -80,21 +80,62 @@ public class CondominioService implements ICondominioService {
             String cidade, String estado, String sigla, String email, Usuario usuario) throws Exception {
         dataAlteracao = new Date();
         Condominio cond = new Condominio();
-        cond.setId(id);
-        cond.setNome(nome);
-        //cond.setCnpj(cnpj);
-        cond.setEndereco(endereco);
-        //cond.setNumero(numero);
-        cond.setComplemento(complemento);
-        cond.setBairro(bairro);
-        cond.setCidade(cidade);
-        cond.setEstado(estado);
-        cond.setSigla(sigla);
-        cond.setEmail(email);
-        cond.setUsuarioalteracao(usuario);
-        cond.setDataalteracao(dataAlteracao);
+        
+        JOptionPane.showMessageDialog(null, "alterar");
+        
+        ArrayList<String> lista = new ArrayList(9);
+        String ret = new String();
 
-        DAOFactory.getCondominioDAO().alterarCondominio(cond);
+        if (nome == null || nome.equalsIgnoreCase("")) {
+            lista.add("Nome");
+        }
+        if (cnpj == null || cnpj.equalsIgnoreCase("")) {
+            lista.add("CNPJ");
+        }
+        if (endereco == null || endereco.equalsIgnoreCase("")) {
+            lista.add("Endereço");
+        }
+        if (numero == null || numero.equalsIgnoreCase("")) {
+            lista.add("Número");
+        }
+        if (bairro == null || bairro.equalsIgnoreCase("")) {
+            lista.add("Bairro");
+        }
+        if (cidade == null || cidade.equalsIgnoreCase("")) {
+            lista.add("Cidade");
+        }
+        if (estado == null || estado.equalsIgnoreCase("")) {
+            lista.add("Estado");
+        }
+        if (sigla == null || sigla.equalsIgnoreCase("")) {
+            lista.add("Sigla");
+        }
+
+        if (lista.isEmpty()) {
+            Long fCnpj = Long.valueOf(cnpj);
+            Float fNumero = Float.valueOf(numero);
+
+            cond.setId(id);
+            cond.setNome(nome);
+            cond.setCnpj(fCnpj);
+            cond.setEndereco(endereco);
+            cond.setNumero(fNumero);
+            cond.setComplemento(complemento);
+            cond.setBairro(bairro);
+            cond.setCidade(cidade);
+            cond.setEstado(estado);
+            cond.setSigla(sigla);
+            cond.setEmail(email);
+            cond.setUsuarioalteracao(usuario);
+            cond.setDataalteracao(dataAlteracao);
+            
+            DAOFactory.getCondominioDAO().alterarCondominio(cond);
+        } else {
+            for (int i = 0; i < lista.size(); i++) {
+                ret = ret + lista.get(i) + "\n";
+            }
+            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
+        }
     }
 
     @Override

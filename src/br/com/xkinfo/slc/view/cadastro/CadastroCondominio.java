@@ -23,23 +23,21 @@ public class CadastroCondominio extends javax.swing.JDialog {
 
     public CadastroCondominio(Condominio condominio, java.awt.Frame parent, boolean modal, Usuario usuario) {
         this(parent, modal, usuario);
+        usuarioLogado = usuario;
         this.condominioSelecionado = condominio;
-        if (condominioSelecionado != null) {
-            tfCodigo.setText(condominioSelecionado.getId().toString());
-            tfNome.setText(condominioSelecionado.getNome());
-            tfCnpj.setText(String.valueOf(condominioSelecionado.getCnpj()));
-            tfEndereco.setText(condominioSelecionado.getEndereco());
-            tfNumero.setText(String.valueOf(condominioSelecionado.getNumero()));
-            tfComplemento.setText(condominioSelecionado.getComplemento());
-            tfBairro.setText(condominioSelecionado.getBairro());
-            tfCidade.setText(condominioSelecionado.getCidade());
-            tfEstado.setText(condominioSelecionado.getEstado());
-            tfSigla.setText(condominioSelecionado.getSigla());
-            tfEmail.setText(condominioSelecionado.getEmail());
-            // Mostra o botão Excluir     
-            bExcluir.setVisible(true);
-            usuarioLogado = usuario;
-        }
+        tfCodigo.setText(condominioSelecionado.getId().toString());
+        tfNome.setText(condominioSelecionado.getNome());
+        tfCnpj.setText(String.valueOf(condominioSelecionado.getCnpj()));
+        tfEndereco.setText(condominioSelecionado.getEndereco());
+        tfNumero.setText(String.valueOf(condominioSelecionado.getNumero()));
+        tfComplemento.setText(condominioSelecionado.getComplemento());
+        tfBairro.setText(condominioSelecionado.getBairro());
+        tfCidade.setText(condominioSelecionado.getCidade());
+        tfEstado.setText(condominioSelecionado.getEstado());
+        tfSigla.setText(condominioSelecionado.getSigla());
+        tfEmail.setText(condominioSelecionado.getEmail());
+        // Mostra o botão Excluir     
+        bExcluir.setVisible(true);
     }
 
     @SuppressWarnings("unchecked")

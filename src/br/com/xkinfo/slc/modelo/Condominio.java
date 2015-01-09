@@ -63,7 +63,7 @@ public class Condominio implements Serializable {
     @Basic
     private String bairro;
 
-    @Column(name = "DATAINCLUSAO", table = "CONDOMINIOS", nullable = false)
+    @Column(name = "DATAINCLUSAO", table = "CONDOMINIOS", nullable = true)
     @Temporal(TemporalType.DATE)
     @Basic
     private Date datainclusao;
@@ -87,7 +87,7 @@ public class Condominio implements Serializable {
     @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
     private Usuario usuarioalteracao;
 
-    @ManyToOne(optional = false, targetEntity = Usuario.class)
+    @ManyToOne(targetEntity = Usuario.class)
     @JoinColumn(name = "USUARIOINCLUSAO", referencedColumnName = "ID")
     private Usuario usuarioinclusao;
 
