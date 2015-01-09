@@ -25,9 +25,17 @@ public class CadastroCondominio extends javax.swing.JDialog {
         this(parent, modal, usuario);
         this.condominioSelecionado = condominio;
         if (condominioSelecionado != null) {
-            tfCodigo.setText(condominio.getId().toString());
-            tfNome.setText(condominio.getNome());
-            tfCnpj.setText(String.valueOf(condominio.getCnpj()));
+            tfCodigo.setText(condominioSelecionado.getId().toString());
+            tfNome.setText(condominioSelecionado.getNome());
+            tfCnpj.setText(String.valueOf(condominioSelecionado.getCnpj()));
+            tfEndereco.setText(condominioSelecionado.getEndereco());
+            tfNumero.setText(String.valueOf(condominioSelecionado.getNumero()));
+            tfComplemento.setText(condominioSelecionado.getComplemento());
+            tfBairro.setText(condominioSelecionado.getBairro());
+            tfCidade.setText(condominioSelecionado.getCidade());
+            tfEstado.setText(condominioSelecionado.getEstado());
+            tfSigla.setText(condominioSelecionado.getSigla());
+            tfEmail.setText(condominioSelecionado.getEmail());
             // Mostra o botão Excluir     
             bExcluir.setVisible(true);
             usuarioLogado = usuario;
@@ -251,7 +259,6 @@ public class CadastroCondominio extends javax.swing.JDialog {
         String sigla = tfSigla.getText();
         String email = tfEmail.getText();
         if (condominioSelecionado != null) {
-            condominioSelecionado.setNome(tfNome.getText());
             Integer id = Integer.parseInt(tfCodigo.getText());
             try {
                 ServiceFactory.getCondominioService().alterarCondominio(id, nome, cnpj, endereco, nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado);
