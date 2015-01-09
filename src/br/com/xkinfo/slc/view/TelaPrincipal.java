@@ -6,7 +6,7 @@ import br.com.xkinfo.slc.modelo.Usuario;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    private Usuario usuarioLogado;
+    private final Usuario usuarioLogado;
 
     public TelaPrincipal(Usuario usuario) {
         usuarioLogado = usuario;
