@@ -20,19 +20,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         lUsuarioLogado = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
+        mCadastro = new javax.swing.JMenu();
         mn_condominio = new javax.swing.JMenuItem();
         mn_usuario = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        mConsulta = new javax.swing.JMenu();
         mn_consCondominio = new javax.swing.JMenuItem();
-        mn_sair = new javax.swing.JMenu();
+        mSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
 
         lUsuarioLogado.setText("Usuário: ");
 
-        jMenu4.setText("Cadastros");
+        mCadastro.setText("Cadastros");
 
         mn_condominio.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         mn_condominio.setText("Condominio");
@@ -41,7 +41,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 mn_condominioActionPerformed(evt);
             }
         });
-        jMenu4.add(mn_condominio);
+        mCadastro.add(mn_condominio);
 
         mn_usuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         mn_usuario.setText("Usuários");
@@ -50,11 +50,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 mn_usuarioActionPerformed(evt);
             }
         });
-        jMenu4.add(mn_usuario);
+        mCadastro.add(mn_usuario);
 
-        jMenuBar2.add(jMenu4);
+        jMenuBar2.add(mCadastro);
 
-        jMenu1.setText("Consulta");
+        mConsulta.setText("Consulta");
 
         mn_consCondominio.setText("Condominio");
         mn_consCondominio.addActionListener(new java.awt.event.ActionListener() {
@@ -62,17 +62,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 mn_consCondominioActionPerformed(evt);
             }
         });
-        jMenu1.add(mn_consCondominio);
+        mConsulta.add(mn_consCondominio);
 
-        jMenuBar2.add(jMenu1);
+        jMenuBar2.add(mConsulta);
 
-        mn_sair.setText("Sair");
-        mn_sair.addMouseListener(new java.awt.event.MouseAdapter() {
+        mSair.setText("Sair");
+        mSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mn_sairMouseClicked(evt);
+                mSairMouseClicked(evt);
             }
         });
-        jMenuBar2.add(mn_sair);
+        jMenuBar2.add(mSair);
 
         setJMenuBar(jMenuBar2);
 
@@ -95,9 +95,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mn_sairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mn_sairMouseClicked
+    private void mSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mSairMouseClicked
         this.dispose();
-    }//GEN-LAST:event_mn_sairMouseClicked
+    }//GEN-LAST:event_mSairMouseClicked
 
     private void mn_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_usuarioActionPerformed
         // Primeiro parâmetro do construtor: janela mãe, neste caso o this que representa a TelaPrincipal.java
@@ -109,26 +109,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mn_usuarioActionPerformed
 
     private void mn_condominioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_condominioActionPerformed
-        ConsultaCondominio consultaCondominio = new ConsultaCondominio(this, true, usuarioLogado);
-        consultaCondominio.setLocationRelativeTo(this);
-        consultaCondominio.setVisible(true);
-    }//GEN-LAST:event_mn_condominioActionPerformed
-
-    private void mn_consCondominioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_consCondominioActionPerformed
         CadastroCondominio cadastroCondominio = new CadastroCondominio(this, true, usuarioLogado);
         cadastroCondominio.setLocationRelativeTo(this);
         cadastroCondominio.setVisible(true);
+    }//GEN-LAST:event_mn_condominioActionPerformed
+
+    private void mn_consCondominioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_consCondominioActionPerformed
+        ConsultaCondominio consultaCondominio = new ConsultaCondominio(this, true, usuarioLogado);
+        consultaCondominio.setLocationRelativeTo(this);
+        consultaCondominio.setVisible(true);
     }//GEN-LAST:event_mn_consCondominioActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JLabel lUsuarioLogado;
+    private javax.swing.JMenu mCadastro;
+    private javax.swing.JMenu mConsulta;
+    private javax.swing.JMenu mSair;
     private javax.swing.JMenuItem mn_condominio;
     private javax.swing.JMenuItem mn_consCondominio;
-    private javax.swing.JMenu mn_sair;
     private javax.swing.JMenuItem mn_usuario;
     // End of variables declaration//GEN-END:variables
 }
