@@ -19,7 +19,7 @@ public class CondominioService implements ICondominioService {
         dataInclusao = new Date();
         Condominio cond = new Condominio();
         
-        ArrayList<String> lista = new ArrayList(9);
+        ArrayList<String> lista = new ArrayList(8);
         String ret = new String();
 
         if (nome == null || nome.equalsIgnoreCase("")) {
@@ -83,7 +83,7 @@ public class CondominioService implements ICondominioService {
         
         JOptionPane.showMessageDialog(null, "alterar");
         
-        ArrayList<String> lista = new ArrayList(9);
+        ArrayList<String> lista = new ArrayList(8);
         String ret = new String();
 
         if (nome == null || nome.equalsIgnoreCase("")) {
@@ -131,8 +131,8 @@ public class CondominioService implements ICondominioService {
             
             DAOFactory.getCondominioDAO().alterarCondominio(cond);
         } else {
-            for (int i = 0; i < lista.size(); i++) {
-                ret = ret + lista.get(i) + "\n";
+            for (String lista1 : lista) {
+                ret = ret + lista1 + "\n";
             }
             JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
         }
