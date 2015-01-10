@@ -1,6 +1,6 @@
 package br.com.xkinfo.slc.util.tableModel;
 
-import br.com.xkinfo.slc.modelo.Condominio;
+import br.com.xkinfo.slc.modelo.Hidrometro;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.List;
 import java.util.logging.Level;
@@ -9,12 +9,12 @@ import javax.swing.table.AbstractTableModel;
 
 public class HidrometroTableModel extends AbstractTableModel {
 
-    private List<Condominio> hidrometros;
+    private List<Hidrometro> hidrometros;
     private String[] cabecalhoColunas = {"Código", "Nome"};
 
     public HidrometroTableModel() {
         try {
-            hidrometros = ServiceFactory.getCondominioService().getCondominios();
+            hidrometros = ServiceFactory.getHidrometroService().getHidrometros();
         } catch (Exception ex) {
             Logger.getLogger(HidrometroTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -37,7 +37,7 @@ public class HidrometroTableModel extends AbstractTableModel {
             case 0:
                 return hidrometros.get(numLinha).getId();
             case 1:
-                return hidrometros.get(numLinha).getNome();
+                return hidrometros.get(numLinha).getNrserie();
         }
         return null;
     }
@@ -47,7 +47,7 @@ public class HidrometroTableModel extends AbstractTableModel {
         return cabecalhoColunas[numColuna];
     }
 
-    public List<Condominio> getCondominios() {
+    public List<Hidrometro> getHidrometros() {
         return hidrometros;
     }
 
