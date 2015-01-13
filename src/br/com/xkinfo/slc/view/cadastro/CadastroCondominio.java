@@ -3,6 +3,7 @@ package br.com.xkinfo.slc.view.cadastro;
 import br.com.xkinfo.slc.modelo.Condominio;
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.ServiceFactory;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -256,10 +257,13 @@ public class CadastroCondominio extends javax.swing.JDialog {
         String estado = tfEstado.getText();
         String sigla = tfSigla.getText();
         String email = tfEmail.getText();
+        Usuario usuarioInclusao = condominioSelecionado.getUsuarioinclusao();
+        Date dataInclusao = condominioSelecionado.getDatainclusao();
+
         if (condominioSelecionado != null) {
             Integer id = Integer.parseInt(tfCodigo.getText());
             try {
-                ServiceFactory.getCondominioService().alterarCondominio(id, nome, cnpj, endereco, nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado);
+                ServiceFactory.getCondominioService().alterarCondominio(id, nome, cnpj, endereco, nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado, usuarioInclusao, dataInclusao);
                 JOptionPane.showMessageDialog(this, "Condominio Alterado com Sucesso!");
                 condominioSelecionado = null;
             } catch (Exception ex) {
