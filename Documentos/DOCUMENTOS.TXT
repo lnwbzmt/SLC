@@ -1,0 +1,4 @@
+
+APOSTILA PERSISTENCIA COM JPA E HIBERNATE 
+
+http://pt.slideshare.net/KIQMoretto/k19-k21persistenciacomjpa2ehibernate-15678002

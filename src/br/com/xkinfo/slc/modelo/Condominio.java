@@ -1,4 +1,4 @@
-package br.com.xkinfo.slc.modelo;
+    package br.com.xkinfo.slc.modelo;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -63,7 +63,7 @@ public class Condominio implements Serializable {
     @Basic
     private String bairro;
 
-    @Column(name = "DATAINCLUSAO", table = "CONDOMINIOS", nullable = true)
+    @Column(name = "DATAINCLUSAO", table = "CONDOMINIOS", nullable = false)
     @Temporal(TemporalType.DATE)
     @Basic
     private Date datainclusao;
@@ -79,7 +79,7 @@ public class Condominio implements Serializable {
     @OneToMany(targetEntity = UnidadeConsumidora.class, mappedBy = "condominio")
     private Collection<UnidadeConsumidora> unidadeConsumidoraCollection;
 
-    @Column(name = "COMPLEMENTO", table = "CONDOMINIOS", nullable = false, length = 250)
+    @Column(name = "COMPLEMENTO", table = "CONDOMINIOS", nullable = true, length = 250)
     @Basic
     private String complemento;
 
@@ -87,7 +87,7 @@ public class Condominio implements Serializable {
     @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
     private Usuario usuarioalteracao;
 
-    @ManyToOne(targetEntity = Usuario.class)
+    @ManyToOne(optional = false, targetEntity = Usuario.class)
     @JoinColumn(name = "USUARIOINCLUSAO", referencedColumnName = "ID")
     private Usuario usuarioinclusao;
 
@@ -101,7 +101,7 @@ public class Condominio implements Serializable {
     @Basic
     private Date dataalteracao;
 
-    @Column(name = "EMAIL", table = "CONDOMINIOS", length = 200)
+    @Column(name = "EMAIL", table = "CONDOMINIOS", nullable = true, length = 200)
     @Basic
     private String email;
 
