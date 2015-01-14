@@ -6,7 +6,6 @@ import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class CadastroSituacao extends javax.swing.JDialog {
 
@@ -18,12 +17,13 @@ public class CadastroSituacao extends javax.swing.JDialog {
         initComponents();
         bExcluir.setVisible(false);
         usuarioLogado = usuario;
+        getRootPane().setDefaultButton(bSalvar);
     }
 
     public CadastroSituacao(Situacao situacao, java.awt.Frame parent, boolean modal, Usuario usuario) {
         this(parent, modal, usuario);
         situacaoSelecionado = situacao;
-        tfCodigo.setText(situacao.getId().toString());
+        tfCodigo.setText(situacao.getCodigo().toString());
         tfDescricao.setText(situacao.getDescricao());
         // Mostra o botão Excluir     
         bExcluir.setVisible(true);
@@ -135,12 +135,13 @@ public class CadastroSituacao extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        this.dispose();
+        dispose();
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalvarActionPerformed
         String codigo = tfCodigo.getText();
         String descricao = tfDescricao.getText();
+        
         if (situacaoSelecionado != null) {
             Integer id = situacaoSelecionado.getId();
             Usuario usuarioInclusao = situacaoSelecionado.getUsuarioinclusao();
@@ -148,9 +149,9 @@ public class CadastroSituacao extends javax.swing.JDialog {
             try {
                 Boolean alterar = ServiceFactory.getSituacaoService().alterarSituacao(id, codigo, descricao, usuarioLogado, usuarioInclusao, dataInclusao);
                 if (alterar == true) {
+                    situacaoSelecionado = null;
                     dispose();
                 }
-                situacaoSelecionado = null;
             } catch (Exception ex) {
                 Logger.getLogger(CadastroSituacao.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -164,8 +165,6 @@ public class CadastroSituacao extends javax.swing.JDialog {
                 Logger.getLogger(CadastroSituacao.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        situacaoSelecionado = null;
-        this.dispose();
     }//GEN-LAST:event_bSalvarActionPerformed
 
     private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed
@@ -173,10 +172,10 @@ public class CadastroSituacao extends javax.swing.JDialog {
         if (situacaoSelecionado != null) {
             try {
                 ServiceFactory.getSituacaoService().excluirSituacao(id);
+                situacaoSelecionado = null;
             } catch (Exception ex) {
                 Logger.getLogger(CadastroSituacao.class.getName()).log(Level.SEVERE, null, ex);
             }
-            situacaoSelecionado = null;
             dispose();
         }
     }//GEN-LAST:event_bExcluirActionPerformed

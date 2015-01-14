@@ -16,9 +16,9 @@ public class CadastroCondominio extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         bExcluir.setVisible(false);
+        usuarioLogado = usuario;
         this.tfCodigo.setEnabled(false);
         getRootPane().setDefaultButton(bSalvar);
-        usuarioLogado = usuario;
     }
 
     public CadastroCondominio(Condominio condominio, java.awt.Frame parent, boolean modal, Usuario usuario) {
@@ -264,8 +264,8 @@ public class CadastroCondominio extends javax.swing.JDialog {
             try {
                 Boolean alterar = ServiceFactory.getCondominioService().alterarCondominio(id, nome, cnpj, endereco, nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado, usuarioInclusao, dataInclusao);
                 if (alterar == true) {
-                    dispose();
                     condominioSelecionado = null;
+                    dispose();
                 }
             } catch (Exception ex) {
                 Logger.getLogger(CadastroCondominio.class.getName()).log(Level.SEVERE, null, ex);
