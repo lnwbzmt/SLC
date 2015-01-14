@@ -76,7 +76,7 @@ public class CondominioService implements ICondominioService {
     }
 
     @Override
-    public void alterarCondominio(Integer id, String nome, String cnpj, String endereco, String numero, String complemento, String bairro,
+    public Boolean alterarCondominio(Integer id, String nome, String cnpj, String endereco, String numero, String complemento, String bairro,
             String cidade, String estado, String sigla, String email, Usuario usuario, Usuario usuarioinclusao, Date dataInclusao) throws Exception {
         dataAlteracao = new Date();
         Condominio cond = new Condominio();
@@ -132,11 +132,14 @@ public class CondominioService implements ICondominioService {
             cond.setUsuarioinclusao(usuarioinclusao);
             
             DAOFactory.getCondominioDAO().alterarCondominio(cond);
+            JOptionPane.showMessageDialog(null, "Condominio Alterado com Sucesso!");
+            return true;
         } else {
             for (String lista1 : lista) {
                 ret = ret + lista1 + "\n";
             }
             JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
+            return false;
         }
     }
 

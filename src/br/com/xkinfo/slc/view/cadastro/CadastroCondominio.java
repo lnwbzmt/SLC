@@ -257,14 +257,16 @@ public class CadastroCondominio extends javax.swing.JDialog {
         String estado = tfEstado.getText();
         String sigla = tfSigla.getText();
         String email = tfEmail.getText();
-        Usuario usuarioInclusao = condominioSelecionado.getUsuarioinclusao();
-        Date dataInclusao = condominioSelecionado.getDatainclusao();
 
         if (condominioSelecionado != null) {
             Integer id = Integer.parseInt(tfCodigo.getText());
+            Usuario usuarioInclusao = condominioSelecionado.getUsuarioinclusao();
+            Date dataInclusao = condominioSelecionado.getDatainclusao();
             try {
-                ServiceFactory.getCondominioService().alterarCondominio(id, nome, cnpj, endereco, nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado, usuarioInclusao, dataInclusao);
-                JOptionPane.showMessageDialog(this, "Condominio Alterado com Sucesso!");
+                Boolean alterar = ServiceFactory.getCondominioService().alterarCondominio(id, nome, cnpj, endereco, nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado, usuarioInclusao, dataInclusao);
+                if (alterar == true) {
+                    dispose();
+                }
                 condominioSelecionado = null;
             } catch (Exception ex) {
                 Logger.getLogger(CadastroCondominio.class.getName()).log(Level.SEVERE, null, ex);

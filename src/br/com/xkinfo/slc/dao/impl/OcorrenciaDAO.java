@@ -56,7 +56,7 @@ public class OcorrenciaDAO implements IOcorrenciaDAO {
 
     @Override
     public ArrayList<Ocorrencia> getOcorrencias() throws Exception {
-        ArrayList<Ocorrencia> lista = new ArrayList<Ocorrencia>();
+        ArrayList<Ocorrencia> lista;
         Query query = entityManager.createQuery("select x from Ocorrencia x");
         lista = (ArrayList<Ocorrencia>) query.getResultList();
         return lista;
@@ -64,7 +64,7 @@ public class OcorrenciaDAO implements IOcorrenciaDAO {
 
     @Override
     public ArrayList<Ocorrencia> getOcorrencias(String filtro) throws Exception {
-        ArrayList<Ocorrencia> lista = new ArrayList<Ocorrencia>();
+        ArrayList<Ocorrencia> lista;
         Query query = entityManager.createQuery("select x from Ocorrencia x WHERE x.nome like :nome");
         query.setParameter("nome", "%" + filtro + "%");
         lista = (ArrayList<Ocorrencia>) query.getResultList();
