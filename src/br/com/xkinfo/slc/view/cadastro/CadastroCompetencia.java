@@ -36,7 +36,7 @@ public class CadastroCompetencia extends javax.swing.JDialog {
         lCompetencia = new javax.swing.JLabel();
         tfCompetencia = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        rbSituacao = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         bSalvar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
@@ -54,7 +54,7 @@ public class CadastroCompetencia extends javax.swing.JDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Situação"));
 
-        jRadioButton1.setText("Aberta");
+        rbSituacao.setText("Aberta");
 
         jRadioButton2.setText("Fechada");
 
@@ -65,14 +65,14 @@ public class CadastroCompetencia extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1)
+                    .addComponent(rbSituacao)
                     .addComponent(jRadioButton2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jRadioButton1)
+                .addComponent(rbSituacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jRadioButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -204,9 +204,9 @@ public class CadastroCompetencia extends javax.swing.JDialog {
     private javax.swing.JButton bSalvar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JLabel lCompetencia;
+    private javax.swing.JRadioButton rbSituacao;
     private javax.swing.JFormattedTextField tfCompetencia;
     // End of variables declaration//GEN-END:variables
 }

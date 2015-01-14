@@ -3,6 +3,8 @@ package br.com.xkinfo.slc.view;
 import br.com.xkinfo.slc.view.consulta.ConsultaCondominio;
 import br.com.xkinfo.slc.view.cadastro.CadastroCondominio;
 import br.com.xkinfo.slc.modelo.Usuario;
+import br.com.xkinfo.slc.view.cadastro.CadastroSituacao;
+import br.com.xkinfo.slc.view.consulta.ConsultaSituacao;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -23,8 +25,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mCadastro = new javax.swing.JMenu();
         mn_condominio = new javax.swing.JMenuItem();
         mn_usuario = new javax.swing.JMenuItem();
+        mn_Situacao = new javax.swing.JMenuItem();
         mConsulta = new javax.swing.JMenu();
         mn_consCondominio = new javax.swing.JMenuItem();
+        mn_consSituacao = new javax.swing.JMenuItem();
         mSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,6 +56,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mCadastro.add(mn_usuario);
 
+        mn_Situacao.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        mn_Situacao.setText("Situação");
+        mn_Situacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_SituacaoActionPerformed(evt);
+            }
+        });
+        mCadastro.add(mn_Situacao);
+
         jMenuBar2.add(mCadastro);
 
         mConsulta.setText("Consulta");
@@ -63,6 +76,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         mConsulta.add(mn_consCondominio);
+
+        mn_consSituacao.setText("Situação");
+        mn_consSituacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_consSituacaoActionPerformed(evt);
+            }
+        });
+        mConsulta.add(mn_consSituacao);
 
         jMenuBar2.add(mConsulta);
 
@@ -120,14 +141,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
         consultaCondominio.setVisible(true);
     }//GEN-LAST:event_mn_consCondominioActionPerformed
 
+    private void mn_SituacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_SituacaoActionPerformed
+        CadastroSituacao cadastroSituacao = new CadastroSituacao(this, true, usuarioLogado);
+        cadastroSituacao.setLocationRelativeTo(this);
+        cadastroSituacao.setVisible(true);
+    }//GEN-LAST:event_mn_SituacaoActionPerformed
+
+    private void mn_consSituacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_consSituacaoActionPerformed
+        ConsultaSituacao consultaSituacao = new ConsultaSituacao(this,true,usuarioLogado);
+        consultaSituacao.setLocationRelativeTo(this);
+        consultaSituacao.setVisible(true);
+    }//GEN-LAST:event_mn_consSituacaoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JLabel lUsuarioLogado;
     private javax.swing.JMenu mCadastro;
     private javax.swing.JMenu mConsulta;
     private javax.swing.JMenu mSair;
+    private javax.swing.JMenuItem mn_Situacao;
     private javax.swing.JMenuItem mn_condominio;
     private javax.swing.JMenuItem mn_consCondominio;
+    private javax.swing.JMenuItem mn_consSituacao;
     private javax.swing.JMenuItem mn_usuario;
     // End of variables declaration//GEN-END:variables
 }

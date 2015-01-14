@@ -10,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
 public class SituacaoTableModel extends AbstractTableModel {
 
     private List<Situacao> situacoes;
-    private String[] cabecalhoColunas = {"Código", "Nome"};
+    private String[] cabecalhoColunas = {"Código", "Descrição"};
 
     public SituacaoTableModel() {
         try {
