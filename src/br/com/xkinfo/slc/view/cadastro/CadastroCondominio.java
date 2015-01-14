@@ -6,7 +6,6 @@ import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class CadastroCondominio extends javax.swing.JDialog {
 
@@ -243,7 +242,7 @@ public class CadastroCondominio extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        this.dispose();
+        dispose();
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalvarActionPerformed
@@ -288,12 +287,11 @@ public class CadastroCondominio extends javax.swing.JDialog {
         if (condominioSelecionado != null) {
             try {
                 ServiceFactory.getCondominioService().excluirCondominio(id);
-                JOptionPane.showMessageDialog(this, "Condominio Excluído com Sucesso!");
+                condominioSelecionado = null;
             } catch (Exception ex) {
                 Logger.getLogger(CadastroCondominio.class.getName()).log(Level.SEVERE, null, ex);
             }
-            condominioSelecionado = null;
-            this.dispose();
+            dispose();
         }
     }//GEN-LAST:event_bExcluirActionPerformed
 

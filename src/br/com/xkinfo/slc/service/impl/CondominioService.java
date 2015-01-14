@@ -64,7 +64,7 @@ public class CondominioService implements ICondominioService {
             cond.setUsuarioinclusao(usuario);
             cond.setDatainclusao(dataInclusao);
             DAOFactory.getCondominioDAO().incluirCondominio(cond);
-            JOptionPane.showMessageDialog(null, "Condominio inlcuído com sucesso!");
+            JOptionPane.showMessageDialog(null, "Condominio incluído com sucesso!");
             return true;
         } else {
             for (String lista1 : lista) {
@@ -130,7 +130,7 @@ public class CondominioService implements ICondominioService {
             cond.setUsuarioinclusao(usuarioinclusao);
             
             DAOFactory.getCondominioDAO().alterarCondominio(cond);
-            JOptionPane.showMessageDialog(null, "Condominio Alterado com Sucesso!");
+            JOptionPane.showMessageDialog(null, "Condominio alterado com Sucesso!");
             return true;
         } else {
             for (String lista1 : lista) {
@@ -144,6 +144,7 @@ public class CondominioService implements ICondominioService {
     @Override
     public void excluirCondominio(Integer id) throws Exception {
         DAOFactory.getCondominioDAO().excluirCondominio(getCondominio(id));
+        JOptionPane.showMessageDialog(null, "Condominio Excluído com Sucesso!");
     }
 
     @Override
