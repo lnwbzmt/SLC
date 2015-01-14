@@ -25,7 +25,7 @@ public class CadastroCondominio extends javax.swing.JDialog {
     public CadastroCondominio(Condominio condominio, java.awt.Frame parent, boolean modal, Usuario usuario) {
         this(parent, modal, usuario);
         usuarioLogado = usuario;
-        this.condominioSelecionado = condominio;
+        condominioSelecionado = condominio;
         tfCodigo.setText(condominioSelecionado.getId().toString());
         tfNome.setText(condominioSelecionado.getNome());
         tfCnpj.setText(String.valueOf(condominioSelecionado.getCnpj()));
@@ -266,8 +266,8 @@ public class CadastroCondominio extends javax.swing.JDialog {
                 Boolean alterar = ServiceFactory.getCondominioService().alterarCondominio(id, nome, cnpj, endereco, nr, comp, bairro, cidade, estado, sigla, email, usuarioLogado, usuarioInclusao, dataInclusao);
                 if (alterar == true) {
                     dispose();
+                    condominioSelecionado = null;
                 }
-                condominioSelecionado = null;
             } catch (Exception ex) {
                 Logger.getLogger(CadastroCondominio.class.getName()).log(Level.SEVERE, null, ex);
             }

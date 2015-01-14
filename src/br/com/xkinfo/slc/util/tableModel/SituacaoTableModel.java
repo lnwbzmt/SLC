@@ -35,7 +35,7 @@ public class SituacaoTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return situacoes.get(numLinha).getId();
+                return situacoes.get(numLinha).getCodigo();
             case 1:
                 return situacoes.get(numLinha).getDescricao();
         }

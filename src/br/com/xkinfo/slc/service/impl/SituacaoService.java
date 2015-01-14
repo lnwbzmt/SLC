@@ -14,7 +14,7 @@ public class SituacaoService implements ISituacaoService {
     private Date dataAlteracao;
 
     @Override
-    public void incluirSituacao(String codigo, String descricao, Usuario usuario) throws Exception {
+    public Boolean incluirSituacao(String codigo, String descricao, Usuario usuario) throws Exception {
         dataInclusao = new Date();
         Integer iCodigo = Integer.parseInt(codigo);
         Situacao situacao = new Situacao();
@@ -24,12 +24,14 @@ public class SituacaoService implements ISituacaoService {
         situacao.setDatainclusao(dataInclusao);
 
         DAOFactory.getSituacaoDAO().incluirSituacao(situacao);
-        
-         JOptionPane.showMessageDialog(null, "Situação Incluída com Sucesso!");
+
+        JOptionPane.showMessageDialog(null, "Situação Incluída com Sucesso!");
+
+        return true;
     }
 
     @Override
-    public void alterarSituacao(Integer id, String codigo, String descricao, Usuario usuario, Usuario usuarioInclusao, Date dataInclusao) throws Exception {
+    public Boolean alterarSituacao(Integer id, String codigo, String descricao, Usuario usuario, Usuario usuarioInclusao, Date dataInclusao) throws Exception {
         dataAlteracao = new Date();
         Integer iCodigo = Integer.parseInt(codigo);
         Situacao situacao = new Situacao();
@@ -40,7 +42,10 @@ public class SituacaoService implements ISituacaoService {
         situacao.setDataalteracao(dataAlteracao);
 
         DAOFactory.getSituacaoDAO().alterarSituacao(situacao);
+        
         JOptionPane.showMessageDialog(null, "Situação Alterada com Sucesso!");
+
+        return true;
     }
 
     @Override

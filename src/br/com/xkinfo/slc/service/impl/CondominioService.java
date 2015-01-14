@@ -81,8 +81,6 @@ public class CondominioService implements ICondominioService {
         dataAlteracao = new Date();
         Condominio cond = new Condominio();
         
-        JOptionPane.showMessageDialog(null, "alterar");
-        
         ArrayList<String> lista = new ArrayList(8);
         String ret = new String();
 

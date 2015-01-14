@@ -146,14 +146,20 @@ public class CadastroSituacao extends javax.swing.JDialog {
             Usuario usuarioInclusao = situacaoSelecionado.getUsuarioinclusao();
             Date dataInclusao = situacaoSelecionado.getDatainclusao();
             try {
-                ServiceFactory.getSituacaoService().alterarSituacao(id, codigo, descricao, usuarioLogado, usuarioInclusao, dataInclusao);
+                Boolean alterar = ServiceFactory.getSituacaoService().alterarSituacao(id, codigo, descricao, usuarioLogado, usuarioInclusao, dataInclusao);
+                if (alterar == true) {
+                    dispose();
+                }
+                situacaoSelecionado = null;
             } catch (Exception ex) {
                 Logger.getLogger(CadastroSituacao.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             try {
-                ServiceFactory.getSituacaoService().incluirSituacao(codigo, descricao, usuarioLogado);
-               
+                Boolean incluir = ServiceFactory.getSituacaoService().incluirSituacao(codigo, descricao, usuarioLogado);
+               if (incluir == true) {
+                   dispose();
+               }
             } catch (Exception ex) {
                 Logger.getLogger(CadastroSituacao.class.getName()).log(Level.SEVERE, null, ex);
             }
