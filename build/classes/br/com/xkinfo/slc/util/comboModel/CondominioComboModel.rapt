@@ -1,0 +1,16 @@
+br/com/xkinfo/slc/modelo/HidrometroUc_.java
+br/com/xkinfo/slc/modelo/Leitura_.java
+br/com/xkinfo/slc/modelo/ItensFatura_.java
+br/com/xkinfo/slc/modelo/Usuario_.java
+br/com/xkinfo/slc/modelo/PessoaUc_.java
+br/com/xkinfo/slc/modelo/ItensValor_.java
+br/com/xkinfo/slc/modelo/Hidrometro_.java
+br/com/xkinfo/slc/modelo/Condominio_.java
+br/com/xkinfo/slc/modelo/Pessoa_.java
+br/com/xkinfo/slc/modelo/Caixa_.java
+br/com/xkinfo/slc/modelo/Competencia_.java
+br/com/xkinfo/slc/modelo/Itens_.java
+br/com/xkinfo/slc/modelo/Ocorrencia_.java
+br/com/xkinfo/slc/modelo/UnidadeConsumidora_.java
+br/com/xkinfo/slc/modelo/Fatura_.java
+br/com/xkinfo/slc/modelo/Situacao_.java

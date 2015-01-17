@@ -4,6 +4,7 @@ import br.com.xkinfo.slc.view.consulta.ConsultaCondominio;
 import br.com.xkinfo.slc.view.cadastro.CadastroCondominio;
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.view.cadastro.CadastroSituacao;
+import br.com.xkinfo.slc.view.consulta.ConsultaCompetencia;
 import br.com.xkinfo.slc.view.consulta.ConsultaSituacao;
 
 public class TelaPrincipal extends javax.swing.JFrame {
@@ -26,6 +27,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mn_condominio = new javax.swing.JMenuItem();
         mn_usuario = new javax.swing.JMenuItem();
         mn_Situacao = new javax.swing.JMenuItem();
+        mn_competencia = new javax.swing.JMenuItem();
         mConsulta = new javax.swing.JMenu();
         mn_consCondominio = new javax.swing.JMenuItem();
         mn_consSituacao = new javax.swing.JMenuItem();
@@ -64,6 +66,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         mCadastro.add(mn_Situacao);
+
+        mn_competencia.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
+        mn_competencia.setText("Competencia");
+        mn_competencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_competenciaActionPerformed(evt);
+            }
+        });
+        mCadastro.add(mn_competencia);
 
         jMenuBar2.add(mCadastro);
 
@@ -153,6 +164,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         consultaSituacao.setVisible(true);
     }//GEN-LAST:event_mn_consSituacaoActionPerformed
 
+    private void mn_competenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_competenciaActionPerformed
+        // TODO add your handling code here:
+        ConsultaCompetencia consultaCompetencia = new ConsultaCompetencia(this,true,usuarioLogado);
+        consultaCompetencia.setLocationRelativeTo(this);
+        consultaCompetencia.setVisible(true);
+
+    }//GEN-LAST:event_mn_competenciaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JLabel lUsuarioLogado;
@@ -160,6 +179,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu mConsulta;
     private javax.swing.JMenu mSair;
     private javax.swing.JMenuItem mn_Situacao;
+    private javax.swing.JMenuItem mn_competencia;
     private javax.swing.JMenuItem mn_condominio;
     private javax.swing.JMenuItem mn_consCondominio;
     private javax.swing.JMenuItem mn_consSituacao;
