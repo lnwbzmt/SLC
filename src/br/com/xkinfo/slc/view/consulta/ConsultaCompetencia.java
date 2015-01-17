@@ -2,6 +2,7 @@ package br.com.xkinfo.slc.view.consulta;
 
 import br.com.xkinfo.slc.view.cadastro.CadastroCompetencia;
 import br.com.xkinfo.slc.modelo.Competencia;
+import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.util.tableModel.CompetenciaTableModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
@@ -11,10 +12,10 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 public class ConsultaCompetencia extends javax.swing.JDialog {
-
-    public ConsultaCompetencia(java.awt.Frame parent, boolean modal) {
+    private Usuario usuarioLogado;
+    public ConsultaCompetencia(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
-
+        usuarioLogado = usuario;
         initComponents();
         // Lógica para manipular uma linha do JTable quando esta é selecionada    
         ListSelectionModel linhaModeloSelecao = jtCompetencias.getSelectionModel();
@@ -35,7 +36,7 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
                     
                     Competencia competenciaSelecionado = ((CompetenciaTableModel) jtCompetencias.getModel()).getCompetencias().get(linhaSelecionada);
                     if (competenciaSelecionado != null) {
-                        CadastroCompetencia cadastroCompetencia = new CadastroCompetencia(competenciaSelecionado, null, true);
+                        CadastroCompetencia cadastroCompetencia = new CadastroCompetencia(competenciaSelecionado, null, true,usuarioLogado);
                         cadastroCompetencia.setLocationRelativeTo(jScrollPane1.getParent());
                         cadastroCompetencia.setVisible(true);
                         jtCompetencias.setModel(new CompetenciaTableModel());
@@ -157,7 +158,7 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNovoActionPerformed
-        CadastroCompetencia cadastroCompetencia = new CadastroCompetencia(null, true);
+        CadastroCompetencia cadastroCompetencia = new CadastroCompetencia(null, true,usuarioLogado);
         cadastroCompetencia.setLocationRelativeTo(this);
         cadastroCompetencia.setVisible(true);
     }//GEN-LAST:event_bNovoActionPerformed

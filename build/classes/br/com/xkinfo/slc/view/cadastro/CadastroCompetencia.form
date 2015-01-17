@@ -45,7 +45,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="45" max="32767" attributes="0"/>
+              <EmptySpace pref="51" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="bSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -72,24 +72,24 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jPanel2" max="32767" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="lCompetencia" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tfCompetencia" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="jdCompetencia" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="496" max="32767" attributes="0"/>
+                  <EmptySpace pref="473" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lCompetencia" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfCompetencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="lCompetencia" min="-2" max="-2" attributes="0"/>
+                      <Component id="jdCompetencia" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
@@ -102,13 +102,6 @@
         <Component class="javax.swing.JLabel" name="lCompetencia">
           <Properties>
             <Property name="text" type="java.lang.String" value="Compet&#xea;ncia:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="tfCompetencia">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format format="MM/yyyy" subtype="-1" type="1"/>
-            </Property>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
@@ -129,7 +122,7 @@
                           <Component id="rbSituacao" min="-2" max="-2" attributes="0"/>
                           <Component id="jRadioButton2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="111" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -157,6 +150,11 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="com.toedter.calendar.JDateChooser" name="jdCompetencia">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="MM/yyyy"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JButton" name="bSalvar">

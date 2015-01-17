@@ -134,9 +134,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Competencia:"/>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Competencia:"/>
-      </AccessibilityProperties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtFiltro">
       <Events>
