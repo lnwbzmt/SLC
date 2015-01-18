@@ -172,10 +172,9 @@ public class CadastroCompetencia extends javax.swing.JDialog {
                 Logger.getLogger(CadastroCompetencia.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            //Competencia competencia = new Competencia(null,null,null,null,null,0,null,tfNome.getText(),0,null,null);
             try {
 
-                //ServiceFactory.getCompetenciaService().incluirCompetencia(competencia);
+                ServiceFactory.getCompetenciaService().incluirCompetencia(Date.valueOf(jdCompetencia.getDateFormatString()),null,null);
                 JOptionPane.showMessageDialog(this, "Competencia Inlcuído com Sucesso!");
             } catch (Exception ex) {
                 Logger.getLogger(CadastroCompetencia.class.getName()).log(Level.SEVERE, null, ex);
