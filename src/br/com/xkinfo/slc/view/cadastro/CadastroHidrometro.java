@@ -44,6 +44,8 @@ public class CadastroHidrometro extends javax.swing.JDialog {
         tfCodigo = new javax.swing.JTextField();
         lNome1 = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
+        jdDataRecebimento = new com.toedter.calendar.JDateChooser();
+        lNome2 = new javax.swing.JLabel();
         bSalvar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
         bExcluir = new javax.swing.JButton();
@@ -56,7 +58,9 @@ public class CadastroHidrometro extends javax.swing.JDialog {
 
         lNome.setText("Código:");
 
-        lNome1.setText("Nome:");
+        lNome1.setText("Numero Serie:");
+
+        lNome2.setText("Data Aquisicao:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -66,17 +70,19 @@ public class CadastroHidrometro extends javax.swing.JDialog {
                 .addGap(79, 79, 79)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lNome1)
-                    .addComponent(lNome))
+                    .addComponent(lNome)
+                    .addComponent(lNome2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(257, Short.MAX_VALUE))
+                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdDataRecebimento, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(418, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lNome)
                     .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -84,7 +90,11 @@ public class CadastroHidrometro extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lNome1)
                     .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jdDataRecebimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lNome2))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         bSalvar.setText("Salvar");
@@ -113,7 +123,7 @@ public class CadastroHidrometro extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 554, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(bSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,7 +132,7 @@ public class CadastroHidrometro extends javax.swing.JDialog {
                 .addGap(27, 27, 27))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,8 +197,10 @@ public class CadastroHidrometro extends javax.swing.JDialog {
     private javax.swing.JButton bExcluir;
     private javax.swing.JButton bSalvar;
     private javax.swing.JPanel jPanel1;
+    private com.toedter.calendar.JDateChooser jdDataRecebimento;
     private javax.swing.JLabel lNome;
     private javax.swing.JLabel lNome1;
+    private javax.swing.JLabel lNome2;
     private javax.swing.JTextField tfCodigo;
     private javax.swing.JTextField tfNome;
     // End of variables declaration//GEN-END:variables

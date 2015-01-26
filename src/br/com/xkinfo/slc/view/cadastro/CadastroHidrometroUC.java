@@ -42,8 +42,18 @@ public class CadastroHidrometroUC extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         lNome = new javax.swing.JLabel();
         tfCodigo = new javax.swing.JTextField();
-        lNome1 = new javax.swing.JLabel();
-        tfNome = new javax.swing.JTextField();
+        lNome2 = new javax.swing.JLabel();
+        lNome3 = new javax.swing.JLabel();
+        jdDataRecebimento = new com.toedter.calendar.JDateChooser();
+        tfCodigo1 = new javax.swing.JTextField();
+        tfCodigo2 = new javax.swing.JTextField();
+        lNome4 = new javax.swing.JLabel();
+        lNome5 = new javax.swing.JLabel();
+        jdDataRecebimento1 = new com.toedter.calendar.JDateChooser();
+        lNome6 = new javax.swing.JLabel();
+        jdDataRecebimento2 = new com.toedter.calendar.JDateChooser();
+        lNome7 = new javax.swing.JLabel();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         bSalvar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
         bExcluir = new javax.swing.JButton();
@@ -56,22 +66,44 @@ public class CadastroHidrometroUC extends javax.swing.JDialog {
 
         lNome.setText("Código:");
 
-        lNome1.setText("Nome:");
+        lNome2.setText("Hidrometro:");
+
+        lNome3.setText("Unidade Consumidora:");
+
+        lNome4.setText("Data Retirada:");
+
+        lNome5.setText("Data Instalacao:");
+
+        lNome6.setText("Data Ultima Leitura:");
+
+        lNome7.setText("Ultima Leitura:");
+
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lNome1)
-                    .addComponent(lNome))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lNome3)
+                    .addComponent(lNome2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lNome, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lNome4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lNome5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lNome6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lNome7, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jdDataRecebimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(257, Short.MAX_VALUE))
+                    .addComponent(tfCodigo1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCodigo2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdDataRecebimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdDataRecebimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(441, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,9 +114,32 @@ public class CadastroHidrometroUC extends javax.swing.JDialog {
                     .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lNome1)
-                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(tfCodigo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lNome2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfCodigo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lNome3))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lNome5)
+                    .addComponent(jdDataRecebimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jdDataRecebimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jdDataRecebimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lNome4)
+                        .addGap(18, 18, 18)
+                        .addComponent(lNome6)
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lNome7)
+                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         bSalvar.setText("Salvar");
@@ -186,10 +241,20 @@ public class CadastroHidrometroUC extends javax.swing.JDialog {
     private javax.swing.JButton bCancelar;
     private javax.swing.JButton bExcluir;
     private javax.swing.JButton bSalvar;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JPanel jPanel1;
+    private com.toedter.calendar.JDateChooser jdDataRecebimento;
+    private com.toedter.calendar.JDateChooser jdDataRecebimento1;
+    private com.toedter.calendar.JDateChooser jdDataRecebimento2;
     private javax.swing.JLabel lNome;
-    private javax.swing.JLabel lNome1;
+    private javax.swing.JLabel lNome2;
+    private javax.swing.JLabel lNome3;
+    private javax.swing.JLabel lNome4;
+    private javax.swing.JLabel lNome5;
+    private javax.swing.JLabel lNome6;
+    private javax.swing.JLabel lNome7;
     private javax.swing.JTextField tfCodigo;
-    private javax.swing.JTextField tfNome;
+    private javax.swing.JTextField tfCodigo1;
+    private javax.swing.JTextField tfCodigo2;
     // End of variables declaration//GEN-END:variables
 }

@@ -34,11 +34,18 @@ public class CadastroOcorrencia extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         lNome = new javax.swing.JLabel();
         tfCodigo = new javax.swing.JTextField();
         lNome1 = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
         bSalvar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
         bExcluir = new javax.swing.JButton();
@@ -53,6 +60,12 @@ public class CadastroOcorrencia extends javax.swing.JDialog {
 
         lNome1.setText("Descrição:");
 
+        jRadioButton1.setText("Minima");
+
+        jRadioButton2.setText("Maxima");
+
+        jRadioButton3.setText("Media");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -64,8 +77,11 @@ public class CadastroOcorrencia extends javax.swing.JDialog {
                     .addComponent(lNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButton3)
                     .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2))
                 .addContainerGap(257, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -79,7 +95,13 @@ public class CadastroOcorrencia extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lNome1)
                     .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton3)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         bSalvar.setText("Salvar");
@@ -188,7 +210,14 @@ public class CadastroOcorrencia extends javax.swing.JDialog {
     private javax.swing.JButton bCancelar;
     private javax.swing.JButton bExcluir;
     private javax.swing.JButton bSalvar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JLabel lNome;
     private javax.swing.JLabel lNome1;
     private javax.swing.JTextField tfCodigo;

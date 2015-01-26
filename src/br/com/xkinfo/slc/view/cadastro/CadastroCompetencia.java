@@ -18,13 +18,16 @@ public class CadastroCompetencia extends javax.swing.JDialog {
         initComponents();
         bExcluir.setVisible(false);
         usuarioLogado = usuario;
+        getRootPane().setDefaultButton(bSalvar);
     }
 
     public CadastroCompetencia(Competencia competencia, java.awt.Frame parent, boolean modal, Usuario usuario) {
         this(parent, modal, usuario);
+        usuarioLogado = usuario;
         this.competenciaSelecionado = competencia;
         jdCompetencia.setDate(competencia.getCompetencia());
-        // Mostra o botão Excluir     
+        rbAberta.setSelected(true);
+        rbFechada.setSelected(false);
         bExcluir.setVisible(true);
     }
 
@@ -35,9 +38,11 @@ public class CadastroCompetencia extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         lCompetencia = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        rbSituacao = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rbAberta = new javax.swing.JRadioButton();
+        rbFechada = new javax.swing.JRadioButton();
         jdCompetencia = new com.toedter.calendar.JDateChooser();
+        lCompetencia1 = new javax.swing.JLabel();
+        tfCodigo = new javax.swing.JTextField();
         bSalvar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
         bExcluir = new javax.swing.JButton();
@@ -48,13 +53,13 @@ public class CadastroCompetencia extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do Competencias"));
 
-        lCompetencia.setText("Competência:");
+        lCompetencia.setText("Codigo:");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Situação"));
 
-        rbSituacao.setText("Aberta");
+        rbAberta.setText("Aberta");
 
-        jRadioButton2.setText("Fechada");
+        rbFechada.setText("Fechada");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -63,20 +68,22 @@ public class CadastroCompetencia extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbSituacao)
-                    .addComponent(jRadioButton2))
+                    .addComponent(rbAberta)
+                    .addComponent(rbFechada))
                 .addContainerGap(111, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(rbSituacao)
+                .addComponent(rbAberta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(rbFechada)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jdCompetencia.setDateFormatString("MM/yyyy");
+
+        lCompetencia1.setText("Competência:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,18 +93,26 @@ public class CadastroCompetencia extends javax.swing.JDialog {
                 .addGap(79, 79, 79)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lCompetencia1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
                         .addComponent(lCompetencia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jdCompetencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jdCompetencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(473, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lCompetencia))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lCompetencia)
+                    .addComponent(lCompetencia1)
                     .addComponent(jdCompetencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -146,7 +161,7 @@ public class CadastroCompetencia extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bSalvar)
                     .addComponent(bCancelar)
@@ -203,9 +218,11 @@ public class CadastroCompetencia extends javax.swing.JDialog {
     private javax.swing.JButton bSalvar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton2;
     private com.toedter.calendar.JDateChooser jdCompetencia;
     private javax.swing.JLabel lCompetencia;
-    private javax.swing.JRadioButton rbSituacao;
+    private javax.swing.JLabel lCompetencia1;
+    private javax.swing.JRadioButton rbAberta;
+    private javax.swing.JRadioButton rbFechada;
+    private javax.swing.JTextField tfCodigo;
     // End of variables declaration//GEN-END:variables
 }
