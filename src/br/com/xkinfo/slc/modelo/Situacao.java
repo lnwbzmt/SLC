@@ -133,4 +133,8 @@ public class Situacao implements Serializable {
         this.descricao = descricao;
     }
 
+    @Override
+    public String toString() {
+        return descricao;
+    }
 }

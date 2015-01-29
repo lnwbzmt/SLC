@@ -3,6 +3,7 @@ package br.com.xkinfo.slc.view;
 import br.com.xkinfo.slc.view.consulta.ConsultaCondominio;
 import br.com.xkinfo.slc.view.cadastro.CadastroCondominio;
 import br.com.xkinfo.slc.modelo.Usuario;
+import br.com.xkinfo.slc.view.cadastro.CadastroCompetencia;
 import br.com.xkinfo.slc.view.cadastro.CadastroSituacao;
 import br.com.xkinfo.slc.view.consulta.ConsultaCompetencia;
 import br.com.xkinfo.slc.view.consulta.ConsultaSituacao;
@@ -165,10 +166,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mn_consSituacaoActionPerformed
 
     private void mn_competenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_competenciaActionPerformed
-        // TODO add your handling code here:
-        ConsultaCompetencia consultaCompetencia = new ConsultaCompetencia(this,true,usuarioLogado);
-        consultaCompetencia.setLocationRelativeTo(this);
-        consultaCompetencia.setVisible(true);
+        CadastroCompetencia cadastroCompetencia = new CadastroCompetencia(this,true,usuarioLogado);
+        cadastroCompetencia.setLocationRelativeTo(this);
+        cadastroCompetencia.setVisible(true);
 
     }//GEN-LAST:event_mn_competenciaActionPerformed
 

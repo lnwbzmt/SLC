@@ -3,6 +3,7 @@ package br.com.xkinfo.slc.view.cadastro;
 import br.com.xkinfo.slc.modelo.Competencia;
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.ServiceFactory;
+import br.com.xkinfo.slc.util.comboModel.SituacaoComboModel;
 import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -58,6 +59,8 @@ public class CadastroCompetencia extends javax.swing.JDialog {
         lCompetencia1.setText("Competência:");
 
         jLabel1.setText("Situação:");
+
+        jComboBox1.setModel(new SituacaoComboModel());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
