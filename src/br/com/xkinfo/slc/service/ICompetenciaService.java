@@ -8,9 +8,9 @@ import java.util.Date;
 
 public interface ICompetenciaService {
 
-    public void incluirCompetencia(Date competencia, Situacao situacao, Usuario usuario) throws Exception;
+    public Boolean incluirCompetencia(Date competencia, Situacao situacao, Usuario usuario) throws Exception;
 
-    public void alterarCompetencia(Integer id, Date competencia, Situacao situacao, Usuario usuario) throws Exception;
+    public Boolean alterarCompetencia(Integer id, Date competencia, Situacao situacao, Usuario usuario, Usuario usuarioInclusao, Date DataInclusao) throws Exception;
 
     public void excluirCompetencia(Integer id) throws Exception;
 

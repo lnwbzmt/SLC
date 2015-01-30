@@ -18,7 +18,7 @@ public class CondominioService implements ICondominioService {
             String cidade, String estado, String sigla, String email, Usuario usuario) throws Exception {
         dataInclusao = new Date();
         Condominio cond = new Condominio();
-        
+
         ArrayList<String> lista = new ArrayList(8);
         String ret = new String();
 
@@ -80,7 +80,7 @@ public class CondominioService implements ICondominioService {
             String cidade, String estado, String sigla, String email, Usuario usuario, Usuario usuarioinclusao, Date dataInclusao) throws Exception {
         dataAlteracao = new Date();
         Condominio cond = new Condominio();
-        
+
         ArrayList<String> lista = new ArrayList(8);
         String ret = new String();
 
@@ -128,7 +128,7 @@ public class CondominioService implements ICondominioService {
             cond.setDataalteracao(dataAlteracao);
             cond.setDatainclusao(dataInclusao);
             cond.setUsuarioinclusao(usuarioinclusao);
-            
+
             DAOFactory.getCondominioDAO().alterarCondominio(cond);
             JOptionPane.showMessageDialog(null, "Condominio alterado com Sucesso!");
             return true;
