@@ -168,10 +168,9 @@ public class CadastroSituacao extends javax.swing.JDialog {
     }//GEN-LAST:event_bSalvarActionPerformed
 
     private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed
-        Integer id = situacaoSelecionado.getId();
         if (situacaoSelecionado != null) {
             try {
-                ServiceFactory.getSituacaoService().excluirSituacao(id);
+                ServiceFactory.getSituacaoService().excluirSituacao(situacaoSelecionado.getId());
                 situacaoSelecionado = null;
             } catch (Exception ex) {
                 Logger.getLogger(CadastroSituacao.class.getName()).log(Level.SEVERE, null, ex);

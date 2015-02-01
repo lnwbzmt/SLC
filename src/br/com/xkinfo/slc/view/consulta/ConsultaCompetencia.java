@@ -12,7 +12,9 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 public class ConsultaCompetencia extends javax.swing.JDialog {
+
     private Usuario usuarioLogado;
+
     public ConsultaCompetencia(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
         usuarioLogado = usuario;
@@ -31,21 +33,19 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
                 // Verifica se existe uma linha selecionada. O
                 // valor deve ser maior ou igual a 0, que é o número da linha
                 if (jtCompetencias.getSelectedRow() >= 0) {
-                    
+
                     Integer linhaSelecionada = jtCompetencias.getSelectedRow();
-                    
+
                     Competencia competenciaSelecionado = ((CompetenciaTableModel) jtCompetencias.getModel()).getCompetencias().get(linhaSelecionada);
                     if (competenciaSelecionado != null) {
-                        CadastroCompetencia cadastroCompetencia = new CadastroCompetencia(competenciaSelecionado, null, true,usuarioLogado);
+                        CadastroCompetencia cadastroCompetencia = new CadastroCompetencia(competenciaSelecionado, null, true, usuarioLogado);
                         cadastroCompetencia.setLocationRelativeTo(jScrollPane1.getParent());
                         cadastroCompetencia.setVisible(true);
                         jtCompetencias.setModel(new CompetenciaTableModel());
                     }
                 }
             }
-
         });
-
     }
 
     @SuppressWarnings("unchecked")
@@ -153,7 +153,7 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNovoActionPerformed
-        CadastroCompetencia cadastroCompetencia = new CadastroCompetencia(null, true,usuarioLogado);
+        CadastroCompetencia cadastroCompetencia = new CadastroCompetencia(null, true, usuarioLogado);
         cadastroCompetencia.setLocationRelativeTo(this);
         cadastroCompetencia.setVisible(true);
     }//GEN-LAST:event_bNovoActionPerformed

@@ -10,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
 public class CompetenciaTableModel extends AbstractTableModel {
 
     private List<Competencia> competencias;
-    private String[] cabecalhoColunas = {"Código", "Nome"};
+    private String[] cabecalhoColunas = {"Competência", "Situação"};
 
     public CompetenciaTableModel() {
         try {
@@ -35,9 +35,9 @@ public class CompetenciaTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return competencias.get(numLinha).getId();
-            case 1:
                 return competencias.get(numLinha).getCompetencia();
+            case 1:
+                return competencias.get(numLinha).getSituacao().getDescricao();
         }
         return null;
     }
