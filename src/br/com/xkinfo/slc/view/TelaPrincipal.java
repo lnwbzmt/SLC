@@ -32,6 +32,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mConsulta = new javax.swing.JMenu();
         mn_consCondominio = new javax.swing.JMenuItem();
         mn_consSituacao = new javax.swing.JMenuItem();
+        mn_consCompetencia = new javax.swing.JMenuItem();
         mSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,6 +98,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mConsulta.add(mn_consSituacao);
 
+        mn_consCompetencia.setText("Competência");
+        mn_consCompetencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_consCompetenciaActionPerformed(evt);
+            }
+        });
+        mConsulta.add(mn_consCompetencia);
+
         jMenuBar2.add(mConsulta);
 
         mSair.setText("Sair");
@@ -160,17 +169,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mn_SituacaoActionPerformed
 
     private void mn_consSituacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_consSituacaoActionPerformed
-        ConsultaSituacao consultaSituacao = new ConsultaSituacao(this,true,usuarioLogado);
+        ConsultaSituacao consultaSituacao = new ConsultaSituacao(this, true, usuarioLogado);
         consultaSituacao.setLocationRelativeTo(this);
         consultaSituacao.setVisible(true);
     }//GEN-LAST:event_mn_consSituacaoActionPerformed
 
     private void mn_competenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_competenciaActionPerformed
-        CadastroCompetencia cadastroCompetencia = new CadastroCompetencia(this,true,usuarioLogado);
+        CadastroCompetencia cadastroCompetencia = new CadastroCompetencia(this, true, usuarioLogado);
         cadastroCompetencia.setLocationRelativeTo(this);
         cadastroCompetencia.setVisible(true);
 
     }//GEN-LAST:event_mn_competenciaActionPerformed
+
+    private void mn_consCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_consCompetenciaActionPerformed
+        ConsultaCompetencia consultaCompetencia = new ConsultaCompetencia(this, true, usuarioLogado);
+        consultaCompetencia.setLocationRelativeTo(this);
+        consultaCompetencia.setVisible(true);
+    }//GEN-LAST:event_mn_consCompetenciaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar2;
@@ -181,6 +196,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mn_Situacao;
     private javax.swing.JMenuItem mn_competencia;
     private javax.swing.JMenuItem mn_condominio;
+    private javax.swing.JMenuItem mn_consCompetencia;
     private javax.swing.JMenuItem mn_consCondominio;
     private javax.swing.JMenuItem mn_consSituacao;
     private javax.swing.JMenuItem mn_usuario;

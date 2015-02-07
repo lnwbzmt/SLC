@@ -35,7 +35,7 @@ public class CompetenciaService implements ICompetenciaService {
             comp.setUsuarioinclusao(usuario);
             comp.setDatainclusao(dataInclusao);
             DAOFactory.getCompetenciaDAO().incluirCompetencia(comp);
-            JOptionPane.showMessageDialog(null, "Competência inlcuída com sucesso!");
+            JOptionPane.showMessageDialog(null, "Competência incluída com sucesso!");
             return true;
         } else {
             for (String lista1 : lista) {

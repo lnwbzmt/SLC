@@ -5,7 +5,7 @@ import br.com.xkinfo.slc.modelo.Situacao;
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.ServiceFactory;
 import br.com.xkinfo.slc.util.comboModel.SituacaoComboModel;
-import java.sql.Date;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,6 +28,7 @@ public class CadastroCompetencia extends javax.swing.JDialog {
         usuarioLogado = usuario;
         competenciaSelecionado = competencia;
         jdCompetencia.setDate(competencia.getCompetencia());
+        cbSituacao.setSelectedItem(competenciaSelecionado.getSituacao());
         bExcluir.setVisible(true);
         jTextField3.setText(competenciaSelecionado.getUsuarioinclusao().getNome());
         jTextField2.setText(competenciaSelecionado.getDatainclusao().toString());
@@ -221,13 +222,13 @@ public class CadastroCompetencia extends javax.swing.JDialog {
 
     private void bSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalvarActionPerformed
         if (competenciaSelecionado != null) {
-            competenciaSelecionado.setCompetencia(Date.valueOf(jdCompetencia.getDateFormatString()));
+            competenciaSelecionado.setCompetencia(jdCompetencia.getDate());
             try {
                 Integer id = competenciaSelecionado.getId();
                 Usuario usuarioInclusao = competenciaSelecionado.getUsuarioinclusao();
-                Date dataInclusao = (Date) competenciaSelecionado.getDatainclusao();
+                Date dataInclusao = competenciaSelecionado.getDatainclusao();
                 Situacao situacao = (Situacao) cbSituacao.getSelectedItem();
-                Boolean alterar = ServiceFactory.getCompetenciaService().alterarCompetencia(id, Date.valueOf(jdCompetencia.getDateFormatString()), situacao, usuarioLogado, usuarioInclusao, dataInclusao);
+                Boolean alterar = ServiceFactory.getCompetenciaService().alterarCompetencia(id, jdCompetencia.getDate(), situacao, usuarioLogado, usuarioInclusao, dataInclusao);
                 if (alterar == true) {
                     competenciaSelecionado = null;
                     dispose();
@@ -238,7 +239,7 @@ public class CadastroCompetencia extends javax.swing.JDialog {
         } else {
             try {
                 Situacao situacao = (Situacao) cbSituacao.getSelectedItem();
-                Boolean incluir = ServiceFactory.getCompetenciaService().incluirCompetencia(Date.valueOf(jdCompetencia.getDateFormatString()), situacao, usuarioLogado);
+                Boolean incluir = ServiceFactory.getCompetenciaService().incluirCompetencia(jdCompetencia.getDate(), situacao, usuarioLogado);
                 if (incluir == true) {
                     dispose();
                 }
