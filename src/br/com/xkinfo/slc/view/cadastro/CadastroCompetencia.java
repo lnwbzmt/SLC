@@ -25,6 +25,7 @@ public class CadastroCompetencia extends javax.swing.JDialog {
 
     public CadastroCompetencia(Competencia competencia, java.awt.Frame parent, boolean modal, Usuario usuario) {
         this(parent, modal, usuario);
+        jdCompetencia.setEnabled(false);
         usuarioLogado = usuario;
         competenciaSelecionado = competencia;
         jdCompetencia.setDate(competencia.getCompetencia());
@@ -222,7 +223,7 @@ public class CadastroCompetencia extends javax.swing.JDialog {
 
     private void bSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalvarActionPerformed
         if (competenciaSelecionado != null) {
-            competenciaSelecionado.setCompetencia(jdCompetencia.getDate());
+            //competenciaSelecionado.setCompetencia(jdCompetencia.getDate());
             try {
                 Integer id = competenciaSelecionado.getId();
                 Usuario usuarioInclusao = competenciaSelecionado.getUsuarioinclusao();

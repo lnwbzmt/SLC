@@ -10,7 +10,7 @@ public interface ICompetenciaService {
 
     public Boolean incluirCompetencia(Date competencia, Situacao situacao, Usuario usuario) throws Exception;
 
-    public Boolean alterarCompetencia(Integer id, Date competencia, Situacao situacao, Usuario usuario, Usuario usuarioInclusao, Date DataInclusao) throws Exception;
+    public Boolean alterarCompetencia(Integer id, Date competencia, Situacao situacao, Usuario usuario, Usuario usuarioInclusao, Date dataInclusao) throws Exception;
 
     public void excluirCompetencia(Integer id) throws Exception;
 

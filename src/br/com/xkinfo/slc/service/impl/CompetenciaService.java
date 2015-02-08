@@ -47,7 +47,7 @@ public class CompetenciaService implements ICompetenciaService {
     }
 
     @Override
-    public Boolean alterarCompetencia(Integer id, Date competencia, Situacao situacao, Usuario usuario, Usuario usuarioInclusao, Date DataInclusao) throws Exception {
+    public Boolean alterarCompetencia(Integer id, Date competencia, Situacao situacao, Usuario usuario, Usuario usuarioInclusao, Date dataInclusao) throws Exception {
         dataAlterecao = new Date();
         Competencia comp = new Competencia();
 
@@ -67,6 +67,8 @@ public class CompetenciaService implements ICompetenciaService {
             comp.setSituacao(situacao);
             comp.setUsuarioalteracao(usuario);
             comp.setDataalteracao(dataAlterecao);
+            comp.setUsuarioinclusao(usuarioInclusao);
+            comp.setDatainclusao(dataInclusao);
 
             DAOFactory.getCompetenciaDAO().alterarCompetencia(comp);
             JOptionPane.showMessageDialog(null, "Competência alterada com sucesso!");

@@ -33,19 +33,39 @@ public class SituacaoService implements ISituacaoService {
     @Override
     public Boolean alterarSituacao(Integer id, String codigo, String descricao, Usuario usuario, Usuario usuarioInclusao, Date dataInclusao) throws Exception {
         dataAlteracao = new Date();
-        Integer iCodigo = Integer.parseInt(codigo);
         Situacao situacao = new Situacao();
-        situacao.setId(id);
-        situacao.setCodigo(iCodigo);
-        situacao.setDescricao(descricao);
-        situacao.setUsuarioalteracao(usuario);
-        situacao.setDataalteracao(dataAlteracao);
-
-        DAOFactory.getSituacaoDAO().alterarSituacao(situacao);
         
-        JOptionPane.showMessageDialog(null, "Situação Alterada com Sucesso!");
+        ArrayList<String> lista = new ArrayList(8);
+        String ret = new String();
 
-        return true;
+        if (codigo == null || codigo.equalsIgnoreCase("")) {
+            lista.add("Codigo");
+        }
+        if (descricao == null || descricao.equalsIgnoreCase("")) {
+            lista.add("Descrição");
+        }
+
+        if (lista.isEmpty()) {
+            Integer iCodigo = Integer.parseInt(codigo);
+            situacao.setId(id);
+            situacao.setCodigo(iCodigo);
+            situacao.setDescricao(descricao);
+            situacao.setUsuarioalteracao(usuario);
+            situacao.setDataalteracao(dataAlteracao);
+            situacao.setUsuarioinclusao(usuarioInclusao);
+            situacao.setDatainclusao(dataInclusao);
+
+            DAOFactory.getSituacaoDAO().alterarSituacao(situacao);
+            JOptionPane.showMessageDialog(null, "Situação Alterada com Sucesso!");
+            return true;
+            
+        } else {
+            for (String lista1 : lista) {
+                ret = ret + lista1 + "\n";
+            }
+            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
+            return false;
+        }
     }
 
     @Override
