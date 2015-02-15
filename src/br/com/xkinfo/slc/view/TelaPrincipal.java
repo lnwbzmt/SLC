@@ -26,9 +26,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         mCadastro = new javax.swing.JMenu();
         mn_condominio = new javax.swing.JMenuItem();
-        mn_usuario = new javax.swing.JMenuItem();
         mn_Situacao = new javax.swing.JMenuItem();
         mn_competencia = new javax.swing.JMenuItem();
+        mn_usuario = new javax.swing.JMenuItem();
         mConsulta = new javax.swing.JMenu();
         mn_consCondominio = new javax.swing.JMenuItem();
         mn_consSituacao = new javax.swing.JMenuItem();
@@ -51,15 +51,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mCadastro.add(mn_condominio);
 
-        mn_usuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        mn_usuario.setText("Usuários");
-        mn_usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mn_usuarioActionPerformed(evt);
-            }
-        });
-        mCadastro.add(mn_usuario);
-
         mn_Situacao.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         mn_Situacao.setText("Situação");
         mn_Situacao.addActionListener(new java.awt.event.ActionListener() {
@@ -70,13 +61,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mCadastro.add(mn_Situacao);
 
         mn_competencia.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
-        mn_competencia.setText("Competencia");
+        mn_competencia.setText("Competência");
         mn_competencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mn_competenciaActionPerformed(evt);
             }
         });
         mCadastro.add(mn_competencia);
+
+        mn_usuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        mn_usuario.setText("Usuários");
+        mn_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_usuarioActionPerformed(evt);
+            }
+        });
+        mCadastro.add(mn_usuario);
 
         jMenuBar2.add(mCadastro);
 
