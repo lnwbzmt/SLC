@@ -6,6 +6,7 @@ import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.IHidrometroService;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 public class HidrometroService implements IHidrometroService {
 
@@ -13,19 +14,21 @@ public class HidrometroService implements IHidrometroService {
     private Date dataAlteracao;
 
     @Override
-    public void incluirHidrometro(String serie, Date dataAquisicao, Usuario usuario) throws Exception {
+    public Boolean incluirHidrometro(String serie, Date dataAquisicao, Usuario usuario) throws Exception {
         dataInclusao = new Date();
         Hidrometro hidro = new Hidrometro();
         hidro.setNrserie(serie);
         hidro.setDataaquisicao(dataAquisicao);
         hidro.setUsuarioinclusao(usuario);
         hidro.setDatainclusao(dataInclusao);
-        
+
         DAOFactory.getHidrometroDAO().incluirHidrometro(hidro);
+        JOptionPane.showMessageDialog(null, "Hidrometro Inlcuído com Sucesso!");
+        return true;
     }
 
     @Override
-    public void alterarHidrometro(Integer id, String serie, Date dataAquisicao, Usuario usuario) throws Exception {
+    public Boolean alterarHidrometro(Integer id, String serie, Date dataAquisicao, Usuario usuario) throws Exception {
         dataAlteracao = new Date();
         Hidrometro hidro = new Hidrometro();
         hidro.setId(id);
@@ -33,13 +36,16 @@ public class HidrometroService implements IHidrometroService {
         hidro.setDataaquisicao(dataAquisicao);
         hidro.setUsuarioalteracao(usuario);
         hidro.setDataalteracao(dataAlteracao);
-        
+
         DAOFactory.getHidrometroDAO().alterarHidrometro(hidro);
+        JOptionPane.showMessageDialog(null, "Hidrometro Alterado com Sucesso!");
+        return true;
     }
 
     @Override
     public void excluirHidrometro(Integer id) throws Exception {
         DAOFactory.getHidrometroDAO().excluirHidrometro(getHidrometro(id));
+        JOptionPane.showMessageDialog(null, "Hidrometro Excluído com Sucesso!");
     }
 
     @Override

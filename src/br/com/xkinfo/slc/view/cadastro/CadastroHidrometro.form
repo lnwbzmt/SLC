@@ -79,8 +79,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="tfCodigo" min="-2" pref="49" max="-2" attributes="0"/>
-                      <Component id="tfNome" min="-2" pref="198" max="-2" attributes="0"/>
-                      <Component id="jdDataRecebimento" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
+                      <Component id="tfSerie" min="-2" pref="198" max="-2" attributes="0"/>
+                      <Component id="jdDataAquisicao" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="418" max="32767" attributes="0"/>
               </Group>
@@ -97,11 +97,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lNome1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfSerie" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jdDataRecebimento" min="-2" max="-2" attributes="0"/>
+                      <Component id="jdDataAquisicao" min="-2" max="-2" attributes="0"/>
                       <Component id="lNome2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="16" max="32767" attributes="0"/>
@@ -122,9 +122,9 @@
             <Property name="text" type="java.lang.String" value="Numero Serie:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfNome">
+        <Component class="javax.swing.JTextField" name="tfSerie">
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jdDataRecebimento">
+        <Component class="com.toedter.calendar.JDateChooser" name="jdDataAquisicao">
         </Component>
         <Component class="javax.swing.JLabel" name="lNome2">
           <Properties>

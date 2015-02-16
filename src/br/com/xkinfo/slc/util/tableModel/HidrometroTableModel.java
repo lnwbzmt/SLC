@@ -10,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
 public class HidrometroTableModel extends AbstractTableModel {
 
     private List<Hidrometro> hidrometros;
-    private String[] cabecalhoColunas = {"Código", "Nome"};
+    private String[] cabecalhoColunas = {"Nr Série", "Data de Aquisição"};
 
     public HidrometroTableModel() {
         try {
@@ -35,9 +35,9 @@ public class HidrometroTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return hidrometros.get(numLinha).getId();
-            case 1:
                 return hidrometros.get(numLinha).getNrserie();
+            case 1:
+                return hidrometros.get(numLinha).getDataaquisicao();
         }
         return null;
     }
@@ -50,5 +50,4 @@ public class HidrometroTableModel extends AbstractTableModel {
     public List<Hidrometro> getHidrometros() {
         return hidrometros;
     }
-
 }

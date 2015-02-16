@@ -4,7 +4,6 @@ import br.com.xkinfo.slc.dao.IHidrometroDAO;
 import br.com.xkinfo.slc.modelo.Hidrometro;
 import br.com.xkinfo.slc.util.EntityManagerUtil;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;

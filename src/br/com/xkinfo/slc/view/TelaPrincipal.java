@@ -4,8 +4,10 @@ import br.com.xkinfo.slc.view.consulta.ConsultaCondominio;
 import br.com.xkinfo.slc.view.cadastro.CadastroCondominio;
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.view.cadastro.CadastroCompetencia;
+import br.com.xkinfo.slc.view.cadastro.CadastroHidrometro;
 import br.com.xkinfo.slc.view.cadastro.CadastroSituacao;
 import br.com.xkinfo.slc.view.consulta.ConsultaCompetencia;
+import br.com.xkinfo.slc.view.consulta.ConsultaHidrometro;
 import br.com.xkinfo.slc.view.consulta.ConsultaSituacao;
 import br.com.xkinfo.slc.view.consulta.ConsultaUsuario;
 
@@ -30,11 +32,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mn_Situacao = new javax.swing.JMenuItem();
         mn_competencia = new javax.swing.JMenuItem();
         mn_usuario = new javax.swing.JMenuItem();
+        mn_Hidrometro = new javax.swing.JMenuItem();
         mConsulta = new javax.swing.JMenu();
         mn_consCondominio = new javax.swing.JMenuItem();
         mn_consSituacao = new javax.swing.JMenuItem();
         mn_consCompetencia = new javax.swing.JMenuItem();
         mn_consUsuario = new javax.swing.JMenuItem();
+        mn_consHidrometro = new javax.swing.JMenuItem();
         mSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,6 +84,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mCadastro.add(mn_usuario);
 
+        mn_Hidrometro.setText("Hidrômetros");
+        mn_Hidrometro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_HidrometroActionPerformed(evt);
+            }
+        });
+        mCadastro.add(mn_Hidrometro);
+
         jMenuBar2.add(mCadastro);
 
         mConsulta.setText("Consulta");
@@ -115,6 +127,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         mConsulta.add(mn_consUsuario);
+
+        mn_consHidrometro.setText("Hidrometros");
+        mn_consHidrometro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_consHidrometroActionPerformed(evt);
+            }
+        });
+        mConsulta.add(mn_consHidrometro);
 
         jMenuBar2.add(mConsulta);
 
@@ -203,17 +223,31 @@ public class TelaPrincipal extends javax.swing.JFrame {
         consultaUsuario.setVisible(true);
     }//GEN-LAST:event_mn_consUsuarioActionPerformed
 
+    private void mn_consHidrometroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_consHidrometroActionPerformed
+        ConsultaHidrometro consultaHidrometro = new ConsultaHidrometro(this, true, usuarioLogado);
+        consultaHidrometro.setLocationRelativeTo(this);
+        consultaHidrometro.setVisible(true);
+    }//GEN-LAST:event_mn_consHidrometroActionPerformed
+
+    private void mn_HidrometroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_HidrometroActionPerformed
+        CadastroHidrometro cadastroHidrometro = new CadastroHidrometro(this, true, usuarioLogado);
+        cadastroHidrometro.setLocationRelativeTo(this);
+        cadastroHidrometro.setVisible(true);
+    }//GEN-LAST:event_mn_HidrometroActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JLabel lUsuarioLogado;
     private javax.swing.JMenu mCadastro;
     private javax.swing.JMenu mConsulta;
     private javax.swing.JMenu mSair;
+    private javax.swing.JMenuItem mn_Hidrometro;
     private javax.swing.JMenuItem mn_Situacao;
     private javax.swing.JMenuItem mn_competencia;
     private javax.swing.JMenuItem mn_condominio;
     private javax.swing.JMenuItem mn_consCompetencia;
     private javax.swing.JMenuItem mn_consCondominio;
+    private javax.swing.JMenuItem mn_consHidrometro;
     private javax.swing.JMenuItem mn_consSituacao;
     private javax.swing.JMenuItem mn_consUsuario;
     private javax.swing.JMenuItem mn_usuario;

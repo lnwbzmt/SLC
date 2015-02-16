@@ -17,9 +17,7 @@ public class ConsultaHidrometro extends javax.swing.JDialog {
 
     public ConsultaHidrometro(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
-
         usuarioLogado = usuario;
-        
         initComponents();
         // Lógica para manipular uma linha do JTable quando esta é selecionada    
         ListSelectionModel linhaModeloSelecao = jtHidrometros.getSelectionModel();
@@ -31,13 +29,10 @@ public class ConsultaHidrometro extends javax.swing.JDialog {
                 if (e.getValueIsAdjusting()) {
                     return;
                 }
-
                 // Verifica se existe uma linha selecionada. O
                 // valor deve ser maior ou igual a 0, que é o número da linha
                 if (jtHidrometros.getSelectedRow() >= 0) {
-
                     Integer linhaSelecionada = jtHidrometros.getSelectedRow();
-
                     Hidrometro hidrometroSelecionado = ((HidrometroTableModel) jtHidrometros.getModel()).getHidrometros().get(linhaSelecionada);
                     if (hidrometroSelecionado != null) {
                         CadastroHidrometro cadastroHidrometro = new CadastroHidrometro(hidrometroSelecionado, null, true, usuarioLogado);
@@ -161,15 +156,13 @@ public class ConsultaHidrometro extends javax.swing.JDialog {
     }//GEN-LAST:event_bNovoActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        this.dispose();
-
+        dispose();
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         jtHidrometros.updateUI();
         jtHidrometros.getRowHeight(0);
         jtHidrometros.setModel(new HidrometroTableModel());
-
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
@@ -177,8 +170,6 @@ public class ConsultaHidrometro extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void txtFiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyReleased
-        // TODO add your handling code here:
-
         TableRowSorter sorter = null;
         HidrometroTableModel model = (HidrometroTableModel) jtHidrometros.getModel();
         sorter = new TableRowSorter<TableModel>(model);
