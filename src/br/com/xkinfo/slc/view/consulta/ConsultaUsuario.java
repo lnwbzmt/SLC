@@ -16,9 +16,7 @@ public class ConsultaUsuario extends javax.swing.JDialog {
 
     public ConsultaUsuario(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
-
         usuarioLogado = usuario;
-        
         initComponents();
         // Lógica para manipular uma linha do JTable quando esta é selecionada    
         ListSelectionModel linhaModeloSelecao = jtUsuarios.getSelectionModel();
@@ -30,25 +28,20 @@ public class ConsultaUsuario extends javax.swing.JDialog {
                 if (e.getValueIsAdjusting()) {
                     return;
                 }
-
                 // Verifica se existe uma linha selecionada. O
                 // valor deve ser maior ou igual a 0, que é o número da linha
                 if (jtUsuarios.getSelectedRow() >= 0) {
-
                     Integer linhaSelecionada = jtUsuarios.getSelectedRow();
-
                     Usuario caixaSelecionado = ((UsuarioTableModel) jtUsuarios.getModel()).getUsuarios().get(linhaSelecionada);
                     if (caixaSelecionado != null) {
-                        CadastroUsuario cadastroUsuario = new CadastroUsuario(caixaSelecionado, null, true, usuarioLogado);
+                        CadastroUsuario cadastroUsuario = new CadastroUsuario(usuarioLogado, null, true, caixaSelecionado);
                         cadastroUsuario.setLocationRelativeTo(jScrollPane1.getParent());
                         cadastroUsuario.setVisible(true);
                         jtUsuarios.setModel(new UsuarioTableModel());
                     }
                 }
             }
-
         });
-
     }
 
     @SuppressWarnings("unchecked")
@@ -161,15 +154,13 @@ public class ConsultaUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_bNovoActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        this.dispose();
-
+        dispose();
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         jtUsuarios.updateUI();
         jtUsuarios.getRowHeight(0);
         jtUsuarios.setModel(new UsuarioTableModel());
-
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
@@ -177,13 +168,10 @@ public class ConsultaUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void txtFiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyReleased
-        // TODO add your handling code here:
-
         TableRowSorter sorter = null;
         UsuarioTableModel model = (UsuarioTableModel) jtUsuarios.getModel();
         sorter = new TableRowSorter<TableModel>(model);
         jtUsuarios.setRowSorter(sorter);
-
         String text = txtFiltro.getText();
         if (text.length() == 0) {
             sorter.setRowFilter(null);

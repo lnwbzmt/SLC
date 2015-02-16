@@ -7,6 +7,7 @@ import br.com.xkinfo.slc.view.cadastro.CadastroCompetencia;
 import br.com.xkinfo.slc.view.cadastro.CadastroSituacao;
 import br.com.xkinfo.slc.view.consulta.ConsultaCompetencia;
 import br.com.xkinfo.slc.view.consulta.ConsultaSituacao;
+import br.com.xkinfo.slc.view.consulta.ConsultaUsuario;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -33,6 +34,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mn_consCondominio = new javax.swing.JMenuItem();
         mn_consSituacao = new javax.swing.JMenuItem();
         mn_consCompetencia = new javax.swing.JMenuItem();
+        mn_consUsuario = new javax.swing.JMenuItem();
         mSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,6 +107,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         mConsulta.add(mn_consCompetencia);
+
+        mn_consUsuario.setText("Usuario");
+        mn_consUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_consUsuarioActionPerformed(evt);
+            }
+        });
+        mConsulta.add(mn_consUsuario);
 
         jMenuBar2.add(mConsulta);
 
@@ -187,6 +197,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         consultaCompetencia.setVisible(true);
     }//GEN-LAST:event_mn_consCompetenciaActionPerformed
 
+    private void mn_consUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_consUsuarioActionPerformed
+        ConsultaUsuario consultaUsuario = new ConsultaUsuario(this, true, usuarioLogado);
+        consultaUsuario.setLocationRelativeTo(this);
+        consultaUsuario.setVisible(true);
+    }//GEN-LAST:event_mn_consUsuarioActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JLabel lUsuarioLogado;
@@ -199,6 +215,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mn_consCompetencia;
     private javax.swing.JMenuItem mn_consCondominio;
     private javax.swing.JMenuItem mn_consSituacao;
+    private javax.swing.JMenuItem mn_consUsuario;
     private javax.swing.JMenuItem mn_usuario;
     // End of variables declaration//GEN-END:variables
 }

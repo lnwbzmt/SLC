@@ -2,12 +2,13 @@ package br.com.xkinfo.slc.service;
 
 import br.com.xkinfo.slc.modelo.Usuario;
 import java.util.ArrayList;
+import java.util.Date;
 
 public interface IUsuarioService {
 
-    public void incluirUsuario(String nome, String usuario, String senha, Usuario usu) throws Exception;
+    public Boolean incluirUsuario(String nome, String usuario, String senha, Usuario usu) throws Exception;
 
-    public void alterarUsuario(Integer id, String nome, String usuario, String senha, Usuario usu) throws Exception;
+    public Boolean alterarUsuario(Integer id, String nome, String usuario, String senha, Usuario usu, Usuario usuarioinclusao, Date dataInclusao) throws Exception;
 
     public void excluirUsuario(Integer id) throws Exception;
 
