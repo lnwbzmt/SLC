@@ -9,7 +9,7 @@ public interface IHidrometroService {
 
     public Boolean incluirHidrometro(String serie, Date dataAquisicao, Usuario usuario) throws Exception;
 
-    public Boolean alterarHidrometro(Integer id, String serie, Date dataAquisicao, Usuario usuario) throws Exception;
+    public Boolean alterarHidrometro(Integer id, String serie, Date dataAquisicao, Usuario usuario, Date dataInclusao, Usuario usuarioInclusao) throws Exception;
 
     public void excluirHidrometro(Integer id) throws Exception;
 

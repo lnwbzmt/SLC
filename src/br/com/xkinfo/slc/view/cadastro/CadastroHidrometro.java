@@ -25,6 +25,7 @@ public class CadastroHidrometro extends javax.swing.JDialog {
         hidrometroSelecionado = hidrometro;
         if (hidrometroSelecionado != null) {
             tfCodigo.setText(hidrometroSelecionado.getId().toString());
+            tfSerie.setText(hidrometroSelecionado.getNrserie());
             jdDataAquisicao.setDate(hidrometroSelecionado.getDataaquisicao());
             //tfNome.setText(hidrometro.getFatura().toString());
             // Mostra o botão Excluir     
@@ -156,8 +157,10 @@ public class CadastroHidrometro extends javax.swing.JDialog {
         Date dataAquisicao = jdDataAquisicao.getDate();
         if (hidrometroSelecionado != null) {
             Integer id = hidrometroSelecionado.getId();
+            Usuario usuarioInclusao = hidrometroSelecionado.getUsuarioinclusao();
+            Date dataInclusao = hidrometroSelecionado.getDatainclusao();
             try {
-                Boolean alterar = ServiceFactory.getHidrometroService().alterarHidrometro(id, serie, dataAquisicao, usuarioLogado);
+                Boolean alterar = ServiceFactory.getHidrometroService().alterarHidrometro(id, serie, dataAquisicao, usuarioLogado, dataInclusao, usuarioInclusao);
                 if (alterar == true) {
                     hidrometroSelecionado = null;
                     dispose();
