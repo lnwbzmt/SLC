@@ -53,7 +53,7 @@ public class Pessoa implements Serializable {
 
     @Column(name = "CPF", table = "PESSOAS", nullable = false)
     @Basic
-    private int cpf;
+    private Long cpf;
 
     @Column(name = "NOME", table = "PESSOAS", nullable = false, length = 200)
     @Basic
@@ -117,11 +117,11 @@ public class Pessoa implements Serializable {
         this.usuarioinclusao = usuarioinclusao;
     }
 
-    public int getCpf() {
+    public Long getCpf() {
         return this.cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(Long cpf) {
         this.cpf = cpf;
     }
 
@@ -156,5 +156,4 @@ public class Pessoa implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
 }

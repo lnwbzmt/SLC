@@ -17,9 +17,7 @@ public class ConsultaPessoa extends javax.swing.JDialog {
 
     public ConsultaPessoa(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
-
         usuarioLogado = usuario;
-        
         initComponents();
         // Lógica para manipular uma linha do JTable quando esta é selecionada    
         ListSelectionModel linhaModeloSelecao = jtPessoas.getSelectionModel();
@@ -31,7 +29,6 @@ public class ConsultaPessoa extends javax.swing.JDialog {
                 if (e.getValueIsAdjusting()) {
                     return;
                 }
-
                 // Verifica se existe uma linha selecionada. O
                 // valor deve ser maior ou igual a 0, que é o número da linha
                 if (jtPessoas.getSelectedRow() >= 0) {
@@ -161,15 +158,13 @@ public class ConsultaPessoa extends javax.swing.JDialog {
     }//GEN-LAST:event_bNovoActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        this.dispose();
-
+        dispose();
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         jtPessoas.updateUI();
         jtPessoas.getRowHeight(0);
         jtPessoas.setModel(new PessoaTableModel());
-
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
@@ -177,13 +172,10 @@ public class ConsultaPessoa extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void txtFiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyReleased
-        // TODO add your handling code here:
-
         TableRowSorter sorter = null;
         PessoaTableModel model = (PessoaTableModel) jtPessoas.getModel();
         sorter = new TableRowSorter<TableModel>(model);
         jtPessoas.setRowSorter(sorter);
-
         String text = txtFiltro.getText();
         if (text.length() == 0) {
             sorter.setRowFilter(null);

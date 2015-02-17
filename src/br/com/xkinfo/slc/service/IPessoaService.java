@@ -3,12 +3,13 @@ package br.com.xkinfo.slc.service;
 import br.com.xkinfo.slc.modelo.Pessoa;
 import br.com.xkinfo.slc.modelo.Usuario;
 import java.util.ArrayList;
+import java.util.Date;
 
 public interface IPessoaService {
 
-    public void incluirPessoa(String nome, Integer cpf, String email, Usuario usuario) throws Exception;
+    public Boolean incluirPessoa(String nome, String cpf, String email, Usuario usuario) throws Exception;
 
-    public void alterarPessoa(Integer id, String nome, Integer cpf, String email, Usuario usuario) throws Exception;
+    public Boolean alterarPessoa(Integer id, String nome, String cpf, String email, Usuario usuario, Date dataInclusao, Usuario usuarioInclusao) throws Exception;
 
     public void excluirPessoa(Integer id) throws Exception;
 

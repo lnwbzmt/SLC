@@ -10,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
 public class PessoaTableModel extends AbstractTableModel {
 
     private List<Pessoa> pessoas;
-    private String[] cabecalhoColunas = {"Código", "Nome"};
+    private String[] cabecalhoColunas = {"CPF", "Nome"};
 
     public PessoaTableModel() {
         try {
@@ -35,7 +35,7 @@ public class PessoaTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return pessoas.get(numLinha).getId();
+                return pessoas.get(numLinha).getCpf();
             case 1:
                 return pessoas.get(numLinha).getNome();
         }
@@ -50,5 +50,4 @@ public class PessoaTableModel extends AbstractTableModel {
     public List<Pessoa> getPessoas() {
         return pessoas;
     }
-
 }
