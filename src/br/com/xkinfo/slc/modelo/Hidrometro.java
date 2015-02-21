@@ -1,9 +1,6 @@
 package br.com.xkinfo.slc.modelo;
 
-
 import java.io.Serializable;
-import java.lang.Integer;
-import java.lang.String;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -20,33 +17,33 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="HIDROMETROS")
+@Table(name = "HIDROMETROS")
 public class Hidrometro implements Serializable {
 
-    @Column(name="NRSERIE",table="HIDROMETROS",nullable=false,length=20)
+    @Column(name = "NRSERIE", table = "HIDROMETROS", nullable = false, length = 20)
     @Basic
     private String nrserie;
     @ManyToOne(targetEntity = Usuario.class)
-    @JoinColumn(name="USUARIOALTERACAO",referencedColumnName="ID")
+    @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
     private Usuario usuarioalteracao;
-    @Column(name="DATAINCLUSAO",table="HIDROMETROS")
+    @Column(name = "DATAINCLUSAO", table = "HIDROMETROS")
     @Temporal(TemporalType.TIMESTAMP)
     @Basic
     private Date datainclusao;
-    @ManyToOne(optional=false,targetEntity = Usuario.class)
-    @JoinColumn(name="USUARIOINCLUSAO",referencedColumnName="ID")
+    @ManyToOne(optional = false, targetEntity = Usuario.class)
+    @JoinColumn(name = "USUARIOINCLUSAO", referencedColumnName = "ID")
     private Usuario usuarioinclusao;
-    @OneToMany(targetEntity = HidrometroUc.class,mappedBy = "hidrometro")
+    @OneToMany(targetEntity = HidrometroUc.class, mappedBy = "hidrometro")
     private Collection<HidrometroUc> hidrometroUcCollection;
-    @Column(name="ID",table="HIDROMETROS",nullable=false)
+    @Column(name = "ID", table = "HIDROMETROS", nullable = false)
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Column(name="DATAAQUISICAO",table="HIDROMETROS",nullable=false)
+    @Column(name = "DATAAQUISICAO", table = "HIDROMETROS", nullable = false)
     @Temporal(TemporalType.DATE)
     @Basic
     private Date dataaquisicao;
-    @Column(name="DATAALTERACAO",table="HIDROMETROS")
+    @Column(name = "DATAALTERACAO", table = "HIDROMETROS")
     @Temporal(TemporalType.TIMESTAMP)
     @Basic
     private Date dataalteracao;
@@ -54,7 +51,7 @@ public class Hidrometro implements Serializable {
     public Hidrometro() {
 
     }
-   
+
     public String getNrserie() {
         return this.nrserie;
     }
@@ -62,7 +59,7 @@ public class Hidrometro implements Serializable {
     public void setNrserie(String nrserie) {
         this.nrserie = nrserie;
     }
-   
+
     public Usuario getUsuarioalteracao() {
         return this.usuarioalteracao;
     }
@@ -70,7 +67,7 @@ public class Hidrometro implements Serializable {
     public void setUsuarioalteracao(Usuario usuarioalteracao) {
         this.usuarioalteracao = usuarioalteracao;
     }
-   
+
     public Date getDatainclusao() {
         return this.datainclusao;
     }
@@ -78,7 +75,7 @@ public class Hidrometro implements Serializable {
     public void setDatainclusao(Date datainclusao) {
         this.datainclusao = datainclusao;
     }
-   
+
     public Usuario getUsuarioinclusao() {
         return this.usuarioinclusao;
     }
@@ -86,7 +83,7 @@ public class Hidrometro implements Serializable {
     public void setUsuarioinclusao(Usuario usuarioinclusao) {
         this.usuarioinclusao = usuarioinclusao;
     }
-   
+
     public Collection<HidrometroUc> getHidrometroUcCollection() {
         return this.hidrometroUcCollection;
     }
@@ -94,7 +91,7 @@ public class Hidrometro implements Serializable {
     public void setHidrometroUcCollection(Collection<HidrometroUc> hidrometroUcCollection) {
         this.hidrometroUcCollection = hidrometroUcCollection;
     }
-   
+
     public Integer getId() {
         return this.id;
     }
@@ -102,7 +99,7 @@ public class Hidrometro implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-   
+
     public Date getDataaquisicao() {
         return this.dataaquisicao;
     }
@@ -110,7 +107,7 @@ public class Hidrometro implements Serializable {
     public void setDataaquisicao(Date dataaquisicao) {
         this.dataaquisicao = dataaquisicao;
     }
-   
+
     public Date getDataalteracao() {
         return this.dataalteracao;
     }

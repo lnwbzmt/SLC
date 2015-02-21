@@ -1,8 +1,6 @@
 package br.com.xkinfo.slc.modelo;
 
-
 import java.io.Serializable;
-import java.lang.Integer;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,41 +15,41 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="PESSOAUC")
+@Table(name = "PESSOAUC")
 public class PessoaUc implements Serializable {
 
     @ManyToOne(targetEntity = Usuario.class)
-    @JoinColumn(name="USUARIOALTERACAO",referencedColumnName="ID")
+    @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
     private Usuario usuarioalteracao;
-    @ManyToOne(optional=false,targetEntity = UnidadeConsumidora.class)
-    @JoinColumn(name="UNIDADECONSUMIDORA",referencedColumnName="ID")
+    @ManyToOne(optional = false, targetEntity = UnidadeConsumidora.class)
+    @JoinColumn(name = "UNIDADECONSUMIDORA", referencedColumnName = "ID")
     private UnidadeConsumidora unidadeconsumidora;
-    @Column(name="DATASAIDA",table="PESSOAUC")
+    @Column(name = "DATASAIDA", table = "PESSOAUC")
     @Temporal(TemporalType.DATE)
     @Basic
     private Date datasaida;
-    @ManyToOne(optional=false,targetEntity = Pessoa.class)
-    @JoinColumn(name="PROPRIETARIO",referencedColumnName="ID")
+    @ManyToOne(optional = false, targetEntity = Pessoa.class)
+    @JoinColumn(name = "PROPRIETARIO", referencedColumnName = "ID")
     private Pessoa proprietario;
-    @Column(name="DATAINCLUSAO",table="PESSOAUC")
+    @Column(name = "DATAINCLUSAO", table = "PESSOAUC")
     @Temporal(TemporalType.TIMESTAMP)
     @Basic
     private Date datainclusao;
-    @ManyToOne(optional=false,targetEntity = Usuario.class)
-    @JoinColumn(name="USUARIOINCLUSAO",referencedColumnName="ID")
+    @ManyToOne(optional = false, targetEntity = Usuario.class)
+    @JoinColumn(name = "USUARIOINCLUSAO", referencedColumnName = "ID")
     private Usuario usuarioinclusao;
     @ManyToOne(targetEntity = Pessoa.class)
-    @JoinColumn(name="INQUILINO",referencedColumnName="ID")
+    @JoinColumn(name = "INQUILINO", referencedColumnName = "ID")
     private Pessoa inquilino;
-    @Column(name="ID",table="PESSOAUC",nullable=false)
+    @Column(name = "ID", table = "PESSOAUC", nullable = false)
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Column(name="DATAALTERACAO",table="PESSOAUC")
+    @Column(name = "DATAALTERACAO", table = "PESSOAUC")
     @Temporal(TemporalType.TIMESTAMP)
     @Basic
     private Date dataalteracao;
-    @Column(name="DATAENTRADA",table="PESSOAUC",nullable=false)
+    @Column(name = "DATAENTRADA", table = "PESSOAUC", nullable = false)
     @Temporal(TemporalType.DATE)
     @Basic
     private Date dataentrada;
@@ -59,7 +57,7 @@ public class PessoaUc implements Serializable {
     public PessoaUc() {
 
     }
-   
+
     public Usuario getUsuarioalteracao() {
         return this.usuarioalteracao;
     }
@@ -67,7 +65,7 @@ public class PessoaUc implements Serializable {
     public void setUsuarioalteracao(Usuario usuarioalteracao) {
         this.usuarioalteracao = usuarioalteracao;
     }
-   
+
     public UnidadeConsumidora getUnidadeconsumidora() {
         return this.unidadeconsumidora;
     }
@@ -75,7 +73,7 @@ public class PessoaUc implements Serializable {
     public void setUnidadeconsumidora(UnidadeConsumidora unidadeconsumidora) {
         this.unidadeconsumidora = unidadeconsumidora;
     }
-   
+
     public Date getDatasaida() {
         return this.datasaida;
     }
@@ -83,7 +81,7 @@ public class PessoaUc implements Serializable {
     public void setDatasaida(Date datasaida) {
         this.datasaida = datasaida;
     }
-   
+
     public Pessoa getProprietario() {
         return this.proprietario;
     }
@@ -91,7 +89,7 @@ public class PessoaUc implements Serializable {
     public void setProprietario(Pessoa proprietario) {
         this.proprietario = proprietario;
     }
-   
+
     public Date getDatainclusao() {
         return this.datainclusao;
     }
@@ -99,7 +97,7 @@ public class PessoaUc implements Serializable {
     public void setDatainclusao(Date datainclusao) {
         this.datainclusao = datainclusao;
     }
-   
+
     public Usuario getUsuarioinclusao() {
         return this.usuarioinclusao;
     }
@@ -107,7 +105,7 @@ public class PessoaUc implements Serializable {
     public void setUsuarioinclusao(Usuario usuarioinclusao) {
         this.usuarioinclusao = usuarioinclusao;
     }
-   
+
     public Pessoa getInquilino() {
         return this.inquilino;
     }
@@ -115,7 +113,7 @@ public class PessoaUc implements Serializable {
     public void setInquilino(Pessoa inquilino) {
         this.inquilino = inquilino;
     }
-   
+
     public Integer getId() {
         return this.id;
     }
@@ -123,7 +121,7 @@ public class PessoaUc implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-   
+
     public Date getDataalteracao() {
         return this.dataalteracao;
     }
@@ -131,7 +129,7 @@ public class PessoaUc implements Serializable {
     public void setDataalteracao(Date dataalteracao) {
         this.dataalteracao = dataalteracao;
     }
-   
+
     public Date getDataentrada() {
         return this.dataentrada;
     }
