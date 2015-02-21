@@ -27,7 +27,7 @@ public class CadastroPessoa extends javax.swing.JDialog {
             tfCodigo.setText(pessoaSelecionado.getId().toString());
             tfNome.setText(pessoaSelecionado.getNome());
             tfEmail.setText(pessoaSelecionado.getEmail());
-            tfCPF.setText(pessoaSelecionado.getCpf().toString());
+            //tfCPF.setText(pessoaSelecionado.getCpf().toString());
             //tfNome.setText(pessoa.getFatura().toString());
             // Mostra o botão Excluir     
             bExcluir.setVisible(true);
