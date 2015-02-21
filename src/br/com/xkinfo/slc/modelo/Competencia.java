@@ -1,6 +1,8 @@
 package br.com.xkinfo.slc.modelo;
 
+
 import java.io.Serializable;
+import java.lang.Integer;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -15,48 +17,31 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "COMPETENCIAS")
+@Table(name="COMPETENCIAS")
 public class Competencia implements Serializable {
 
-    /*
-     CAMPOS DA TABELA:
-     * ID;
-     * COMPETENCIA;
-     * SITUAÇÃO;
-     ** AUDITORIA **
-     * USUARIO INCLUSAO;
-     * DATA INCLUSAO;
-     * USUARIO ALTERACAO;
-     * DATA ALTERACAO;
-     */
-    @ManyToOne(optional = false, targetEntity = Situacao.class)
-    @JoinColumn(name = "SITUACAO", referencedColumnName = "ID")
+    @ManyToOne(optional=false,targetEntity = Situacao.class)
+    @JoinColumn(name="SITUACAO",referencedColumnName="ID")
     private Situacao situacao;
-
     @ManyToOne(targetEntity = Usuario.class)
-    @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
+    @JoinColumn(name="USUARIOALTERACAO",referencedColumnName="ID")
     private Usuario usuarioalteracao;
-
-    @Column(name = "DATAINCLUSAO", table = "COMPETENCIAS", nullable = false)
-    @Temporal(TemporalType.DATE)
+    @Column(name="DATAINCLUSAO",table="COMPETENCIAS")
+    @Temporal(TemporalType.TIMESTAMP)
     @Basic
     private Date datainclusao;
-
-    @ManyToOne(optional = false, targetEntity = Usuario.class)
-    @JoinColumn(name = "USUARIOINCLUSAO", referencedColumnName = "ID")
+    @ManyToOne(optional=false,targetEntity = Usuario.class)
+    @JoinColumn(name="USUARIOINCLUSAO",referencedColumnName="ID")
     private Usuario usuarioinclusao;
-
-    @Column(name = "ID", table = "COMPETENCIAS", nullable = false)
+    @Column(name="ID",table="COMPETENCIAS",nullable=false)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-
-    @Column(name = "DATAALTERACAO", table = "COMPETENCIAS")
-    @Temporal(TemporalType.DATE)
+    @Column(name="DATAALTERACAO",table="COMPETENCIAS")
+    @Temporal(TemporalType.TIMESTAMP)
     @Basic
     private Date dataalteracao;
-
-    @Column(name = "COMPETENCIA", table = "COMPETENCIAS", nullable = false)
+    @Column(name="COMPETENCIA",table="COMPETENCIAS",nullable=false)
     @Temporal(TemporalType.DATE)
     @Basic
     private Date competencia;
@@ -64,7 +49,7 @@ public class Competencia implements Serializable {
     public Competencia() {
 
     }
-
+   
     public Situacao getSituacao() {
         return this.situacao;
     }
@@ -72,7 +57,7 @@ public class Competencia implements Serializable {
     public void setSituacao(Situacao situacao) {
         this.situacao = situacao;
     }
-
+   
     public Usuario getUsuarioalteracao() {
         return this.usuarioalteracao;
     }
@@ -80,7 +65,7 @@ public class Competencia implements Serializable {
     public void setUsuarioalteracao(Usuario usuarioalteracao) {
         this.usuarioalteracao = usuarioalteracao;
     }
-
+   
     public Date getDatainclusao() {
         return this.datainclusao;
     }
@@ -88,7 +73,7 @@ public class Competencia implements Serializable {
     public void setDatainclusao(Date datainclusao) {
         this.datainclusao = datainclusao;
     }
-
+   
     public Usuario getUsuarioinclusao() {
         return this.usuarioinclusao;
     }
@@ -96,7 +81,7 @@ public class Competencia implements Serializable {
     public void setUsuarioinclusao(Usuario usuarioinclusao) {
         this.usuarioinclusao = usuarioinclusao;
     }
-
+   
     public Integer getId() {
         return this.id;
     }
@@ -104,7 +89,7 @@ public class Competencia implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-
+   
     public Date getDataalteracao() {
         return this.dataalteracao;
     }
@@ -112,7 +97,7 @@ public class Competencia implements Serializable {
     public void setDataalteracao(Date dataalteracao) {
         this.dataalteracao = dataalteracao;
     }
-
+   
     public Date getCompetencia() {
         return this.competencia;
     }
@@ -120,5 +105,4 @@ public class Competencia implements Serializable {
     public void setCompetencia(Date competencia) {
         this.competencia = competencia;
     }
-
 }

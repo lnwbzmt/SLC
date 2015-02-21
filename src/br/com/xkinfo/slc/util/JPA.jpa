@@ -1,350 +1,350 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<jpa:entity-mappings status="GENERATED" id="_14192597550921" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <jpa:entity class="Condominio" visibile="true" minimized="false" id="_14192597551014">
+<jpa:entity-mappings status="GENERATED" jaxb-support="false" id="_14244794376881" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <jpa:entity class="Condominio" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14244794376884">
         <jpa:table name="CONDOMINIOS"/>
         <jpa:attributes>
-            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_141925975513113">
+            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_142447943768813">
                 <jpa:column name="ID" unique="false" nullable="false" insertable="true" updatable="true" table="CONDOMINIOS"/>
                 <jpa:generated-value strategy="AUTO"/>
             </jpa:id>
-            <jpa:basic name="nome" optional="false" attribute-type="java.lang.String" visibile="true" id="_141925975513314">
+            <jpa:basic name="nome" optional="false" attribute-type="java.lang.String" visibile="true" id="_142447943768814">
                 <jpa:column name="NOME" unique="false" nullable="false" insertable="true" updatable="true" table="CONDOMINIOS" length="250"/>
             </jpa:basic>
-            <jpa:basic name="cnpj" optional="false" attribute-type="int" visibile="true" id="_141925975513415">
+            <jpa:basic name="cnpj" optional="false" attribute-type="long" visibile="true" id="_142447943768815">
                 <jpa:column name="CNPJ" unique="false" nullable="false" insertable="true" updatable="true" table="CONDOMINIOS"/>
             </jpa:basic>
-            <jpa:basic name="endereco" optional="false" attribute-type="java.lang.String" visibile="true" id="_141925975513416">
+            <jpa:basic name="endereco" optional="false" attribute-type="java.lang.String" visibile="true" id="_142447943768816">
                 <jpa:column name="ENDERECO" unique="false" nullable="false" insertable="true" updatable="true" table="CONDOMINIOS" length="250"/>
             </jpa:basic>
-            <jpa:basic name="numero" optional="false" attribute-type="int" visibile="true" id="_141925975513417">
+            <jpa:basic name="numero" optional="false" attribute-type="int" visibile="true" id="_142447943768817">
                 <jpa:column name="NUMERO" unique="false" nullable="false" insertable="true" updatable="true" table="CONDOMINIOS"/>
             </jpa:basic>
-            <jpa:basic name="complemento" optional="false" attribute-type="java.lang.String" visibile="true" id="_141925975513418">
+            <jpa:basic name="complemento" optional="false" attribute-type="java.lang.String" visibile="true" id="_142447943768818">
                 <jpa:column name="COMPLEMENTO" unique="false" nullable="false" insertable="true" updatable="true" table="CONDOMINIOS" length="250"/>
             </jpa:basic>
-            <jpa:basic name="bairro" optional="false" attribute-type="java.lang.String" visibile="true" id="_141925975513419">
+            <jpa:basic name="bairro" optional="false" attribute-type="java.lang.String" visibile="true" id="_142447943768819">
                 <jpa:column name="BAIRRO" unique="false" nullable="false" insertable="true" updatable="true" table="CONDOMINIOS" length="250"/>
             </jpa:basic>
-            <jpa:basic name="cidade" optional="false" attribute-type="java.lang.String" visibile="true" id="_141925975513420">
+            <jpa:basic name="cidade" optional="false" attribute-type="java.lang.String" visibile="true" id="_142447943768820">
                 <jpa:column name="CIDADE" unique="false" nullable="false" insertable="true" updatable="true" table="CONDOMINIOS" length="250"/>
             </jpa:basic>
-            <jpa:basic name="estado" optional="false" attribute-type="java.lang.String" visibile="true" id="_141925975513421">
+            <jpa:basic name="estado" optional="false" attribute-type="java.lang.String" visibile="true" id="_142447943768821">
                 <jpa:column name="ESTADO" unique="false" nullable="false" insertable="true" updatable="true" table="CONDOMINIOS" length="250"/>
             </jpa:basic>
-            <jpa:basic name="sigla" optional="false" attribute-type="java.lang.String" visibile="true" id="_141925975513422">
+            <jpa:basic name="sigla" optional="false" attribute-type="java.lang.String" visibile="true" id="_142447943768822">
                 <jpa:column name="SIGLA" unique="false" nullable="false" insertable="true" updatable="true" table="CONDOMINIOS" length="2"/>
             </jpa:basic>
-            <jpa:basic name="email" optional="true" attribute-type="java.lang.String" visibile="true" id="_141925975513423">
+            <jpa:basic name="email" optional="true" attribute-type="java.lang.String" visibile="true" id="_142447943770423">
                 <jpa:column name="EMAIL" unique="false" nullable="true" insertable="true" updatable="true" table="CONDOMINIOS" length="200"/>
             </jpa:basic>
-            <jpa:basic name="datainclusao" optional="false" attribute-type="java.util.Date" visibile="true" id="_141925975513424">
-                <jpa:column name="DATAINCLUSAO" unique="false" nullable="false" insertable="true" updatable="true" table="CONDOMINIOS"/>
-                <jpa:temporal>DATE</jpa:temporal>
+            <jpa:basic name="datainclusao" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770424">
+                <jpa:column name="DATAINCLUSAO" unique="false" nullable="true" insertable="true" updatable="true" table="CONDOMINIOS"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="dataalteracao" optional="false" attribute-type="java.util.Date" visibile="true" id="_141925975513525">
-                <jpa:column name="DATAALTERACAO" unique="false" nullable="false" insertable="true" updatable="true" table="CONDOMINIOS"/>
-                <jpa:temporal>DATE</jpa:temporal>
+            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770425">
+                <jpa:column name="DATAALTERACAO" unique="false" nullable="true" insertable="true" updatable="true" table="CONDOMINIOS"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513872" visibile="true" id="_141925975513526">
+            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770472" visibile="true" id="_142447943770426">
                 <jpa:join-column name="USUARIOINCLUSAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513873" visibile="true" id="_141925975513627">
+            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770473" visibile="true" id="_142447943770427">
                 <jpa:join-column name="USUARIOALTERACAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:one-to-many name="unidadeConsumidoraCollection" target-entity="UnidadeConsumidora" mapped-by="condominio" connected-entity-id="_14192597551196" connected-attribute-id="_141925975513844" visibile="true" id="_141925975513728"/>
+            <jpa:one-to-many name="unidadeConsumidoraCollection" target-entity="UnidadeConsumidora" mapped-by="condominio" connected-entity-id="_14244794376886" connected-attribute-id="_142447943770444" visibile="true" id="_142447943770428"/>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity class="PessoaUc" visibile="true" minimized="false" id="_14192597551195">
+    <jpa:entity class="PessoaUc" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14244794376885">
         <jpa:table name="PESSOAUC"/>
         <jpa:attributes>
-            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_141925975513729">
+            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_142447943770429">
                 <jpa:column name="ID" unique="false" nullable="false" insertable="true" updatable="true" table="PESSOAUC"/>
                 <jpa:generated-value strategy="AUTO"/>
             </jpa:id>
-            <jpa:basic name="dataentrada" optional="false" attribute-type="java.util.Date" visibile="true" id="_141925975513730">
+            <jpa:basic name="dataentrada" optional="false" attribute-type="java.util.Date" visibile="true" id="_142447943770430">
                 <jpa:column name="DATAENTRADA" unique="false" nullable="false" insertable="true" updatable="true" table="PESSOAUC"/>
                 <jpa:temporal>DATE</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="datasaida" optional="true" attribute-type="java.util.Date" visibile="true" id="_141925975513731">
+            <jpa:basic name="datasaida" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770431">
                 <jpa:column name="DATASAIDA" unique="false" nullable="true" insertable="true" updatable="true" table="PESSOAUC"/>
                 <jpa:temporal>DATE</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="datainclusao" optional="false" attribute-type="java.util.Date" visibile="true" id="_141925975513732">
-                <jpa:column name="DATAINCLUSAO" unique="false" nullable="false" insertable="true" updatable="true" table="PESSOAUC"/>
-                <jpa:temporal>DATE</jpa:temporal>
+            <jpa:basic name="datainclusao" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770432">
+                <jpa:column name="DATAINCLUSAO" unique="false" nullable="true" insertable="true" updatable="true" table="PESSOAUC"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_141925975513733">
+            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770433">
                 <jpa:column name="DATAALTERACAO" unique="false" nullable="true" insertable="true" updatable="true" table="PESSOAUC"/>
-                <jpa:temporal>DATE</jpa:temporal>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:many-to-one name="unidadeconsumidora" target-entity="UnidadeConsumidora" optional="false" primaryKey="false" connected-entity-id="_14192597551196" connected-attribute-id="_141925975513843" visibile="true" id="_141925975513734">
+            <jpa:many-to-one name="unidadeconsumidora" target-entity="UnidadeConsumidora" optional="false" primaryKey="false" connected-entity-id="_14244794376886" connected-attribute-id="_142447943770443" visibile="true" id="_142447943770434">
                 <jpa:join-column name="UNIDADECONSUMIDORA" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="proprietario" target-entity="Pessoa" optional="false" primaryKey="false" connected-entity-id="_14192597551208" connected-attribute-id="_141925975513862" visibile="true" id="_141925975513735">
+            <jpa:many-to-one name="proprietario" target-entity="Pessoa" optional="false" primaryKey="false" connected-entity-id="_14244794376888" connected-attribute-id="_142447943770462" visibile="true" id="_142447943770435">
                 <jpa:join-column name="PROPRIETARIO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="inquilino" target-entity="Pessoa" primaryKey="false" connected-entity-id="_14192597551208" connected-attribute-id="_141925975513863" visibile="true" id="_141925975513736">
+            <jpa:many-to-one name="inquilino" target-entity="Pessoa" primaryKey="false" connected-entity-id="_14244794376888" connected-attribute-id="_142447943770463" visibile="true" id="_142447943770436">
                 <jpa:join-column name="INQUILINO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513874" visibile="true" id="_141925975513737">
+            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770474" visibile="true" id="_142447943770437">
                 <jpa:join-column name="USUARIOALTERACAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513875" visibile="true" id="_141925975513738">
+            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770475" visibile="true" id="_142447943770438">
                 <jpa:join-column name="USUARIOINCLUSAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity class="UnidadeConsumidora" visibile="true" minimized="false" id="_14192597551196">
+    <jpa:entity class="UnidadeConsumidora" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14244794376886">
         <jpa:table name="UNIDADESCONSUMIDORAS"/>
         <jpa:attributes>
-            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_141925975513739">
+            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_142447943770439">
                 <jpa:column name="ID" unique="false" nullable="false" insertable="true" updatable="true" table="UNIDADESCONSUMIDORAS"/>
                 <jpa:generated-value strategy="AUTO"/>
             </jpa:id>
-            <jpa:basic name="numero" optional="false" attribute-type="int" visibile="true" id="_141925975513740">
+            <jpa:basic name="numero" optional="false" attribute-type="int" visibile="true" id="_142447943770440">
                 <jpa:column name="NUMERO" unique="false" nullable="false" insertable="true" updatable="true" table="UNIDADESCONSUMIDORAS"/>
             </jpa:basic>
-            <jpa:basic name="datainclusao" optional="false" attribute-type="java.util.Date" visibile="true" id="_141925975513741">
-                <jpa:column name="DATAINCLUSAO" unique="false" nullable="false" insertable="true" updatable="true" table="UNIDADESCONSUMIDORAS"/>
-                <jpa:temporal>DATE</jpa:temporal>
+            <jpa:basic name="datainclusao" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770441">
+                <jpa:column name="DATAINCLUSAO" unique="false" nullable="true" insertable="true" updatable="true" table="UNIDADESCONSUMIDORAS"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_141925975513742">
+            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770442">
                 <jpa:column name="DATAALTERACAO" unique="false" nullable="true" insertable="true" updatable="true" table="UNIDADESCONSUMIDORAS"/>
-                <jpa:temporal>DATE</jpa:temporal>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:many-to-one name="condominio" target-entity="Condominio" optional="false" primaryKey="false" connected-entity-id="_14192597551014" connected-attribute-id="_141925975513728" visibile="true" id="_141925975513844">
+            <jpa:many-to-one name="condominio" target-entity="Condominio" optional="false" primaryKey="false" connected-entity-id="_14244794376884" connected-attribute-id="_142447943770428" visibile="true" id="_142447943770444">
                 <jpa:join-column name="CONDOMINIO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513876" visibile="true" id="_141925975513845">
+            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770476" visibile="true" id="_142447943770445">
                 <jpa:join-column name="USUARIOALTERACAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513877" visibile="true" id="_141925975513846">
+            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770477" visibile="true" id="_142447943770446">
                 <jpa:join-column name="USUARIOINCLUSAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:one-to-many name="pessoaUcCollection" target-entity="PessoaUc" mapped-by="unidadeconsumidora" connected-entity-id="_14192597551195" connected-attribute-id="_141925975513734" visibile="true" id="_141925975513843"/>
-            <jpa:one-to-many name="hidrometroUcCollection" target-entity="HidrometroUc" mapped-by="unidadeconsumidora" connected-entity-id="_141925975512010" connected-attribute-id="_1419259755139100" visibile="true" id="_141925975513847"/>
+            <jpa:one-to-many name="pessoaUcCollection" target-entity="PessoaUc" mapped-by="unidadeconsumidora" connected-entity-id="_14244794376885" connected-attribute-id="_142447943770434" visibile="true" id="_142447943770443"/>
+            <jpa:one-to-many name="hidrometroUcCollection" target-entity="HidrometroUc" mapped-by="unidadeconsumidora" connected-entity-id="_142447943768810" connected-attribute-id="_1424479437704100" visibile="true" id="_142447943770447"/>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity class="Situacao" visibile="true" minimized="false" id="_14192597551207">
+    <jpa:entity class="Situacao" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14244794376887">
         <jpa:table name="SITUACOES"/>
         <jpa:attributes>
-            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_141925975513848">
+            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_142447943770448">
                 <jpa:column name="ID" unique="false" nullable="false" insertable="true" updatable="true" table="SITUACOES"/>
                 <jpa:generated-value strategy="AUTO"/>
             </jpa:id>
-            <jpa:basic name="codigo" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_141925975513849">
+            <jpa:basic name="codigo" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_142447943770449">
                 <jpa:column name="CODIGO" unique="false" nullable="true" insertable="true" updatable="true" table="SITUACOES"/>
             </jpa:basic>
-            <jpa:basic name="descricao" optional="true" attribute-type="java.lang.String" visibile="true" id="_141925975513850">
+            <jpa:basic name="descricao" optional="true" attribute-type="java.lang.String" visibile="true" id="_142447943770450">
                 <jpa:column name="DESCRICAO" unique="false" nullable="true" insertable="true" updatable="true" table="SITUACOES" length="200"/>
             </jpa:basic>
-            <jpa:basic name="datainclusao" optional="false" attribute-type="java.util.Date" visibile="true" id="_141925975513851">
-                <jpa:column name="DATAINCLUSAO" unique="false" nullable="false" insertable="true" updatable="true" table="SITUACOES"/>
-                <jpa:temporal>DATE</jpa:temporal>
+            <jpa:basic name="datainclusao" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770451">
+                <jpa:column name="DATAINCLUSAO" unique="false" nullable="true" insertable="true" updatable="true" table="SITUACOES"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_141925975513852">
+            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770452">
                 <jpa:column name="DATAALTERACAO" unique="false" nullable="true" insertable="true" updatable="true" table="SITUACOES"/>
-                <jpa:temporal>DATE</jpa:temporal>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513878" visibile="true" id="_141925975513853">
+            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770478" visibile="true" id="_142447943770453">
                 <jpa:join-column name="USUARIOINCLUSAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513879" visibile="true" id="_141925975513854">
+            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770479" visibile="true" id="_142447943770454">
                 <jpa:join-column name="USUARIOALTERACAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:one-to-many name="competenciaCollection" target-entity="Competencia" mapped-by="situacao" connected-entity-id="_141925975512112" connected-attribute-id="_1419259755139115" visibile="true" id="_141925975513855"/>
+            <jpa:one-to-many name="competenciaCollection" target-entity="Competencia" mapped-by="situacao" connected-entity-id="_142447943768812" connected-attribute-id="_1424479437704115" visibile="true" id="_142447943770455"/>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity class="Pessoa" visibile="true" minimized="false" id="_14192597551208">
+    <jpa:entity class="Pessoa" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14244794376888">
         <jpa:table name="PESSOAS"/>
         <jpa:attributes>
-            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_141925975513856">
+            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_142447943770456">
                 <jpa:column name="ID" unique="false" nullable="false" insertable="true" updatable="true" table="PESSOAS"/>
                 <jpa:generated-value strategy="AUTO"/>
             </jpa:id>
-            <jpa:basic name="nome" optional="false" attribute-type="java.lang.String" visibile="true" id="_141925975513857">
+            <jpa:basic name="nome" optional="false" attribute-type="java.lang.String" visibile="true" id="_142447943770457">
                 <jpa:column name="NOME" unique="false" nullable="false" insertable="true" updatable="true" table="PESSOAS" length="200"/>
             </jpa:basic>
-            <jpa:basic name="cpf" optional="false" attribute-type="int" visibile="true" id="_141925975513858">
+            <jpa:basic name="cpf" optional="false" attribute-type="int" visibile="true" id="_142447943770458">
                 <jpa:column name="CPF" unique="false" nullable="false" insertable="true" updatable="true" table="PESSOAS"/>
             </jpa:basic>
-            <jpa:basic name="email" optional="true" attribute-type="java.lang.String" visibile="true" id="_141925975513859">
+            <jpa:basic name="email" optional="true" attribute-type="java.lang.String" visibile="true" id="_142447943770459">
                 <jpa:column name="EMAIL" unique="false" nullable="true" insertable="true" updatable="true" table="PESSOAS" length="200"/>
             </jpa:basic>
-            <jpa:basic name="datainclusao" optional="false" attribute-type="java.util.Date" visibile="true" id="_141925975513860">
-                <jpa:column name="DATAINCLUSAO" unique="false" nullable="false" insertable="true" updatable="true" table="PESSOAS"/>
-                <jpa:temporal>DATE</jpa:temporal>
+            <jpa:basic name="datainclusao" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770460">
+                <jpa:column name="DATAINCLUSAO" unique="false" nullable="true" insertable="true" updatable="true" table="PESSOAS"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_141925975513861">
+            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770461">
                 <jpa:column name="DATAALTERACAO" unique="false" nullable="true" insertable="true" updatable="true" table="PESSOAS"/>
-                <jpa:temporal>DATE</jpa:temporal>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513880" visibile="true" id="_141925975513864">
+            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770480" visibile="true" id="_142447943770464">
                 <jpa:join-column name="USUARIOINCLUSAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513881" visibile="true" id="_141925975513865">
+            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770481" visibile="true" id="_142447943770465">
                 <jpa:join-column name="USUARIOALTERACAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:one-to-many name="pessoaUcCollection" target-entity="PessoaUc" mapped-by="proprietario" connected-entity-id="_14192597551195" connected-attribute-id="_141925975513735" visibile="true" id="_141925975513862"/>
-            <jpa:one-to-many name="pessoaUcCollection1" target-entity="PessoaUc" mapped-by="inquilino" connected-entity-id="_14192597551195" connected-attribute-id="_141925975513736" visibile="true" id="_141925975513863"/>
+            <jpa:one-to-many name="pessoaUcCollection" target-entity="PessoaUc" mapped-by="proprietario" connected-entity-id="_14244794376885" connected-attribute-id="_142447943770435" visibile="true" id="_142447943770462"/>
+            <jpa:one-to-many name="pessoaUcCollection1" target-entity="PessoaUc" mapped-by="inquilino" connected-entity-id="_14244794376885" connected-attribute-id="_142447943770436" visibile="true" id="_142447943770463"/>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity class="Usuario" visibile="true" minimized="false" id="_14192597551209">
+    <jpa:entity class="Usuario" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14244794376889">
         <jpa:table name="USUARIOS"/>
         <jpa:attributes>
-            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_141925975513866">
+            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_142447943770466">
                 <jpa:column name="ID" unique="false" nullable="false" insertable="true" updatable="true" table="USUARIOS"/>
                 <jpa:generated-value strategy="AUTO"/>
             </jpa:id>
-            <jpa:basic name="nome" optional="false" attribute-type="java.lang.String" visibile="true" id="_141925975513867">
+            <jpa:basic name="nome" optional="false" attribute-type="java.lang.String" visibile="true" id="_142447943770467">
                 <jpa:column name="NOME" unique="false" nullable="false" insertable="true" updatable="true" table="USUARIOS" length="200"/>
             </jpa:basic>
-            <jpa:basic name="usuario" optional="false" attribute-type="java.lang.String" visibile="true" id="_141925975513868">
+            <jpa:basic name="usuario" optional="false" attribute-type="java.lang.String" visibile="true" id="_142447943770468">
                 <jpa:column name="USUARIO" unique="false" nullable="false" insertable="true" updatable="true" table="USUARIOS" length="20"/>
             </jpa:basic>
-            <jpa:basic name="senha" optional="false" attribute-type="java.lang.String" visibile="true" id="_141925975513869">
+            <jpa:basic name="senha" optional="false" attribute-type="java.lang.String" visibile="true" id="_142447943770469">
                 <jpa:column name="SENHA" unique="false" nullable="false" insertable="true" updatable="true" table="USUARIOS" length="200"/>
             </jpa:basic>
-            <jpa:basic name="datainclusao" optional="false" attribute-type="java.util.Date" visibile="true" id="_141925975513870">
+            <jpa:basic name="datainclusao" optional="false" attribute-type="java.util.Date" visibile="true" id="_142447943770470">
                 <jpa:column name="DATAINCLUSAO" unique="false" nullable="false" insertable="true" updatable="true" table="USUARIOS"/>
-                <jpa:temporal>DATE</jpa:temporal>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_141925975513871">
+            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770471">
                 <jpa:column name="DATAALTERACAO" unique="false" nullable="true" insertable="true" updatable="true" table="USUARIOS"/>
-                <jpa:temporal>DATE</jpa:temporal>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513882" visibile="true" id="_141925975513883">
+            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770482" visibile="true" id="_142447943770483">
                 <jpa:join-column name="USUARIOINCLUSAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513884" visibile="true" id="_141925975513885">
+            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770484" visibile="true" id="_142447943770485">
                 <jpa:join-column name="USUARIOALTERACAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:one-to-many name="condominioCollection" target-entity="Condominio" mapped-by="usuarioinclusao" connected-entity-id="_14192597551014" connected-attribute-id="_141925975513526" visibile="true" id="_141925975513872"/>
-            <jpa:one-to-many name="condominioCollection1" target-entity="Condominio" mapped-by="usuarioalteracao" connected-entity-id="_14192597551014" connected-attribute-id="_141925975513627" visibile="true" id="_141925975513873"/>
-            <jpa:one-to-many name="pessoaUcCollection" target-entity="PessoaUc" mapped-by="usuarioalteracao" connected-entity-id="_14192597551195" connected-attribute-id="_141925975513737" visibile="true" id="_141925975513874"/>
-            <jpa:one-to-many name="pessoaUcCollection1" target-entity="PessoaUc" mapped-by="usuarioinclusao" connected-entity-id="_14192597551195" connected-attribute-id="_141925975513738" visibile="true" id="_141925975513875"/>
-            <jpa:one-to-many name="unidadeConsumidoraCollection" target-entity="UnidadeConsumidora" mapped-by="usuarioalteracao" connected-entity-id="_14192597551196" connected-attribute-id="_141925975513845" visibile="true" id="_141925975513876"/>
-            <jpa:one-to-many name="unidadeConsumidoraCollection1" target-entity="UnidadeConsumidora" mapped-by="usuarioinclusao" connected-entity-id="_14192597551196" connected-attribute-id="_141925975513846" visibile="true" id="_141925975513877"/>
-            <jpa:one-to-many name="situacaoCollection" target-entity="Situacao" mapped-by="usuarioinclusao" connected-entity-id="_14192597551207" connected-attribute-id="_141925975513853" visibile="true" id="_141925975513878"/>
-            <jpa:one-to-many name="situacaoCollection1" target-entity="Situacao" mapped-by="usuarioalteracao" connected-entity-id="_14192597551207" connected-attribute-id="_141925975513854" visibile="true" id="_141925975513879"/>
-            <jpa:one-to-many name="pessoaCollection" target-entity="Pessoa" mapped-by="usuarioinclusao" connected-entity-id="_14192597551208" connected-attribute-id="_141925975513864" visibile="true" id="_141925975513880"/>
-            <jpa:one-to-many name="pessoaCollection1" target-entity="Pessoa" mapped-by="usuarioalteracao" connected-entity-id="_14192597551208" connected-attribute-id="_141925975513865" visibile="true" id="_141925975513881"/>
-            <jpa:one-to-many name="usuarioCollection" target-entity="Usuario" mapped-by="usuarioinclusao" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513883" visibile="true" id="_141925975513882"/>
-            <jpa:one-to-many name="usuarioCollection1" target-entity="Usuario" mapped-by="usuarioalteracao" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513885" visibile="true" id="_141925975513884"/>
-            <jpa:one-to-many name="hidrometroUcCollection" target-entity="HidrometroUc" mapped-by="usuarioalteracao" connected-entity-id="_141925975512010" connected-attribute-id="_1419259755139101" visibile="true" id="_141925975513886"/>
-            <jpa:one-to-many name="hidrometroUcCollection1" target-entity="HidrometroUc" mapped-by="usuarioinclusao" connected-entity-id="_141925975512010" connected-attribute-id="_1419259755139102" visibile="true" id="_141925975513887"/>
-            <jpa:one-to-many name="hidrometroCollection" target-entity="Hidrometro" mapped-by="usuarioinclusao" connected-entity-id="_141925975512011" connected-attribute-id="_1419259755139109" visibile="true" id="_141925975513888"/>
-            <jpa:one-to-many name="hidrometroCollection1" target-entity="Hidrometro" mapped-by="usuarioalteracao" connected-entity-id="_141925975512011" connected-attribute-id="_1419259755139110" visibile="true" id="_141925975513889"/>
-            <jpa:one-to-many name="competenciaCollection" target-entity="Competencia" mapped-by="usuarioalteracao" connected-entity-id="_141925975512112" connected-attribute-id="_1419259755139116" visibile="true" id="_141925975513890"/>
-            <jpa:one-to-many name="competenciaCollection1" target-entity="Competencia" mapped-by="usuarioinclusao" connected-entity-id="_141925975512112" connected-attribute-id="_1419259755139117" visibile="true" id="_141925975513891"/>
+            <jpa:one-to-many name="condominioCollection" target-entity="Condominio" mapped-by="usuarioinclusao" connected-entity-id="_14244794376884" connected-attribute-id="_142447943770426" visibile="true" id="_142447943770472"/>
+            <jpa:one-to-many name="condominioCollection1" target-entity="Condominio" mapped-by="usuarioalteracao" connected-entity-id="_14244794376884" connected-attribute-id="_142447943770427" visibile="true" id="_142447943770473"/>
+            <jpa:one-to-many name="pessoaUcCollection" target-entity="PessoaUc" mapped-by="usuarioalteracao" connected-entity-id="_14244794376885" connected-attribute-id="_142447943770437" visibile="true" id="_142447943770474"/>
+            <jpa:one-to-many name="pessoaUcCollection1" target-entity="PessoaUc" mapped-by="usuarioinclusao" connected-entity-id="_14244794376885" connected-attribute-id="_142447943770438" visibile="true" id="_142447943770475"/>
+            <jpa:one-to-many name="unidadeConsumidoraCollection" target-entity="UnidadeConsumidora" mapped-by="usuarioalteracao" connected-entity-id="_14244794376886" connected-attribute-id="_142447943770445" visibile="true" id="_142447943770476"/>
+            <jpa:one-to-many name="unidadeConsumidoraCollection1" target-entity="UnidadeConsumidora" mapped-by="usuarioinclusao" connected-entity-id="_14244794376886" connected-attribute-id="_142447943770446" visibile="true" id="_142447943770477"/>
+            <jpa:one-to-many name="situacaoCollection" target-entity="Situacao" mapped-by="usuarioinclusao" connected-entity-id="_14244794376887" connected-attribute-id="_142447943770453" visibile="true" id="_142447943770478"/>
+            <jpa:one-to-many name="situacaoCollection1" target-entity="Situacao" mapped-by="usuarioalteracao" connected-entity-id="_14244794376887" connected-attribute-id="_142447943770454" visibile="true" id="_142447943770479"/>
+            <jpa:one-to-many name="pessoaCollection" target-entity="Pessoa" mapped-by="usuarioinclusao" connected-entity-id="_14244794376888" connected-attribute-id="_142447943770464" visibile="true" id="_142447943770480"/>
+            <jpa:one-to-many name="pessoaCollection1" target-entity="Pessoa" mapped-by="usuarioalteracao" connected-entity-id="_14244794376888" connected-attribute-id="_142447943770465" visibile="true" id="_142447943770481"/>
+            <jpa:one-to-many name="usuarioCollection" target-entity="Usuario" mapped-by="usuarioinclusao" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770483" visibile="true" id="_142447943770482"/>
+            <jpa:one-to-many name="usuarioCollection1" target-entity="Usuario" mapped-by="usuarioalteracao" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770485" visibile="true" id="_142447943770484"/>
+            <jpa:one-to-many name="hidrometroUcCollection" target-entity="HidrometroUc" mapped-by="usuarioalteracao" connected-entity-id="_142447943768810" connected-attribute-id="_1424479437704101" visibile="true" id="_142447943770486"/>
+            <jpa:one-to-many name="hidrometroUcCollection1" target-entity="HidrometroUc" mapped-by="usuarioinclusao" connected-entity-id="_142447943768810" connected-attribute-id="_1424479437704102" visibile="true" id="_142447943770487"/>
+            <jpa:one-to-many name="hidrometroCollection" target-entity="Hidrometro" mapped-by="usuarioinclusao" connected-entity-id="_142447943768811" connected-attribute-id="_1424479437704109" visibile="true" id="_142447943770488"/>
+            <jpa:one-to-many name="hidrometroCollection1" target-entity="Hidrometro" mapped-by="usuarioalteracao" connected-entity-id="_142447943768811" connected-attribute-id="_1424479437704110" visibile="true" id="_142447943770489"/>
+            <jpa:one-to-many name="competenciaCollection" target-entity="Competencia" mapped-by="usuarioalteracao" connected-entity-id="_142447943768812" connected-attribute-id="_1424479437704116" visibile="true" id="_142447943770490"/>
+            <jpa:one-to-many name="competenciaCollection1" target-entity="Competencia" mapped-by="usuarioinclusao" connected-entity-id="_142447943768812" connected-attribute-id="_1424479437704117" visibile="true" id="_142447943770491"/>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity class="HidrometroUc" visibile="true" minimized="false" id="_141925975512010">
+    <jpa:entity class="HidrometroUc" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_142447943768810">
         <jpa:table name="HIDROMETROUC"/>
         <jpa:attributes>
-            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_141925975513992">
+            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_142447943770492">
                 <jpa:column name="ID" unique="false" nullable="false" insertable="true" updatable="true" table="HIDROMETROUC"/>
                 <jpa:generated-value strategy="AUTO"/>
             </jpa:id>
-            <jpa:basic name="datainstalacao" optional="false" attribute-type="java.util.Date" visibile="true" id="_141925975513993">
+            <jpa:basic name="datainstalacao" optional="false" attribute-type="java.util.Date" visibile="true" id="_142447943770493">
                 <jpa:column name="DATAINSTALACAO" unique="false" nullable="false" insertable="true" updatable="true" table="HIDROMETROUC"/>
                 <jpa:temporal>DATE</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="dataretirada" optional="true" attribute-type="java.util.Date" visibile="true" id="_141925975513994">
+            <jpa:basic name="dataretirada" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770494">
                 <jpa:column name="DATARETIRADA" unique="false" nullable="true" insertable="true" updatable="true" table="HIDROMETROUC"/>
                 <jpa:temporal>DATE</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="ultimaleitura" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_141925975513995">
+            <jpa:basic name="ultimaleitura" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_142447943770495">
                 <jpa:column name="ULTIMALEITURA" unique="false" nullable="true" insertable="true" updatable="true" table="HIDROMETROUC"/>
             </jpa:basic>
-            <jpa:basic name="dataultimaleitura" optional="true" attribute-type="java.util.Date" visibile="true" id="_141925975513996">
+            <jpa:basic name="dataultimaleitura" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770496">
                 <jpa:column name="DATAULTIMALEITURA" unique="false" nullable="true" insertable="true" updatable="true" table="HIDROMETROUC"/>
                 <jpa:temporal>DATE</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="datainclusao" optional="false" attribute-type="java.util.Date" visibile="true" id="_141925975513997">
-                <jpa:column name="DATAINCLUSAO" unique="false" nullable="false" insertable="true" updatable="true" table="HIDROMETROUC"/>
-                <jpa:temporal>DATE</jpa:temporal>
+            <jpa:basic name="datainclusao" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770497">
+                <jpa:column name="DATAINCLUSAO" unique="false" nullable="true" insertable="true" updatable="true" table="HIDROMETROUC"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_141925975513998">
+            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_142447943770498">
                 <jpa:column name="DATAALTERACAO" unique="false" nullable="true" insertable="true" updatable="true" table="HIDROMETROUC"/>
-                <jpa:temporal>DATE</jpa:temporal>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:many-to-one name="hidrometro" target-entity="Hidrometro" optional="false" primaryKey="false" connected-entity-id="_141925975512011" connected-attribute-id="_1419259755139108" visibile="true" id="_141925975513999">
+            <jpa:many-to-one name="hidrometro" target-entity="Hidrometro" optional="false" primaryKey="false" connected-entity-id="_142447943768811" connected-attribute-id="_1424479437704108" visibile="true" id="_142447943770499">
                 <jpa:join-column name="HIDROMETRO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="unidadeconsumidora" target-entity="UnidadeConsumidora" optional="false" primaryKey="false" connected-entity-id="_14192597551196" connected-attribute-id="_141925975513847" visibile="true" id="_1419259755139100">
+            <jpa:many-to-one name="unidadeconsumidora" target-entity="UnidadeConsumidora" optional="false" primaryKey="false" connected-entity-id="_14244794376886" connected-attribute-id="_142447943770447" visibile="true" id="_1424479437704100">
                 <jpa:join-column name="UNIDADECONSUMIDORA" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513886" visibile="true" id="_1419259755139101">
+            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770486" visibile="true" id="_1424479437704101">
                 <jpa:join-column name="USUARIOALTERACAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513887" visibile="true" id="_1419259755139102">
+            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770487" visibile="true" id="_1424479437704102">
                 <jpa:join-column name="USUARIOINCLUSAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity class="Hidrometro" visibile="true" minimized="false" id="_141925975512011">
+    <jpa:entity class="Hidrometro" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_142447943768811">
         <jpa:table name="HIDROMETROS"/>
         <jpa:attributes>
-            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_1419259755139103">
+            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_1424479437704103">
                 <jpa:column name="ID" unique="false" nullable="false" insertable="true" updatable="true" table="HIDROMETROS"/>
                 <jpa:generated-value strategy="AUTO"/>
             </jpa:id>
-            <jpa:basic name="nrserie" optional="false" attribute-type="java.lang.String" visibile="true" id="_1419259755139104">
+            <jpa:basic name="nrserie" optional="false" attribute-type="java.lang.String" visibile="true" id="_1424479437704104">
                 <jpa:column name="NRSERIE" unique="false" nullable="false" insertable="true" updatable="true" table="HIDROMETROS" length="20"/>
             </jpa:basic>
-            <jpa:basic name="dataaquisicao" optional="false" attribute-type="java.util.Date" visibile="true" id="_1419259755139105">
+            <jpa:basic name="dataaquisicao" optional="false" attribute-type="java.util.Date" visibile="true" id="_1424479437704105">
                 <jpa:column name="DATAAQUISICAO" unique="false" nullable="false" insertable="true" updatable="true" table="HIDROMETROS"/>
                 <jpa:temporal>DATE</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="datainclusao" optional="false" attribute-type="java.util.Date" visibile="true" id="_1419259755139106">
-                <jpa:column name="DATAINCLUSAO" unique="false" nullable="false" insertable="true" updatable="true" table="HIDROMETROS"/>
-                <jpa:temporal>DATE</jpa:temporal>
+            <jpa:basic name="datainclusao" optional="true" attribute-type="java.util.Date" visibile="true" id="_1424479437704106">
+                <jpa:column name="DATAINCLUSAO" unique="false" nullable="true" insertable="true" updatable="true" table="HIDROMETROS"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_1419259755139107">
+            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_1424479437704107">
                 <jpa:column name="DATAALTERACAO" unique="false" nullable="true" insertable="true" updatable="true" table="HIDROMETROS"/>
-                <jpa:temporal>DATE</jpa:temporal>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513888" visibile="true" id="_1419259755139109">
+            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770488" visibile="true" id="_1424479437704109">
                 <jpa:join-column name="USUARIOINCLUSAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513889" visibile="true" id="_1419259755139110">
+            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770489" visibile="true" id="_1424479437704110">
                 <jpa:join-column name="USUARIOALTERACAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:one-to-many name="hidrometroUcCollection" target-entity="HidrometroUc" mapped-by="hidrometro" connected-entity-id="_141925975512010" connected-attribute-id="_141925975513999" visibile="true" id="_1419259755139108"/>
+            <jpa:one-to-many name="hidrometroUcCollection" target-entity="HidrometroUc" mapped-by="hidrometro" connected-entity-id="_142447943768810" connected-attribute-id="_142447943770499" visibile="true" id="_1424479437704108"/>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity class="Competencia" visibile="true" minimized="false" id="_141925975512112">
+    <jpa:entity class="Competencia" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_142447943768812">
         <jpa:table name="COMPETENCIAS"/>
         <jpa:attributes>
-            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_1419259755139111">
+            <jpa:id name="id" attribute-type="java.lang.Integer" visibile="true" id="_1424479437704111">
                 <jpa:column name="ID" unique="false" nullable="false" insertable="true" updatable="true" table="COMPETENCIAS"/>
                 <jpa:generated-value strategy="AUTO"/>
             </jpa:id>
-            <jpa:basic name="competencia" optional="false" attribute-type="java.util.Date" visibile="true" id="_1419259755139112">
+            <jpa:basic name="competencia" optional="false" attribute-type="java.util.Date" visibile="true" id="_1424479437704112">
                 <jpa:column name="COMPETENCIA" unique="false" nullable="false" insertable="true" updatable="true" table="COMPETENCIAS"/>
                 <jpa:temporal>DATE</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="datainclusao" optional="false" attribute-type="java.util.Date" visibile="true" id="_1419259755139113">
-                <jpa:column name="DATAINCLUSAO" unique="false" nullable="false" insertable="true" updatable="true" table="COMPETENCIAS"/>
-                <jpa:temporal>DATE</jpa:temporal>
+            <jpa:basic name="datainclusao" optional="true" attribute-type="java.util.Date" visibile="true" id="_1424479437704113">
+                <jpa:column name="DATAINCLUSAO" unique="false" nullable="true" insertable="true" updatable="true" table="COMPETENCIAS"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_1419259755139114">
+            <jpa:basic name="dataalteracao" optional="true" attribute-type="java.util.Date" visibile="true" id="_1424479437704114">
                 <jpa:column name="DATAALTERACAO" unique="false" nullable="true" insertable="true" updatable="true" table="COMPETENCIAS"/>
-                <jpa:temporal>DATE</jpa:temporal>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
             </jpa:basic>
-            <jpa:many-to-one name="situacao" target-entity="Situacao" optional="false" primaryKey="false" connected-entity-id="_14192597551207" connected-attribute-id="_141925975513855" visibile="true" id="_1419259755139115">
+            <jpa:many-to-one name="situacao" target-entity="Situacao" optional="false" primaryKey="false" connected-entity-id="_14244794376887" connected-attribute-id="_142447943770455" visibile="true" id="_1424479437704115">
                 <jpa:join-column name="SITUACAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513890" visibile="true" id="_1419259755139116">
+            <jpa:many-to-one name="usuarioalteracao" target-entity="Usuario" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770490" visibile="true" id="_1424479437704116">
                 <jpa:join-column name="USUARIOALTERACAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14192597551209" connected-attribute-id="_141925975513891" visibile="true" id="_1419259755139117">
+            <jpa:many-to-one name="usuarioinclusao" target-entity="Usuario" optional="false" primaryKey="false" connected-entity-id="_14244794376889" connected-attribute-id="_142447943770491" visibile="true" id="_1424479437704117">
                 <jpa:join-column name="USUARIOINCLUSAO" referenced-column-name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:diagram id="_14192597550952">
-        <plane elementRef="_14192597550921" id="_14192597550983_p"/>
+    <jpa:diagram id="_14244794376882">
+        <plane elementRef="_14244794376881" id="_14244794376883_p"/>
     </jpa:diagram>
 </jpa:entity-mappings>

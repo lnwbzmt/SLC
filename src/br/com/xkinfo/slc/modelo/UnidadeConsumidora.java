@@ -1,6 +1,8 @@
 package br.com.xkinfo.slc.modelo;
 
+
 import java.io.Serializable;
+import java.lang.Integer;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -17,61 +19,42 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "UNIDADESCONSUMIDORAS")
+@Table(name="UNIDADESCONSUMIDORAS")
 public class UnidadeConsumidora implements Serializable {
 
-    /*
-     CAMPOS DA TABELA:
-     * ID;
-     * CONDOMINIO;
-     * NUMERO;
-     ** AUDITORIA **
-     * USUARIO INCLUSAO;
-     * DATA INCLUSAO;
-     * USUARIO ALTERACAO;
-     * DATA ALTERACAO;
-     */
-    @OneToMany(targetEntity = PessoaUc.class, mappedBy = "unidadeconsumidora")
+    @OneToMany(targetEntity = PessoaUc.class,mappedBy = "unidadeconsumidora")
     private Collection<PessoaUc> pessoaUcCollection;
-
-    @Column(name = "NUMERO", table = "UNIDADESCONSUMIDORAS", nullable = false)
+    @Column(name="NUMERO",table="UNIDADESCONSUMIDORAS",nullable=false)
     @Basic
     private int numero;
-
     @ManyToOne(targetEntity = Usuario.class)
-    @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
+    @JoinColumn(name="USUARIOALTERACAO",referencedColumnName="ID")
     private Usuario usuarioalteracao;
-
-    @ManyToOne(optional = false, targetEntity = Condominio.class)
-    @JoinColumn(name = "CONDOMINIO", referencedColumnName = "ID")
+    @ManyToOne(optional=false,targetEntity = Condominio.class)
+    @JoinColumn(name="CONDOMINIO",referencedColumnName="ID")
     private Condominio condominio;
-
-    @Column(name = "DATAINCLUSAO", table = "UNIDADESCONSUMIDORAS", nullable = false)
-    @Temporal(TemporalType.DATE)
+    @Column(name="DATAINCLUSAO",table="UNIDADESCONSUMIDORAS")
+    @Temporal(TemporalType.TIMESTAMP)
     @Basic
     private Date datainclusao;
-
-    @ManyToOne(optional = false, targetEntity = Usuario.class)
-    @JoinColumn(name = "USUARIOINCLUSAO", referencedColumnName = "ID")
+    @ManyToOne(optional=false,targetEntity = Usuario.class)
+    @JoinColumn(name="USUARIOINCLUSAO",referencedColumnName="ID")
     private Usuario usuarioinclusao;
-
-    @OneToMany(targetEntity = HidrometroUc.class, mappedBy = "unidadeconsumidora")
+    @OneToMany(targetEntity = HidrometroUc.class,mappedBy = "unidadeconsumidora")
     private Collection<HidrometroUc> hidrometroUcCollection;
-
-    @Column(name = "ID", table = "UNIDADESCONSUMIDORAS", nullable = false)
+    @Column(name="ID",table="UNIDADESCONSUMIDORAS",nullable=false)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-
-    @Column(name = "DATAALTERACAO", table = "UNIDADESCONSUMIDORAS")
-    @Temporal(TemporalType.DATE)
+    @Column(name="DATAALTERACAO",table="UNIDADESCONSUMIDORAS")
+    @Temporal(TemporalType.TIMESTAMP)
     @Basic
     private Date dataalteracao;
 
     public UnidadeConsumidora() {
 
     }
-
+   
     public Collection<PessoaUc> getPessoaUcCollection() {
         return this.pessoaUcCollection;
     }
@@ -79,7 +62,7 @@ public class UnidadeConsumidora implements Serializable {
     public void setPessoaUcCollection(Collection<PessoaUc> pessoaUcCollection) {
         this.pessoaUcCollection = pessoaUcCollection;
     }
-
+   
     public int getNumero() {
         return this.numero;
     }
@@ -87,7 +70,7 @@ public class UnidadeConsumidora implements Serializable {
     public void setNumero(int numero) {
         this.numero = numero;
     }
-
+   
     public Usuario getUsuarioalteracao() {
         return this.usuarioalteracao;
     }
@@ -95,7 +78,7 @@ public class UnidadeConsumidora implements Serializable {
     public void setUsuarioalteracao(Usuario usuarioalteracao) {
         this.usuarioalteracao = usuarioalteracao;
     }
-
+   
     public Condominio getCondominio() {
         return this.condominio;
     }
@@ -103,7 +86,7 @@ public class UnidadeConsumidora implements Serializable {
     public void setCondominio(Condominio condominio) {
         this.condominio = condominio;
     }
-
+   
     public Date getDatainclusao() {
         return this.datainclusao;
     }
@@ -111,7 +94,7 @@ public class UnidadeConsumidora implements Serializable {
     public void setDatainclusao(Date datainclusao) {
         this.datainclusao = datainclusao;
     }
-
+   
     public Usuario getUsuarioinclusao() {
         return this.usuarioinclusao;
     }
@@ -119,7 +102,7 @@ public class UnidadeConsumidora implements Serializable {
     public void setUsuarioinclusao(Usuario usuarioinclusao) {
         this.usuarioinclusao = usuarioinclusao;
     }
-
+   
     public Collection<HidrometroUc> getHidrometroUcCollection() {
         return this.hidrometroUcCollection;
     }
@@ -127,7 +110,7 @@ public class UnidadeConsumidora implements Serializable {
     public void setHidrometroUcCollection(Collection<HidrometroUc> hidrometroUcCollection) {
         this.hidrometroUcCollection = hidrometroUcCollection;
     }
-
+   
     public Integer getId() {
         return this.id;
     }
@@ -135,7 +118,7 @@ public class UnidadeConsumidora implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-
+   
     public Date getDataalteracao() {
         return this.dataalteracao;
     }
@@ -143,5 +126,4 @@ public class UnidadeConsumidora implements Serializable {
     public void setDataalteracao(Date dataalteracao) {
         this.dataalteracao = dataalteracao;
     }
-
 }

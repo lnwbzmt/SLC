@@ -47,7 +47,6 @@
     <class>br.com.xkinfo.slc.modelo.HidrometroUC</class>
     <class>br.com.xkinfo.slc.modelo.Usuario</class>
     <class>br.com.xkinfo.slc.modelo.ItensValor</class>
-    <class>Competencia</class>
     <class>br.com.xkinfo.slc.modelo.HidrometroUc</class>
     <class>br.com.xkinfo.slc.modelo.PessoaUc</class>
     <properties>

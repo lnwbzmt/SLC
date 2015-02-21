@@ -1,6 +1,9 @@
 package br.com.xkinfo.slc.modelo;
 
+
 import java.io.Serializable;
+import java.lang.Integer;
+import java.lang.String;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -17,58 +20,40 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "SITUACOES")
+@Table(name="SITUACOES")
 public class Situacao implements Serializable {
 
-    /*
-     CAMPOS DA TABELA:
-     * ID;
-     * CODIGO;
-     * DESCRICAO;
-     ** AUDITORIA **
-     * USUARIO INCLUSAO;
-     * DATA INCLUSAO;
-     * USUARIO ALTERACAO;
-     * DATA ALTERACAO;
-     */
-    @OneToMany(targetEntity = Competencia.class, mappedBy = "situacao")
+    @OneToMany(targetEntity = Competencia.class,mappedBy = "situacao")
     private Collection<Competencia> competenciaCollection;
-
-    @Column(name = "CODIGO", table = "SITUACOES")
+    @Column(name="CODIGO",table="SITUACOES")
     @Basic
     private Integer codigo;
-
     @ManyToOne(targetEntity = Usuario.class)
-    @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
+    @JoinColumn(name="USUARIOALTERACAO",referencedColumnName="ID")
     private Usuario usuarioalteracao;
-
-    @Column(name = "DATAINCLUSAO", table = "SITUACOES", nullable = false)
-    @Temporal(TemporalType.DATE)
+    @Column(name="DATAINCLUSAO",table="SITUACOES")
+    @Temporal(TemporalType.TIMESTAMP)
     @Basic
     private Date datainclusao;
-
-    @ManyToOne(optional = false, targetEntity = Usuario.class)
-    @JoinColumn(name = "USUARIOINCLUSAO", referencedColumnName = "ID")
+    @ManyToOne(optional=false,targetEntity = Usuario.class)
+    @JoinColumn(name="USUARIOINCLUSAO",referencedColumnName="ID")
     private Usuario usuarioinclusao;
-
-    @Column(name = "ID", table = "SITUACOES", nullable = false)
+    @Column(name="ID",table="SITUACOES",nullable=false)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-
-    @Column(name = "DATAALTERACAO", table = "SITUACOES")
-    @Temporal(TemporalType.DATE)
+    @Column(name="DATAALTERACAO",table="SITUACOES")
+    @Temporal(TemporalType.TIMESTAMP)
     @Basic
     private Date dataalteracao;
-
-    @Column(name = "DESCRICAO", table = "SITUACOES", length = 200)
+    @Column(name="DESCRICAO",table="SITUACOES",length=200)
     @Basic
     private String descricao;
 
     public Situacao() {
 
     }
-
+   
     public Collection<Competencia> getCompetenciaCollection() {
         return this.competenciaCollection;
     }
@@ -76,7 +61,7 @@ public class Situacao implements Serializable {
     public void setCompetenciaCollection(Collection<Competencia> competenciaCollection) {
         this.competenciaCollection = competenciaCollection;
     }
-
+   
     public Integer getCodigo() {
         return this.codigo;
     }
@@ -84,7 +69,7 @@ public class Situacao implements Serializable {
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
-
+   
     public Usuario getUsuarioalteracao() {
         return this.usuarioalteracao;
     }
@@ -92,7 +77,7 @@ public class Situacao implements Serializable {
     public void setUsuarioalteracao(Usuario usuarioalteracao) {
         this.usuarioalteracao = usuarioalteracao;
     }
-
+   
     public Date getDatainclusao() {
         return this.datainclusao;
     }
@@ -100,7 +85,7 @@ public class Situacao implements Serializable {
     public void setDatainclusao(Date datainclusao) {
         this.datainclusao = datainclusao;
     }
-
+   
     public Usuario getUsuarioinclusao() {
         return this.usuarioinclusao;
     }
@@ -108,7 +93,7 @@ public class Situacao implements Serializable {
     public void setUsuarioinclusao(Usuario usuarioinclusao) {
         this.usuarioinclusao = usuarioinclusao;
     }
-
+   
     public Integer getId() {
         return this.id;
     }
@@ -116,7 +101,7 @@ public class Situacao implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-
+   
     public Date getDataalteracao() {
         return this.dataalteracao;
     }
@@ -124,17 +109,12 @@ public class Situacao implements Serializable {
     public void setDataalteracao(Date dataalteracao) {
         this.dataalteracao = dataalteracao;
     }
-
+   
     public String getDescricao() {
         return this.descricao;
     }
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    @Override
-    public String toString() {
-        return descricao;
     }
 }

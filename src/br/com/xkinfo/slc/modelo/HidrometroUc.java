@@ -1,6 +1,8 @@
 package br.com.xkinfo.slc.modelo;
 
+
 import java.io.Serializable;
+import java.lang.Integer;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -15,70 +17,45 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "HIDROMETROUC")
+@Table(name="HIDROMETROUC")
 public class HidrometroUc implements Serializable {
 
-    /*
-     CAMPOS DA TABELA:
-     * ID;
-     * UNIDADE CONSUMIDORA;
-     * HIDROMETRO;
-     * DATAINSTALAÇÃO;
-     * DATA RETIRADA;
-     * ULTIMA LEITURA;
-     * DATA ULTIMA LEITURA;
-     ** AUDITORIA **
-     * USUARIO INCLUSAO;
-     * DATA INCLUSAO;
-     * USUARIO ALTERACAO;
-     * DATA ALTERACAO;
-     */
-    @Column(name = "DATAULTIMALEITURA", table = "HIDROMETROUC")
+    @Column(name="DATAULTIMALEITURA",table="HIDROMETROUC")
     @Temporal(TemporalType.DATE)
     @Basic
     private Date dataultimaleitura;
-
-    @Column(name = "DATARETIRADA", table = "HIDROMETROUC")
+    @Column(name="DATARETIRADA",table="HIDROMETROUC")
     @Temporal(TemporalType.DATE)
     @Basic
     private Date dataretirada;
-
-    @Column(name = "ULTIMALEITURA", table = "HIDROMETROUC")
+    @Column(name="ULTIMALEITURA",table="HIDROMETROUC")
     @Basic
     private Integer ultimaleitura;
-
-    @ManyToOne(optional = false, targetEntity = Hidrometro.class)
-    @JoinColumn(name = "HIDROMETRO", referencedColumnName = "ID")
+    @ManyToOne(optional=false,targetEntity = Hidrometro.class)
+    @JoinColumn(name="HIDROMETRO",referencedColumnName="ID")
     private Hidrometro hidrometro;
-
     @ManyToOne(targetEntity = Usuario.class)
-    @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
+    @JoinColumn(name="USUARIOALTERACAO",referencedColumnName="ID")
     private Usuario usuarioalteracao;
-
-    @ManyToOne(optional = false, targetEntity = UnidadeConsumidora.class)
-    @JoinColumn(name = "UNIDADECONSUMIDORA", referencedColumnName = "ID")
+    @ManyToOne(optional=false,targetEntity = UnidadeConsumidora.class)
+    @JoinColumn(name="UNIDADECONSUMIDORA",referencedColumnName="ID")
     private UnidadeConsumidora unidadeconsumidora;
-
-    @Column(name = "DATAINCLUSAO", table = "HIDROMETROUC", nullable = false)
-    @Temporal(TemporalType.DATE)
+    @Column(name="DATAINCLUSAO",table="HIDROMETROUC")
+    @Temporal(TemporalType.TIMESTAMP)
     @Basic
     private Date datainclusao;
-
-    @ManyToOne(optional = false, targetEntity = Usuario.class)
-    @JoinColumn(name = "USUARIOINCLUSAO", referencedColumnName = "ID")
+    @ManyToOne(optional=false,targetEntity = Usuario.class)
+    @JoinColumn(name="USUARIOINCLUSAO",referencedColumnName="ID")
     private Usuario usuarioinclusao;
-
-    @Column(name = "ID", table = "HIDROMETROUC", nullable = false)
+    @Column(name="ID",table="HIDROMETROUC",nullable=false)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-
-    @Column(name = "DATAALTERACAO", table = "HIDROMETROUC")
-    @Temporal(TemporalType.DATE)
+    @Column(name="DATAALTERACAO",table="HIDROMETROUC")
+    @Temporal(TemporalType.TIMESTAMP)
     @Basic
     private Date dataalteracao;
-
-    @Column(name = "DATAINSTALACAO", table = "HIDROMETROUC", nullable = false)
+    @Column(name="DATAINSTALACAO",table="HIDROMETROUC",nullable=false)
     @Temporal(TemporalType.DATE)
     @Basic
     private Date datainstalacao;
@@ -86,7 +63,7 @@ public class HidrometroUc implements Serializable {
     public HidrometroUc() {
 
     }
-
+   
     public Date getDataultimaleitura() {
         return this.dataultimaleitura;
     }
@@ -94,7 +71,7 @@ public class HidrometroUc implements Serializable {
     public void setDataultimaleitura(Date dataultimaleitura) {
         this.dataultimaleitura = dataultimaleitura;
     }
-
+   
     public Date getDataretirada() {
         return this.dataretirada;
     }
@@ -102,7 +79,7 @@ public class HidrometroUc implements Serializable {
     public void setDataretirada(Date dataretirada) {
         this.dataretirada = dataretirada;
     }
-
+   
     public Integer getUltimaleitura() {
         return this.ultimaleitura;
     }
@@ -110,7 +87,7 @@ public class HidrometroUc implements Serializable {
     public void setUltimaleitura(Integer ultimaleitura) {
         this.ultimaleitura = ultimaleitura;
     }
-
+   
     public Hidrometro getHidrometro() {
         return this.hidrometro;
     }
@@ -118,7 +95,7 @@ public class HidrometroUc implements Serializable {
     public void setHidrometro(Hidrometro hidrometro) {
         this.hidrometro = hidrometro;
     }
-
+   
     public Usuario getUsuarioalteracao() {
         return this.usuarioalteracao;
     }
@@ -126,7 +103,7 @@ public class HidrometroUc implements Serializable {
     public void setUsuarioalteracao(Usuario usuarioalteracao) {
         this.usuarioalteracao = usuarioalteracao;
     }
-
+   
     public UnidadeConsumidora getUnidadeconsumidora() {
         return this.unidadeconsumidora;
     }
@@ -134,7 +111,7 @@ public class HidrometroUc implements Serializable {
     public void setUnidadeconsumidora(UnidadeConsumidora unidadeconsumidora) {
         this.unidadeconsumidora = unidadeconsumidora;
     }
-
+   
     public Date getDatainclusao() {
         return this.datainclusao;
     }
@@ -142,7 +119,7 @@ public class HidrometroUc implements Serializable {
     public void setDatainclusao(Date datainclusao) {
         this.datainclusao = datainclusao;
     }
-
+   
     public Usuario getUsuarioinclusao() {
         return this.usuarioinclusao;
     }
@@ -150,7 +127,7 @@ public class HidrometroUc implements Serializable {
     public void setUsuarioinclusao(Usuario usuarioinclusao) {
         this.usuarioinclusao = usuarioinclusao;
     }
-
+   
     public Integer getId() {
         return this.id;
     }
@@ -158,7 +135,7 @@ public class HidrometroUc implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-
+   
     public Date getDataalteracao() {
         return this.dataalteracao;
     }
@@ -166,7 +143,7 @@ public class HidrometroUc implements Serializable {
     public void setDataalteracao(Date dataalteracao) {
         this.dataalteracao = dataalteracao;
     }
-
+   
     public Date getDatainstalacao() {
         return this.datainstalacao;
     }
@@ -174,5 +151,4 @@ public class HidrometroUc implements Serializable {
     public void setDatainstalacao(Date datainstalacao) {
         this.datainstalacao = datainstalacao;
     }
-
 }
