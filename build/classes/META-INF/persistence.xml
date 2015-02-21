@@ -2,65 +2,20 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="SLCPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <validation-mode>NONE</validation-mode>
+    <class>br.com.xkinfo.slc.modelo.Competencia</class>
+    <class>br.com.xkinfo.slc.modelo.Condominio</class>
+    <class>br.com.xkinfo.slc.modelo.Hidrometro</class>
+    <class>br.com.xkinfo.slc.modelo.HidrometroUc</class>
+    <class>br.com.xkinfo.slc.modelo.Pessoa</class>
+    <class>br.com.xkinfo.slc.modelo.PessoaUc</class>
+    <class>br.com.xkinfo.slc.modelo.Situacao</class>
+    <class>br.com.xkinfo.slc.modelo.UnidadeConsumidora</class>
+    <class>br.com.xkinfo.slc.modelo.Usuario</class>
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-      <property name="hibernate.connection.autoReconnect" value="true"/>
-      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-      <property name="hibernate.show_sql" value="true"/>
-      <property name="hibernate.format_sql" value="true"/>
-      <property name="hibernate.hbm2ddl.auto" value="update"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://173.194.224.158:3306/acat"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="laguna"/>
-    </properties>
-  </persistence-unit>
-  <persistence-unit name="DEFAULT_PU" transaction-type="RESOURCE_LOCAL">
-    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-    <class>Condominios</class>
-    <class>Pessoas</class>
-    <class>Hidrometros</class>
-    <class>Faturas</class>
-    <class>Ocorrencias</class>
-    <class>Competencias</class>
-    <class>Pessoauc</class>
-    <class>Leituras</class>
-    <class>Unidadesconsumidoras</class>
-    <class>Situacoes</class>
-    <class>Intensvalor</class>
-    <class>Hidrometrouc</class>
-    <class>Itensfatura</class>
-    <class>br.com.xkinfo.slc.modelo.Condominio</class>
-    <class>br.com.xkinfo.slc.modelo.PessoaUC</class>
-    <class>br.com.xkinfo.slc.modelo.Situacao</class>
-    <class>br.com.xkinfo.slc.modelo.Ocorrencia</class>
-    <class>br.com.xkinfo.slc.modelo.Pessoa</class>
-    <class>br.com.xkinfo.slc.modelo.Hidrometro</class>
-    <class>br.com.xkinfo.slc.modelo.Fatura</class>
-    <class>br.com.xkinfo.slc.modelo.Leitura</class>
-    <class>br.com.xkinfo.slc.modelo.Competencia</class>
-    <class>br.com.xkinfo.slc.modelo.Caixa</class>
-    <class>br.com.xkinfo.slc.modelo.Itens</class>
-    <class>br.com.xkinfo.slc.modelo.UnidadeConsumidora</class>
-    <class>br.com.xkinfo.slc.modelo.ItensFatura</class>
-    <class>br.com.xkinfo.slc.modelo.HidrometroUC</class>
-    <class>br.com.xkinfo.slc.modelo.Usuario</class>
-    <class>br.com.xkinfo.slc.modelo.ItensValor</class>
-    <class>br.com.xkinfo.slc.modelo.HidrometroUc</class>
-    <class>br.com.xkinfo.slc.modelo.PessoaUc</class>
-    <class>PessoaUc</class>
-    <class>UnidadeConsumidora</class>
-    <class>Situacao</class>
-    <class>Usuario</class>
-    <class>HidrometroUc</class>
-    <class>Hidrometro</class>
-    <class>Competencia</class>
-    <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
-      <property name="javax.persistence.jdbc.password" value="app"/>
-      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-      <property name="javax.persistence.jdbc.user" value="app"/>
     </properties>
   </persistence-unit>
 </persistence>
