@@ -49,7 +49,7 @@ public class CondominioService implements ICondominioService {
 
         if (lista.isEmpty()) {
             Long fCnpj = Long.valueOf(cnpj);
-            Float fNumero = Float.valueOf(numero);
+            long fNumero = Long.valueOf(numero);
 
             cond.setNome(nome);
             cond.setCnpj(fCnpj);
@@ -111,7 +111,7 @@ public class CondominioService implements ICondominioService {
 
         if (lista.isEmpty()) {
             Long fCnpj = Long.valueOf(cnpj);
-            Float fNumero = Float.valueOf(numero);
+            Long fNumero = Long.valueOf(numero);
 
             cond.setId(id);
             cond.setNome(nome);
