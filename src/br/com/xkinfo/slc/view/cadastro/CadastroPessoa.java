@@ -12,7 +12,7 @@ public class CadastroPessoa extends javax.swing.JDialog {
     private Pessoa pessoaSelecionado;
     private Usuario usuarioLogado;
 
-    public CadastroPessoa(java.awt.Frame parent, boolean modal,Usuario usuario) {
+    public CadastroPessoa(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
         initComponents();
         bExcluir.setVisible(false);
@@ -20,14 +20,14 @@ public class CadastroPessoa extends javax.swing.JDialog {
         usuarioLogado = usuario;
     }
 
-    public CadastroPessoa(Pessoa pessoa, java.awt.Frame parent, boolean modal,Usuario usuario) {
-        this(parent, modal,usuario);
+    public CadastroPessoa(Pessoa pessoa, java.awt.Frame parent, boolean modal, Usuario usuario) {
+        this(parent, modal, usuario);
         pessoaSelecionado = pessoa;
         if (pessoaSelecionado != null) {
             tfCodigo.setText(pessoaSelecionado.getId().toString());
             tfNome.setText(pessoaSelecionado.getNome());
             tfEmail.setText(pessoaSelecionado.getEmail());
-            //tfCPF.setText(pessoaSelecionado.getCpf().toString());
+            tfCPF.setText(String.valueOf(pessoaSelecionado.getCpf()));
             //tfNome.setText(pessoa.getFatura().toString());
             // Mostra o botão Excluir     
             bExcluir.setVisible(true);

@@ -1,9 +1,6 @@
 package br.com.xkinfo.slc.modelo;
 
-
 import java.io.Serializable;
-import java.lang.Integer;
-import java.lang.String;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -20,45 +17,54 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="PESSOAS")
+@Table(name = "PESSOAS")
 public class Pessoa implements Serializable {
 
-    @OneToMany(targetEntity = PessoaUc.class,mappedBy = "proprietario")
-    private Collection<PessoaUc> pessoaUcCollection;
-    @ManyToOne(optional=false,targetEntity = Usuario.class)
-    @JoinColumn(name="USUARIOALTERACAO",referencedColumnName="ID")
-    private Usuario usuarioalteracao;
-    @OneToMany(targetEntity = PessoaUc.class,mappedBy = "inquilino")
-    private Collection<PessoaUc> pessoaUcCollection1;
-    @Column(name="DATAINCLUSAO",table="PESSOAS")
+    @Column(name = "ID", table = "PESSOAS", nullable = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @Column(name = "NOME", table = "PESSOAS", length = 200)
+    @Basic
+    private String nome;
+
+    @Column(name = "CPF", table = "PESSOAS", nullable = false)
+    @Basic
+    private long cpf;
+
+    @Column(name = "EMAIL", table = "PESSOAS", length = 200)
+    @Basic
+    private String email;
+
+    @ManyToOne(optional = false, targetEntity = Usuario.class)
+    @JoinColumn(name = "USUARIOINCLUSAO", referencedColumnName = "ID")
+    private Usuario usuarioinclusao;
+
+    @Column(name = "DATAINCLUSAO", table = "PESSOAS")
     @Temporal(TemporalType.TIMESTAMP)
     @Basic
     private Date datainclusao;
-    @ManyToOne(optional=false,targetEntity = Usuario.class)
-    @JoinColumn(name="USUARIOINCLUSAO",referencedColumnName="ID")
-    private Usuario usuarioinclusao;
-    @Column(name="CPF",table="PESSOAS",nullable=false)
-    @Basic
-    private long cpf;
-    @Column(name="NOME",table="PESSOAS",nullable=false,length=200)
-    @Basic
-    private String nome;
-    @Column(name="ID",table="PESSOAS",nullable=false)
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
-    @Column(name="DATAALTERACAO",table="PESSOAS")
+
+    @ManyToOne(targetEntity = Usuario.class)
+    @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
+    private Usuario usuarioalteracao;
+
+    @Column(name = "DATAALTERACAO", table = "PESSOAS")
     @Temporal(TemporalType.TIMESTAMP)
     @Basic
     private Date dataalteracao;
-    @Column(name="EMAIL",table="PESSOAS",length=200)
-    @Basic
-    private String email;
+
+    @OneToMany(targetEntity = PessoaUc.class, mappedBy = "proprietario")
+    private Collection<PessoaUc> pessoaUcCollection;
+
+    @OneToMany(targetEntity = PessoaUc.class, mappedBy = "inquilino")
+    private Collection<PessoaUc> pessoaUcCollection1;
 
     public Pessoa() {
 
     }
-   
+
     public Collection<PessoaUc> getPessoaUcCollection() {
         return this.pessoaUcCollection;
     }
@@ -66,7 +72,7 @@ public class Pessoa implements Serializable {
     public void setPessoaUcCollection(Collection<PessoaUc> pessoaUcCollection) {
         this.pessoaUcCollection = pessoaUcCollection;
     }
-   
+
     public Usuario getUsuarioalteracao() {
         return this.usuarioalteracao;
     }
@@ -74,7 +80,7 @@ public class Pessoa implements Serializable {
     public void setUsuarioalteracao(Usuario usuarioalteracao) {
         this.usuarioalteracao = usuarioalteracao;
     }
-   
+
     public Collection<PessoaUc> getPessoaUcCollection1() {
         return this.pessoaUcCollection1;
     }
@@ -82,7 +88,7 @@ public class Pessoa implements Serializable {
     public void setPessoaUcCollection1(Collection<PessoaUc> pessoaUcCollection1) {
         this.pessoaUcCollection1 = pessoaUcCollection1;
     }
-   
+
     public Date getDatainclusao() {
         return this.datainclusao;
     }
@@ -90,7 +96,7 @@ public class Pessoa implements Serializable {
     public void setDatainclusao(Date datainclusao) {
         this.datainclusao = datainclusao;
     }
-   
+
     public Usuario getUsuarioinclusao() {
         return this.usuarioinclusao;
     }
@@ -98,7 +104,7 @@ public class Pessoa implements Serializable {
     public void setUsuarioinclusao(Usuario usuarioinclusao) {
         this.usuarioinclusao = usuarioinclusao;
     }
-   
+
     public long getCpf() {
         return this.cpf;
     }
@@ -106,7 +112,7 @@ public class Pessoa implements Serializable {
     public void setCpf(long cpf) {
         this.cpf = cpf;
     }
-   
+
     public String getNome() {
         return this.nome;
     }
@@ -114,7 +120,7 @@ public class Pessoa implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-   
+
     public Integer getId() {
         return this.id;
     }
@@ -122,7 +128,7 @@ public class Pessoa implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-   
+
     public Date getDataalteracao() {
         return this.dataalteracao;
     }
@@ -130,7 +136,7 @@ public class Pessoa implements Serializable {
     public void setDataalteracao(Date dataalteracao) {
         this.dataalteracao = dataalteracao;
     }
-   
+
     public String getEmail() {
         return this.email;
     }
