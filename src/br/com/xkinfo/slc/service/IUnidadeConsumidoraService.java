@@ -4,12 +4,13 @@ import br.com.xkinfo.slc.modelo.Condominio;
 import br.com.xkinfo.slc.modelo.UnidadeConsumidora;
 import br.com.xkinfo.slc.modelo.Usuario;
 import java.util.ArrayList;
+import java.util.Date;
 
 public interface IUnidadeConsumidoraService {
 
     public void incluirUnidadeConsumidora(Condominio condominio, Integer numero, Usuario usuario) throws Exception;
 
-    public void alterarUnidadeConsumidora(Integer id, Condominio condominio, Integer numero, Usuario usuario) throws Exception;
+    public void alterarUnidadeConsumidora(Integer id, Condominio condominio, Integer numero, Usuario usuario, Date dataInclusao, Usuario usuarioInclusao) throws Exception;
 
     public void excluirUnidadeConsumidora(Integer id) throws Exception;
 

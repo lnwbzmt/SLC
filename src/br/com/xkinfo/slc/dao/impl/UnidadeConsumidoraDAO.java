@@ -73,5 +73,4 @@ public class UnidadeConsumidoraDAO implements IUnidadeConsumidoraDAO {
         }
         return unidadeConsumidora;
     }
-
 }

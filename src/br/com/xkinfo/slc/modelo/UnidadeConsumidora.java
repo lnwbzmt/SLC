@@ -20,34 +20,41 @@ import javax.persistence.TemporalType;
 @Table(name = "UNIDADESCONSUMIDORAS")
 public class UnidadeConsumidora implements Serializable {
 
-    @OneToMany(targetEntity = PessoaUc.class, mappedBy = "unidadeconsumidora")
-    private Collection<PessoaUc> pessoaUcCollection;
-    @Column(name = "NUMERO", table = "UNIDADESCONSUMIDORAS", nullable = false)
-    @Basic
-    private int numero;
-    @ManyToOne(targetEntity = Usuario.class)
-    @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
-    private Usuario usuarioalteracao;
-    @ManyToOne(optional = false, targetEntity = Condominio.class)
-    @JoinColumn(name = "CONDOMINIO", referencedColumnName = "ID")
-    private Condominio condominio;
-    @Column(name = "DATAINCLUSAO", table = "UNIDADESCONSUMIDORAS")
-    @Temporal(TemporalType.TIMESTAMP)
-    @Basic
-    private Date datainclusao;
-    @ManyToOne(optional = false, targetEntity = Usuario.class)
-    @JoinColumn(name = "USUARIOINCLUSAO", referencedColumnName = "ID")
-    private Usuario usuarioinclusao;
-    @OneToMany(targetEntity = HidrometroUc.class, mappedBy = "unidadeconsumidora")
-    private Collection<HidrometroUc> hidrometroUcCollection;
     @Column(name = "ID", table = "UNIDADESCONSUMIDORAS", nullable = false)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @Column(name = "NUMERO", table = "UNIDADESCONSUMIDORAS", nullable = false)
+    @Basic
+    private int numero;
+
+    @ManyToOne(optional = false, targetEntity = Condominio.class)
+    @JoinColumn(name = "CONDOMINIO", referencedColumnName = "ID")
+    private Condominio condominio;
+
+    @ManyToOne(optional = false, targetEntity = Usuario.class)
+    @JoinColumn(name = "USUARIOINCLUSAO", referencedColumnName = "ID")
+    private Usuario usuarioinclusao;
+
+    @Column(name = "DATAINCLUSAO", table = "UNIDADESCONSUMIDORAS")
+    @Temporal(TemporalType.TIMESTAMP)
+    @Basic
+    private Date datainclusao;
+
+    @ManyToOne(targetEntity = Usuario.class)
+    @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
+    private Usuario usuarioalteracao;
+
     @Column(name = "DATAALTERACAO", table = "UNIDADESCONSUMIDORAS")
     @Temporal(TemporalType.TIMESTAMP)
     @Basic
     private Date dataalteracao;
+
+    @OneToMany(targetEntity = PessoaUc.class, mappedBy = "unidadeconsumidora")
+    private Collection<PessoaUc> pessoaUcCollection;
+    @OneToMany(targetEntity = HidrometroUc.class, mappedBy = "unidadeconsumidora")
+    private Collection<HidrometroUc> hidrometroUcCollection;
 
     public UnidadeConsumidora() {
 
