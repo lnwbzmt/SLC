@@ -8,9 +8,9 @@ import java.util.Date;
 
 public interface IUnidadeConsumidoraService {
 
-    public void incluirUnidadeConsumidora(Condominio condominio, Integer numero, Usuario usuario) throws Exception;
+    public void incluirUnidadeConsumidora(Condominio condominio, String numero, Usuario usuario) throws Exception;
 
-    public void alterarUnidadeConsumidora(Integer id, Condominio condominio, Integer numero, Usuario usuario, Date dataInclusao, Usuario usuarioInclusao) throws Exception;
+    public void alterarUnidadeConsumidora(Integer id, Condominio condominio, String numero, Usuario usuario, Date dataInclusao, Usuario usuarioInclusao) throws Exception;
 
     public void excluirUnidadeConsumidora(Integer id) throws Exception;
 

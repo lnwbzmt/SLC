@@ -1,13 +1,17 @@
 package br.com.xkinfo.slc.view.cadastro;
 
+import br.com.xkinfo.slc.modelo.Condominio;
 import br.com.xkinfo.slc.modelo.UnidadeConsumidora;
 import br.com.xkinfo.slc.modelo.Usuario;
+import br.com.xkinfo.slc.service.ServiceFactory;
+import br.com.xkinfo.slc.util.comboModel.CondominioComboModel;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CadastroUnidadeConsumidora extends javax.swing.JDialog {
 
-    private UnidadeConsumidora unidadeConsumidoraSelecionado;
+    private UnidadeConsumidora ucSelecionada;
     private Usuario usuarioLogado;
 
     public CadastroUnidadeConsumidora(java.awt.Frame parent, boolean modal, Usuario usuario) {
@@ -20,10 +24,11 @@ public class CadastroUnidadeConsumidora extends javax.swing.JDialog {
 
     public CadastroUnidadeConsumidora(UnidadeConsumidora unidadeConsumidora, java.awt.Frame parent, boolean modal, Usuario usuario) {
         this(parent, modal, usuario);
-        this.unidadeConsumidoraSelecionado = unidadeConsumidora;
-        if (unidadeConsumidoraSelecionado != null) {
+        this.ucSelecionada = unidadeConsumidora;
+        if (ucSelecionada != null) {
             tfCodigo.setText(unidadeConsumidora.getId().toString());
-            //tfNome.setText(unidadeConsumidora.getFatura().toString());
+            tfNome.setText(String.valueOf(ucSelecionada.getNumero()));
+            cbCondominio.setSelectedItem(ucSelecionada.getCondominio().getNome());
             // Mostra o botão Excluir     
             bExcluir.setVisible(true);
         }
@@ -38,6 +43,8 @@ public class CadastroUnidadeConsumidora extends javax.swing.JDialog {
         tfCodigo = new javax.swing.JTextField();
         lNome1 = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        cbCondominio = new javax.swing.JComboBox();
         bSalvar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
         bExcluir = new javax.swing.JButton();
@@ -52,19 +59,25 @@ public class CadastroUnidadeConsumidora extends javax.swing.JDialog {
 
         lNome1.setText("Nome:");
 
+        jLabel1.setText("Condominio:");
+
+        cbCondominio.setSelectedItem(new CondominioComboModel());
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addGap(57, 57, 57)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
                     .addComponent(lNome1)
                     .addComponent(lNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNome, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+                    .addComponent(cbCondominio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(257, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -78,6 +91,10 @@ public class CadastroUnidadeConsumidora extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lNome1)
                     .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbCondominio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -139,42 +156,48 @@ public class CadastroUnidadeConsumidora extends javax.swing.JDialog {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalvarActionPerformed
-        if (unidadeConsumidoraSelecionado != null) {
-            //unidadeConsumidoraSelecionado.setUnidadeConsumidora(Date.valueOf(tfNome.getText()));
+        if (ucSelecionada != null) {
+            Integer id = ucSelecionada.getId();
+            Condominio condominio = (Condominio) cbCondominio.getSelectedItem();
+            String numero = tfCodigo.getText();
+            Date dataInclusao = ucSelecionada.getDatainclusao();
+            Usuario usuarioInclusao = ucSelecionada.getUsuarioinclusao();
+            
             try {
-                //ServiceFactory.getUnidadeConsumidoraService().alterarUnidadeConsumidora(unidadeConsumidoraSelecionado);
+                ServiceFactory.getUnidadeConsumidoraService().alterarUnidadeConsumidora(id, condominio, numero, usuarioLogado, dataInclusao, usuarioInclusao);
             } catch (Exception ex) {
                 Logger.getLogger(CadastroUnidadeConsumidora.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            //UnidadeConsumidora unidadeConsumidora = new UnidadeConsumidora(null,null,null,null,null,0,null,tfNome.getText(),0,null,null);
+            Condominio condominio = (Condominio) cbCondominio.getSelectedItem();
+            String numero = tfCodigo.getText();
+            
             try {
-                //ServiceFactory.getUnidadeConsumidoraService().incluirUnidadeConsumidora(unidadeConsumidora);
+                ServiceFactory.getUnidadeConsumidoraService().incluirUnidadeConsumidora(condominio, numero, usuarioLogado);
             } catch (Exception ex) {
                 Logger.getLogger(CadastroUnidadeConsumidora.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        unidadeConsumidoraSelecionado = null;
+        ucSelecionada = null;
         this.dispose();
     }//GEN-LAST:event_bSalvarActionPerformed
 
     private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed
-        if (unidadeConsumidoraSelecionado != null) {
             try {
-                //ServiceFactory.getUnidadeConsumidoraService().excluirUnidadeConsumidora(unidadeConsumidoraSelecionado);
-                unidadeConsumidoraSelecionado = null;
+                //ServiceFactory.getUnidadeConsumidoraService().excluirUnidadeConsumidora(ucSelecionada);
+                ucSelecionada = null;
             } catch (Exception ex) {
                 Logger.getLogger(CadastroUnidadeConsumidora.class.getName()).log(Level.SEVERE, null, ex);
             }
             dispose();
-        }
     }//GEN-LAST:event_bExcluirActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCancelar;
     private javax.swing.JButton bExcluir;
     private javax.swing.JButton bSalvar;
+    private javax.swing.JComboBox cbCondominio;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lNome;
     private javax.swing.JLabel lNome1;

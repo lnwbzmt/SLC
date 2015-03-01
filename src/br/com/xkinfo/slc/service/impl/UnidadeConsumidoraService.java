@@ -15,11 +15,14 @@ public class UnidadeConsumidoraService implements IUnidadeConsumidoraService {
     private Date dataAlteracao;
 
     @Override
-    public void incluirUnidadeConsumidora(Condominio condominio, Integer numero, Usuario usuario) throws Exception {
+    public void incluirUnidadeConsumidora(Condominio condominio, String numero, Usuario usuario) throws Exception {
         dataInclusao = new Date();
         UnidadeConsumidora uc = new UnidadeConsumidora();
+        
+        Integer iNumero = Integer.parseInt(numero);
+        
         uc.setCondominio(condominio);
-        uc.setNumero(numero);
+        uc.setNumero(iNumero);
         uc.setUsuarioinclusao(usuario);
         uc.setDatainclusao(dataInclusao);
 
@@ -28,12 +31,15 @@ public class UnidadeConsumidoraService implements IUnidadeConsumidoraService {
     }
 
     @Override
-    public void alterarUnidadeConsumidora(Integer id, Condominio condominio, Integer numero, Usuario usuario, Date dataInclusao, Usuario usuarioInclusao) throws Exception {
+    public void alterarUnidadeConsumidora(Integer id, Condominio condominio, String numero, Usuario usuario, Date dataInclusao, Usuario usuarioInclusao) throws Exception {
         dataAlteracao = new Date();
         UnidadeConsumidora uc = new UnidadeConsumidora();
+        
+        Integer iNumero = Integer.parseInt(numero);
+        
         uc.setId(id);
         uc.setCondominio(condominio);
-        uc.setNumero(numero);
+        uc.setNumero(iNumero);
         uc.setUsuarioalteracao(usuario);
         uc.setDataalteracao(dataAlteracao);
 

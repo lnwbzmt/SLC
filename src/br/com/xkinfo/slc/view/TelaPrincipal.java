@@ -7,6 +7,7 @@ import br.com.xkinfo.slc.view.cadastro.CadastroCompetencia;
 import br.com.xkinfo.slc.view.cadastro.CadastroHidrometro;
 import br.com.xkinfo.slc.view.cadastro.CadastroPessoa;
 import br.com.xkinfo.slc.view.cadastro.CadastroSituacao;
+import br.com.xkinfo.slc.view.cadastro.CadastroUnidadeConsumidora;
 import br.com.xkinfo.slc.view.consulta.ConsultaCompetencia;
 import br.com.xkinfo.slc.view.consulta.ConsultaHidrometro;
 import br.com.xkinfo.slc.view.consulta.ConsultaPessoa;
@@ -36,6 +37,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mn_usuario = new javax.swing.JMenuItem();
         mn_Hidrometro = new javax.swing.JMenuItem();
         mn_Pessoa = new javax.swing.JMenuItem();
+        mn_UnidadeConsumidora = new javax.swing.JMenuItem();
         mConsulta = new javax.swing.JMenu();
         mn_consCondominio = new javax.swing.JMenuItem();
         mn_consSituacao = new javax.swing.JMenuItem();
@@ -103,6 +105,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         mCadastro.add(mn_Pessoa);
+
+        mn_UnidadeConsumidora.setText("Unidade Consumidora");
+        mn_UnidadeConsumidora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_UnidadeConsumidoraActionPerformed(evt);
+            }
+        });
+        mCadastro.add(mn_UnidadeConsumidora);
 
         jMenuBar2.add(mCadastro);
 
@@ -188,7 +198,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mSairMouseClicked
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_mSairMouseClicked
 
     private void mn_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_usuarioActionPerformed
@@ -267,6 +277,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         consultaPessoa.setVisible(true);
     }//GEN-LAST:event_mn_consPessoaActionPerformed
 
+    private void mn_UnidadeConsumidoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_UnidadeConsumidoraActionPerformed
+        CadastroUnidadeConsumidora cadastroUC = new CadastroUnidadeConsumidora(this, true, usuarioLogado);
+        cadastroUC.setLocationRelativeTo(this);
+        cadastroUC.setVisible(true);
+    }//GEN-LAST:event_mn_UnidadeConsumidoraActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JLabel lUsuarioLogado;
@@ -276,6 +292,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mn_Hidrometro;
     private javax.swing.JMenuItem mn_Pessoa;
     private javax.swing.JMenuItem mn_Situacao;
+    private javax.swing.JMenuItem mn_UnidadeConsumidora;
     private javax.swing.JMenuItem mn_competencia;
     private javax.swing.JMenuItem mn_condominio;
     private javax.swing.JMenuItem mn_consCompetencia;

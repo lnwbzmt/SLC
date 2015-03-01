@@ -12,6 +12,7 @@ import javax.swing.ComboBoxModel;
 public class CondominioComboModel extends AbstractListModel implements ComboBoxModel {
     private List<Condominio> condominios;
     private Object selectedItem;
+    
     public CondominioComboModel(){  
         try {
             condominios = ServiceFactory.getCondominioService().getCondominios();
@@ -19,10 +20,12 @@ public class CondominioComboModel extends AbstractListModel implements ComboBoxM
             Logger.getLogger(CondominioComboModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }  
+    
     public CondominioComboModel(List<Condominio> condominios){
         this();
         this.condominios.addAll(condominios);
     }
+    
     @Override
     public int getSize() {
         return condominios.size();
@@ -43,7 +46,6 @@ public class CondominioComboModel extends AbstractListModel implements ComboBoxM
     public Object getSelectedItem() {
         return selectedItem;
     }
-
 
     public void changeList(List<Condominio> newList){
         this.condominios = newList;
