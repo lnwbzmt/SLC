@@ -8,8 +8,8 @@ import java.util.logging.Logger;
 import javax.swing.AbstractListModel;
 import javax.swing.ComboBoxModel;
 
-
 public class CondominioComboModel extends AbstractListModel implements ComboBoxModel {
+    
     private List<Condominio> condominios;
     private Object selectedItem;
     

@@ -61,7 +61,7 @@ public class CadastroUnidadeConsumidora extends javax.swing.JDialog {
 
         jLabel1.setText("Condominio:");
 
-        cbCondominio.setSelectedItem(new CondominioComboModel());
+        cbCondominio.setModel(new CondominioComboModel());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -93,9 +93,9 @@ public class CadastroUnidadeConsumidora extends javax.swing.JDialog {
                     .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbCondominio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(cbCondominio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         bSalvar.setText("Salvar");
@@ -170,7 +170,7 @@ public class CadastroUnidadeConsumidora extends javax.swing.JDialog {
             }
         } else {
             Condominio condominio = (Condominio) cbCondominio.getSelectedItem();
-            String numero = tfCodigo.getText();
+            String numero = tfNome.getText();
             
             try {
                 ServiceFactory.getUnidadeConsumidoraService().incluirUnidadeConsumidora(condominio, numero, usuarioLogado);

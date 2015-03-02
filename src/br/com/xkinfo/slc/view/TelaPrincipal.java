@@ -12,6 +12,7 @@ import br.com.xkinfo.slc.view.consulta.ConsultaCompetencia;
 import br.com.xkinfo.slc.view.consulta.ConsultaHidrometro;
 import br.com.xkinfo.slc.view.consulta.ConsultaPessoa;
 import br.com.xkinfo.slc.view.consulta.ConsultaSituacao;
+import br.com.xkinfo.slc.view.consulta.ConsultaUnidadeConsumidora;
 import br.com.xkinfo.slc.view.consulta.ConsultaUsuario;
 
 public class TelaPrincipal extends javax.swing.JFrame {
@@ -45,6 +46,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mn_consUsuario = new javax.swing.JMenuItem();
         mn_consHidrometro = new javax.swing.JMenuItem();
         mn_consPessoa = new javax.swing.JMenuItem();
+        mn_condUnidadeConsumidora = new javax.swing.JMenuItem();
         mSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -166,6 +168,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mConsulta.add(mn_consPessoa);
 
+        mn_condUnidadeConsumidora.setText("Unidade Consumidora");
+        mn_condUnidadeConsumidora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_condUnidadeConsumidoraActionPerformed(evt);
+            }
+        });
+        mConsulta.add(mn_condUnidadeConsumidora);
+
         jMenuBar2.add(mConsulta);
 
         mSair.setText("Sair");
@@ -283,6 +293,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cadastroUC.setVisible(true);
     }//GEN-LAST:event_mn_UnidadeConsumidoraActionPerformed
 
+    private void mn_condUnidadeConsumidoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_condUnidadeConsumidoraActionPerformed
+        ConsultaUnidadeConsumidora consultaUC = new ConsultaUnidadeConsumidora(this, true, usuarioLogado);
+        consultaUC.setLocationRelativeTo(this);
+        consultaUC.setVisible(true);
+    }//GEN-LAST:event_mn_condUnidadeConsumidoraActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JLabel lUsuarioLogado;
@@ -294,6 +310,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mn_Situacao;
     private javax.swing.JMenuItem mn_UnidadeConsumidora;
     private javax.swing.JMenuItem mn_competencia;
+    private javax.swing.JMenuItem mn_condUnidadeConsumidora;
     private javax.swing.JMenuItem mn_condominio;
     private javax.swing.JMenuItem mn_consCompetencia;
     private javax.swing.JMenuItem mn_consCondominio;

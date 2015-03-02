@@ -58,7 +58,7 @@ public class CondominioDAO implements ICondominioDAO {
     @Override
     public ArrayList<Condominio> getCondominios() throws Exception {
         ArrayList<Condominio> lista;
-        Query query = entityManager.createQuery("select x from Condominio x");
+        Query query = entityManager.createQuery("SELECT x FROM Condominio x");
         lista = (ArrayList<Condominio>) query.getResultList();
         return lista;
     }

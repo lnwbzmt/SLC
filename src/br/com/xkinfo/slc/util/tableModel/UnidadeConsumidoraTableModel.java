@@ -10,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
 public class UnidadeConsumidoraTableModel extends AbstractTableModel {
 
     private List<UnidadeConsumidora> unidadeConsumidoras;
-    private String[] cabecalhoColunas = {"Código", "Nome"};
+    private String[] cabecalhoColunas = {"Condominio", "Número"};
 
     public UnidadeConsumidoraTableModel() {
         try {
@@ -35,9 +35,9 @@ public class UnidadeConsumidoraTableModel extends AbstractTableModel {
 
         switch (numColuna) {
             case 0:
-                return unidadeConsumidoras.get(numLinha).getId();
+                return unidadeConsumidoras.get(numLinha).getCondominio().getNome();
             case 1:
-                return unidadeConsumidoras.get(numLinha).getCondominio();
+                return unidadeConsumidoras.get(numLinha).getNumero();
         }
         return null;
     }
@@ -50,5 +50,4 @@ public class UnidadeConsumidoraTableModel extends AbstractTableModel {
     public List<UnidadeConsumidora> getUnidadeConsumidoras() {
         return unidadeConsumidoras;
     }
-
 }

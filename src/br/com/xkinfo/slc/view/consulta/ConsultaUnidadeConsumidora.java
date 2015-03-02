@@ -161,15 +161,13 @@ public class ConsultaUnidadeConsumidora extends javax.swing.JDialog {
     }//GEN-LAST:event_bNovoActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        this.dispose();
-
+        dispose();
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         jtUnidadeConsumidoras.updateUI();
         jtUnidadeConsumidoras.getRowHeight(0);
         jtUnidadeConsumidoras.setModel(new UnidadeConsumidoraTableModel());
-
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
@@ -177,8 +175,6 @@ public class ConsultaUnidadeConsumidora extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void txtFiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyReleased
-        // TODO add your handling code here:
-
         TableRowSorter sorter = null;
         UnidadeConsumidoraTableModel model = (UnidadeConsumidoraTableModel) jtUnidadeConsumidoras.getModel();
         sorter = new TableRowSorter<TableModel>(model);
