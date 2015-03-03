@@ -115,4 +115,9 @@ public class Hidrometro implements Serializable {
     public void setDataalteracao(Date dataalteracao) {
         this.dataalteracao = dataalteracao;
     }
+
+    @Override
+    public String toString() {
+        return getNrserie();
+    }
 }
