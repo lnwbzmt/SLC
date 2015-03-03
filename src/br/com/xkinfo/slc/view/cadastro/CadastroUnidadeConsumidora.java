@@ -138,6 +138,11 @@ public class CadastroUnidadeConsumidora extends javax.swing.JDialog {
         cbProprietario.setModel(new PessoaComboModel());
 
         cbxAlugado.setText("Alugado");
+        cbxAlugado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbxAlugadoMouseClicked(evt);
+            }
+        });
         cbxAlugado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxAlugadoActionPerformed(evt);
@@ -306,6 +311,14 @@ public class CadastroUnidadeConsumidora extends javax.swing.JDialog {
         
 // TODO add your handling code here:
     }//GEN-LAST:event_cbxAlugadoActionPerformed
+
+    private void cbxAlugadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbxAlugadoMouseClicked
+        if (cbxAlugado.isSelected() == true) {
+            cbInquilino.setEnabled(true);
+        } else {
+            cbInquilino.setEnabled(false);
+        }
+    }//GEN-LAST:event_cbxAlugadoMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCancelar;
