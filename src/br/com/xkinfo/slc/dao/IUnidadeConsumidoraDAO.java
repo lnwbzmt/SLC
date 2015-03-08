@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public interface IUnidadeConsumidoraDAO {
 
-    public void incluirUnidadeConsumidora(UnidadeConsumidora unidadeConsumidora) throws Exception;
+    public UnidadeConsumidora incluirUnidadeConsumidora(UnidadeConsumidora unidadeConsumidora) throws Exception;
 
     public void alterarUnidadeConsumidora(UnidadeConsumidora unidadeConsumidora) throws Exception;
 

@@ -13,12 +13,12 @@ public class UnidadeConsumidoraService implements IUnidadeConsumidoraService {
 
     private Date dataInclusao;
     private Date dataAlteracao;
+    private UnidadeConsumidora ret;
 
     @Override
-    public void incluirUnidadeConsumidora(Condominio condominio, String numero, Usuario usuario) throws Exception {
+    public UnidadeConsumidora incluirUnidadeConsumidora(Condominio condominio, String numero, Usuario usuario) throws Exception {
         dataInclusao = new Date();
         UnidadeConsumidora uc = new UnidadeConsumidora();
-        
         Integer iNumero = Integer.parseInt(numero);
         
         uc.setCondominio(condominio);
@@ -26,8 +26,9 @@ public class UnidadeConsumidoraService implements IUnidadeConsumidoraService {
         uc.setUsuarioinclusao(usuario);
         uc.setDatainclusao(dataInclusao);
 
-        DAOFactory.getUnidadeConsumidoraDAO().incluirUnidadeConsumidora(uc);
+        ret = DAOFactory.getUnidadeConsumidoraDAO().incluirUnidadeConsumidora(uc);
         JOptionPane.showMessageDialog(null, "UnidadeConsumidora Inlcuído com Sucesso!");
+        return ret;
     }
 
     @Override

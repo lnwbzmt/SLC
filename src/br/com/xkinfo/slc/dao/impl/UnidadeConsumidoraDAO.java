@@ -13,7 +13,7 @@ public class UnidadeConsumidoraDAO implements IUnidadeConsumidoraDAO {
     private final EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
     @Override
-    public void incluirUnidadeConsumidora(UnidadeConsumidora unidadeConsumidora) throws Exception {
+    public UnidadeConsumidora incluirUnidadeConsumidora(UnidadeConsumidora unidadeConsumidora) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
@@ -24,6 +24,7 @@ public class UnidadeConsumidoraDAO implements IUnidadeConsumidoraDAO {
             tx.rollback();
         } finally {
         }
+        return unidadeConsumidora;
     }
 
     @Override

@@ -18,41 +18,50 @@ import javax.persistence.TemporalType;
 @Table(name = "PESSOAUC")
 public class PessoaUc implements Serializable {
 
-    @ManyToOne(targetEntity = Usuario.class)
-    @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
-    private Usuario usuarioalteracao;
-    @ManyToOne(optional = false, targetEntity = UnidadeConsumidora.class)
-    @JoinColumn(name = "UNIDADECONSUMIDORA", referencedColumnName = "ID")
-    private UnidadeConsumidora unidadeconsumidora;
-    @Column(name = "DATASAIDA", table = "PESSOAUC")
-    @Temporal(TemporalType.DATE)
-    @Basic
-    private Date datasaida;
-    @ManyToOne(optional = false, targetEntity = Pessoa.class)
-    @JoinColumn(name = "PROPRIETARIO", referencedColumnName = "ID")
-    private Pessoa proprietario;
-    @Column(name = "DATAINCLUSAO", table = "PESSOAUC")
-    @Temporal(TemporalType.TIMESTAMP)
-    @Basic
-    private Date datainclusao;
-    @ManyToOne(optional = false, targetEntity = Usuario.class)
-    @JoinColumn(name = "USUARIOINCLUSAO", referencedColumnName = "ID")
-    private Usuario usuarioinclusao;
-    @ManyToOne(targetEntity = Pessoa.class)
-    @JoinColumn(name = "INQUILINO", referencedColumnName = "ID")
-    private Pessoa inquilino;
     @Column(name = "ID", table = "PESSOAUC", nullable = false)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Column(name = "DATAALTERACAO", table = "PESSOAUC")
-    @Temporal(TemporalType.TIMESTAMP)
-    @Basic
-    private Date dataalteracao;
+
+    @ManyToOne(optional = false, targetEntity = UnidadeConsumidora.class)
+    @JoinColumn(name = "UNIDADECONSUMIDORA", referencedColumnName = "ID")
+    private UnidadeConsumidora unidadeconsumidora;
+
+    @ManyToOne(optional = false, targetEntity = Pessoa.class)
+    @JoinColumn(name = "PROPRIETARIO", referencedColumnName = "ID")
+    private Pessoa proprietario;
+
     @Column(name = "DATAENTRADA", table = "PESSOAUC", nullable = false)
     @Temporal(TemporalType.DATE)
     @Basic
     private Date dataentrada;
+
+    @Column(name = "DATASAIDA", table = "PESSOAUC")
+    @Temporal(TemporalType.DATE)
+    @Basic
+    private Date datasaida;
+
+    @ManyToOne(targetEntity = Pessoa.class)
+    @JoinColumn(name = "INQUILINO", referencedColumnName = "ID")
+    private Pessoa inquilino;
+
+    @ManyToOne(optional = false, targetEntity = Usuario.class)
+    @JoinColumn(name = "USUARIOINCLUSAO", referencedColumnName = "ID")
+    private Usuario usuarioinclusao;
+
+    @Column(name = "DATAINCLUSAO", table = "PESSOAUC")
+    @Temporal(TemporalType.TIMESTAMP)
+    @Basic
+    private Date datainclusao;
+
+    @ManyToOne(targetEntity = Usuario.class)
+    @JoinColumn(name = "USUARIOALTERACAO", referencedColumnName = "ID")
+    private Usuario usuarioalteracao;
+
+    @Column(name = "DATAALTERACAO", table = "PESSOAUC")
+    @Temporal(TemporalType.TIMESTAMP)
+    @Basic
+    private Date dataalteracao;
 
     public PessoaUc() {
 
