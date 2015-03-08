@@ -1,6 +1,6 @@
 package br.com.xkinfo.slc.view.cadastro;
 
-import br.com.xkinfo.slc.modelo.PessoaUc;
+import br.com.xkinfo.slc.modelo.UnidadeConsumidora;
 import br.com.xkinfo.slc.modelo.Usuario;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,32 +9,36 @@ import javax.swing.JOptionPane;
 public class CadastroPessoaUC extends javax.swing.JDialog {
 
     private Usuario usuarioLogado;
+    private UnidadeConsumidora unidadeConsumidora;
 
-    public CadastroPessoaUC(java.awt.Frame parent, boolean modal,Usuario usuario) {
+    public CadastroPessoaUC(java.awt.Frame parent, boolean modal,Usuario usuario, UnidadeConsumidora unidadeConsumidora) {
         super(parent, modal);
         initComponents();
         bExcluir.setVisible(false);
         usuarioLogado = usuario;
+        this.unidadeConsumidora = unidadeConsumidora;
+        tfUnidadeConsumidora.setText(String.valueOf(this.unidadeConsumidora.getNumero()));
+        tfCondominio.setText(this.unidadeConsumidora.getCondominio().getNome());
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tfDataEntradaMorador = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
+        tfDataSaidaMorador = new javax.swing.JTextField();
+        cboMorador = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        cboInquilino = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        tfDataEntradaInquilino = new javax.swing.JTextField();
+        tfDataSaidaInquilino = new javax.swing.JTextField();
+        cbAlugado = new javax.swing.JCheckBox();
         bSalvar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
         bExcluir = new javax.swing.JButton();
@@ -62,7 +66,7 @@ public class CadastroPessoaUC extends javax.swing.JDialog {
 
         jLabel8.setText("Data de Saída:");
 
-        jCheckBox1.setText("Alugado");
+        cbAlugado.setText("Alugado");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -77,24 +81,24 @@ public class CadastroPessoaUC extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                         .addComponent(jLabel6))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
+                            .addComponent(tfDataEntradaMorador)
+                            .addComponent(tfDataSaidaMorador, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbAlugado)
+                    .addComponent(cboInquilino, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(tfDataSaidaInquilino, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                        .addComponent(tfDataEntradaInquilino, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -103,23 +107,23 @@ public class CadastroPessoaUC extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboMorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboInquilino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfDataEntradaMorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfDataEntradaInquilino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfDataSaidaMorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfDataSaidaInquilino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jCheckBox1)
+                .addComponent(cbAlugado)
                 .addContainerGap())
         );
 
@@ -221,53 +225,22 @@ public class CadastroPessoaUC extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        this.dispose();
+        dispose();
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalvarActionPerformed
-        if (pessoaUcSelecionado != null) {
-            //pessoaUcSelecionado.setPessoaUc(Date.valueOf(tfNome.getText()));
-            try {
-                //ServiceFactory.getPessoaUcService().alterarPessoaUc(pessoaUcSelecionado);
-                JOptionPane.showMessageDialog(this, "PessoaUc Alterado com Sucesso!");
-
-            } catch (Exception ex) {
-                Logger.getLogger(CadastroPessoaUC.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            //PessoaUc pessoaUc = new PessoaUc(null,null,null,null,null,0,null,tfNome.getText(),0,null,null);
-            try {
-                
-                //ServiceFactory.getPessoaUcService().incluirPessoaUc(pessoaUc);
-                JOptionPane.showMessageDialog(this, "PessoaUc Inlcuído com Sucesso!");
-            } catch (Exception ex) {
-                Logger.getLogger(CadastroPessoaUC.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        pessoaUcSelecionado = null;
-        this.dispose();
     }//GEN-LAST:event_bSalvarActionPerformed
 
     private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed
-        if (pessoaUcSelecionado != null) {
-            try {
-                //ServiceFactory.getPessoaUcService().excluirPessoaUc(pessoaUcSelecionado);
-                JOptionPane.showMessageDialog(this, "PessoaUc Excluído com Sucesso!");
-            } catch (Exception ex) {
-                Logger.getLogger(CadastroPessoaUC.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            pessoaUcSelecionado = null;
-            this.dispose();
-        }
     }//GEN-LAST:event_bExcluirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCancelar;
     private javax.swing.JButton bExcluir;
     private javax.swing.JButton bSalvar;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JCheckBox cbAlugado;
+    private javax.swing.JComboBox cboInquilino;
+    private javax.swing.JComboBox cboMorador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -278,11 +251,11 @@ public class CadastroPessoaUC extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField tfCondominio;
+    private javax.swing.JTextField tfDataEntradaInquilino;
+    private javax.swing.JTextField tfDataEntradaMorador;
+    private javax.swing.JTextField tfDataSaidaInquilino;
+    private javax.swing.JTextField tfDataSaidaMorador;
     private javax.swing.JTextField tfUnidadeConsumidora;
     // End of variables declaration//GEN-END:variables
 }

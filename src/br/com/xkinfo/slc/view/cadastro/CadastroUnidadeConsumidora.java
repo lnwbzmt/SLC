@@ -66,6 +66,11 @@ public class CadastroUnidadeConsumidora extends javax.swing.JDialog {
         cbCondominio.setModel(new CondominioComboModel());
 
         jButton1.setText("Cadastro Morador / Proprietário");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cadastro Hidrômetro");
 
@@ -207,6 +212,12 @@ public class CadastroUnidadeConsumidora extends javax.swing.JDialog {
         }
         dispose();
     }//GEN-LAST:event_bExcluirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        CadastroPessoaUC cadastroPessoaUc = new CadastroPessoaUC(null, true, usuarioLogado, ucSelecionada);
+        cadastroPessoaUc.setLocationRelativeTo(this);
+        cadastroPessoaUc.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCancelar;
