@@ -40,9 +40,9 @@ public class ConsultaPessoaUC extends javax.swing.JDialog {
 
                     PessoaUc caixaSelecionado = ((PessoaUCTableModel) jtPessoaUCs.getModel()).getPessoaUCs().get(linhaSelecionada);
                     if (caixaSelecionado != null) {
-                        CadastroPessoaUC cadastroPessoaUC = new CadastroPessoaUC(caixaSelecionado, null, true, usuarioLogado);
-                        cadastroPessoaUC.setLocationRelativeTo(jScrollPane1.getParent());
-                        cadastroPessoaUC.setVisible(true);
+ //                       CadastroPessoaUC cadastroPessoaUC = new CadastroPessoaUC(caixaSelecionado, null, true, usuarioLogado);
+ //                       cadastroPessoaUC.setLocationRelativeTo(jScrollPane1.getParent());
+ //                       cadastroPessoaUC.setVisible(true);
                         jtPessoaUCs.setModel(new PessoaUCTableModel());
                     }
                 }
@@ -155,9 +155,9 @@ public class ConsultaPessoaUC extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNovoActionPerformed
-        CadastroPessoaUC cadastroPessoaUC = new CadastroPessoaUC(null, true, usuarioLogado);
-        cadastroPessoaUC.setLocationRelativeTo(this);
-        cadastroPessoaUC.setVisible(true);
+//        CadastroPessoaUC cadastroPessoaUC = new CadastroPessoaUC(null, true, usuarioLogado);
+//        cadastroPessoaUC.setLocationRelativeTo(this);
+//        cadastroPessoaUC.setVisible(true);
     }//GEN-LAST:event_bNovoActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
