@@ -10,6 +10,7 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();
         getRootPane().setDefaultButton(bConfirmar);
+        setTitle("Login");
     }
 
     @SuppressWarnings("unchecked")
@@ -129,7 +130,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_bConfirmarActionPerformed
 
     private void bSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSairActionPerformed
-        this.dispose(); // Destrói a janela e encerra o programa.
+        System.exit(0); // Destrói a janela e encerra o programa.
     }//GEN-LAST:event_bSairActionPerformed
 
     public static void main(String args[]) {

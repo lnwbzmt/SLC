@@ -11,17 +11,19 @@ public class CadastroUsuario extends javax.swing.JDialog {
     private Usuario usuarioSelecionado;
     private Usuario usuarioLogado;
 
-    public CadastroUsuario(java.awt.Frame parent, boolean modal,Usuario usuario) {
+    public CadastroUsuario(java.awt.Frame parent, boolean modal,Usuario usuarioLogado) {
         super(parent, modal);
         initComponents();
+        setTitle("ACAT - Associação Águas de Taquaruçu - " + usuarioLogado.getNome());
         bExcluir.setVisible(false);
         this.tfCodigo.setEnabled(false);
-        usuarioLogado = usuario;
+        this.usuarioLogado = usuarioLogado;
     }
 
-    public CadastroUsuario(Usuario usuario, java.awt.Frame parent, boolean modal,Usuario usuario1) {
+    public CadastroUsuario(java.awt.Frame parent, boolean modal,Usuario usuarioLogado, Usuario usuario) {
         this(parent, modal,usuario);
-        usuarioSelecionado = usuario1;
+        usuarioSelecionado = usuario;
+        this.usuarioLogado = usuarioLogado;
         if (usuarioSelecionado != null) {
             tfCodigo.setText(usuarioSelecionado.getId().toString());
             tfNome.setText(usuarioSelecionado.getNome());

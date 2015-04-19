@@ -34,7 +34,7 @@ public class ConsultaUsuario extends javax.swing.JDialog {
                     Integer linhaSelecionada = jtUsuarios.getSelectedRow();
                     Usuario caixaSelecionado = ((UsuarioTableModel) jtUsuarios.getModel()).getUsuarios().get(linhaSelecionada);
                     if (caixaSelecionado != null) {
-                        CadastroUsuario cadastroUsuario = new CadastroUsuario(usuarioLogado, null, true, caixaSelecionado);
+                        CadastroUsuario cadastroUsuario = new CadastroUsuario(null, true, caixaSelecionado, usuarioLogado);
                         cadastroUsuario.setLocationRelativeTo(jScrollPane1.getParent());
                         cadastroUsuario.setVisible(true);
                         jtUsuarios.setModel(new UsuarioTableModel());

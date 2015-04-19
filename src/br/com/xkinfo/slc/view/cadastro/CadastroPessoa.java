@@ -198,7 +198,7 @@ public class CadastroPessoa extends javax.swing.JDialog {
     private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed
         if (pessoaSelecionado != null) {
             try {
-                //ServiceFactory.getPessoaService().excluirPessoa(pessoaSelecionado);
+                ServiceFactory.getPessoaService().excluirPessoa(pessoaSelecionado.getId());
                 pessoaSelecionado = null;
             } catch (Exception ex) {
                 Logger.getLogger(CadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);

@@ -8,6 +8,7 @@ import br.com.xkinfo.slc.view.cadastro.CadastroHidrometro;
 import br.com.xkinfo.slc.view.cadastro.CadastroPessoa;
 import br.com.xkinfo.slc.view.cadastro.CadastroSituacao;
 import br.com.xkinfo.slc.view.cadastro.CadastroUnidadeConsumidora;
+import br.com.xkinfo.slc.view.cadastro.CadastroUsuario;
 import br.com.xkinfo.slc.view.consulta.ConsultaCompetencia;
 import br.com.xkinfo.slc.view.consulta.ConsultaHidrometro;
 import br.com.xkinfo.slc.view.consulta.ConsultaPessoa;
@@ -23,6 +24,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         usuarioLogado = usuario;
         initComponents();
         this.lUsuarioLogado.setText("Usuário Logado: " + usuarioLogado.getNome());
+        setTitle("ACAT - Associação Águas de Taquaruçu - " + usuarioLogado.getNome());
     }
 
     @SuppressWarnings("unchecked")
@@ -212,12 +214,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mSairMouseClicked
 
     private void mn_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_usuarioActionPerformed
-        // Primeiro parâmetro do construtor: janela mãe, neste caso o this que representa a TelaPrincipal.java
-        // Segundo parâmetro do construtor: se a JDialog vai ser modal, ou seja, bloqueia o foco da aplicação
-        // na JDialog;
-        //        ConsultaUsuario consultaUsuario = new ConsultaUsuario(this, true);
-        //        consultaUsuario.setLocationRelativeTo(this);
-        //        consultaUsuario.setVisible(true);
+        CadastroUsuario cadastroUsuario = new CadastroUsuario(this, true, usuarioLogado);
+        cadastroUsuario.setLocationRelativeTo(this);
+        cadastroUsuario.setVisible(true);
     }//GEN-LAST:event_mn_usuarioActionPerformed
 
     private void mn_condominioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_condominioActionPerformed
@@ -248,7 +247,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         CadastroCompetencia cadastroCompetencia = new CadastroCompetencia(this, true, usuarioLogado);
         cadastroCompetencia.setLocationRelativeTo(this);
         cadastroCompetencia.setVisible(true);
-
     }//GEN-LAST:event_mn_competenciaActionPerformed
 
     private void mn_consCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_consCompetenciaActionPerformed
