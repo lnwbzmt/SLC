@@ -13,9 +13,9 @@ public abstract class Pessoa_ {
 	public static volatile CollectionAttribute<Pessoa, PessoaUc> pessoaUcCollection;
 	public static volatile SingularAttribute<Pessoa, Usuario> usuarioalteracao;
 	public static volatile CollectionAttribute<Pessoa, PessoaUc> pessoaUcCollection1;
-	public static volatile SingularAttribute<Pessoa, Date> datainclusao;
 	public static volatile SingularAttribute<Pessoa, Usuario> usuarioinclusao;
-	public static volatile SingularAttribute<Pessoa, Integer> cpf;
+	public static volatile SingularAttribute<Pessoa, Date> datainclusao;
+	public static volatile SingularAttribute<Pessoa, Long> cpf;
 	public static volatile SingularAttribute<Pessoa, String> nome;
 	public static volatile SingularAttribute<Pessoa, Integer> id;
 	public static volatile SingularAttribute<Pessoa, Date> dataalteracao;

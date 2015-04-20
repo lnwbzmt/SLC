@@ -14,8 +14,8 @@ public abstract class UnidadeConsumidora_ {
 	public static volatile SingularAttribute<UnidadeConsumidora, Integer> numero;
 	public static volatile SingularAttribute<UnidadeConsumidora, Usuario> usuarioalteracao;
 	public static volatile SingularAttribute<UnidadeConsumidora, Condominio> condominio;
-	public static volatile SingularAttribute<UnidadeConsumidora, Date> datainclusao;
 	public static volatile SingularAttribute<UnidadeConsumidora, Usuario> usuarioinclusao;
+	public static volatile SingularAttribute<UnidadeConsumidora, Date> datainclusao;
 	public static volatile CollectionAttribute<UnidadeConsumidora, HidrometroUc> hidrometroUcCollection;
 	public static volatile SingularAttribute<UnidadeConsumidora, Integer> id;
 	public static volatile SingularAttribute<UnidadeConsumidora, Date> dataalteracao;

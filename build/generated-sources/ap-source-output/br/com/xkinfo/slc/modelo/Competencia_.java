@@ -11,8 +11,8 @@ public abstract class Competencia_ {
 
 	public static volatile SingularAttribute<Competencia, Situacao> situacao;
 	public static volatile SingularAttribute<Competencia, Usuario> usuarioalteracao;
-	public static volatile SingularAttribute<Competencia, Date> datainclusao;
 	public static volatile SingularAttribute<Competencia, Usuario> usuarioinclusao;
+	public static volatile SingularAttribute<Competencia, Date> datainclusao;
 	public static volatile SingularAttribute<Competencia, Integer> id;
 	public static volatile SingularAttribute<Competencia, Date> dataalteracao;
 	public static volatile SingularAttribute<Competencia, Date> competencia;

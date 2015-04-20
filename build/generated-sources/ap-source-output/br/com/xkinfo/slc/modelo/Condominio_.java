@@ -14,7 +14,7 @@ public abstract class Condominio_ {
 	public static volatile SingularAttribute<Condominio, String> estado;
 	public static volatile SingularAttribute<Condominio, String> sigla;
 	public static volatile SingularAttribute<Condominio, String> endereco;
-	public static volatile SingularAttribute<Condominio, Float> numero;
+	public static volatile SingularAttribute<Condominio, Long> numero;
 	public static volatile SingularAttribute<Condominio, String> bairro;
 	public static volatile SingularAttribute<Condominio, Date> datainclusao;
 	public static volatile SingularAttribute<Condominio, String> nome;
