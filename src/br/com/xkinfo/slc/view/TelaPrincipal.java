@@ -23,7 +23,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal(Usuario usuario) {
         usuarioLogado = usuario;
         initComponents();
-        this.lUsuarioLogado.setText("Usuário Logado: " + usuarioLogado.getNome());
         setTitle("ACAT - Associação Águas de Taquaruçu - " + usuarioLogado.getNome());
     }
 
@@ -31,7 +30,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lUsuarioLogado = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         mCadastro = new javax.swing.JMenu();
         mn_condominio = new javax.swing.JMenuItem();
@@ -53,8 +51,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
-
-        lUsuarioLogado.setText("Usuário: ");
 
         mCadastro.setText("Cadastros");
 
@@ -194,16 +190,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(991, Short.MAX_VALUE)
-                .addComponent(lUsuarioLogado)
-                .addContainerGap())
+            .addGap(0, 1044, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(lUsuarioLogado)
-                .addContainerGap(402, Short.MAX_VALUE))
+            .addGap(0, 416, Short.MAX_VALUE)
         );
 
         pack();
@@ -299,7 +290,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JLabel lUsuarioLogado;
     private javax.swing.JMenu mCadastro;
     private javax.swing.JMenu mConsulta;
     private javax.swing.JMenu mSair;

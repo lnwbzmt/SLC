@@ -49,7 +49,7 @@ public class CondominioService implements ICondominioService {
 
         if (lista.isEmpty()) {
             Long fCnpj = Long.valueOf(cnpj);
-            long fNumero = Long.valueOf(numero);
+            Long fNumero = Long.valueOf(numero);
 
             cond.setNome(nome);
             cond.setCnpj(fCnpj);

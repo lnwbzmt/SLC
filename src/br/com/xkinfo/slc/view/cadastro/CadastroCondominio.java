@@ -10,20 +10,19 @@ import java.util.logging.Logger;
 public class CadastroCondominio extends javax.swing.JDialog {
 
     private Condominio condominioSelecionado;
-    private Usuario usuarioLogado;
+    private final Usuario usuarioLogado;
 
     public CadastroCondominio(java.awt.Frame parent, boolean modal, Usuario usuario) {
-        super(parent, modal);
+        //super(parent, modal);
         initComponents();
-        bExcluir.setVisible(false);
-        usuarioLogado = usuario;
-        this.tfCodigo.setEnabled(false);
         getRootPane().setDefaultButton(bSalvar);
+        usuarioLogado = usuario;
+        bExcluir.setVisible(false);
+        tfCodigo.setEnabled(false);
     }
 
     public CadastroCondominio(Condominio condominio, java.awt.Frame parent, boolean modal, Usuario usuario) {
         this(parent, modal, usuario);
-        usuarioLogado = usuario;
         condominioSelecionado = condominio;
         tfCodigo.setText(condominioSelecionado.getId().toString());
         tfNome.setText(condominioSelecionado.getNome());
