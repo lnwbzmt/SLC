@@ -130,7 +130,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_bConfirmarActionPerformed
 
     private void bSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSairActionPerformed
-        System.exit(0); // Destrói a janela e encerra o programa.
+        System.exit(0);
     }//GEN-LAST:event_bSairActionPerformed
 
     public static void main(String args[]) {
@@ -160,6 +160,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 TelaLogin telaLogin = new TelaLogin();
                 // Setando o LocationRelative para null, a janela irá aparecer
@@ -169,6 +170,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bConfirmar;
     private javax.swing.JButton bSair;

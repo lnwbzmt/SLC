@@ -69,21 +69,21 @@ public class UsuarioService implements IUsuarioService {
         }
 
         if (lista.isEmpty()) {
-            
-        Usuario u = new Usuario();
-        u.setId(id);
-        u.setNome(nome);
-        u.setUsuario(usuario);
-        u.setSenha(senha);
-        u.setUsuarioalteracao(usu);
-        u.setDataalteracao(dataAlteracao);
-        u.setUsuarioinclusao(usuarioinclusao);
-        u.setDatainclusao(dataInclusao);
 
-        DAOFactory.getUsuarioDAO().alterarUsuario(u);
-        JOptionPane.showMessageDialog(null, "Usuario Alterado com Sucesso!");
+            Usuario u = new Usuario();
+            u.setId(id);
+            u.setNome(nome);
+            u.setUsuario(usuario);
+            u.setSenha(senha);
+            u.setUsuarioalteracao(usu);
+            u.setDataalteracao(dataAlteracao);
+            u.setUsuarioinclusao(usuarioinclusao);
+            u.setDatainclusao(dataInclusao);
 
-        return true;
+            DAOFactory.getUsuarioDAO().alterarUsuario(u);
+            JOptionPane.showMessageDialog(null, "Usuario Alterado com Sucesso!");
+
+            return true;
         } else {
             for (String lista1 : lista) {
                 ret = ret + lista1 + "\n";
@@ -111,9 +111,16 @@ public class UsuarioService implements IUsuarioService {
 
     @Override
     public Usuario isUsuarioValido(String login, String senha) throws Exception {
-        if (login == null || senha == null || login.equalsIgnoreCase("") || senha.equalsIgnoreCase("")) {
-            JOptionPane.showMessageDialog(null, "Favor preencher Login ou Senha!!");
-        } else {
+        ArrayList<String> lista = new ArrayList<>(2);
+        String ret = new String();
+
+        if (login == null || login.equalsIgnoreCase("")) {
+            lista.add("login");
+        }
+        if (senha == null || senha.equalsIgnoreCase("")) {
+            lista.add("senha");
+        }
+        if (lista.isEmpty()) {
             ArrayList<Usuario> usuarios = getUsuarios();
             for (Usuario usuario : usuarios) {
                 if (usuario.getUsuario().equals(login.toUpperCase()) && usuario.getSenha().equals(senha)) {
@@ -121,6 +128,11 @@ public class UsuarioService implements IUsuarioService {
                 }
             }
             JOptionPane.showMessageDialog(null, "Usuário ou senha inválido!");
+        } else {
+            for (String lista1 : lista) {
+                ret = ret + lista1 + "\n";
+            }
+            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
         }
         return null;
     }
