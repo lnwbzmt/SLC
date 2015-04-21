@@ -18,4 +18,6 @@ public interface ICompetenciaService {
 
     public Competencia getCompetencia(Integer id) throws Exception;
 
+    public boolean validarCompetencia(Date competencia, Situacao situacao) throws Exception;
+
 }

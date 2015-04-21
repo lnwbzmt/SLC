@@ -18,69 +18,29 @@ public class CompetenciaService implements ICompetenciaService {
     public Boolean incluirCompetencia(Date competencia, Situacao situacao, Usuario usuario) throws Exception {
         dataInclusao = new Date();
         Competencia comp = new Competencia();
-
-        ArrayList<String> lista = new ArrayList(2);
-        String ret = new String();
-
-        if (competencia == null) {
-            lista.add("Competência");
-        }
-        if (situacao == null) {
-            lista.add("Situação");
-        }
-
-        if (lista.isEmpty()) {
-            comp.setCompetencia(competencia);
-            comp.setSituacao(situacao);
-            comp.setUsuarioinclusao(usuario);
-            comp.setDatainclusao(dataInclusao);
-            DAOFactory.getCompetenciaDAO().incluirCompetencia(comp);
-            JOptionPane.showMessageDialog(null, "Competência incluída com sucesso!");
-            return true;
-        } else {
-            for (String lista1 : lista) {
-                ret = ret + lista1 + "\n";
-            }
-            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
-            return false;
-        }
+        comp.setCompetencia(competencia);
+        comp.setSituacao(situacao);
+        comp.setUsuarioinclusao(usuario);
+        comp.setDatainclusao(dataInclusao);
+        DAOFactory.getCompetenciaDAO().incluirCompetencia(comp);
+        JOptionPane.showMessageDialog(null, "Competência incluída com sucesso!");
+        return true;
     }
 
     @Override
     public Boolean alterarCompetencia(Integer id, Date competencia, Situacao situacao, Usuario usuario, Usuario usuarioInclusao, Date dataInclusao) throws Exception {
         dataAlterecao = new Date();
         Competencia comp = new Competencia();
-
-        ArrayList<String> lista = new ArrayList(2);
-        String ret = new String();
-
-        if (competencia == null) {
-            lista.add("Competência");
-        }
-        if (situacao == null) {
-            lista.add("Situação");
-        }
-
-        if (lista.isEmpty()) {
-            comp.setId(id);
-            comp.setCompetencia(competencia);
-            comp.setSituacao(situacao);
-            comp.setUsuarioalteracao(usuario);
-            comp.setDataalteracao(dataAlterecao);
-            comp.setUsuarioinclusao(usuarioInclusao);
-            comp.setDatainclusao(dataInclusao);
-
-            DAOFactory.getCompetenciaDAO().alterarCompetencia(comp);
-            JOptionPane.showMessageDialog(null, "Competência alterada com sucesso!");
-
-            return true;
-        } else {
-            for (String lista1 : lista) {
-                ret = ret + lista1 + "\n";
-            }
-            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
-            return false;
-        }
+        comp.setId(id);
+        comp.setCompetencia(competencia);
+        comp.setSituacao(situacao);
+        comp.setUsuarioalteracao(usuario);
+        comp.setDataalteracao(dataAlterecao);
+        comp.setUsuarioinclusao(usuarioInclusao);
+        comp.setDatainclusao(dataInclusao);
+        DAOFactory.getCompetenciaDAO().alterarCompetencia(comp);
+        JOptionPane.showMessageDialog(null, "Competência alterada com sucesso!");
+        return true;
     }
 
     @Override
@@ -97,6 +57,28 @@ public class CompetenciaService implements ICompetenciaService {
     @Override
     public Competencia getCompetencia(Integer id) throws Exception {
         return DAOFactory.getCompetenciaDAO().getCompetencia(id);
+    }
+
+    @Override
+    public boolean validarCompetencia(Date competencia, Situacao situacao) {
+        ArrayList<String> lista = new ArrayList(2);
+        String ret = new String();
+
+        if (competencia == null) {
+            lista.add("Competência");
+        }
+        if (situacao == null) {
+            lista.add("Situação");
+        }
+
+        if (!lista.isEmpty()) {
+            for (String lista1 : lista) {
+                ret = ret + lista1 + "\n";
+            }
+            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
+            return false;
+        }
+        return true;
     }
 
 }
