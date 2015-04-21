@@ -160,9 +160,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Competencia:"/>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="font" source="lblCompetencia" sourcePath="${font}" target="lblCompetencia" targetPath="font" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblSituacao">
           <Properties>

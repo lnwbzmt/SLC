@@ -39,7 +39,6 @@ public class CadastroCompetencia extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jPanel1 = new javax.swing.JPanel();
         jdCompetencia = new com.toedter.calendar.JDateChooser();
@@ -67,9 +66,6 @@ public class CadastroCompetencia extends javax.swing.JDialog {
         jdCompetencia.setDateFormatString("MM/yyyy");
 
         lblCompetencia.setText("Competencia:");
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, lblCompetencia, org.jdesktop.beansbinding.ELProperty.create("${font}"), lblCompetencia, org.jdesktop.beansbinding.BeanProperty.create("font"));
-        bindingGroup.addBinding(binding);
 
         lblSituacao.setText("Situação:");
 
@@ -213,8 +209,6 @@ public class CadastroCompetencia extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        bindingGroup.bind();
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -294,6 +288,5 @@ public class CadastroCompetencia extends javax.swing.JDialog {
     private com.toedter.calendar.JDateChooser jdCompetencia;
     private javax.swing.JLabel lblCompetencia;
     private javax.swing.JLabel lblSituacao;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
