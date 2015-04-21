@@ -122,13 +122,21 @@ public class UsuarioService implements IUsuarioService {
             lista.add("senha");
         }
         if (lista.isEmpty()) {
+            Boolean controle = false;
             ArrayList<Usuario> usuarios = getUsuarios();
             for (Usuario usuario : usuarios) {
-                if (usuario.getUsuario().equals(login.toUpperCase()) && usuario.getSenha().equals(senha)) {
-                    return usuario;
-                }
+                if (usuario.getUsuario().equals(login.toUpperCase())) {
+                    if (usuario.getSenha().equals(senha)) {
+                        return usuario;
+                    } else {
+                    JOptionPane.showMessageDialog(null, "Senha inválida!");
+                    controle = true;
+                    }
+                } 
             }
-            JOptionPane.showMessageDialog(null, "Usuário ou senha inválido!");
+            if (controle == false) {
+            JOptionPane.showMessageDialog(null, "Usuário não cadastrado!");
+            }
         } else {
             for (String lista1 : lista) {
                 ret = ret + lista1 + "\n";
