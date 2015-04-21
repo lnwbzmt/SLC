@@ -1,5 +1,6 @@
 package br.com.xkinfo.slc.service.impl;
 
+
 import br.com.xkinfo.slc.dao.DAOFactory;
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.IUsuarioService;
