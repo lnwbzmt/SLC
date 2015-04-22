@@ -17,10 +17,9 @@ public class ConsultaCondominio extends javax.swing.JDialog {
 
     public ConsultaCondominio(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
-
         usuarioLogado = usuario;
-        
         initComponents();
+
         // Lógica para manipular uma linha do JTable quando esta é selecionada    
         ListSelectionModel linhaModeloSelecao = jtCondominios.getSelectionModel();
         linhaModeloSelecao.addListSelectionListener(new ListSelectionListener() {
@@ -31,25 +30,20 @@ public class ConsultaCondominio extends javax.swing.JDialog {
                 if (e.getValueIsAdjusting()) {
                     return;
                 }
-
                 // Verifica se existe uma linha selecionada. O
                 // valor deve ser maior ou igual a 0, que é o número da linha
                 if (jtCondominios.getSelectedRow() >= 0) {
-
                     Integer linhaSelecionada = jtCondominios.getSelectedRow();
-
                     Condominio condominioSelecionado = ((CondominioTableModel) jtCondominios.getModel()).getCondominios().get(linhaSelecionada);
                     if (condominioSelecionado != null) {
-                        CadastroCondominio cadastroCondominio = new CadastroCondominio(condominioSelecionado, null, true, usuarioLogado);
+                        CadastroCondominio cadastroCondominio = new CadastroCondominio(null, true, usuarioLogado, condominioSelecionado);
                         cadastroCondominio.setLocationRelativeTo(jScrollPane1.getParent());
                         cadastroCondominio.setVisible(true);
                         jtCondominios.setModel(new CondominioTableModel());
                     }
                 }
             }
-
         });
-
     }
 
     @SuppressWarnings("unchecked")
@@ -161,15 +155,13 @@ public class ConsultaCondominio extends javax.swing.JDialog {
     }//GEN-LAST:event_bNovoActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        this.dispose();
-
+        dispose();
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         jtCondominios.updateUI();
         jtCondominios.getRowHeight(0);
         jtCondominios.setModel(new CondominioTableModel());
-
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
@@ -177,13 +169,9 @@ public class ConsultaCondominio extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void txtFiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyReleased
-        // TODO add your handling code here:
-
-        TableRowSorter sorter = null;
         CondominioTableModel model = (CondominioTableModel) jtCondominios.getModel();
-        sorter = new TableRowSorter<TableModel>(model);
+        TableRowSorter sorter = new TableRowSorter<>(model);
         jtCondominios.setRowSorter(sorter);
-
         String text = txtFiltro.getText();
         if (text.length() == 0) {
             sorter.setRowFilter(null);

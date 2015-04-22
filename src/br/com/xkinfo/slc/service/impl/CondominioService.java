@@ -4,6 +4,7 @@ import br.com.xkinfo.slc.dao.DAOFactory;
 import br.com.xkinfo.slc.modelo.Condominio;
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.ICondominioService;
+import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -18,6 +19,11 @@ public class CondominioService implements ICondominioService {
             String cidade, String estado, String sigla, String email, Usuario usuario) throws Exception {
         dataInclusao = new Date();
         Condominio cond = new Condominio();
+        Boolean cnpjValido;
+        Boolean emailValido;
+
+        emailValido = ServiceFactory.getUtilService().isEmail(email);
+        cnpjValido = ServiceFactory.getUtilService().isCNPJ(cnpj);
 
         ArrayList<String> lista = new ArrayList(8);
         String ret = new String();
@@ -47,7 +53,8 @@ public class CondominioService implements ICondominioService {
             lista.add("Sigla");
         }
 
-        if (lista.isEmpty()) {
+        if (lista.isEmpty() && cnpjValido == true && emailValido == true) {
+
             Long fCnpj = Long.valueOf(cnpj);
             Long fNumero = Long.valueOf(numero);
 
@@ -69,6 +76,12 @@ public class CondominioService implements ICondominioService {
         } else {
             for (String lista1 : lista) {
                 ret = ret + lista1 + "\n";
+            }
+            if (cnpjValido == false) {
+                JOptionPane.showMessageDialog(null, "CNPJ inválido!");
+            }
+            if (emailValido == false) {
+                JOptionPane.showMessageDialog(null, "Email inválido!");
             }
             JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
             return false;

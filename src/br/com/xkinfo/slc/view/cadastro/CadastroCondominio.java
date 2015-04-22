@@ -13,7 +13,7 @@ public class CadastroCondominio extends javax.swing.JDialog {
     private final Usuario usuarioLogado;
 
     public CadastroCondominio(java.awt.Frame parent, boolean modal, Usuario usuario) {
-        //super(parent, modal);
+        super(parent, modal);
         initComponents();
         getRootPane().setDefaultButton(bSalvar);
         usuarioLogado = usuario;
@@ -21,7 +21,7 @@ public class CadastroCondominio extends javax.swing.JDialog {
         tfCodigo.setEnabled(false);
     }
 
-    public CadastroCondominio(Condominio condominio, java.awt.Frame parent, boolean modal, Usuario usuario) {
+    public CadastroCondominio(java.awt.Frame parent, boolean modal, Usuario usuario, Condominio condominio) {
         this(parent, modal, usuario);
         condominioSelecionado = condominio;
         tfCodigo.setText(condominioSelecionado.getId().toString());
@@ -97,6 +97,12 @@ public class CadastroCondominio extends javax.swing.JDialog {
         jLabel8.setText("Sigla:");
 
         jLabel9.setText("Email:");
+
+        tfCnpj.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfCnpjKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -293,6 +299,15 @@ public class CadastroCondominio extends javax.swing.JDialog {
             dispose();
         }
     }//GEN-LAST:event_bExcluirActionPerformed
+
+    private void tfCnpjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfCnpjKeyPressed
+        String cnpj = tfCnpj.getText();
+        try {
+            tfCnpj.setText(ServiceFactory.getUtilService().formatarCNPJ(cnpj));
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroCondominio.class.getName()).log(Level.SEVERE, null, ex);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCnpjKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCancelar;
