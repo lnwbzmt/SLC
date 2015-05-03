@@ -74,4 +74,15 @@ public class UnidadeConsumidoraDAO implements IUnidadeConsumidoraDAO {
         }
         return unidadeConsumidora;
     }
+     @Override
+    public UnidadeConsumidora getUnidadeConsumidora(String numero) throws Exception {
+        UnidadeConsumidora unidadeConsumidora = null;
+        try {
+            unidadeConsumidora = entityManager.find(UnidadeConsumidora.class, numero);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return unidadeConsumidora;
+    }
 }

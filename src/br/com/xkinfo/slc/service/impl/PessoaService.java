@@ -4,6 +4,7 @@ import br.com.xkinfo.slc.dao.DAOFactory;
 import br.com.xkinfo.slc.modelo.Pessoa;
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.IPessoaService;
+import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -63,14 +64,24 @@ public class PessoaService implements IPessoaService {
     }
 
     @Override
-    public boolean validarPessoa(String nome, String cpf) throws Exception {
+    public boolean validarPessoa(String nome, String cpf, String email) throws Exception {
         ArrayList<String> lista = new ArrayList(2);
         String ret = new String();
+        Boolean cpfValido;
+        Boolean emailValido;
         if (nome.equalsIgnoreCase("")) {
             lista.add("Nome");
         }
         if (cpf.equalsIgnoreCase("")) {
             lista.add("Hidromêtro");
+        }
+        emailValido = ServiceFactory.getUtilService().isEmail(email);
+        cpfValido = ServiceFactory.getUtilService().isCPF(cpf.replace(".", "").replace("-", ""));
+        if (cpfValido == false) {
+            JOptionPane.showMessageDialog(null, "CPF inválido!");
+        }
+        if (emailValido == false) {
+            JOptionPane.showMessageDialog(null, "Email inválido!");
         }
         if (!lista.isEmpty()) {
             for (String lista1 : lista) {

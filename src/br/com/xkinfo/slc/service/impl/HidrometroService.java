@@ -62,6 +62,11 @@ public class HidrometroService implements IHidrometroService {
     }
 
     @Override
+    public Hidrometro getHidrometro(String nrSerie) throws Exception {
+        return DAOFactory.getHidrometroDAO().getHidrometro(nrSerie);
+    }
+
+    @Override
     public boolean validarHidrometro(String serie) throws Exception {
         ArrayList<String> lista = new ArrayList(1);
         String ret = new String();
@@ -77,4 +82,5 @@ public class HidrometroService implements IHidrometroService {
         }
         return true;
     }
+
 }

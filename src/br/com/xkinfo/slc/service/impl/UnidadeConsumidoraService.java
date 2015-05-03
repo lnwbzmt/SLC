@@ -63,16 +63,19 @@ public class UnidadeConsumidoraService implements IUnidadeConsumidoraService {
     public UnidadeConsumidora getUnidadeConsumidora(int id) throws Exception {
         return DAOFactory.getUnidadeConsumidoraDAO().getUnidadeConsumidora(id);
     }
-
+  @Override
+    public UnidadeConsumidora getUnidadeConsumidora(String numero) throws Exception {
+        return DAOFactory.getUnidadeConsumidoraDAO().getUnidadeConsumidora(numero);
+    }
     @Override
-    public boolean validarUnidadeConsumidora(Condominio condominio, String numero) throws Exception {
+    public boolean validarUnidadeConsumidora(Condominio condominio, String nome) throws Exception {
         ArrayList<String> lista = new ArrayList(2);
         String ret = new String();
         if (condominio == null) {
             lista.add("Condominio");
         }
-        if (numero.equalsIgnoreCase("")) {
-            lista.add("Número");
+        if (nome.equalsIgnoreCase("")) {
+            lista.add("Nome");
         }
         if (!lista.isEmpty()) {
             for (String lista1 : lista) {

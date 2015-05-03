@@ -15,4 +15,5 @@ public interface IUnidadeConsumidoraDAO {
 
     public UnidadeConsumidora getUnidadeConsumidora(int id) throws Exception;
 
+    public UnidadeConsumidora getUnidadeConsumidora(String numero) throws Exception;
 }

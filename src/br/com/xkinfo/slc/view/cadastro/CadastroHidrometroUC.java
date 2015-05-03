@@ -1,7 +1,10 @@
 package br.com.xkinfo.slc.view.cadastro;
 
+import br.com.xkinfo.slc.modelo.Hidrometro;
 import br.com.xkinfo.slc.modelo.HidrometroUc;
+import br.com.xkinfo.slc.modelo.UnidadeConsumidora;
 import br.com.xkinfo.slc.modelo.Usuario;
+import br.com.xkinfo.slc.service.ServiceFactory;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -11,20 +14,24 @@ public class CadastroHidrometroUC extends javax.swing.JDialog {
     private HidrometroUc hidrometroUcSelecionado;
     private Usuario usuarioLogado;
 
-    public CadastroHidrometroUC(java.awt.Frame parent, boolean modal,Usuario usuario) {
+    public CadastroHidrometroUC(java.awt.Frame parent, boolean modal, Usuario usuarioLogado) {
         super(parent, modal);
         initComponents();
+        setTitle("ACAT - Associação Águas de Taquaruçu - " + usuarioLogado.getNome());
+        getRootPane().setDefaultButton(bSalvar);
         bExcluir.setVisible(false);
-        this.tfCodigo.setEnabled(false);
-        usuarioLogado = usuario;
+        tfCodigo.setEnabled(false);
+        jTextField3.setText(usuarioLogado.getNome());
     }
 
-    public CadastroHidrometroUC(HidrometroUc hidrometroUc, java.awt.Frame parent, boolean modal,Usuario usuario) {
-        this(parent, modal,usuario);
+    public CadastroHidrometroUC(HidrometroUc hidrometroUc, java.awt.Frame parent, boolean modal, Usuario usuario) {
+        this(parent, modal, usuario);
         this.hidrometroUcSelecionado = hidrometroUc;
         if (hidrometroUcSelecionado != null) {
             tfCodigo.setText(hidrometroUc.getId().toString());
-            //tfNome.setText(hidrometroUc.getFatura().toString());
+            jTextField3.setText(hidrometroUcSelecionado.getUsuarioinclusao().getNome());
+            jTextField2.setText(hidrometroUcSelecionado.getDatainclusao().toString());
+            jTextField1.setText(usuarioLogado.getNome());
             // Mostra o botão Excluir     
             bExcluir.setVisible(true);
         }
@@ -42,11 +49,11 @@ public class CadastroHidrometroUC extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         lNome = new javax.swing.JLabel();
         tfCodigo = new javax.swing.JTextField();
-        lNome2 = new javax.swing.JLabel();
-        lNome3 = new javax.swing.JLabel();
+        lblHidrometro = new javax.swing.JLabel();
+        lblUC = new javax.swing.JLabel();
         jdDataRecebimento = new com.toedter.calendar.JDateChooser();
-        tfCodigo1 = new javax.swing.JTextField();
-        tfCodigo2 = new javax.swing.JTextField();
+        tfHidrometro = new javax.swing.JTextField();
+        tfUC = new javax.swing.JTextField();
         lNome4 = new javax.swing.JLabel();
         lNome5 = new javax.swing.JLabel();
         jdDataRecebimento1 = new com.toedter.calendar.JDateChooser();
@@ -54,92 +61,162 @@ public class CadastroHidrometroUC extends javax.swing.JDialog {
         jdDataRecebimento2 = new com.toedter.calendar.JDateChooser();
         lNome7 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
         bSalvar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
         bExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro de Projetos");
+        setTitle("Cadastro de Hidrômetro/UC");
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do HidrometroUC"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do Hidrômetro/UC"));
 
         lNome.setText("Código:");
 
-        lNome2.setText("Hidrometro:");
+        lblHidrometro.setText("Hidrômetro:");
 
-        lNome3.setText("Unidade Consumidora:");
+        lblUC.setText("Unidade Consumidora:");
 
         lNome4.setText("Data Retirada:");
 
-        lNome5.setText("Data Instalacao:");
+        lNome5.setText("Data Instalação:");
 
-        lNome6.setText("Data Ultima Leitura:");
+        lNome6.setText("Data Última Leitura:");
 
-        lNome7.setText("Ultima Leitura:");
+        lNome7.setText("Última Leitura:");
 
         jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel9.setText("Usuário Inclusão:");
+
+        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField3.setEnabled(false);
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel10.setText("Data Inclusão:");
+
+        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField2.setEnabled(false);
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel11.setText("Usuário Alteração:");
+
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField1.setEnabled(false);
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel12.setText("Data Alteração:");
+
+        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jTextField4.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lNome3)
-                    .addComponent(lNome2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lNome, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lNome4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lNome5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lNome6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lNome7, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jdDataRecebimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfCodigo1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfCodigo2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jdDataRecebimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jdDataRecebimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(441, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(42, 42, 42)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lNome, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lNome4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lNome5, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblHidrometro, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblUC, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lNome6, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addComponent(lNome7)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jdDataRecebimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jdDataRecebimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jdDataRecebimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfUC, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfHidrometro, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField1)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(90, 90, 90)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField4))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lNome)
-                    .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfCodigo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lNome2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfCodigo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lNome3))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lNome5)
-                    .addComponent(jdDataRecebimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jdDataRecebimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jdDataRecebimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lNome4)
-                        .addGap(18, 18, 18)
-                        .addComponent(lNome6)
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lNome7)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addComponent(tfCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lNome, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfHidrometro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHidrometro, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfUC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUC, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jdDataRecebimento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lNome5, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jdDataRecebimento1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lNome4, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jdDataRecebimento2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lNome6, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lNome7, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         bSalvar.setText("Salvar");
@@ -167,17 +244,17 @@ public class CadastroHidrometroUC extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 554, Short.MAX_VALUE)
-                .addComponent(bSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,27 +277,44 @@ public class CadastroHidrometroUC extends javax.swing.JDialog {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalvarActionPerformed
-        if (hidrometroUcSelecionado != null) {
-            //hidrometroUcSelecionado.setHidrometroUc(Date.valueOf(tfNome.getText()));
-            try {
-                //ServiceFactory.getHidrometroUcService().alterarHidrometroUc(hidrometroUcSelecionado);
-                JOptionPane.showMessageDialog(this, "HidrometroUc Alterado com Sucesso!");
-
-            } catch (Exception ex) {
-                Logger.getLogger(CadastroHidrometroUC.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            //HidrometroUc hidrometroUc = new HidrometroUc(null,null,null,null,null,0,null,tfNome.getText(),0,null,null);
-            try {
+        try {
+            UnidadeConsumidora uc = ServiceFactory.getUnidadeConsumidoraService().getUnidadeConsumidora(tfUC.getText());
+            Hidrometro hidrometro = ServiceFactory.getHidrometroService().getHidrometro(tfHidrometro.getText());
+            Boolean validar = ServiceFactory.getHidrometroUCService().validarHidrometroUC(uc, hidrometro);
+            if (validar) {
+                ServiceFactory.getUtilService().certo(tfUC);
+                ServiceFactory.getUtilService().certo(tfHidrometro);
+                if (hidrometroUcSelecionado != null) {
+                    //hidrometroUcSelecionado.setHidrometroUc(Date.valueOf(tfNome.getText()));
+                    try {
+                        //ServiceFactory.getHidrometroUcService().alterarHidrometroUc(hidrometroUcSelecionado);
+                        JOptionPane.showMessageDialog(this, "HidrometroUc Alterado com Sucesso!");
+                        
+                    } catch (Exception ex) {
+                        Logger.getLogger(CadastroHidrometroUC.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    //HidrometroUc hidrometroUc = new HidrometroUc(null,null,null,null,null,0,null,tfNome.getText(),0,null,null);
+                    try {
+                        
+                        //ServiceFactory.getHidrometroUcService().incluirHidrometroUc(hidrometroUc);
+                        JOptionPane.showMessageDialog(this, "HidrometroUc Inlcuído com Sucesso!");
+                    } catch (Exception ex) {
+                        Logger.getLogger(CadastroHidrometroUC.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                hidrometroUcSelecionado = null;
+                this.dispose();
+            }else {
+                lblHidrometro.setText("<html>Hidrômetro:<font color=red>*</font> </html>");
+                lblUC.setText("<html>Unidade Consumidora:<font color=red>*</font> </html>");
+                ServiceFactory.getUtilService().errado(tfHidrometro);
+                ServiceFactory.getUtilService().errado(tfUC);
                 
-                //ServiceFactory.getHidrometroUcService().incluirHidrometroUc(hidrometroUc);
-                JOptionPane.showMessageDialog(this, "HidrometroUc Inlcuído com Sucesso!");
-            } catch (Exception ex) {
-                Logger.getLogger(CadastroHidrometroUC.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroHidrometroUC.class.getName()).log(Level.SEVERE, null, ex);
         }
-        hidrometroUcSelecionado = null;
-        this.dispose();
     }//GEN-LAST:event_bSalvarActionPerformed
 
     private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed
@@ -242,19 +336,27 @@ public class CadastroHidrometroUC extends javax.swing.JDialog {
     private javax.swing.JButton bExcluir;
     private javax.swing.JButton bSalvar;
     private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private com.toedter.calendar.JDateChooser jdDataRecebimento;
     private com.toedter.calendar.JDateChooser jdDataRecebimento1;
     private com.toedter.calendar.JDateChooser jdDataRecebimento2;
     private javax.swing.JLabel lNome;
-    private javax.swing.JLabel lNome2;
-    private javax.swing.JLabel lNome3;
     private javax.swing.JLabel lNome4;
     private javax.swing.JLabel lNome5;
     private javax.swing.JLabel lNome6;
     private javax.swing.JLabel lNome7;
+    private javax.swing.JLabel lblHidrometro;
+    private javax.swing.JLabel lblUC;
     private javax.swing.JTextField tfCodigo;
-    private javax.swing.JTextField tfCodigo1;
-    private javax.swing.JTextField tfCodigo2;
+    private javax.swing.JTextField tfHidrometro;
+    private javax.swing.JTextField tfUC;
     // End of variables declaration//GEN-END:variables
 }

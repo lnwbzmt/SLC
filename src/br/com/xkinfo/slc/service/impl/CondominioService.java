@@ -98,7 +98,7 @@ public class CondominioService implements ICondominioService {
             lista.add("CNPJ");
         }
         emailValido = ServiceFactory.getUtilService().isEmail(email);
-        cnpjValido = ServiceFactory.getUtilService().isCNPJ(cnpj);
+        cnpjValido = ServiceFactory.getUtilService().isCNPJ(cnpj.replace(".", "").replace("-", "").replace("/", ""));
         if (cnpjValido == false) {
             JOptionPane.showMessageDialog(null, "CNPJ inválido!");
         }

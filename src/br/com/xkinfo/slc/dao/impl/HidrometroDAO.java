@@ -73,4 +73,16 @@ public class HidrometroDAO implements IHidrometroDAO {
         }
         return hidrometro;
     }
+
+    @Override
+    public Hidrometro getHidrometro(String nrSerie) throws Exception {
+        Hidrometro hidrometro = null;
+        try {
+            hidrometro = entityManager.find(Hidrometro.class, nrSerie);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return hidrometro;
+    }
 }

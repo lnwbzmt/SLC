@@ -15,4 +15,5 @@ public interface IHidrometroDAO {
 
     public Hidrometro getHidrometro(int id) throws Exception;
 
+    public Hidrometro getHidrometro(String nrSerie) throws Exception;
 }
