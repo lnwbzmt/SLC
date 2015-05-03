@@ -16,6 +16,8 @@ public interface ICompetenciaService {
 
     public ArrayList<Competencia> getCompetencias() throws Exception;
 
+    public ArrayList<Competencia> getCompetencias(String filtro) throws Exception;
+
     public Competencia getCompetencia(Integer id) throws Exception;
 
     public boolean validarCompetencia(Date competencia, Situacao situacao) throws Exception;

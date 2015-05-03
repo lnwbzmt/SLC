@@ -93,4 +93,6 @@ public interface IUtilService {
     public String devolveValorExibicao(double num) throws Exception;
 
     public double devolverValorDouble(String texto) throws Exception;
+
+    public String criptografar(String pwd) throws Exception;
 }

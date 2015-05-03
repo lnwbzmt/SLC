@@ -19,6 +19,13 @@ public class CompetenciaTableModel extends AbstractTableModel {
             Logger.getLogger(CompetenciaTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public CompetenciaTableModel(String filtro) {
+        try {
+            competencias = ServiceFactory.getCompetenciaService().getCompetencias(filtro);
+        } catch (Exception ex) {
+            Logger.getLogger(CompetenciaTableModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @Override
     public int getRowCount() {

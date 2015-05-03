@@ -17,4 +17,6 @@ public interface IUsuarioService {
     public Usuario getUsuario(int id) throws Exception;
 
     public Usuario isUsuarioValido(String login, String senha) throws Exception;
+
+    public boolean validarUsuario(String nome, String usuario, String senha) throws Exception;
 }

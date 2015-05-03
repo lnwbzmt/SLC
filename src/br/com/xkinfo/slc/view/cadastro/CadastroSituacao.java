@@ -12,11 +12,11 @@ public class CadastroSituacao extends javax.swing.JDialog {
     private Situacao situacaoSelecionado;
     private Usuario usuarioLogado;
 
-    public CadastroSituacao(java.awt.Frame parent, boolean modal, Usuario usuario) {
+    public CadastroSituacao(java.awt.Frame parent, boolean modal, Usuario usuarioLogado) {
         super(parent, modal);
         initComponents();
+        setTitle("ACAT - Associação Águas de Taquaruçu - " + usuarioLogado.getNome());
         bExcluir.setVisible(false);
-        usuarioLogado = usuario;
         getRootPane().setDefaultButton(bSalvar);
         tfUsuarioInclusao.setText(usuarioLogado.getNome());
     }
@@ -43,9 +43,9 @@ public class CadastroSituacao extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lNome = new javax.swing.JLabel();
+        lblCodigo = new javax.swing.JLabel();
         tfCodigo = new javax.swing.JTextField();
-        lNome1 = new javax.swing.JLabel();
+        lblDescricao = new javax.swing.JLabel();
         tfDescricao = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -63,11 +63,11 @@ public class CadastroSituacao extends javax.swing.JDialog {
         setTitle("Cadastro de Projetos");
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados das Situacoes"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados das Situações"));
 
-        lNome.setText("Código:");
+        lblCodigo.setText("Código:");
 
-        lNome1.setText("Descrição:");
+        lblDescricao.setText("Descrição:");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel1.setText("Usuário Alteração:");
@@ -98,12 +98,18 @@ public class CadastroSituacao extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(lNome)
-                    .addComponent(lNome1))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(lblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(lblDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -112,9 +118,9 @@ public class CadastroSituacao extends javax.swing.JDialog {
                             .addComponent(tfUsuarioAlteracao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                             .addComponent(tfUsuarioInclusao, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfDataInclusao)
@@ -126,25 +132,25 @@ public class CadastroSituacao extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lNome)
-                    .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCodigo, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tfCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lNome1)
-                    .addComponent(tfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDescricao, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tfDescricao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(tfUsuarioInclusao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(tfDataInclusao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tfUsuarioInclusao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfDataInclusao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(tfUsuarioAlteracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(tfDataAlteracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tfUsuarioAlteracao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tfDataAlteracao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -200,6 +206,8 @@ public class CadastroSituacao extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        getAccessibleContext().setAccessibleName("Cadastro de Situações");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -210,29 +218,42 @@ public class CadastroSituacao extends javax.swing.JDialog {
     private void bSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalvarActionPerformed
         String codigo = tfCodigo.getText();
         String descricao = tfDescricao.getText();
-
-        if (situacaoSelecionado != null) {
-            Integer id = situacaoSelecionado.getId();
-            Usuario usuarioInclusao = situacaoSelecionado.getUsuarioinclusao();
-            Date dataInclusao = situacaoSelecionado.getDatainclusao();
-            try {
-                Boolean alterar = ServiceFactory.getSituacaoService().alterarSituacao(id, codigo, descricao, usuarioLogado, usuarioInclusao, dataInclusao);
-                if (alterar == true) {
-                    situacaoSelecionado = null;
-                    dispose();
+        try {
+            Boolean validar = ServiceFactory.getSituacaoService().validarSituacao(codigo,descricao);
+            if (validar) {
+                ServiceFactory.getUtilService().certo(tfCodigo);
+                ServiceFactory.getUtilService().certo(tfDescricao);
+                if (situacaoSelecionado != null) {
+                    Integer id = situacaoSelecionado.getId();
+                    Usuario usuarioInclusao = situacaoSelecionado.getUsuarioinclusao();
+                    Date dataInclusao = situacaoSelecionado.getDatainclusao();
+                    try {
+                        Boolean alterar = ServiceFactory.getSituacaoService().alterarSituacao(id, codigo, descricao, usuarioLogado, usuarioInclusao, dataInclusao);
+                        if (alterar == true) {
+                            situacaoSelecionado = null;
+                            dispose();
+                        }
+                    } catch (Exception ex) {
+                        Logger.getLogger(CadastroSituacao.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    try {
+                        Boolean incluir = ServiceFactory.getSituacaoService().incluirSituacao(codigo, descricao, usuarioLogado);
+                        if (incluir == true) {
+                            dispose();
+                        }
+                    } catch (Exception ex) {
+                        Logger.getLogger(CadastroSituacao.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-            } catch (Exception ex) {
-                Logger.getLogger(CadastroSituacao.class.getName()).log(Level.SEVERE, null, ex);
+            }else {
+                lblCodigo.setText("<html>Código:<font color=red>*</font> </html>");
+                lblDescricao.setText("<html>Descrição:<font color=red>*</font> </html>");
+                ServiceFactory.getUtilService().errado(tfCodigo);
+                ServiceFactory.getUtilService().errado(tfDescricao);
             }
-        } else {
-            try {
-                Boolean incluir = ServiceFactory.getSituacaoService().incluirSituacao(codigo, descricao, usuarioLogado);
-                if (incluir == true) {
-                    dispose();
-                }
-            } catch (Exception ex) {
-                Logger.getLogger(CadastroSituacao.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } catch(Exception ex){
+            Logger.getLogger(CadastroSituacao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_bSalvarActionPerformed
 
@@ -257,8 +278,8 @@ public class CadastroSituacao extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lNome;
-    private javax.swing.JLabel lNome1;
+    private javax.swing.JLabel lblCodigo;
+    private javax.swing.JLabel lblDescricao;
     private javax.swing.JTextField tfCodigo;
     private javax.swing.JTextField tfDataAlteracao;
     private javax.swing.JTextField tfDataInclusao;

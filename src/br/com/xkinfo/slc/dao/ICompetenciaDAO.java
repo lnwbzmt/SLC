@@ -13,6 +13,8 @@ public interface ICompetenciaDAO {
 
     public ArrayList<Competencia> getCompetencias() throws Exception;
 
+    public ArrayList<Competencia> getCompetencias(String filtro) throws Exception;
+
     public Competencia getCompetencia(int id) throws Exception;
 
 }

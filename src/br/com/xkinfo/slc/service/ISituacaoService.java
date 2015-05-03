@@ -17,4 +17,6 @@ public interface ISituacaoService {
 
     public Situacao getSituacao(int id) throws Exception;
 
+    public boolean validarSituacao(String codigo, String descricao) throws Exception;
+
 }

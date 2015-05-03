@@ -4,6 +4,8 @@ import br.com.xkinfo.slc.service.IUtilService;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.Component;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.InputMismatchException;
@@ -20,6 +22,15 @@ public class UtilService implements IUtilService {
 
     String numeros = "0123456789";
     String especiais = "!@#$%/ï¿½*()_+ï¿½ï¿½ï¿½\\ï¿½ï¿½ï¿½=\"ï¿½?|ï¿½[]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½|ï¿½~;,<>:^}`{";
+    private static MessageDigest md = null;
+
+    static {
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     @Override
     public String formatar(String valor, String mascara) {
@@ -573,7 +584,7 @@ public class UtilService implements IUtilService {
 
     @Override
     public JDateChooser errado(JDateChooser t) throws Exception {
-        t.setBackground(new Color(255,0,0));
+        t.setBackground(new Color(255, 0, 0));
         return t;
     }
 
@@ -605,7 +616,7 @@ public class UtilService implements IUtilService {
 
     @Override
     public JDateChooser certo(JDateChooser t) throws Exception {
-        t.setBackground(new Color(255,255,255));
+        t.setBackground(new Color(255, 255, 255));
         return t;
     }
 
@@ -671,4 +682,21 @@ public class UtilService implements IUtilService {
         }
     }
 
+    private static char[] hexCodes(byte[] text) {
+        char[] hexOutput = new char[text.length * 2];
+        String hexString;
+        for (int i = 0; i < text.length; i++) {
+            hexString = "00" + Integer.toHexString(text[i]);
+            hexString.toUpperCase().getChars(hexString.length() - 2, hexString.length(), hexOutput, i * 2);
+        }
+        return hexOutput;
+    }
+
+    @Override
+    public String criptografar(String pwd) {
+        if (md != null) {
+            return new String(hexCodes(md.digest(pwd.getBytes())));
+        }
+        return null;
+    }
 }

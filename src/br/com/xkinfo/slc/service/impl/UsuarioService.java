@@ -1,6 +1,5 @@
 package br.com.xkinfo.slc.service.impl;
 
-
 import br.com.xkinfo.slc.dao.DAOFactory;
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.IUsuarioService;
@@ -17,81 +16,39 @@ public class UsuarioService implements IUsuarioService {
     public Boolean incluirUsuario(String nome, String usuario, String senha, Usuario usu) throws Exception {
         dataInclusao = new Date();
 
-        ArrayList<String> lista = new ArrayList(8);
-        String ret = new String();
+        Usuario u = new Usuario();
+        u.setNome(nome);
+        u.setUsuario(usuario);
+        u.setSenha(senha);
+        u.setUsuarioinclusao(usu);
+        u.setDatainclusao(dataInclusao);
 
-        if (nome == null || nome.equalsIgnoreCase("")) {
-            lista.add("Nome");
-        }
-        if (usuario == null || usuario.equalsIgnoreCase("")) {
-            lista.add("Usuario");
-        }
-        if (senha == null || senha.equalsIgnoreCase("")) {
-            lista.add("Senha");
-        }
+        DAOFactory.getUsuarioDAO().incluirUsuario(u);
+        JOptionPane.showMessageDialog(null, "Usuario Inlcuído com Sucesso!");
 
-        if (lista.isEmpty()) {
+        return true;
 
-            Usuario u = new Usuario();
-            u.setNome(nome);
-            u.setUsuario(usuario);
-            u.setSenha(senha);
-            u.setUsuarioinclusao(usu);
-            u.setDatainclusao(dataInclusao);
-
-            DAOFactory.getUsuarioDAO().incluirUsuario(u);
-            JOptionPane.showMessageDialog(null, "Usuario Inlcuído com Sucesso!");
-
-            return true;
-        } else {
-            for (String lista1 : lista) {
-                ret = ret + lista1 + "\n";
-            }
-            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
-            return false;
-        }
     }
 
     @Override
     public Boolean alterarUsuario(Integer id, String nome, String usuario, String senha, Usuario usu, Usuario usuarioinclusao, Date dataInclusao) throws Exception {
         dataAlteracao = new Date();
 
-        ArrayList<String> lista = new ArrayList(8);
-        String ret = new String();
+        Usuario u = new Usuario();
+        u.setId(id);
+        u.setNome(nome);
+        u.setUsuario(usuario);
+        u.setSenha(senha);
+        u.setUsuarioalteracao(usu);
+        u.setDataalteracao(dataAlteracao);
+        u.setUsuarioinclusao(usuarioinclusao);
+        u.setDatainclusao(dataInclusao);
 
-        if (nome == null || nome.equalsIgnoreCase("")) {
-            lista.add("Nome");
-        }
-        if (usuario == null || usuario.equalsIgnoreCase("")) {
-            lista.add("Usuario");
-        }
-        if (senha == null || senha.equalsIgnoreCase("")) {
-            lista.add("Senha");
-        }
+        DAOFactory.getUsuarioDAO().alterarUsuario(u);
+        JOptionPane.showMessageDialog(null, "Usuario Alterado com Sucesso!");
 
-        if (lista.isEmpty()) {
+        return true;
 
-            Usuario u = new Usuario();
-            u.setId(id);
-            u.setNome(nome);
-            u.setUsuario(usuario);
-            u.setSenha(senha);
-            u.setUsuarioalteracao(usu);
-            u.setDataalteracao(dataAlteracao);
-            u.setUsuarioinclusao(usuarioinclusao);
-            u.setDatainclusao(dataInclusao);
-
-            DAOFactory.getUsuarioDAO().alterarUsuario(u);
-            JOptionPane.showMessageDialog(null, "Usuario Alterado com Sucesso!");
-
-            return true;
-        } else {
-            for (String lista1 : lista) {
-                ret = ret + lista1 + "\n";
-            }
-            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
-            return false;
-        }
     }
 
     @Override
@@ -129,13 +86,13 @@ public class UsuarioService implements IUsuarioService {
                     if (usuario.getSenha().equals(senha)) {
                         return usuario;
                     } else {
-                    JOptionPane.showMessageDialog(null, "Senha inválida!");
-                    controle = true;
+                        JOptionPane.showMessageDialog(null, "Senha inválida!");
+                        controle = true;
                     }
-                } 
+                }
             }
             if (controle == false) {
-            JOptionPane.showMessageDialog(null, "Usuário não cadastrado!");
+                JOptionPane.showMessageDialog(null, "Usuário não cadastrado!");
             }
         } else {
             for (String lista1 : lista) {
@@ -144,5 +101,29 @@ public class UsuarioService implements IUsuarioService {
             JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
         }
         return null;
+    }
+
+    @Override
+    public boolean validarUsuario(String nome, String usuario, String senha) throws Exception {
+        ArrayList<String> lista = new ArrayList(4);
+        String ret = new String();
+
+        if (nome.equalsIgnoreCase("")) {
+            lista.add("Nome");
+        }
+        if (usuario.equalsIgnoreCase("")) {
+            lista.add("Usuário");
+        }
+        if (senha == null) {
+            lista.add("Senha");
+        }
+        if (!lista.isEmpty()) {
+            for (String lista1 : lista) {
+                ret = ret + lista1 + "\n";
+            }
+            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
+            return false;
+        }
+        return true;
     }
 }

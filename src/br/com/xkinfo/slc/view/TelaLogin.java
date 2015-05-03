@@ -122,7 +122,7 @@ public class TelaLogin extends javax.swing.JFrame {
         String senha = new String(pfSenha.getPassword());
         Usuario usuario;
         try {
-            usuario = ServiceFactory.getUsuarioService().isUsuarioValido(login, senha);
+            usuario = ServiceFactory.getUsuarioService().isUsuarioValido(login, ServiceFactory.getUtilService().criptografar(senha));
             if (usuario != null) {
                 TelaPrincipal tp = new TelaPrincipal(usuario);
                 tp.setLocationRelativeTo(null);

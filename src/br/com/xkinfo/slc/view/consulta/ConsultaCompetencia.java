@@ -5,15 +5,19 @@ import br.com.xkinfo.slc.modelo.Competencia;
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.util.tableModel.CompetenciaTableModel;
 import javax.swing.ListSelectionModel;
-import javax.swing.RowFilter;
+import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class ConsultaCompetencia extends javax.swing.JDialog {
 
     private Usuario usuarioLogado;
+    private int coluna0 = 40;
+    private int coluna1 = 100;
+
+    DefaultTableCellRenderer direita = new DefaultTableCellRenderer();
+    DefaultTableCellRenderer esquerda = new DefaultTableCellRenderer();
 
     public ConsultaCompetencia(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
@@ -57,11 +61,11 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
         bNovo = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        txtFiltro = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
+        jfCompetencia = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Consulta de Projetos");
+        setTitle("Consulta de Competencias");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -94,18 +98,14 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
 
         jLabel1.setText("Competencia:");
 
-        txtFiltro.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtFiltroKeyReleased(evt);
-            }
-        });
-
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
             }
         });
+
+        jfCompetencia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("MM/yyyy"))));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,12 +120,12 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jfCompetencia, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(192, 192, 192)
                         .addComponent(btnPesquisar)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -133,11 +133,11 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisar))
+                    .addComponent(btnPesquisar)
+                    .addComponent(jfCompetencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -146,8 +146,6 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
                     .addComponent(bNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
-
-        jLabel1.getAccessibleContext().setAccessibleName("Competencia:");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -169,22 +167,16 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // TODO add your handling code here:
+        direita.setHorizontalAlignment(SwingConstants.RIGHT);
+        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
+        String nome = this.jfCompetencia.getText();
+        jtCompetencias.setModel(new CompetenciaTableModel(nome +"/01"));
+        jtCompetencias.getColumnModel().getColumn(0).setPreferredWidth(coluna0);
+        jtCompetencias.getColumnModel().getColumn(0).setCellRenderer(direita);
+        jtCompetencias.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
+        jtCompetencias.getColumnModel().getColumn(1).setCellRenderer(esquerda);
+        jtCompetencias.setAutoCreateRowSorter(true);        // TODO add your handling code here:
     }//GEN-LAST:event_btnPesquisarActionPerformed
-
-    private void txtFiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyReleased
-        TableRowSorter sorter = null;
-        CompetenciaTableModel model = (CompetenciaTableModel) jtCompetencias.getModel();
-        sorter = new TableRowSorter<TableModel>(model);
-        jtCompetencias.setRowSorter(sorter);
-
-        String text = txtFiltro.getText();
-        if (text.length() == 0) {
-            sorter.setRowFilter(null);
-        } else {
-            sorter.setRowFilter(RowFilter.regexFilter(text));
-        }
-    }//GEN-LAST:event_txtFiltroKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCancelar;
@@ -192,7 +184,7 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JFormattedTextField jfCompetencia;
     private javax.swing.JTable jtCompetencias;
-    private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
 }

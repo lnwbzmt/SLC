@@ -23,7 +23,7 @@ public class Competencia implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "COMPETENCIA", table = "COMPETENCIAS", nullable = false)
+    @Column(name = "COMPETENCIA", table = "COMPETENCIAS", nullable = false, unique = true)
     @Temporal(TemporalType.DATE)
     @Basic
     private Date competencia;

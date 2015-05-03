@@ -63,6 +63,15 @@ public class CompetenciaDAO implements ICompetenciaDAO {
     }
 
     @Override
+    public ArrayList<Competencia> getCompetencias(String filtro) throws Exception {
+        ArrayList<Competencia> lista;
+        Query query = entityManager.createQuery("select x from Competencia x where x.competencia like :filtro");
+        query.setParameter("filtro", "%" + filtro + "%");
+        lista = (ArrayList<Competencia>) query.getResultList();
+        return lista;
+    }
+
+    @Override
     public Competencia getCompetencia(int id) throws Exception {
         Competencia competencia = null;
         try {
