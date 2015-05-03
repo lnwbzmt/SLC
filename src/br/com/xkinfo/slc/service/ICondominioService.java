@@ -19,4 +19,6 @@ public interface ICondominioService {
 
     public Condominio getCondominio(Integer id) throws Exception;
 
+    public boolean validarCondominio(String nome, String cnpj,String email) throws Exception;
+
 }

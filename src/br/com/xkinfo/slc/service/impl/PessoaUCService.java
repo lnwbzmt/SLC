@@ -8,6 +8,7 @@ import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.IPessoaUCService;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 public class PessoaUCService implements IPessoaUCService {
 
@@ -58,6 +59,29 @@ public class PessoaUCService implements IPessoaUCService {
     @Override
     public PessoaUc getPessoaUC(int id) throws Exception {
         return DAOFactory.getPessoaUCDAO().getPessoaUC(id);
+    }
+
+    @Override
+    public boolean validarPessoaUC(Pessoa prop, Pessoa inquilino, UnidadeConsumidora uc) throws Exception {
+        ArrayList<String> lista = new ArrayList(3);
+        String ret = new String();
+        if (prop == null) {
+            lista.add("Proprietário");
+        }
+        if (inquilino == null) {
+            lista.add("Inquilino");
+        }
+        if (uc == null) {
+            lista.add("Unidade Consumidora");
+        }
+        if (!lista.isEmpty()) {
+            for (String lista1 : lista) {
+                ret = ret + lista1 + "\n";
+            }
+            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
+            return false;
+        }
+        return true;
     }
 
 }

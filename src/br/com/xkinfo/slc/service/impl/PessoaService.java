@@ -17,80 +17,33 @@ public class PessoaService implements IPessoaService {
     public Boolean incluirPessoa(String nome, String cpf, String email, Usuario usuario) throws Exception {
         dataInclusao = new Date();
         Pessoa pessoa = new Pessoa();
-
-        ArrayList<String> lista = new ArrayList(8);
-        String ret = new String();
-
-        if (nome == null || nome.equalsIgnoreCase("")) {
-            lista.add("Nome");
-        }
-        if (cpf == null || cpf.equalsIgnoreCase("")) {
-            lista.add("CPF");
-        }
-        if (email == null || email.equalsIgnoreCase("")) {
-            lista.add("Email");
-        }
-
-        if (lista.isEmpty()) {
-            Long fCpf = Long.valueOf(cpf);
-
-            pessoa.setNome(nome);
-            pessoa.setCpf(fCpf);
-            pessoa.setEmail(email);
-            pessoa.setUsuarioinclusao(usuario);
-            pessoa.setDatainclusao(dataInclusao);
-
-            DAOFactory.getPessoaDAO().incluirPessoa(pessoa);
-            JOptionPane.showMessageDialog(null, "Pessoa Inlcuído com Sucesso!");
-            return true;
-        } else {
-            for (String lista1 : lista) {
-                ret = ret + lista1 + "\n";
-            }
-            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
-            return false;
-        }
+        Long fCpf = Long.valueOf(cpf);
+        pessoa.setNome(nome);
+        pessoa.setCpf(fCpf);
+        pessoa.setEmail(email);
+        pessoa.setUsuarioinclusao(usuario);
+        pessoa.setDatainclusao(dataInclusao);
+        DAOFactory.getPessoaDAO().incluirPessoa(pessoa);
+        JOptionPane.showMessageDialog(null, "Pessoa Inlcuído com Sucesso!");
+        return true;
     }
 
     @Override
     public Boolean alterarPessoa(Integer id, String nome, String cpf, String email, Usuario usuario, Date dataInclusao, Usuario usuarioInclusao) throws Exception {
         dataAlteracao = new Date();
         Pessoa pessoa = new Pessoa();
-
-        ArrayList<String> lista = new ArrayList(8);
-        String ret = new String();
-
-        if (nome == null || nome.equalsIgnoreCase("")) {
-            lista.add("Nome");
-        }
-        if (cpf == null || cpf.equalsIgnoreCase("")) {
-            lista.add("CPF");
-        }
-        if (email == null || email.equalsIgnoreCase("")) {
-            lista.add("Email");
-        }
-
-        if (lista.isEmpty()) {
-            Long fCpf = Long.valueOf(cpf);
-            pessoa.setId(id);
-            pessoa.setNome(nome);
-            pessoa.setCpf(fCpf);
-            pessoa.setEmail(email);
-            pessoa.setUsuarioalteracao(usuario);
-            pessoa.setDataalteracao(dataAlteracao);
-            pessoa.setUsuarioinclusao(usuarioInclusao);
-            pessoa.setDatainclusao(dataInclusao);
-
-            DAOFactory.getPessoaDAO().alterarPessoa(pessoa);
-            JOptionPane.showMessageDialog(null, "Pessoa Alterado com Sucesso!");
-            return true;
-        } else {
-            for (String lista1 : lista) {
-                ret = ret + lista1 + "\n";
-            }
-            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
-            return false;
-        }
+        Long fCpf = Long.valueOf(cpf);
+        pessoa.setId(id);
+        pessoa.setNome(nome);
+        pessoa.setCpf(fCpf);
+        pessoa.setEmail(email);
+        pessoa.setUsuarioalteracao(usuario);
+        pessoa.setDataalteracao(dataAlteracao);
+        pessoa.setUsuarioinclusao(usuarioInclusao);
+        pessoa.setDatainclusao(dataInclusao);
+        DAOFactory.getPessoaDAO().alterarPessoa(pessoa);
+        JOptionPane.showMessageDialog(null, "Pessoa Alterado com Sucesso!");
+        return true;
     }
 
     @Override
@@ -107,5 +60,25 @@ public class PessoaService implements IPessoaService {
     @Override
     public Pessoa getPessoa(int id) throws Exception {
         return DAOFactory.getPessoaDAO().getPessoa(id);
+    }
+
+    @Override
+    public boolean validarPessoa(String nome, String cpf) throws Exception {
+        ArrayList<String> lista = new ArrayList(2);
+        String ret = new String();
+        if (nome.equalsIgnoreCase("")) {
+            lista.add("Nome");
+        }
+        if (cpf.equalsIgnoreCase("")) {
+            lista.add("Hidromêtro");
+        }
+        if (!lista.isEmpty()) {
+            for (String lista1 : lista) {
+                ret = ret + lista1 + "\n";
+            }
+            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
+            return false;
+        }
+        return true;
     }
 }

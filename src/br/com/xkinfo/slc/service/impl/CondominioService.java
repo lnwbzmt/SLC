@@ -19,73 +19,24 @@ public class CondominioService implements ICondominioService {
             String cidade, String estado, String sigla, String email, Usuario usuario) throws Exception {
         dataInclusao = new Date();
         Condominio cond = new Condominio();
-        Boolean cnpjValido;
-        Boolean emailValido;
 
-        emailValido = ServiceFactory.getUtilService().isEmail(email);
-        cnpjValido = ServiceFactory.getUtilService().isCNPJ(cnpj);
-
-        ArrayList<String> lista = new ArrayList(8);
-        String ret = new String();
-
-        if (nome == null || nome.equalsIgnoreCase("")) {
-            lista.add("Nome");
-        }
-        if (cnpj == null || cnpj.equalsIgnoreCase("")) {
-            lista.add("CNPJ");
-        }
-        if (endereco == null || endereco.equalsIgnoreCase("")) {
-            lista.add("Endereço");
-        }
-        if (numero == null || numero.equalsIgnoreCase("")) {
-            lista.add("Número");
-        }
-        if (bairro == null || bairro.equalsIgnoreCase("")) {
-            lista.add("Bairro");
-        }
-        if (cidade == null || cidade.equalsIgnoreCase("")) {
-            lista.add("Cidade");
-        }
-        if (estado == null || estado.equalsIgnoreCase("")) {
-            lista.add("Estado");
-        }
-        if (sigla == null || sigla.equalsIgnoreCase("")) {
-            lista.add("Sigla");
-        }
-
-        if (lista.isEmpty() && cnpjValido == true && emailValido == true) {
-
-            Long fCnpj = Long.valueOf(cnpj);
-            Long fNumero = Long.valueOf(numero);
-
-            cond.setNome(nome);
-            cond.setCnpj(fCnpj);
-            cond.setEndereco(endereco);
-            cond.setNumero(fNumero);
-            cond.setComplemento(complemento);
-            cond.setBairro(bairro);
-            cond.setCidade(cidade);
-            cond.setEstado(estado);
-            cond.setSigla(sigla);
-            cond.setEmail(email);
-            cond.setUsuarioinclusao(usuario);
-            cond.setDatainclusao(dataInclusao);
-            DAOFactory.getCondominioDAO().incluirCondominio(cond);
-            JOptionPane.showMessageDialog(null, "Condominio incluído com sucesso!");
-            return true;
-        } else {
-            for (String lista1 : lista) {
-                ret = ret + lista1 + "\n";
-            }
-            if (cnpjValido == false) {
-                JOptionPane.showMessageDialog(null, "CNPJ inválido!");
-            }
-            if (emailValido == false) {
-                JOptionPane.showMessageDialog(null, "Email inválido!");
-            }
-            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
-            return false;
-        }
+        Long fCnpj = Long.valueOf(cnpj);
+        Long fNumero = Long.valueOf(numero);
+        cond.setNome(nome);
+        cond.setCnpj(fCnpj);
+        cond.setEndereco(endereco);
+        cond.setNumero(fNumero);
+        cond.setComplemento(complemento);
+        cond.setBairro(bairro);
+        cond.setCidade(cidade);
+        cond.setEstado(estado);
+        cond.setSigla(sigla);
+        cond.setEmail(email);
+        cond.setUsuarioinclusao(usuario);
+        cond.setDatainclusao(dataInclusao);
+        DAOFactory.getCondominioDAO().incluirCondominio(cond);
+        JOptionPane.showMessageDialog(null, "Condominio incluído com sucesso!");
+        return true;
     }
 
     @Override
@@ -94,64 +45,27 @@ public class CondominioService implements ICondominioService {
         dataAlteracao = new Date();
         Condominio cond = new Condominio();
 
-        ArrayList<String> lista = new ArrayList(8);
-        String ret = new String();
+        Long fCnpj = Long.valueOf(cnpj);
+        Long fNumero = Long.valueOf(numero);
+        cond.setId(id);
+        cond.setNome(nome);
+        cond.setCnpj(fCnpj);
+        cond.setEndereco(endereco);
+        cond.setNumero(fNumero);
+        cond.setComplemento(complemento);
+        cond.setBairro(bairro);
+        cond.setCidade(cidade);
+        cond.setEstado(estado);
+        cond.setSigla(sigla);
+        cond.setEmail(email);
+        cond.setUsuarioalteracao(usuario);
+        cond.setDataalteracao(dataAlteracao);
+        cond.setDatainclusao(dataInclusao);
+        cond.setUsuarioinclusao(usuarioinclusao);
 
-        if (nome == null || nome.equalsIgnoreCase("")) {
-            lista.add("Nome");
-        }
-        if (cnpj == null || cnpj.equalsIgnoreCase("")) {
-            lista.add("CNPJ");
-        }
-        if (endereco == null || endereco.equalsIgnoreCase("")) {
-            lista.add("Endereço");
-        }
-        if (numero == null || numero.equalsIgnoreCase("")) {
-            lista.add("Número");
-        }
-        if (bairro == null || bairro.equalsIgnoreCase("")) {
-            lista.add("Bairro");
-        }
-        if (cidade == null || cidade.equalsIgnoreCase("")) {
-            lista.add("Cidade");
-        }
-        if (estado == null || estado.equalsIgnoreCase("")) {
-            lista.add("Estado");
-        }
-        if (sigla == null || sigla.equalsIgnoreCase("")) {
-            lista.add("Sigla");
-        }
-
-        if (lista.isEmpty()) {
-            Long fCnpj = Long.valueOf(cnpj);
-            Long fNumero = Long.valueOf(numero);
-
-            cond.setId(id);
-            cond.setNome(nome);
-            cond.setCnpj(fCnpj);
-            cond.setEndereco(endereco);
-            cond.setNumero(fNumero);
-            cond.setComplemento(complemento);
-            cond.setBairro(bairro);
-            cond.setCidade(cidade);
-            cond.setEstado(estado);
-            cond.setSigla(sigla);
-            cond.setEmail(email);
-            cond.setUsuarioalteracao(usuario);
-            cond.setDataalteracao(dataAlteracao);
-            cond.setDatainclusao(dataInclusao);
-            cond.setUsuarioinclusao(usuarioinclusao);
-
-            DAOFactory.getCondominioDAO().alterarCondominio(cond);
-            JOptionPane.showMessageDialog(null, "Condominio alterado com Sucesso!");
-            return true;
-        } else {
-            for (String lista1 : lista) {
-                ret = ret + lista1 + "\n";
-            }
-            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
-            return false;
-        }
+        DAOFactory.getCondominioDAO().alterarCondominio(cond);
+        JOptionPane.showMessageDialog(null, "Condominio alterado com Sucesso!");
+        return true;
     }
 
     @Override
@@ -170,4 +84,34 @@ public class CondominioService implements ICondominioService {
         return DAOFactory.getCondominioDAO().getCondominio(id);
     }
 
+    @Override
+    public boolean validarCondominio(String nome, String cnpj, String email) throws Exception {
+        ArrayList<String> lista = new ArrayList(2);
+        String ret = new String();
+        Boolean cnpjValido;
+        Boolean emailValido;
+
+        if (nome.equalsIgnoreCase("")) {
+            lista.add("Nome");
+        }
+        if (cnpj.equalsIgnoreCase("")) {
+            lista.add("CNPJ");
+        }
+        emailValido = ServiceFactory.getUtilService().isEmail(email);
+        cnpjValido = ServiceFactory.getUtilService().isCNPJ(cnpj);
+        if (cnpjValido == false) {
+            JOptionPane.showMessageDialog(null, "CNPJ inválido!");
+        }
+        if (emailValido == false) {
+            JOptionPane.showMessageDialog(null, "Email inválido!");
+        }
+        if (!lista.isEmpty()) {
+            for (String lista1 : lista) {
+                ret = ret + lista1 + "\n";
+            }
+            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
+            return false;
+        }
+        return true;
+    }
 }

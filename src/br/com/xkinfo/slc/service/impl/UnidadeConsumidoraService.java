@@ -20,7 +20,7 @@ public class UnidadeConsumidoraService implements IUnidadeConsumidoraService {
         dataInclusao = new Date();
         UnidadeConsumidora uc = new UnidadeConsumidora();
         Integer iNumero = Integer.parseInt(numero);
-        
+
         uc.setCondominio(condominio);
         uc.setNumero(iNumero);
         uc.setUsuarioinclusao(usuario);
@@ -35,9 +35,9 @@ public class UnidadeConsumidoraService implements IUnidadeConsumidoraService {
     public void alterarUnidadeConsumidora(Integer id, Condominio condominio, String numero, Usuario usuario, Date dataInclusao, Usuario usuarioInclusao) throws Exception {
         dataAlteracao = new Date();
         UnidadeConsumidora uc = new UnidadeConsumidora();
-        
+
         Integer iNumero = Integer.parseInt(numero);
-        
+
         uc.setId(id);
         uc.setCondominio(condominio);
         uc.setNumero(iNumero);
@@ -62,5 +62,26 @@ public class UnidadeConsumidoraService implements IUnidadeConsumidoraService {
     @Override
     public UnidadeConsumidora getUnidadeConsumidora(int id) throws Exception {
         return DAOFactory.getUnidadeConsumidoraDAO().getUnidadeConsumidora(id);
+    }
+
+    @Override
+    public boolean validarUnidadeConsumidora(Condominio condominio, String numero) throws Exception {
+        ArrayList<String> lista = new ArrayList(2);
+        String ret = new String();
+        if (condominio == null) {
+            lista.add("Condominio");
+        }
+        if (numero.equalsIgnoreCase("")) {
+            lista.add("Número");
+        }
+        if (!lista.isEmpty()) {
+            for (String lista1 : lista) {
+                ret = ret + lista1 + "\n";
+            }
+            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
+            return false;
+        }
+        return true;
+
     }
 }

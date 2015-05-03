@@ -19,4 +19,5 @@ public interface IPessoaUCService {
 
     public PessoaUc getPessoaUC(int id) throws Exception;
 
+    public boolean validarPessoaUC(Pessoa prop, Pessoa inquilino, UnidadeConsumidora uc) throws Exception;
 }

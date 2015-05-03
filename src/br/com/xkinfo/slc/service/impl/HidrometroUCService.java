@@ -8,6 +8,7 @@ import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.IHidrometroUCService;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 public class HidrometroUCService implements IHidrometroUCService {
 
@@ -62,5 +63,25 @@ public class HidrometroUCService implements IHidrometroUCService {
     @Override
     public HidrometroUc getHidrometroUC(int id) throws Exception {
         return DAOFactory.getHidrometroUCDAO().getHidrometroUC(id);
+    }
+
+    @Override
+    public boolean validarHidrometroUC(UnidadeConsumidora uc, Hidrometro hidro) throws Exception {
+        ArrayList<String> lista = new ArrayList(2);
+        String ret = new String();
+        if (uc == null) {
+            lista.add("Unidade Consumidora");
+        }
+        if (hidro == null) {
+            lista.add("Hidromêtro");
+        }
+        if (!lista.isEmpty()) {
+            for (String lista1 : lista) {
+                ret = ret + lista1 + "\n";
+            }
+            JOptionPane.showMessageDialog(null, "Favor preencher os campos: \n" + ret);
+            return false;
+        }
+        return true;
     }
 }

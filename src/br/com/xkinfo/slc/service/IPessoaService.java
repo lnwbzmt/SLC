@@ -17,4 +17,6 @@ public interface IPessoaService {
 
     public Pessoa getPessoa(int id) throws Exception;
 
+    public boolean validarPessoa(String nome, String cpf) throws Exception;
+
 }

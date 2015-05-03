@@ -18,4 +18,5 @@ public interface IUnidadeConsumidoraService {
 
     public UnidadeConsumidora getUnidadeConsumidora(int id) throws Exception;
 
+    public boolean validarUnidadeConsumidora(Condominio condominio, String numero) throws Exception;
 }

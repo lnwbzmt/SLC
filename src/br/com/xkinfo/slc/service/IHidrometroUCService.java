@@ -21,4 +21,5 @@ public interface IHidrometroUCService {
 
     public HidrometroUc getHidrometroUC(int id) throws Exception;
 
+    public boolean validarHidrometroUC(UnidadeConsumidora uc, Hidrometro hidro) throws Exception;
 }

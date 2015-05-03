@@ -17,4 +17,5 @@ public interface IHidrometroService {
 
     public Hidrometro getHidrometro(int id) throws Exception;
 
+    public boolean validarHidrometro(String serie) throws Exception;
 }
