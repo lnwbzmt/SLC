@@ -19,7 +19,7 @@ public class CadastroCondominio extends javax.swing.JDialog {
         getRootPane().setDefaultButton(bSalvar);
         bExcluir.setVisible(false);
         tfCodigo.setEnabled(false);
-        jTextField3.setText(usuarioLogado.getNome());
+        tfUsuarioInclusao.setText(usuarioLogado.getNome());
     }
 
     public CadastroCondominio(java.awt.Frame parent, boolean modal, Usuario usuario, Condominio condominio) {
@@ -36,9 +36,9 @@ public class CadastroCondominio extends javax.swing.JDialog {
         tfEstado.setText(condominioSelecionado.getEstado());
         tfSigla.setText(condominioSelecionado.getSigla());
         tfEmail.setText(condominioSelecionado.getEmail());
-        jTextField3.setText(condominioSelecionado.getUsuarioinclusao().getNome());
-        jTextField2.setText(condominioSelecionado.getDatainclusao().toString());
-        jTextField1.setText(usuarioLogado.getNome());
+        tfUsuarioInclusao.setText(condominioSelecionado.getUsuarioinclusao().getNome());
+        tfDataInclusao.setText(condominioSelecionado.getDatainclusao().toString());
+        tfUsuarioAlteracao.setText(usuarioLogado.getNome());
         // Mostra o botão Excluir     
         bExcluir.setVisible(true);
     }
@@ -48,10 +48,23 @@ public class CadastroCondominio extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lNome = new javax.swing.JLabel();
         tfCodigo = new javax.swing.JTextField();
-        lblNome = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
+        tfCnpj = new javax.swing.JFormattedTextField();
+        tfEndereco = new javax.swing.JTextField();
+        tfNumero = new javax.swing.JTextField();
+        tfComplemento = new javax.swing.JTextField();
+        tfBairro = new javax.swing.JTextField();
+        tfCidade = new javax.swing.JTextField();
+        tfEstado = new javax.swing.JTextField();
+        tfSigla = new javax.swing.JTextField();
+        tfEmail = new javax.swing.JTextField();
+        tfUsuarioInclusao = new javax.swing.JTextField();
+        tfDataInclusao = new javax.swing.JTextField();
+        tfUsuarioAlteracao = new javax.swing.JTextField();
+        tfDataAlteracao = new javax.swing.JTextField();
+        lblNome = new javax.swing.JLabel();
+        lNome = new javax.swing.JLabel();
         lblCnpj = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -61,26 +74,13 @@ public class CadastroCondominio extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
-        tfEndereco = new javax.swing.JTextField();
-        tfNumero = new javax.swing.JTextField();
-        tfComplemento = new javax.swing.JTextField();
-        tfBairro = new javax.swing.JTextField();
-        tfCidade = new javax.swing.JTextField();
-        tfEstado = new javax.swing.JTextField();
-        tfSigla = new javax.swing.JTextField();
-        tfEmail = new javax.swing.JTextField();
-        tfCnpj = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         bSalvar = new javax.swing.JButton();
-        bCancelar = new javax.swing.JButton();
         bExcluir = new javax.swing.JButton();
+        bCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Condominios");
@@ -88,9 +88,27 @@ public class CadastroCondominio extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do Condominio"));
 
-        lNome.setText("Código:");
+        try {
+            tfCnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        tfUsuarioInclusao.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        tfUsuarioInclusao.setEnabled(false);
+
+        tfDataInclusao.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        tfDataInclusao.setEnabled(false);
+
+        tfUsuarioAlteracao.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        tfUsuarioAlteracao.setEnabled(false);
+
+        tfDataAlteracao.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        tfDataAlteracao.setEnabled(false);
 
         lblNome.setText("Nome:");
+
+        lNome.setText("Código:");
 
         lblCnpj.setText("CNPJ:");
 
@@ -110,35 +128,17 @@ public class CadastroCondominio extends javax.swing.JDialog {
 
         lblEmail.setText("Email:");
 
-        try {
-            tfCnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel9.setText("Usuário Inclusão:");
-
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField3.setEnabled(false);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel10.setText("Data Inclusão:");
 
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField2.setEnabled(false);
-
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel11.setText("Usuário Alteração:");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField1.setEnabled(false);
-
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel12.setText("Data Alteração:");
-
-        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField4.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -195,18 +195,18 @@ public class CadastroCondominio extends javax.swing.JDialog {
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfUsuarioAlteracao)
+                    .addComponent(tfUsuarioInclusao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(90, 90, 90)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField4))
+                        .addComponent(tfDataAlteracao))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tfDataInclusao, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -256,15 +256,15 @@ public class CadastroCondominio extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfUsuarioInclusao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfDataInclusao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfUsuarioAlteracao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(tfDataAlteracao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         bSalvar.setText("Salvar");
@@ -274,17 +274,17 @@ public class CadastroCondominio extends javax.swing.JDialog {
             }
         });
 
-        bCancelar.setText("Cancelar");
-        bCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCancelarActionPerformed(evt);
-            }
-        });
-
         bExcluir.setText("Excluir");
         bExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bExcluirActionPerformed(evt);
+            }
+        });
+
+        bCancelar.setText("Cancelar");
+        bCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCancelarActionPerformed(evt);
             }
         });
 
@@ -407,10 +407,6 @@ public class CadastroCondominio extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lNome;
     private javax.swing.JLabel lblCnpj;
     private javax.swing.JLabel lblEmail;
@@ -420,11 +416,15 @@ public class CadastroCondominio extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField tfCnpj;
     private javax.swing.JTextField tfCodigo;
     private javax.swing.JTextField tfComplemento;
+    private javax.swing.JTextField tfDataAlteracao;
+    private javax.swing.JTextField tfDataInclusao;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfEndereco;
     private javax.swing.JTextField tfEstado;
     private javax.swing.JTextField tfNome;
     private javax.swing.JTextField tfNumero;
     private javax.swing.JTextField tfSigla;
+    private javax.swing.JTextField tfUsuarioAlteracao;
+    private javax.swing.JTextField tfUsuarioInclusao;
     // End of variables declaration//GEN-END:variables
 }
