@@ -22,8 +22,8 @@ public class CadastroCondominio extends javax.swing.JDialog {
         tfUsuarioInclusao.setText(usuarioLogado.getNome());
     }
 
-    public CadastroCondominio(java.awt.Frame parent, boolean modal, Usuario usuario, Condominio condominio) {
-        this(parent, modal, usuario);
+    public CadastroCondominio(java.awt.Frame parent, boolean modal, Usuario usuarioLogado, Condominio condominio) {
+        this(parent, modal, usuarioLogado);
         condominioSelecionado = condominio;
         tfCodigo.setText(condominioSelecionado.getId().toString());
         tfNome.setText(condominioSelecionado.getNome());

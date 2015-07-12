@@ -21,8 +21,8 @@ public class CadastroSituacao extends javax.swing.JDialog {
         tfUsuarioInclusao.setText(usuarioLogado.getNome());
     }
 
-    public CadastroSituacao(Situacao situacao, java.awt.Frame parent, boolean modal, Usuario usuario) {
-        this(parent, modal, usuario);
+    public CadastroSituacao(Situacao situacao, java.awt.Frame parent, boolean modal, Usuario usuarioLogado) {
+        this(parent, modal, usuarioLogado);
         situacaoSelecionado = situacao;
         tfCodigo.setText(situacao.getCodigo().toString());
         tfDescricao.setText(situacao.getDescricao());

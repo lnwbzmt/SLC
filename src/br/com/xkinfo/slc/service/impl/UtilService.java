@@ -620,7 +620,7 @@ public class UtilService implements IUtilService {
         return t;
     }
 
-    @Override
+    //@Override
     public boolean isTelefone(String telefone) throws Exception {
         telefone = telefone.trim();
         if (telefone.length() == 13) {
