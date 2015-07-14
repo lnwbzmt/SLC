@@ -21,7 +21,7 @@ public class CadastroUsuario extends javax.swing.JDialog {
         jTextField3.setText(usuarioLogado.getNome());
     }
 
-    public CadastroUsuario(java.awt.Frame parent, boolean modal, Usuario usuarioLogado, Usuario usuario) {
+    public CadastroUsuario(java.awt.Frame parent, boolean modal, Usuario usuario, Usuario usuarioLogado) {
         this(parent, modal, usuario);
         usuarioSelecionado = usuario;
         this.usuarioLogado = usuarioLogado;

@@ -22,8 +22,8 @@ public class CadastroHidrometro extends javax.swing.JDialog {
         jTextField3.setText(usuarioLogado.getNome());
     }
 
-    public CadastroHidrometro(Hidrometro hidrometro, java.awt.Frame parent, boolean modal, Usuario usuario) {
-        this(parent, modal, usuario);
+    public CadastroHidrometro(Hidrometro hidrometro, java.awt.Frame parent, boolean modal, Usuario usuarioLogado) {
+        this(parent, modal, usuarioLogado);
         hidrometroSelecionado = hidrometro;
         if (hidrometroSelecionado != null) {
             tfCodigo.setText(hidrometroSelecionado.getId().toString());

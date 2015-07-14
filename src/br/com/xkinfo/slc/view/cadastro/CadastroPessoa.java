@@ -22,8 +22,8 @@ public class CadastroPessoa extends javax.swing.JDialog {
         jTextField3.setText(usuarioLogado.getNome());
     }
 
-    public CadastroPessoa(Pessoa pessoa, java.awt.Frame parent, boolean modal, Usuario usuario) {
-        this(parent, modal, usuario);
+    public CadastroPessoa(Pessoa pessoa, java.awt.Frame parent, boolean modal, Usuario usuarioLogado) {
+        this(parent, modal, usuarioLogado);
         pessoaSelecionado = pessoa;
         if (pessoaSelecionado != null) {
             tfCodigo.setText(pessoaSelecionado.getId().toString());
