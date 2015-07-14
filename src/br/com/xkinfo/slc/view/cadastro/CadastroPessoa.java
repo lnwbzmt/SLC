@@ -29,7 +29,7 @@ public class CadastroPessoa extends javax.swing.JDialog {
             tfCodigo.setText(pessoaSelecionado.getId().toString());
             tfNome.setText(pessoaSelecionado.getNome());
             tfEmail.setText(pessoaSelecionado.getEmail());
-            tfCPF.setText(String.valueOf(pessoaSelecionado.getCpf()));
+            tfCPF.setText(ServiceFactory.getUtilService().formatarCPF(String.valueOf(pessoaSelecionado.getCpf())));
             jTextField3.setText(pessoaSelecionado.getUsuarioinclusao().getNome());
             jTextField2.setText(pessoaSelecionado.getDatainclusao().toString());
             jTextField1.setText(usuarioLogado.getNome());

@@ -1,6 +1,7 @@
 package br.com.xkinfo.slc.service;
 
 import com.toedter.calendar.JDateChooser;
+import java.util.Date;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -14,7 +15,7 @@ public interface IUtilService {
 
     public String formatar(String texto, String mascara) throws Exception;
 
-    public String formatarCPF(String cpf) throws Exception;
+    public String formatarCPF(String cpf);
 
     public String formatarCNPJ(String cnpj) throws Exception;
 
@@ -85,6 +86,10 @@ public interface IUtilService {
     public JDateChooser certo(JDateChooser t) throws Exception;
 
     public boolean isData(String data) throws Exception;
+    
+    public String devolveData(Date d) throws Exception;
+    
+    public Date devolveData(String dt) throws Exception;
 
     public boolean isTelefone(String telefone) throws Exception;
 

@@ -41,6 +41,8 @@ public class UnidadeConsumidoraService implements IUnidadeConsumidoraService {
         uc.setId(id);
         uc.setCondominio(condominio);
         uc.setNumero(iNumero);
+        uc.setUsuarioinclusao(usuarioInclusao);
+        uc.setDatainclusao(dataInclusao);
         uc.setUsuarioalteracao(usuario);
         uc.setDataalteracao(dataAlteracao);
 

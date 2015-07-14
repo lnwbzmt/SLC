@@ -24,8 +24,8 @@ public class CadastroUnidadeConsumidora extends javax.swing.JDialog {
         jTextField3.setText(usuarioLogado.getNome());
     }
 
-    public CadastroUnidadeConsumidora(UnidadeConsumidora unidadeConsumidora, java.awt.Frame parent, boolean modal, Usuario usuario) {
-        this(parent, modal, usuario);
+    public CadastroUnidadeConsumidora(UnidadeConsumidora unidadeConsumidora, java.awt.Frame parent, boolean modal, Usuario usuarioLogado) {
+        this(parent, modal, usuarioLogado);
         this.ucSelecionada = unidadeConsumidora;
         if (ucSelecionada != null) {
             tfCodigo.setText(unidadeConsumidora.getId().toString());

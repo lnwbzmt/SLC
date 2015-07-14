@@ -57,7 +57,7 @@ public class UtilService implements IUtilService {
     }
 
     @Override
-    public String formatarCPF(String cpf) throws Exception {
+    public String formatarCPF(String cpf){
         while (cpf.length() < 11) {
             cpf = "0" + cpf;
         }
@@ -517,7 +517,8 @@ public class UtilService implements IUtilService {
         return true;
     }
 
-    public static String devolveData(Date d) {
+    @Override
+    public String devolveData(Date d)  throws Exception {
         int aux;
         String data = "";
         if (d.getDate() < 10) {
@@ -539,7 +540,8 @@ public class UtilService implements IUtilService {
         return data;
     }
 
-    public static Date devolveData(String dt) throws Exception {
+    @Override
+    public Date devolveData(String dt) throws Exception {
         // RETORNA NULL SE A DATA NÃO ESTIVER SIDO PREENCHIDA
         if (dt.substring(0, 2).equals("  ")) {
             return null;
@@ -556,27 +558,32 @@ public class UtilService implements IUtilService {
         return d;
     }
 
+    @Override
     public JTextField errado(JTextField t) {
         t.setBackground(new Color(255, 0, 0));
         return t;
 
     }
 
+    @Override
     public JTextArea errado(JTextArea t) {
         t.setBackground(new Color(255, 0, 0));
         return t;
     }
 
+    @Override
     public JComboBox errado(JComboBox t) {
         t.setBackground(new Color(255, 0, 0));
         return t;
     }
 
+    @Override
     public JRadioButton errado(JRadioButton t) {
         t.setBackground(new Color(255, 0, 0));
         return t;
     }
 
+    @Override
     public JCheckBox errado(JCheckBox t) {
         t.setBackground(new Color(255, 0, 0));
         return t;
@@ -588,27 +595,32 @@ public class UtilService implements IUtilService {
         return t;
     }
 
+    @Override
     public JTextField certo(JTextField t) {
         t.setBackground(new Color(255, 255, 255));
         return t;
 
     }
 
+    @Override
     public JTextArea certo(JTextArea t) {
         t.setBackground(new Color(255, 255, 255));
         return t;
     }
 
+    @Override
     public JComboBox certo(JComboBox t) {
         t.setBackground(new Color(255, 255, 255));
         return t;
     }
 
+    @Override
     public JRadioButton certo(JRadioButton t) {
         t.setBackground(new Color(255, 255, 255));
         return t;
     }
 
+    @Override
     public JCheckBox certo(JCheckBox t) {
         t.setBackground(new Color(255, 255, 255));
         return t;
@@ -620,7 +632,7 @@ public class UtilService implements IUtilService {
         return t;
     }
 
-    //@Override
+    @Override
     public boolean isTelefone(String telefone) throws Exception {
         telefone = telefone.trim();
         if (telefone.length() == 13) {

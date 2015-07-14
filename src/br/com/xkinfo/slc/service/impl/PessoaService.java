@@ -33,7 +33,9 @@ public class PessoaService implements IPessoaService {
     public Boolean alterarPessoa(Integer id, String nome, String cpf, String email, Usuario usuario, Date dataInclusao, Usuario usuarioInclusao) throws Exception {
         dataAlteracao = new Date();
         Pessoa pessoa = new Pessoa();
-        Long fCpf = Long.valueOf(cpf);
+        String sCpf = cpf;
+        sCpf = sCpf.replaceAll("[^0-9 ]", "");
+        Long fCpf = Long.valueOf(sCpf);
         pessoa.setId(id);
         pessoa.setNome(nome);
         pessoa.setCpf(fCpf);

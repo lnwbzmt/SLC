@@ -264,6 +264,9 @@
               <Format format="###.###.###-##" subtype="-1" type="5"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="CadastroPessoa_tfCPF"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
