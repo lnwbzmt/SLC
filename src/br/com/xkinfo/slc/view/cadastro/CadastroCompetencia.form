@@ -163,11 +163,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbSituacao">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new SituacaoComboModel()" type="code"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>

@@ -7,11 +7,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractListModel;
 import javax.swing.ComboBoxModel;
+import jdk.nashorn.internal.objects.NativeArray;
 
 public class SituacaoComboModel extends AbstractListModel implements ComboBoxModel {
 
     private List<Situacao> situacoes;
-    private Object selectedItem;
+    private Situacao selectedItem;
 
     public SituacaoComboModel() {
         try {
@@ -26,6 +27,14 @@ public class SituacaoComboModel extends AbstractListModel implements ComboBoxMod
         this.situacoes.addAll(Situacoes);
     }
 
+    public SituacaoComboModel(int i) {
+        this();
+        for (Situacao situacoe : situacoes) {
+            if (i == situacoe.getId())
+                setSelectedItem(situacoe);
+        }
+    }
+
     @Override
     public int getSize() {
         return situacoes.size();
@@ -38,12 +47,12 @@ public class SituacaoComboModel extends AbstractListModel implements ComboBoxMod
 
     @Override
     public void setSelectedItem(Object anItem) {
-        selectedItem = anItem;
+        selectedItem = (Situacao) anItem;
         fireContentsChanged(this, -1, -1);
     }
 
     @Override
-    public Object getSelectedItem() {
+    public Situacao getSelectedItem() {
         return selectedItem;
     }
 

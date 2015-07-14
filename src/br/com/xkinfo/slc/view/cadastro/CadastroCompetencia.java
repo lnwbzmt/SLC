@@ -21,19 +21,23 @@ public class CadastroCompetencia extends javax.swing.JDialog {
         bExcluir.setVisible(false);
         getRootPane().setDefaultButton(bSalvar);
         jTextField3.setText(usuarioLogado.getNome());
+        cbSituacao.setModel(new SituacaoComboModel());
     }
 
-    public CadastroCompetencia(Competencia competencia, java.awt.Frame parent, boolean modal, Usuario usuario) {
-        this(parent, modal, usuario);
+    public CadastroCompetencia(Competencia competencia, java.awt.Frame parent, boolean modal, Usuario usuarioLogado) {
+        this(parent, modal, usuarioLogado);
+        competenciaSelecionado = competencia;
+        int index = (competenciaSelecionado.getSituacao().getId());
+        cbSituacao.setModel(new SituacaoComboModel(index));
         jdCompetencia.setEnabled(false);
-        usuarioLogado = usuario;
         competenciaSelecionado = competencia;
         jdCompetencia.setDate(competencia.getCompetencia());
-        cbSituacao.setSelectedItem(competenciaSelecionado.getSituacao());
+        //cbSituacao.setSelectedItem(competenciaSelecionado.getSituacao());
         bExcluir.setVisible(true);
         jTextField3.setText(competenciaSelecionado.getUsuarioinclusao().getNome());
         jTextField2.setText(competenciaSelecionado.getDatainclusao().toString());
         jTextField1.setText(usuarioLogado.getNome());
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -68,8 +72,6 @@ public class CadastroCompetencia extends javax.swing.JDialog {
         lblCompetencia.setText("Competência:");
 
         lblSituacao.setText("Situação:");
-
-        cbSituacao.setModel(new SituacaoComboModel());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel2.setText("Usuário Inclusão:");
