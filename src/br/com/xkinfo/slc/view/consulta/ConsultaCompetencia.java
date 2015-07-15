@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class ConsultaCompetencia extends javax.swing.JDialog {
 
     private Usuario usuarioLogado;
-    private int coluna0 = 40;
+    private int coluna0 = 10;
     private int coluna1 = 100;
 
     DefaultTableCellRenderer direita = new DefaultTableCellRenderer();
@@ -33,13 +33,10 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
                 if (e.getValueIsAdjusting()) {
                     return;
                 }
-
                 // Verifica se existe uma linha selecionada. O
                 // valor deve ser maior ou igual a 0, que é o número da linha
                 if (jtCompetencias.getSelectedRow() >= 0) {
-
                     Integer linhaSelecionada = jtCompetencias.getSelectedRow();
-
                     Competencia competenciaSelecionado = ((CompetenciaTableModel) jtCompetencias.getModel()).getCompetencias().get(linhaSelecionada);
                     if (competenciaSelecionado != null) {
                         CadastroCompetencia cadastroCompetencia = new CadastroCompetencia(competenciaSelecionado, null, true, usuarioLogado);
@@ -164,6 +161,10 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
         jtCompetencias.updateUI();
         jtCompetencias.getRowHeight(0);
         jtCompetencias.setModel(new CompetenciaTableModel());
+        jtCompetencias.getColumnModel().getColumn(0).setPreferredWidth(coluna0);
+        jtCompetencias.getColumnModel().getColumn(0).setCellRenderer(direita);
+        jtCompetencias.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
+        jtCompetencias.getColumnModel().getColumn(1).setCellRenderer(esquerda);
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
@@ -175,7 +176,7 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
         jtCompetencias.getColumnModel().getColumn(0).setCellRenderer(direita);
         jtCompetencias.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
         jtCompetencias.getColumnModel().getColumn(1).setCellRenderer(esquerda);
-        jtCompetencias.setAutoCreateRowSorter(true);        // TODO add your handling code here:
+        jtCompetencias.setAutoCreateRowSorter(true); 
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

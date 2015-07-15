@@ -8,18 +8,18 @@ import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 public class ConsultaCondominio extends javax.swing.JDialog {
 
     private Usuario usuarioLogado;
+    private int coluna0 = 1;
+    private int coluna1 = 120;
 
     public ConsultaCondominio(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
         usuarioLogado = usuario;
         initComponents();
-
         // Lógica para manipular uma linha do JTable quando esta é selecionada    
         ListSelectionModel linhaModeloSelecao = jtCondominios.getSelectionModel();
         linhaModeloSelecao.addListSelectionListener(new ListSelectionListener() {
@@ -162,6 +162,8 @@ public class ConsultaCondominio extends javax.swing.JDialog {
         jtCondominios.updateUI();
         jtCondominios.getRowHeight(0);
         jtCondominios.setModel(new CondominioTableModel());
+        jtCondominios.getColumnModel().getColumn(0).setPreferredWidth(coluna0);
+        jtCondominios.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
