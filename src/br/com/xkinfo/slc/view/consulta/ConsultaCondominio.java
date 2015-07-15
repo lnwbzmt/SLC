@@ -6,20 +6,33 @@ import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.util.tableModel.CondominioTableModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
+import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableRowSorter;
 
 public class ConsultaCondominio extends javax.swing.JDialog {
 
     private Usuario usuarioLogado;
-    private int coluna0 = 1;
-    private int coluna1 = 120;
+    private int coluna0 = 50;
+    private int coluna1 = 350;
+    DefaultTableCellRenderer direita = new DefaultTableCellRenderer();
+    DefaultTableCellRenderer esquerda = new DefaultTableCellRenderer();
+    DefaultTableCellRenderer centro = new DefaultTableCellRenderer();
 
     public ConsultaCondominio(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
         usuarioLogado = usuario;
         initComponents();
+        jtCondominios.getColumnModel().getColumn(0).setPreferredWidth(coluna0);
+        jtCondominios.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
+        direita.setHorizontalAlignment(SwingConstants.RIGHT);
+        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
+        centro.setHorizontalAlignment(SwingConstants.CENTER);
+        jtCondominios.getColumnModel().getColumn(0).setCellRenderer(centro);
+        jtCondominios.getColumnModel().getColumn(1).setCellRenderer(esquerda);
+        ((DefaultTableCellRenderer)jtCondominios.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         // Lógica para manipular uma linha do JTable quando esta é selecionada    
         ListSelectionModel linhaModeloSelecao = jtCondominios.getSelectionModel();
         linhaModeloSelecao.addListSelectionListener(new ListSelectionListener() {
@@ -110,21 +123,21 @@ public class ConsultaCondominio extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(317, Short.MAX_VALUE)
-                .addComponent(bNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesquisar)
+                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -139,9 +152,9 @@ public class ConsultaCondominio extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -164,6 +177,8 @@ public class ConsultaCondominio extends javax.swing.JDialog {
         jtCondominios.setModel(new CondominioTableModel());
         jtCondominios.getColumnModel().getColumn(0).setPreferredWidth(coluna0);
         jtCondominios.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
+        jtCondominios.getColumnModel().getColumn(0).setCellRenderer(centro);
+        jtCondominios.getColumnModel().getColumn(1).setCellRenderer(esquerda);
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
