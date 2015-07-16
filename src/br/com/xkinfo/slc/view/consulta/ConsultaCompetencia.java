@@ -4,11 +4,16 @@ import br.com.xkinfo.slc.view.cadastro.CadastroCompetencia;
 import br.com.xkinfo.slc.modelo.Competencia;
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.util.tableModel.CompetenciaTableModel;
+import java.awt.Component;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
 
 public class ConsultaCompetencia extends javax.swing.JDialog {
 
@@ -19,12 +24,27 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
     DefaultTableCellRenderer esquerda;
     DefaultTableCellRenderer centro;
 
+    TableCellRenderer tableCellRenderer = new DefaultTableCellRenderer() {
+
+        SimpleDateFormat f = new SimpleDateFormat("MM/yyyy");
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table,
+                Object value, boolean isSelected, boolean hasFocus,
+                int row, int column) {
+            if (value instanceof Date) {
+                value = f.format(value);
+            }
+            return super.getTableCellRendererComponent(table, value, isSelected,
+                    hasFocus, row, column);
+        }
+    };
+
     public ConsultaCompetencia(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
         usuarioLogado = usuario;
         initComponents();
         criarTela();
-        ((DefaultTableCellRenderer) jtCompetencias.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         // Lógica para manipular uma linha do JTable quando esta é selecionada    
         ListSelectionModel linhaModeloSelecao = jtCompetencias.getSelectionModel();
         linhaModeloSelecao.addListSelectionListener(new ListSelectionListener() {
@@ -184,6 +204,8 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
         esquerda.setHorizontalAlignment(SwingConstants.LEFT);
         jtCompetencias.getColumnModel().getColumn(0).setCellRenderer(centro);
         jtCompetencias.getColumnModel().getColumn(1).setCellRenderer(esquerda);
+        ((DefaultTableCellRenderer) jtCompetencias.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        jtCompetencias.getColumnModel().getColumn(0).setCellRenderer(tableCellRenderer);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
