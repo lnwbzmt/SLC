@@ -2,6 +2,7 @@ package br.com.xkinfo.slc.dao;
 
 import br.com.xkinfo.slc.modelo.Competencia;
 import java.util.ArrayList;
+import java.util.Date;
 
 public interface ICompetenciaDAO {
 
@@ -13,7 +14,7 @@ public interface ICompetenciaDAO {
 
     public ArrayList<Competencia> getCompetencias() throws Exception;
 
-    public ArrayList<Competencia> getCompetencias(String filtro) throws Exception;
+    public ArrayList<Competencia> getCompetencias(Date filtro) throws Exception;
 
     public Competencia getCompetencia(int id) throws Exception;
 

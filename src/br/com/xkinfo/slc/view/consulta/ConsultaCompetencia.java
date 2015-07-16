@@ -13,16 +13,18 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class ConsultaCompetencia extends javax.swing.JDialog {
 
     private Usuario usuarioLogado;
-    private int coluna0 = 10;
-    private int coluna1 = 100;
-
-    DefaultTableCellRenderer direita = new DefaultTableCellRenderer();
-    DefaultTableCellRenderer esquerda = new DefaultTableCellRenderer();
+    private int coluna0 = 50;
+    private int coluna1 = 200;
+    DefaultTableCellRenderer direita;
+    DefaultTableCellRenderer esquerda;
+    DefaultTableCellRenderer centro;
 
     public ConsultaCompetencia(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
         usuarioLogado = usuario;
         initComponents();
+        criarTela();
+        ((DefaultTableCellRenderer) jtCompetencias.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         // Lógica para manipular uma linha do JTable quando esta é selecionada    
         ListSelectionModel linhaModeloSelecao = jtCompetencias.getSelectionModel();
         linhaModeloSelecao.addListSelectionListener(new ListSelectionListener() {
@@ -93,7 +95,7 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setText("Competencia:");
+        jLabel1.setText("Competência:");
 
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -108,39 +110,41 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jfCompetencia, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPesquisar)
+                        .addComponent(bCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jfCompetencia, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnPesquisar)
-                    .addComponent(jfCompetencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jfCompetencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -161,23 +165,26 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
         jtCompetencias.updateUI();
         jtCompetencias.getRowHeight(0);
         jtCompetencias.setModel(new CompetenciaTableModel());
-        jtCompetencias.getColumnModel().getColumn(0).setPreferredWidth(coluna0);
-        jtCompetencias.getColumnModel().getColumn(0).setCellRenderer(direita);
-        jtCompetencias.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
-        jtCompetencias.getColumnModel().getColumn(1).setCellRenderer(esquerda);
+        criarTela();
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        direita.setHorizontalAlignment(SwingConstants.RIGHT);
-        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
-        String nome = this.jfCompetencia.getText();
-        jtCompetencias.setModel(new CompetenciaTableModel(nome +"/01"));
-        jtCompetencias.getColumnModel().getColumn(0).setPreferredWidth(coluna0);
-        jtCompetencias.getColumnModel().getColumn(0).setCellRenderer(direita);
-        jtCompetencias.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
-        jtCompetencias.getColumnModel().getColumn(1).setCellRenderer(esquerda);
-        jtCompetencias.setAutoCreateRowSorter(true); 
+        String nome = jfCompetencia.getText();
+        jtCompetencias.setModel(new CompetenciaTableModel("01/" + nome));
+        criarTela();
+        jtCompetencias.setAutoCreateRowSorter(true);
     }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void criarTela() {
+        jtCompetencias.getColumnModel().getColumn(0).setPreferredWidth(coluna0);
+        jtCompetencias.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
+        centro = new DefaultTableCellRenderer();
+        centro.setHorizontalAlignment(SwingConstants.CENTER);
+        esquerda = new DefaultTableCellRenderer();
+        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
+        jtCompetencias.getColumnModel().getColumn(0).setCellRenderer(centro);
+        jtCompetencias.getColumnModel().getColumn(1).setCellRenderer(esquerda);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCancelar;

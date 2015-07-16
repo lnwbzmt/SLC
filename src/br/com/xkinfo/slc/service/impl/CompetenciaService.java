@@ -5,6 +5,7 @@ import br.com.xkinfo.slc.modelo.Competencia;
 import br.com.xkinfo.slc.modelo.Situacao;
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.service.ICompetenciaService;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -56,7 +57,10 @@ public class CompetenciaService implements ICompetenciaService {
 
     @Override
     public ArrayList<Competencia> getCompetencias(String filtro) throws Exception {
-        return DAOFactory.getCompetenciaDAO().getCompetencias(filtro);
+        String sData = filtro;
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        java.sql.Date data = new java.sql.Date(format.parse(sData).getTime());
+        return DAOFactory.getCompetenciaDAO().getCompetencias(data);
     }
 
     @Override

@@ -17,21 +17,15 @@ public class ConsultaCondominio extends javax.swing.JDialog {
     private Usuario usuarioLogado;
     private int coluna0 = 50;
     private int coluna1 = 350;
-    DefaultTableCellRenderer direita = new DefaultTableCellRenderer();
-    DefaultTableCellRenderer esquerda = new DefaultTableCellRenderer();
-    DefaultTableCellRenderer centro = new DefaultTableCellRenderer();
+    DefaultTableCellRenderer direita;
+    DefaultTableCellRenderer esquerda;
+    DefaultTableCellRenderer centro;
 
     public ConsultaCondominio(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
         usuarioLogado = usuario;
         initComponents();
-        jtCondominios.getColumnModel().getColumn(0).setPreferredWidth(coluna0);
-        jtCondominios.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
-        direita.setHorizontalAlignment(SwingConstants.RIGHT);
-        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
-        centro.setHorizontalAlignment(SwingConstants.CENTER);
-        jtCondominios.getColumnModel().getColumn(0).setCellRenderer(centro);
-        jtCondominios.getColumnModel().getColumn(1).setCellRenderer(esquerda);
+        criarTela();
         ((DefaultTableCellRenderer)jtCondominios.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         // Lógica para manipular uma linha do JTable quando esta é selecionada    
         ListSelectionModel linhaModeloSelecao = jtCondominios.getSelectionModel();
@@ -69,7 +63,6 @@ public class ConsultaCondominio extends javax.swing.JDialog {
         bCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtFiltro = new javax.swing.JTextField();
-        btnPesquisar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Projetos");
@@ -111,13 +104,6 @@ public class ConsultaCondominio extends javax.swing.JDialog {
             }
         });
 
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,21 +120,17 @@ public class ConsultaCondominio extends javax.swing.JDialog {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(txtFiltro)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisar))
+                    .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -175,15 +157,8 @@ public class ConsultaCondominio extends javax.swing.JDialog {
         jtCondominios.updateUI();
         jtCondominios.getRowHeight(0);
         jtCondominios.setModel(new CondominioTableModel());
-        jtCondominios.getColumnModel().getColumn(0).setPreferredWidth(coluna0);
-        jtCondominios.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
-        jtCondominios.getColumnModel().getColumn(0).setCellRenderer(centro);
-        jtCondominios.getColumnModel().getColumn(1).setCellRenderer(esquerda);
+        criarTela();
     }//GEN-LAST:event_formWindowActivated
-
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void txtFiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyReleased
         CondominioTableModel model = (CondominioTableModel) jtCondominios.getModel();
@@ -197,10 +172,20 @@ public class ConsultaCondominio extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtFiltroKeyReleased
 
+    private void criarTela(){
+        jtCondominios.getColumnModel().getColumn(0).setPreferredWidth(coluna0);
+        jtCondominios.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
+        centro = new DefaultTableCellRenderer();
+        centro.setHorizontalAlignment(SwingConstants.CENTER);
+        esquerda = new DefaultTableCellRenderer();
+        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
+        jtCondominios.getColumnModel().getColumn(0).setCellRenderer(centro);
+        jtCondominios.getColumnModel().getColumn(1).setCellRenderer(esquerda);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCancelar;
     private javax.swing.JButton bNovo;
-    private javax.swing.JButton btnPesquisar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtCondominios;
