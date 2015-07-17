@@ -25,23 +25,22 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
     DefaultTableCellRenderer centro;
 
     TableCellRenderer tableCellRenderer = new DefaultTableCellRenderer() {
-
         SimpleDateFormat f = new SimpleDateFormat("MM/yyyy");
-
         @Override
-        public Component getTableCellRendererComponent(JTable table,
-                Object value, boolean isSelected, boolean hasFocus,
-                int row, int column) {
+        public Component getTableCellRendererComponent(JTable table,Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             if (value instanceof Date) {
                 value = f.format(value);
             }
-            return super.getTableCellRendererComponent(table, value, isSelected,
-                    hasFocus, row, column);
+            return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
         }
     };
 
     public ConsultaCompetencia(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
+        centro = new DefaultTableCellRenderer();
+        centro.setHorizontalAlignment(SwingConstants.CENTER);
+        esquerda = new DefaultTableCellRenderer();
+        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
         usuarioLogado = usuario;
         initComponents();
         criarTela();
@@ -118,6 +117,9 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
         jLabel1.setText("Competência:");
 
         btnPesquisar.setText("Pesquisar");
+        btnPesquisar.setMaximumSize(new java.awt.Dimension(90, 23));
+        btnPesquisar.setMinimumSize(new java.awt.Dimension(90, 23));
+        btnPesquisar.setPreferredSize(new java.awt.Dimension(90, 23));
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
@@ -158,7 +160,7 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
                         .addComponent(jfCompetencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -198,10 +200,6 @@ public class ConsultaCompetencia extends javax.swing.JDialog {
     private void criarTela() {
         jtCompetencias.getColumnModel().getColumn(0).setPreferredWidth(coluna0);
         jtCompetencias.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
-        centro = new DefaultTableCellRenderer();
-        centro.setHorizontalAlignment(SwingConstants.CENTER);
-        esquerda = new DefaultTableCellRenderer();
-        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
         jtCompetencias.getColumnModel().getColumn(0).setCellRenderer(centro);
         jtCompetencias.getColumnModel().getColumn(1).setCellRenderer(esquerda);
         ((DefaultTableCellRenderer) jtCompetencias.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);

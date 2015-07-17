@@ -23,10 +23,13 @@ public class ConsultaCondominio extends javax.swing.JDialog {
 
     public ConsultaCondominio(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
+        centro = new DefaultTableCellRenderer();
+        centro.setHorizontalAlignment(SwingConstants.CENTER);
+        esquerda = new DefaultTableCellRenderer();
+        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
         usuarioLogado = usuario;
         initComponents();
         criarTela();
-        ((DefaultTableCellRenderer)jtCondominios.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         // Lógica para manipular uma linha do JTable quando esta é selecionada    
         ListSelectionModel linhaModeloSelecao = jtCondominios.getSelectionModel();
         linhaModeloSelecao.addListSelectionListener(new ListSelectionListener() {
@@ -175,12 +178,9 @@ public class ConsultaCondominio extends javax.swing.JDialog {
     private void criarTela(){
         jtCondominios.getColumnModel().getColumn(0).setPreferredWidth(coluna0);
         jtCondominios.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
-        centro = new DefaultTableCellRenderer();
-        centro.setHorizontalAlignment(SwingConstants.CENTER);
-        esquerda = new DefaultTableCellRenderer();
-        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
         jtCondominios.getColumnModel().getColumn(0).setCellRenderer(centro);
         jtCondominios.getColumnModel().getColumn(1).setCellRenderer(esquerda);
+        ((DefaultTableCellRenderer)jtCondominios.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
