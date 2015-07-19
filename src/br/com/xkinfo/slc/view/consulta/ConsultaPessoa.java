@@ -4,21 +4,51 @@ import br.com.xkinfo.slc.modelo.Pessoa;
 import br.com.xkinfo.slc.modelo.Usuario;
 import br.com.xkinfo.slc.util.tableModel.PessoaTableModel;
 import br.com.xkinfo.slc.view.cadastro.CadastroPessoa;
+import java.awt.Component;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
+import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 public class ConsultaPessoa extends javax.swing.JDialog {
 
     private Usuario usuarioLogado;
+    private int coluna0 = 100;
+    private int coluna1 = 300;
+    DefaultTableCellRenderer direita;
+    DefaultTableCellRenderer esquerda;
+    DefaultTableCellRenderer centro;
+    
+    TableCellRenderer tableCellRenderer = new DefaultTableCellRenderer() {
+        
+        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+        @Override
+        public Component getTableCellRendererComponent(JTable table,Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            if (value instanceof Date) {
+                value = f.format(value);
+            }
+            return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+        }
+    };
 
     public ConsultaPessoa(java.awt.Frame parent, boolean modal, Usuario usuario) {
         super(parent, modal);
         usuarioLogado = usuario;
+        centro = new DefaultTableCellRenderer();
+        centro.setHorizontalAlignment(SwingConstants.CENTER);
+        esquerda = new DefaultTableCellRenderer();
+        esquerda.setHorizontalAlignment(SwingConstants.LEFT);
+        usuarioLogado = usuario;
         initComponents();
+        criarTela();
         // Lógica para manipular uma linha do JTable quando esta é selecionada    
         ListSelectionModel linhaModeloSelecao = jtPessoas.getSelectionModel();
         linhaModeloSelecao.addListSelectionListener(new ListSelectionListener() {
@@ -165,6 +195,7 @@ public class ConsultaPessoa extends javax.swing.JDialog {
         jtPessoas.updateUI();
         jtPessoas.getRowHeight(0);
         jtPessoas.setModel(new PessoaTableModel());
+        criarTela();
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
@@ -184,6 +215,15 @@ public class ConsultaPessoa extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtFiltroKeyReleased
 
+    private void criarTela(){
+        jtPessoas.getColumnModel().getColumn(0).setPreferredWidth(coluna0);
+        jtPessoas.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
+        jtPessoas.getColumnModel().getColumn(0).setCellRenderer(esquerda);
+        jtPessoas.getColumnModel().getColumn(1).setCellRenderer(esquerda);
+        ((DefaultTableCellRenderer) jtPessoas.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        //jtPessoas.getColumnModel().getColumn(0).setCellRenderer(tableCellRenderer);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCancelar;
     private javax.swing.JButton bNovo;

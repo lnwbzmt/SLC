@@ -198,7 +198,7 @@ public class ConsultaHidrometro extends javax.swing.JDialog {
     private void criarTela(){
         jtHidrometros.getColumnModel().getColumn(0).setPreferredWidth(coluna0);
         jtHidrometros.getColumnModel().getColumn(1).setPreferredWidth(coluna1);
-        jtHidrometros.getColumnModel().getColumn(0).setCellRenderer(centro);
+        jtHidrometros.getColumnModel().getColumn(0).setCellRenderer(esquerda);
         jtHidrometros.getColumnModel().getColumn(1).setCellRenderer(esquerda);
         ((DefaultTableCellRenderer) jtHidrometros.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         jtHidrometros.getColumnModel().getColumn(1).setCellRenderer(tableCellRenderer);
