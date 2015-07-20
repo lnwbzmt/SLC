@@ -40,13 +40,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mn_Pessoa = new javax.swing.JMenuItem();
         mn_UnidadeConsumidora = new javax.swing.JMenuItem();
         mConsulta = new javax.swing.JMenu();
-        mn_consCondominio = new javax.swing.JMenuItem();
-        mn_consSituacao = new javax.swing.JMenuItem();
         mn_consCompetencia = new javax.swing.JMenuItem();
-        mn_consUsuario = new javax.swing.JMenuItem();
+        mn_consCondominio = new javax.swing.JMenuItem();
         mn_consHidrometro = new javax.swing.JMenuItem();
         mn_consPessoa = new javax.swing.JMenuItem();
+        mn_consSituacao = new javax.swing.JMenuItem();
         mn_condUnidadeConsumidora = new javax.swing.JMenuItem();
+        mn_consUsuario = new javax.swing.JMenuItem();
         mSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,22 +118,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         mConsulta.setText("Consulta");
 
-        mn_consCondominio.setText("Condominio");
-        mn_consCondominio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mn_consCondominioActionPerformed(evt);
-            }
-        });
-        mConsulta.add(mn_consCondominio);
-
-        mn_consSituacao.setText("Situação");
-        mn_consSituacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mn_consSituacaoActionPerformed(evt);
-            }
-        });
-        mConsulta.add(mn_consSituacao);
-
         mn_consCompetencia.setText("Competência");
         mn_consCompetencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,13 +126,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mConsulta.add(mn_consCompetencia);
 
-        mn_consUsuario.setText("Usuario");
-        mn_consUsuario.addActionListener(new java.awt.event.ActionListener() {
+        mn_consCondominio.setText("Condominio");
+        mn_consCondominio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mn_consUsuarioActionPerformed(evt);
+                mn_consCondominioActionPerformed(evt);
             }
         });
-        mConsulta.add(mn_consUsuario);
+        mConsulta.add(mn_consCondominio);
 
         mn_consHidrometro.setText("Hidrometros");
         mn_consHidrometro.addActionListener(new java.awt.event.ActionListener() {
@@ -166,6 +150,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mConsulta.add(mn_consPessoa);
 
+        mn_consSituacao.setText("Situação");
+        mn_consSituacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_consSituacaoActionPerformed(evt);
+            }
+        });
+        mConsulta.add(mn_consSituacao);
+
         mn_condUnidadeConsumidora.setText("Unidade Consumidora");
         mn_condUnidadeConsumidora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,6 +165,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         mConsulta.add(mn_condUnidadeConsumidora);
+
+        mn_consUsuario.setText("Usuario");
+        mn_consUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_consUsuarioActionPerformed(evt);
+            }
+        });
+        mConsulta.add(mn_consUsuario);
 
         jMenuBar2.add(mConsulta);
 

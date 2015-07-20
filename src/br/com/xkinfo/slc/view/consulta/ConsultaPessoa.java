@@ -2,6 +2,7 @@ package br.com.xkinfo.slc.view.consulta;
 
 import br.com.xkinfo.slc.modelo.Pessoa;
 import br.com.xkinfo.slc.modelo.Usuario;
+import br.com.xkinfo.slc.service.ServiceFactory;
 import br.com.xkinfo.slc.util.tableModel.PessoaTableModel;
 import br.com.xkinfo.slc.view.cadastro.CadastroPessoa;
 import java.awt.Component;
@@ -29,12 +30,12 @@ public class ConsultaPessoa extends javax.swing.JDialog {
     
     TableCellRenderer tableCellRenderer = new DefaultTableCellRenderer() {
         
-        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+        String sCpf;
+        
         @Override
         public Component getTableCellRendererComponent(JTable table,Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            if (value instanceof Date) {
-                value = f.format(value);
-            }
+            sCpf = ServiceFactory.getUtilService().formatarCPF(String.valueOf(value));
+            value = sCpf;
             return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
         }
     };
@@ -221,7 +222,7 @@ public class ConsultaPessoa extends javax.swing.JDialog {
         jtPessoas.getColumnModel().getColumn(0).setCellRenderer(esquerda);
         jtPessoas.getColumnModel().getColumn(1).setCellRenderer(esquerda);
         ((DefaultTableCellRenderer) jtPessoas.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
-        //jtPessoas.getColumnModel().getColumn(0).setCellRenderer(tableCellRenderer);
+        jtPessoas.getColumnModel().getColumn(0).setCellRenderer(tableCellRenderer);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
